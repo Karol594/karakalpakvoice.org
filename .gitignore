@@ -1,0 +1,16 @@
+# Hugo қураллары
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# Node.js қосымшалары
+node_modules/
+npm-debug.log
+
+# IDE файллары
+.idea/
+.vscode/
+
+# Системалық файллар
+.DS_Store
+Thumbs.db
