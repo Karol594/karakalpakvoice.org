@@ -1,0 +1,34 @@
+toml
+baseURL = "https://karakalpakvoice.org/"
+languageCode = "kk"
+defaultContentLanguage = "kk"
+title = "Қарақалпақ Voice"
+theme = "karakalpakvoice"
+
+# Тилдер
+[languages]
+[languages.kk]
+languageName = "Қарақалпақша"
+weight = 1
+contentDir = "content/kk"
+
+[languages.ru]
+languageName = "Русский"
+weight = 2
+contentDir = "content/ru"
+
+[languages.en]
+languageName = "English"
+weight = 3
+contentDir = "content/en"
+
+[languages.pl]
+languageName = "Polski"
+weight = 4
+contentDir = "content/pl"
+
+# Параметрлер
+[params]
+description = "Қарақалпақстанның №1 Ғәрезсиз мәлимлеме платформасы"
+slogan = "Халық үни — KarakalpakVoice.org"
+contact_email = "admin@karakalpakvoice.org"
