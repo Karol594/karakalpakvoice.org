@@ -272,7 +272,7 @@ nav {
     color: #555;
 }
 
-/* Басқа бөлимдер */
+/* Басқа бөлимлер */
 .section {
     padding: 4rem 0;
     border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -461,7 +461,7 @@ nav {
     transform: translateY(-3px);
 }
 
-/* Социаллық тармақтар түймелери */
+/* Социаллық тармақлар түймелери */
 .social-icon {
     width: 40px;
     height: 40px;
@@ -607,4 +607,4 @@ footer {
     .theme-toggle {
         margin: 10px auto;
     }
-        }
+}
