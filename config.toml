@@ -1,18 +1,22 @@
-baseURL = "https://karakalpakvoice.org/"
+baseURL = "https://karakalpakovoice.org/"
 languageCode = "kk"
 defaultContentLanguage = "kk"
 title = "Қарақалпақ Voice"
-theme = "karakalpakovoice"  # Дурыс тема аты
+theme = "karakalpakovoice"
 
-# Тиллер
-[languages]  # Дурыс: [languages] (S емес)
+[params]
+description = "Қарақалпақстанның №1 Ғәрезсиз мәлимлеме платформасы"
+dark_mode = true
+
+# Көптиллик настройкалар
+[languages]
 [languages.kk]
 languageName = "Қарақалпақша"
 weight = 1
 contentDir = "content/kk"
 
 [languages.ru]
-languageName = "Русский"
+languageName = "Руский"
 weight = 2
 contentDir = "content/ru"
 
@@ -26,8 +30,62 @@ languageName = "Polski"
 weight = 4
 contentDir = "content/pl"
 
+# Навигация сазлаў
+[menu]
+[[menu.main]]
+    name = "Бас бет"
+    url = "/"
+    weight = 1
+    identifier = "home"
+
+[[menu.main]]
+    name = "Суверенитет"
+    url = "/#sovereignty"
+    weight = 2
+    identifier = "sovereignty"
+
+[[menu.main]]
+    name = "Жаңалықлар"
+    url = "/#news"
+    weight = 3
+    identifier = "news"
+
+[[menu.main]]
+    name = "Сиясат"
+    url = "/#politics"
+    weight = 4
+    identifier = "politics"
+
+[[menu.main]]
+    name = "Тарийх"
+    url = "/#history"
+    weight = 5
+    identifier = "history"
+
+[[menu.main]]
+    name = "Спорт"
+    url = "/#sport"
+    weight = 6
+    identifier = "sport"
+
+[[menu.main]]
+    name = "География"
+    url = "/#geography"
+    weight = 7
+    identifier = "geography"
+
+[[menu.main]]
+    name = "Дәстүр"
+    url = "/#traditions"
+    weight = 8
+    identifier = "traditions"
+
+[[menu.main]]
+    name = "Биз туўралы"
+    url = "/#about"
+    weight = 9
+    identifier = "about"
+
 # Параметрлер
-[params]
-description = "Қарақалпақстанның №1 Ғәрезсиз мәлимлеме платформасы"
-slogan = "Халық үни — KarakalpakVoice.org"
-contact_email = "admin@karakalpakvoice.org"
+[outputs]
+home = ["HTML", "RSS"]
