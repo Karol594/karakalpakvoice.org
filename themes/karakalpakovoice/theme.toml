@@ -1,4 +1,6 @@
-name = "karakalpakovoice"
-version = "0.1.0"
-author = "Qara Brend"
+name = "Karakalpak Voice"
 license = "MIT"
+description = "Қарақалпақстанға арналған тема"
+
+[author]
+name = "Сизиң атыңыз"
