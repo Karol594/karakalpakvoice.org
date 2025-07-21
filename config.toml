@@ -1,12 +1,11 @@
-toml
 baseURL = "https://karakalpakvoice.org/"
 languageCode = "kk"
 defaultContentLanguage = "kk"
 title = "Қарақалпақ Voice"
-theme = "karakalpakvoice"
+theme = "karakalpakovoice"  # Дурыс тема аты
 
-# Тилдер
-[languages]
+# Тиллер
+[languages]  # Дурыс: [languages] (S емес)
 [languages.kk]
 languageName = "Қарақалпақша"
 weight = 1
