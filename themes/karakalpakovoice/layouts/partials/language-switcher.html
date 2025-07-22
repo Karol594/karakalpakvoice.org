@@ -1,7 +1,12 @@
 <select onchange="location = this.value;">
-    {{ range .AllTranslations }}
-        <option value="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }}>
-            {{ .Language.LanguageName }}
+    {{ $currentLang := .Language.Lang }}
+    {{ range .Site.Languages }}
+        {{ $url := "/" }}
+        {{ if ne .Lang .Site.DefaultContentLang }}
+            {{ $url = printf "/%s/" .Lang }}
+        {{ end }}
+        <option value="{{ $url }}" {{ if eq .Lang $currentLang }}selected{{ end }}>
+            {{ .LanguageName }}
         </option>
     {{ end }}
 </select>
