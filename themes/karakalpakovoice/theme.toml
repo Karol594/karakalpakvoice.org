@@ -1,6 +1,14 @@
 name = "Karakalpak Voice"
 license = "MIT"
 description = "Қарақалпақстанға арналған тема"
+min_version = "0.86.0"
 
 [author]
 name = "Qara Бренд"
+
+# Тиллердиң атамасын қосыў
+[languages]
+kk = "Қарақалпақша"
+ru = "Русский"
+en = "English"
+pl = "Polski"
