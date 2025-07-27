@@ -1,4 +1,9 @@
 ---
 title: "Strona główna"
+date: 2025-07-28
+draft: false
 ---
-Witamy w Karakalpak Voice - niezależnej platformie informacyjnej Karakałpacji!
+
+To jest główna strona Karakalpak Voice. Suwerenność, wiadomości i inne treści będą tutaj wyświetlane.
+
+Witamy na niezależnej platformie informacyjnej #1 Karakałpacji!
