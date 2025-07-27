@@ -1,39 +1,51 @@
-baseURL = "https://karakalpakovoice.org/"
-languageCode = "kk"
-defaultContentLanguage = "kk"
-title = "Қарақалпақ Voice"
-theme = "karakalpakovoice"
+baseURL = "https://karakalpakvoice.org/"
+languageCode = "ru"
+defaultContentLanguage = "ru"
+title = "Каракалпак Voice"
+theme = "karakalpakvoice"
 
 [params]
-description = "Қарақалпақстанның №1 Ғәрезсиз мәлимлеме платформасы"
+description = "Независимая информационная платформа №1 Каракалпакстана"
 dark_mode = true
 
-# Көптиллик настройкалар
+# Көптиллик настройкалар (Бас тил - орыс)
 [languages]
-[languages.kk]
-languageName = "Қарақалпақша"
-weight = 1
-contentDir = "content/kk"
-
 [languages.ru]
-languageName = "Руский"
-weight = 2
+languageName = "🇷🇺 Русский"
+weight = 1
 contentDir = "content/ru"
+title = "Каракалпак Voice"
+[languages.ru.params]
+description = "Независимая информационная платформа №1 Каракалпакстана"
+
+[languages.kk]
+languageName = "🏳️ Қарақалпақша"
+weight = 2
+contentDir = "content/kk"
+title = "Қарақалпақ Voice"
+[languages.kk.params]
+description = "Қарақалпақстанның №1 Ғәрезсиз мәлимлеме платформасы"
 
 [languages.en]
-languageName = "English"
+languageName = "🇺🇸 English"
 weight = 3
 contentDir = "content/en"
+title = "Karakalpak Voice"
+[languages.en.params]
+description = "Independent information platform №1 of Karakalpakstan"
 
 [languages.pl]
-languageName = "Polski"
+languageName = "🇵🇱 Polski"
 weight = 4
 contentDir = "content/pl"
+title = "Karakalpak Voice"
+[languages.pl.params]
+description = "Niezależna platforma informacyjna №1 Karakałpacji"
 
-# Навигация сазлаў
+# Навигация сазлаў (орыс тилинде)
 [menu]
 [[menu.main]]
-    name = "Бас бет"
+    name = "Главная"
     url = "/"
     weight = 1
     identifier = "home"
@@ -45,19 +57,19 @@ contentDir = "content/pl"
     identifier = "sovereignty"
 
 [[menu.main]]
-    name = "Жаңалықлар"
+    name = "Новости"
     url = "/#news"
     weight = 3
     identifier = "news"
 
 [[menu.main]]
-    name = "Сиясат"
+    name = "Политика"
     url = "/#politics"
     weight = 4
     identifier = "politics"
 
 [[menu.main]]
-    name = "Тарийх"
+    name = "История"
     url = "/#history"
     weight = 5
     identifier = "history"
@@ -75,13 +87,13 @@ contentDir = "content/pl"
     identifier = "geography"
 
 [[menu.main]]
-    name = "Дәстүр"
+    name = "Традиции"
     url = "/#traditions"
     weight = 8
     identifier = "traditions"
 
 [[menu.main]]
-    name = "Биз туўралы"
+    name = "О нас"
     url = "/#about"
     weight = 9
     identifier = "about"
