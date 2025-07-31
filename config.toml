@@ -1,103 +1,223 @@
-baseURL = "https://karakalpakvoice.org/"
-languageCode = "ru"
-defaultContentLanguage = "ru"
-title = "Каракалпак Voice"
+baseURL = "https://karakalpakvoice.org"
+title = "Karakalpak Voice"
 theme = "karakalpakvoice"
+defaultContentLanguage = "ru"
+defaultContentLanguageInSubdir = true
 
-[params]
-description = "Независимая информационная платформа №1 Каракалпакстана"
-dark_mode = true
-
-# Көптиллик настройкалар (Бас тил - орыс)
+# Көптілді конфигурация
 [languages]
-[languages.ru]
-languageName = "🇷🇺 Русский"
-weight = 1
-contentDir = "content/ru"
-title = "Каракалпак Voice"
-[languages.ru.params]
-description = "Независимая информационная платформа №1 Каракалпакстана"
-
-[languages.kk]
-languageName = "🏳️ Қарақалпақша"
-weight = 2
-contentDir = "content/kk"
-title = "Қарақалпақ Voice"
-[languages.kk.params]
-description = "Қарақалпақстанның №1 Ғәрезсиз мәлимлеме платформасы"
-
-[languages.en]
-languageName = "🇺🇸 English"
-weight = 3
-contentDir = "content/en"
-title = "Karakalpak Voice"
-[languages.en.params]
-description = "Independent information platform №1 of Karakalpakstan"
-
-[languages.pl]
-languageName = "🇵🇱 Polski"
-weight = 4
-contentDir = "content/pl"
-title = "Karakalpak Voice"
-[languages.pl.params]
-description = "Niezależna platforma informacyjna №1 Karakałpacji"
-
-# Навигация сазлаў (орыс тилинде)
-[menu]
-[[menu.main]]
-    name = "Главная"
-    url = "/"
+  [languages.ru]
+    title = "Каракалпакский Голос"
     weight = 1
-    identifier = "home"
+    languageName = "Русский"
+    languageCode = "ru"
+    [languages.ru.params]
+      description = "Голос каракалпакского народа"
+      flag = "🇷🇺"
+    [languages.ru.menu]
+      [[languages.ru.menu.main]]
+        name = "Главная"
+        url = "/"
+        weight = 10
+      [[languages.ru.menu.main]]
+        name = "Статьи"
+        url = "/posts/"
+        weight = 20
+      [[languages.ru.menu.main]]
+        name = "Категории"
+        url = "/categories/"
+        weight = 30
+      [[languages.ru.menu.main]]
+        name = "О нас"
+        url = "/about/"
+        weight = 40
 
-[[menu.main]]
-    name = "Суверенитет"
-    url = "/#sovereignty"
+  [languages.kk]
+    title = "Қарақалпақ Даўысы"
     weight = 2
-    identifier = "sovereignty"
+    languageName = "Қарақалпақша"
+    languageCode = "kk"
+    [languages.kk.params]
+      description = "Қарақалпақ халқының даўысы"
+      flag = "🏳️"
+    [languages.kk.menu]
+      [[languages.kk.menu.main]]
+        name = "Бас бет"
+        url = "/kk/"
+        weight = 10
+      [[languages.kk.menu.main]]
+        name = "Мақалалар"
+        url = "/kk/posts/"
+        weight = 20
+      [[languages.kk.menu.main]]
+        name = "Категория"
+        url = "/kk/categories/"
+        weight = 30
+      [[languages.kk.menu.main]]
+        name = "Биз туўралы"
+        url = "/kk/about/"
+        weight = 40
 
-[[menu.main]]
-    name = "Новости"
-    url = "/#news"
+  [languages.en]
+    title = "Karakalpak Voice"
     weight = 3
-    identifier = "news"
+    languageName = "English"
+    languageCode = "en"
+    [languages.en.params]
+      description = "Voice of Karakalpak people"
+      flag = "🇺🇸"
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        name = "Home"
+        url = "/en/"
+        weight = 10
+      [[languages.en.menu.main]]
+        name = "Posts"
+        url = "/en/posts/"
+        weight = 20
+      [[languages.en.menu.main]]
+        name = "Categories"
+        url = "/en/categories/"
+        weight = 30
+      [[languages.en.menu.main]]
+        name = "About"
+        url = "/en/about/"
+        weight = 40
 
-[[menu.main]]
-    name = "Политика"
-    url = "/#politics"
+  [languages.pl]
+    title = "Głos Karakałpaków"
     weight = 4
-    identifier = "politics"
+    languageName = "Polski"
+    languageCode = "pl"
+    [languages.pl.params]
+      description = "Głos narodu karakałpackiego"
+      flag = "🇵🇱"
+    [languages.pl.menu]
+      [[languages.pl.menu.main]]
+        name = "Strona główna"
+        url = "/pl/"
+        weight = 10
+      [[languages.pl.menu.main]]
+        name = "Artykuły"
+        url = "/pl/posts/"
+        weight = 20
+      [[languages.pl.menu.main]]
+        name = "Kategorie"
+        url = "/pl/categories/"
+        weight = 30
+      [[languages.pl.menu.main]]
+        name = "O nas"
+        url = "/pl/about/"
+        weight = 40
 
-[[menu.main]]
-    name = "История"
-    url = "/#history"
-    weight = 5
-    identifier = "history"
+# Улыўма параметрлер
+[params]
+  author = "Karakalpak Voice Team"
+  description = "Voice of Karakalpak people worldwide"
+  keywords = "karakalpak, voice, culture, news, aral sea"
+  
+  # Social Media
+  [params.social]
+    twitter = "https://twitter.com/karakalpakvoice"
+    facebook = "https://facebook.com/karakalpakvoice"
+    telegram = "https://t.me/karakalpakvoice"
+    youtube = "https://youtube.com/@karakalpakvoice"
+    instagram = "https://instagram.com/karakalpakvoice"
+  
+  # Crypto донация
+  [params.crypto]
+    bitcoin = "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh"
+    ethereum = "0x8ba1f109551bD432803012645Hac136c46Fek1"
+  
+  # Analytics
+  [params.analytics]
+    matomo_url = "https://analytics.karakalpakvoice.org"
+    matomo_site_id = "1"
+  
+  # Features
+  [params.features]
+    search = true
+    darkmode = true
+    pwa = true
+    tts = true
+    qrcode = true
+    comments = true
+    newsletter = true
 
-[[menu.main]]
-    name = "Спорт"
-    url = "/#sport"
-    weight = 6
-    identifier = "sport"
+# Таксономия
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  author = "authors"
 
-[[menu.main]]
-    name = "География"
-    url = "/#geography"
-    weight = 7
-    identifier = "geography"
+# Markdown конфигурациясы
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = true
+    noClasses = false
 
-[[menu.main]]
-    name = "Традиции"
-    url = "/#traditions"
-    weight = 8
-    identifier = "traditions"
-
-[[menu.main]]
-    name = "О нас"
-    url = "/#about"
-    weight = 9
-    identifier = "about"
-
-# Параметрлер
+# Outputs
 [outputs]
-home = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+# Pagination
+paginate = 12
+paginatePath = "page"
+
+# Other settings
+enableRobotsTXT = true
+enableGitInfo = true
+enableEmoji = true
+
+# Build settings
+[build]
+  writeStats = true
+  
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+# Security
+[security]
+  [security.funcs]
+    getenv = ["^HUGO_", "^CI$"]
+
+# Related content
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+  [[related.indices]]
+    name = "keywords"
+    weight = 100
+  [[related.indices]]
+    name = "tags"
+    weight = 80
+  [[related.indices]]
+    name = "categories"
+    weight = 60
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
+# Image processing
+[imaging]
+  resampleFilter = "lanczos"
+  quality = 85
+  anchor = "smart"
+
+# Minification
+[minify]
+  disableXML = true
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepDocumentTags = true
+      keepEndTags = true
+      keepDefaultAttrVals = true
