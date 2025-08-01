@@ -1,0 +1,317 @@
+# Karakalpak Voice - Netlify Configuration
+
+[build]
+  # Build command
+  command = "hugo --minify --gc"
+  
+  # Output directory
+  publish = "public"
+  
+  # Build environment variables
+  [build.environment]
+    HUGO_VERSION = "0.119.0"
+    HUGO_ENV = "production"
+    HUGO_ENABLEGITINFO = "true"
+    NODE_VERSION = "18"
+    GO_VERSION = "1.21"
+
+# Build processing
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Plugin configuration
+[[plugins]]
+  package = "netlify-plugin-hugo-cache-resources"
+
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
+  [plugins.inputs]
+    baseUrl = "https://karakalpakvoice.org"
+    sitemapPath = "/sitemap.xml"
+    ignorePeriod = 0
+    providers = [
+      "google",
+      "bing",
+      "yandex"
+    ]
+
+# Redirects and rewrites
+[[redirects]]
+  # Root redirect to Russian (default language)
+  from = "/"
+  to = "/ru/"
+  status = 302
+  conditions = {Language = ["ru"]}
+
+[[redirects]]
+  # Karakalpak language redirect
+  from = "/"
+  to = "/kk/"
+  status = 302
+  conditions = {Language = ["kk", "kaa"]}
+
+[[redirects]]
+  # English language redirect
+  from = "/"
+  to = "/en/"
+  status = 302
+  conditions = {Language = ["en"]}
+
+[[redirects]]
+  # Polish language redirect
+  from = "/"
+  to = "/pl/"
+  status = 302
+  conditions = {Language = ["pl"]}
+
+[[redirects]]
+  # Default fallback to Russian
+  from = "/"
+  to = "/ru/"
+  status = 302
+
+# API endpoints for QARA-AI
+[[redirects]]
+  from = "/api/qara-ai"
+  to = "/.netlify/functions/qara-ai"
+  status = 200
+
+[[redirects]]
+  from = "/api/search"
+  to = "/.netlify/functions/search"
+  status = 200
+
+[[redirects]]
+  from = "/api/newsletter"
+  to = "/.netlify/functions/newsletter"
+  status = 200
+
+[[redirects]]
+  from = "/api/analytics"
+  to = "/.netlify/functions/analytics"
+  status = 200
+
+# PWA related redirects
+[[redirects]]
+  from = "/sw.js"
+  to = "/js/sw.js"
+  status = 200
+
+# Legacy URL redirects
+[[redirects]]
+  from = "/posts/*"
+  to = "/ru/posts/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/ru/about/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/ru/about/"
+  status = 301
+
+# 404 handling for different languages
+[[redirects]]
+  from = "/ru/*"
+  to = "/ru/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/kk/*"
+  to = "/kk/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/en/*"
+  to = "/en/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/pl/*"
+  to = "/pl/404.html"
+  status = 404
+
+# Catch-all 404
+[[redirects]]
+  from = "/*"
+  to = "/ru/404.html"
+  status = 404
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    
+    # HTTPS and security
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    
+    # Performance headers
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# PWA headers
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# API headers with CORS
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "https://karakalpakvoice.org"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    Access-Control-Max-Age = "86400"
+
+# Content Security Policy
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = '''
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://www.google-analytics.com https://analytics.karakalpakvoice.org;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      media-src 'self' https:;
+      connect-src 'self' https://api.karakalpakvoice.org https://analytics.karakalpakvoice.org;
+      frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
+    '''
+
+# Functions configuration
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Dev server settings
+[dev]
+  command = "hugo server -D --disableFastRender"
+  port = 1313
+  targetPort = 1313
+  autoLaunch = true
+
+# Context-specific builds
+[context.production]
+  command = "hugo --minify --gc"
+  [context.production.environment]
+    HUGO_ENV = "production"
+
+[context.deploy-preview]
+  command = "hugo --minify --gc --buildFuture -b $DEPLOY_PRIME_URL"
+  [context.deploy-preview.environment]
+    HUGO_ENV = "staging"
+
+[context.branch-deploy]
+  command = "hugo --minify --gc --buildFuture -b $DEPLOY_PRIME_URL"
+  [context.branch-deploy.environment]
+    HUGO_ENV = "staging"
+
+# Form handling
+[forms]
+  [forms."newsletter"]
+    name = "Newsletter Subscription"
+    template = "newsletter-success"
+    spam_filter = true
+    
+  [forms."contact"]
+    name = "Contact Form"
+    template = "contact-success"
+    spam_filter = true
+
+# Split testing (A/B testing)
+[[edge_handlers]]
+  handler = "ab-test"
+  pattern = "/*"
+
+# Large Media
+[lfs]
+  excluded = ["public/**/*"]
+
+# Identity (for admin access)
+[identity]
+  external_providers = ["github", "google"]
+
+# Git Gateway for CMS
+[git_gateway]
+  enabled = true
+
+# Site metadata for SEO
+[template.metadata]
+  name = "Karakalpak Voice"
+  description = "Independent voice of Karakalpak people worldwide"
+  repository = "https://github.com/username/karakalpakvoice.org"
+  keywords = ["karakalpak", "voice", "news", "culture", "sovereignty"]
+
+# Environment variables (add in Netlify dashboard)
+# QARA_AI_API_KEY = "your-api-key"
+# MATOMO_TOKEN = "your-matomo-token"
+# NEWSLETTER_API_KEY = "your-newsletter-api-key"
