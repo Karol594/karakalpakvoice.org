@@ -1,0 +1,191 @@
+{
+  "name": "karakalpak-voice",
+  "version": "2.0.0",
+  "description": "Independent voice of Karakalpak people worldwide - Қарақалпақ халқының тәуелсіз дауысы",
+  "main": "index.js",
+  "scripts": {
+    "dev": "hugo server -D --disableFastRender --port 1313",
+    "build": "hugo --minify --gc",
+    "build:preview": "hugo --minify --gc --buildFuture --buildDrafts",
+    "clean": "rm -rf public resources",
+    "test": "npm run test:html && npm run test:css && npm run test:js",
+    "test:html": "htmlhint static/**/*.html",
+    "test:css": "stylelint static/css/**/*.css",
+    "test:js": "eslint static/js/**/*.js netlify/functions/**/*.js",
+    "lighthouse": "lighthouse https://karakalpakvoice.org --output=json --output=html",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "deploy": "netlify deploy --prod",
+    "deploy:preview": "netlify deploy",
+    "start": "npm run dev",
+    "postinstall": "hugo mod get -u",
+    "audit:security": "npm audit --audit-level high",
+    "audit:lighthouse": "npm run lighthouse",
+    "update:deps": "npm update && hugo mod get -u",
+    "validate:html": "html-validate static/**/*.html",
+    "optimize:images": "imagemin static/images/**/*.{jpg,png,gif} --out-dir=static/images/optimized",
+    "generate:icons": "node scripts/generate-icons.js",
+    "backup:content": "tar -czf backup/content-$(date +%Y%m%d).tar.gz content/",
+    "serve:prod": "hugo --minify && npx serve public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karakalpak-voice/karakalpakvoice.org.git"
+  },
+  "keywords": [
+    "karakalpak",
+    "voice",
+    "news",
+    "culture",
+    "sovereignty",
+    "aral-sea",
+    "central-asia",
+    "hugo",
+    "multilingual",
+    "pwa",
+    "qara-ai"
+  ],
+  "author": {
+    "name": "Karakalpak Voice Team",
+    "email": "info@karakalpakvoice.org",
+    "url": "https://karakalpakvoice.org"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karakalpak-voice/karakalpakvoice.org/issues"
+  },
+  "homepage": "https://karakalpakvoice.org",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "@netlify/functions": "^2.4.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.52.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "htmlhint": "^1.1.4",
+    "html-validate": "^8.7.0",
+    "imagemin": "^8.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-webp": "^8.0.0",
+    "lighthouse": "^11.3.0",
+    "netlify-cli": "^17.8.0",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "prettier": "^3.0.3",
+    "serve": "^14.2.1",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "tailwindcss": "^3.3.5"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es2022": true
+    },
+    "extends": [
+      "standard"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2022,
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "off",
+      "semi": ["error", "always"],
+      "quotes": ["error", "single"]
+    },
+    "globals": {
+      "gtag": "readonly",
+      "_paq": "readonly"
+    }
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard"
+    ],
+    "rules": {
+      "color-hex-case": "lower",
+      "color-hex-length": "short",
+      "comment-empty-line-before": null,
+      "declaration-empty-line-before": null,
+      "function-name-case": "lower",
+      "no-descending-specificity": null,
+      "no-duplicate-selectors": null
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "endOfLine": "lf"
+  },
+  "htmlhint": {
+    "tagname-lowercase": true,
+    "attr-lowercase": true,
+    "attr-value-double-quotes": true,
+    "doctype-first": true,
+    "tag-pair": true,
+    "spec-char-escape": true,
+    "id-unique": true,
+    "src-not-empty": true,
+    "alt-require": true,
+    "head-script-disabled": false
+  },
+  "config": {
+    "hugo": {
+      "version": "0.119.0",
+      "extended": true
+    },
+    "node": {
+      "version": "18"
+    }
+  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/karakalpak-voice"
+    },
+    {
+      "type": "patreon",
+      "url": "https://patreon.com/karakalpakvoice"
+    },
+    {
+      "type": "bitcoin",
+      "url": "bitcoin:bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "QARA-AI System",
+      "email": "qara-ai@karakalpakvoice.org",
+      "role": "AI Assistant & Content Generator"
+    }
+  ],
+  "volta": {
+    "node": "18.18.2",
+    "npm": "9.8.1"
+  },
+  "packageManager": "npm@9.8.1",
+  "type": "module"
+}
