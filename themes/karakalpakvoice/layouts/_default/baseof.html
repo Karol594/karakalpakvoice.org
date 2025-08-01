@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a365d">
+    
+    <!-- SEO Meta Tags -->
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="keywords" content="{{ .Site.Params.keywords }}{{ if .Params.tags }}, {{ delimit .Params.tags ", " }}{{ end }}">
+    <meta name="author" content="{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ "/images/og-karakalpak-voice.jpg" | absURL }}{{ end }}">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ .Permalink }}">
+    <meta property="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta property="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="twitter:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ "/images/og-karakalpak-voice.jpg" | absURL }}{{ end }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ .Permalink }}">
+    
+    <!-- Language alternates -->
+    {{ range .AllTranslations }}
+    <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+    {{ end }}
+    
+    <!-- RSS Feeds -->
+    {{ with .OutputFormats.Get "RSS" }}
+    <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}">
+    {{ end }}
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/accessibility.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Dark mode prevention script -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    
+    <!-- QARA-AI Chat Widget -->
+    {{ if .Site.Params.features.qara_ai_chat }}
+    <script>
+        window.qaraAI = {
+            enabled: true,
+            language: '{{ .Site.Language.Lang }}',
+            endpoint: '{{ .Site.Params.qara_ai.api_endpoint }}',
+            models: {{ .Site.Params.qara_ai.models | jsonify }}
+        };
+    </script>
+    {{ end }}
+</head>
+
+<body class="font-sans bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50">
+        {{ if eq .Site.Language.Lang "ru" }}Перейти к основному содержанию{{ else if eq .Site.Language.Lang "kk" }}Негізгі мазмұнға өту{{ else if eq .Site.Language.Lang "pl" }}Przejdź do głównej treści{{ else }}Skip to main content{{ end }}
+    </a>
+
+    <!-- Language & Breaking News Bar -->
+    <div class="bg-blue-600 dark:bg-blue-800 text-white py-1">
+        <div class="container mx-auto px-4 flex justify-between items-center text-sm">
+            <div class="hidden md:block">
+                {{ if eq .Site.Language.Lang "ru" }}🌍 Независимый голос каракалпакского народа{{ else if eq .Site.Language.Lang "kk" }}🌍 Қарақалпақ халқының тәуелсіз дауысы{{ else if eq .Site.Language.Lang "pl" }}🌍 Niezależny głos narodu karakałpackiego{{ else }}🌍 Independent voice of Karakalpak people{{ end }}
+            </div>
+            
+            <!-- Language Switcher -->
+            <div class="flex items-center space-x-2">
+                {{ range .Site.Languages }}
+                {{ $isCurrentLang := eq $.Site.Language.Lang .Lang }}
+                <a href="{{ if $isCurrentLang }}#{{ else }}{{ .Lang | relLangURL }}{{ end }}" 
+                   class="hover:bg-blue-700 dark:hover:bg-blue-900 px-2 py-1 rounded transition-colors {{ if $isCurrentLang }}bg-blue-700 dark:bg-blue-900{{ end }}"
+                   title="{{ .LanguageName }}">
+                    {{ .Params.flag }} {{ .Lang | upper }}
+                </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-40 transition-colors duration-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Title -->
+                <div class="flex items-center space-x-4">
+                    <a href="{{ .Site.BaseURL }}" class="flex items-center space-x-3">
+                        <img src="/images/logo-karakalpak.png" alt="{{ .Site.Title }}" class="h-12 w-12 rounded-full">
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-900 dark:text-white">{{ .Site.Title }}</h1>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">{{ .Site.Language.Params.description }}</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    {{ range .Site.Menus.main }}
+                    <a href="{{ .URL }}" 
+                       class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors px-3 py-2 rounded {{ if $.IsMenuCurrent "main" . }}text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900{{ end }}">
+                        {{ .Name }}
+                    </a>
+                    {{ end }}
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- Search Button -->
+                    {{ if .Site.Params.features.search }}
+                    <button id="search-btn" 
+                            class="p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                            title="{{ if eq .Site.Language.Lang "ru" }}Поиск{{ else if eq .Site.Language.Lang "kk" }}Іздеу{{ else if eq .Site.Language.Lang "pl" }}Szukaj{{ else }}Search{{ end }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                    {{ end }}
+
+                    <!-- QARA-AI Chat Button -->
+                    {{ if .Site.Params.features.qara_ai_chat }}
+                    <button id="qara-ai-btn" 
+                            class="p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                            title="QARA-AI {{ if eq .Site.Language.Lang "ru" }}Помощник{{ else if eq .Site.Language.Lang "kk" }}Көмекші{{ else if eq .Site.Language.Lang "pl" }}Asystent{{ else }}Assistant{{ end }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </button>
+                    {{ end }}
+
+                    <!-- Dark Mode Toggle -->
+                    {{ if .Site.Params.features.darkmode }}
+                    <button id="theme-toggle" 
+                            class="p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                            title="{{ if eq .Site.Language.Lang "ru" }}Переключить тему{{ else if eq .Site.Language.Lang "kk" }}Тақырыпты ауыстыру{{ else if eq .Site.Language.Lang "pl" }}Przełącz motyw{{ else }}Toggle theme{{ end }}">
+                        <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+                        </svg>
+                        <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                        </svg>
+                    </button>
+                    {{ end }}
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" 
+                            class="lg:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav id="mobile-menu" class="lg:hidden hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="pt-4 space-y-2">
+                    {{ range .Site.Menus.main }}
+                    <a href="{{ .URL }}" 
+                       class="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors {{ if $.IsMenuCurrent "main" . }}bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-400{{ end }}">
+                        {{ .Name }}
+                    </a>
+                    {{ end }}
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="min-h-screen">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">{{ .Site.Title }}</h3>
+                    <p class="text-gray-300 text-sm">{{ .Site.Language.Params.description }}</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">{{ if eq .Site.Language.Lang "ru" }}Быстрые ссылки{{ else if eq .Site.Language.Lang "kk" }}Жылдам сілтемелер{{ else if eq .Site.Language.Lang "pl" }}Szybkie linki{{ else }}Quick Links{{ end }}</h3>
+                    <ul class="space-y-2 text-sm">
+                        {{ range first 4 .Site.Menus.main }}
+                        <li><a href="{{ .URL }}" class="text-gray-300 hover:text-white transition-colors">{{ .Name }}</a></li>
+                        {{ end }}
+                    </ul>
+                </div>
+                
+                <!-- Social -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">{{ if eq .Site.Language.Lang "ru" }}Мы в соцсетях{{ else if eq .Site.Language.Lang "kk" }}Әлеуметтік желілер{{ else if eq .Site.Language.Lang "pl" }}Media społecznościowe{{ else }}Social Media{{ end }}</h3>
+                    <div class="flex space-x-3">
+                        {{ with .Site.Params.social.telegram }}
+                        <a href="{{ . }}" class="text-gray-300 hover:text-white" target="_blank" rel="noopener">Telegram</a>
+                        {{ end }}
+                        {{ with .Site.Params.social.twitter }}
+                        <a href="{{ . }}" class="text-gray-300 hover:text-white" target="_blank" rel="noopener">Twitter</a>
+                        {{ end }}
+                        {{ with .Site.Params.social.youtube }}
+                        <a href="{{ . }}" class="text-gray-300 hover:text-white" target="_blank" rel="noopener">YouTube</a>
+                        {{ end }}
+                    </div>
+                </div>
+                
+                <!-- Languages -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">{{ if eq .Site.Language.Lang "ru" }}Языки{{ else if eq .Site.Language.Lang "kk" }}Тілдер{{ else if eq .Site.Language.Lang "pl" }}Języki{{ else }}Languages{{ end }}</h3>
+                    <div class="space-y-1 text-sm">
+                        {{ range .Site.Languages }}
+                        <div>
+                            <a href="{{ .Lang | relLangURL }}" class="text-gray-300 hover:text-white transition-colors">
+                                {{ .Params.flag }} {{ .LanguageName }}
+                            </a>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; {{ now.Year }} {{ .Site.Title }}. {{ if eq .Site.Language.Lang "ru" }}Все права защищены{{ else if eq .Site.Language.Lang "kk" }}Барлық құқықтар қорғалған{{ else if eq .Site.Language.Lang "pl" }}Wszystkie prawa zastrzeżone{{ else }}All rights reserved{{ end }}.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    {{ if .Site.Params.features.qara_ai_chat }}
+    <script src="/js/qara-ai.js"></script>
+    {{ end }}
+</body>
+  </html>
