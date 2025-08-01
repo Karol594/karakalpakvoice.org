@@ -1,0 +1,346 @@
+// QARA-AI API Function for Karakalpak Voice
+// Integrates multiple AI models for Karakalpak language and culture support
+
+const fetch = require('node-fetch');
+
+// AI Model configurations
+const AI_MODELS = {
+  claude: {
+    url: 'https://api.anthropic.com/v1/messages',
+    headers: {
+      'Authorization': `Bearer ${process.env.CLAUDE_API_KEY}`,
+      'Content-Type': 'application/json',
+      'anthropic-version': '2023-06-01'
+    }
+  },
+  gpt: {
+    url: 'https://api.openai.com/v1/chat/completions',
+    headers: {
+      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+      'Content-Type': 'application/json'
+    }
+  },
+  gemini: {
+    url: `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+};
+
+// Language-specific prompts
+const SYSTEM_PROMPTS = {
+  ru: `Ты QARA-AI - специализированный помощник по каракалпакской культуре, языку и истории. 
+Ты эксперт по:
+- Каракалпакскому языку и его переводу
+- Истории и культуре каракалпакского народа
+- Современным проблемам Каракалпакстана
+- Экологии Аральского моря
+- Вопросам суверенитета и автономии
+
+Отвечай дружелюбно, информативно и с уважением к каракалпакской культуре.`,
+
+  kk: `Сіз QARA-AI - қарақалпақ мәдениеті, тілі және тарихы бойынша мамандандырылған көмекшісіз.
+Сіз мынаны жақсы білесіз:
+- Қарақалпақ тілі және оны аудару
+- Қарақалпақ халқының тарихы мен мәдениеті  
+- Қарақалпақстанның қазіргі проблемалары
+- Арал теңізінің экологиясы
+- Суверенитет пен автономия мәселелері
+
+Достыққа толы, ақпараттық және қарақалпақ мәдениетін құрметтеп жауап беріңіз.`,
+
+  en: `You are QARA-AI - a specialized assistant for Karakalpak culture, language and history.
+You are an expert in:
+- Karakalpak language and translation
+- History and culture of Karakalpak people
+- Contemporary issues of Karakalpakstan
+- Aral Sea ecology
+- Issues of sovereignty and autonomy
+
+Respond in a friendly, informative way with respect for Karakalpak culture.`,
+
+  pl: `Jesteś QARA-AI - wyspecjalizowanym asystentem ds. kultury, języka i historii karakałpackiej.
+Jesteś ekspertem w zakresie:
+- Języka karakałpackiego i tłumaczeń
+- Historii i kultury narodu karakałpackiego
+- Współczesnych problemów Karakałpakstanu
+- Ekologii Morza Aralskiego
+- Kwestii suwerenności i autonomii
+
+Odpowiadaj przyjaźnie, informacyjnie i z szacunkiem dla kultury karakałpackiej.`
+};
+
+// Quick action responses
+const QUICK_ACTIONS = {
+  translate: {
+    ru: "Конечно! Я помогу с переводом на каракалпакский язык. Напишите текст, который нужно перевести.",
+    kk: "Әрине! Мен қарақалпақ тіліне аудару көмегін берейін. Аударуға керек мәтінді жазыңыз.",
+    en: "Of course! I'll help with translation to Karakalpak language. Write the text you need translated.",
+    pl: "Oczywiście! Pomogę z tłumaczeniem na język karakałpacki. Napisz tekst do tłumaczenia."
+  },
+  culture: {
+    ru: "Каракалпакская культура богата и уникальна! О чём именно вы хотели бы узнать? Традиции, искусство, литература, музыка или что-то другое?",
+    kk: "Қарақалпақ мәдениеті бай және бірегей! Не туралы білгіңіз келеді? Дәстүрлер, өнер, әдебиет, музыка немесе басқа нәрсе?",
+    en: "Karakalpak culture is rich and unique! What specifically would you like to know about? Traditions, arts, literature, music, or something else?",
+    pl: "Kultura karakałpacka jest bogata i unikalna! O czym konkretnie chciałbyś się dowiedzieć? Tradycje, sztuka, literatura, muzyka czy coś innego?"
+  },
+  news: {
+    ru: "Я могу рассказать о текущих событиях в Каракалпакстане. Какая тема вас интересует: политика, экология, культура или социальные вопросы?",
+    kk: "Мен Қарақалпақстандағы ағымдағы оқиғалар туралы айта аламын. Қандай тақырып сізді қызықтырады: саясат, экология, мәдениет немесе әлеуметтік мәселелер?",
+    en: "I can tell you about current events in Karakalpakstan. What topic interests you: politics, ecology, culture, or social issues?",
+    pl: "Mogę opowiedzieć o bieżących wydarzeniach w Karakałpakstanie. Jaki temat Cię interesuje: polityka, ekologia, kultura czy kwestie społeczne?"
+  }
+};
+
+// Main handler function
+exports.handler = async (event, context) => {
+  // Handle CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://karakalpakvoice.org',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS'
+      },
+      body: ''
+    };
+  }
+
+  // Only allow POST requests
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://karakalpakvoice.org',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
+  }
+
+  try {
+    // Parse request body
+    const { message, language = 'ru', context: userContext, models = ['claude'], action } = JSON.parse(event.body);
+
+    if (!message && !action) {
+      return {
+        statusCode: 400,
+        headers: {
+          'Access-Control-Allow-Origin': 'https://karakalpakvoice.org',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ error: 'Message or action is required' })
+      };
+    }
+
+    // Handle quick actions
+    if (action && QUICK_ACTIONS[action]) {
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': 'https://karakalpakvoice.org',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          response: QUICK_ACTIONS[action][language] || QUICK_ACTIONS[action]['en'],
+          model: 'quick-action',
+          language: language
+        })
+      };
+    }
+
+    // Prepare the prompt
+    const systemPrompt = SYSTEM_PROMPTS[language] || SYSTEM_PROMPTS['en'];
+    const userMessage = message;
+
+    // Try multiple models in order of preference
+    let response = null;
+    let usedModel = null;
+
+    for (const modelName of models) {
+      try {
+        console.log(`Trying model: ${modelName}`);
+        response = await callAIModel(modelName, systemPrompt, userMessage, language);
+        usedModel = modelName;
+        break;
+      } catch (error) {
+        console.error(`Model ${modelName} failed:`, error.message);
+        continue;
+      }
+    }
+
+    if (!response) {
+      // Fallback response if all models fail
+      const fallbackResponses = {
+        ru: "Извините, сейчас у меня технические проблемы. Попробуйте позже или обратитесь к администратору сайта.",
+        kk: "Кешіріңіз, қазір менде техникалық проблемалар бар. Кейінірек қайталаңыз немесе сайт әкімшісіне хабарласыңыз.",
+        en: "Sorry, I'm experiencing technical issues right now. Please try again later or contact the site administrator.",
+        pl: "Przepraszam, mam teraz problemy techniczne. Spróbuj później lub skontaktuj się z administratorem strony."
+      };
+
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': 'https://karakalpakvoice.org',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          response: fallbackResponses[language] || fallbackResponses['en'],
+          model: 'fallback',
+          language: language
+        })
+      };
+    }
+
+    // Log successful interaction
+    console.log(`QARA-AI response generated using ${usedModel} for language ${language}`);
+
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://karakalpakvoice.org',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        response: response,
+        model: usedModel,
+        language: language,
+        timestamp: new Date().toISOString()
+      })
+    };
+
+  } catch (error) {
+    console.error('QARA-AI Error:', error);
+
+    return {
+      statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://karakalpakvoice.org',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        error: 'Internal server error',
+        message: error.message
+      })
+    };
+  }
+};
+
+// Function to call different AI models
+async function callAIModel(modelName, systemPrompt, userMessage, language) {
+  const model = AI_MODELS[modelName];
+  if (!model) {
+    throw new Error(`Unknown model: ${modelName}`);
+  }
+
+  let requestBody;
+  let response;
+
+  switch (modelName) {
+    case 'claude':
+      requestBody = {
+        model: 'claude-3-sonnet-20240229',
+        max_tokens: 1000,
+        messages: [
+          {
+            role: 'user',
+            content: `${systemPrompt}\n\nUser: ${userMessage}`
+          }
+        ]
+      };
+
+      response = await fetch(model.url, {
+        method: 'POST',
+        headers: model.headers,
+        body: JSON.stringify(requestBody)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Claude API error: ${response.status}`);
+      }
+
+      const claudeData = await response.json();
+      return claudeData.content[0].text;
+
+    case 'gpt':
+      requestBody = {
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {
+            role: 'system',
+            content: systemPrompt
+          },
+          {
+            role: 'user',
+            content: userMessage
+          }
+        ],
+        max_tokens: 1000,
+        temperature: 0.7
+      };
+
+      response = await fetch(model.url, {
+        method: 'POST',
+        headers: model.headers,
+        body: JSON.stringify(requestBody)
+      });
+
+      if (!response.ok) {
+        throw new Error(`GPT API error: ${response.status}`);
+      }
+
+      const gptData = await response.json();
+      return gptData.choices[0].message.content;
+
+    case 'gemini':
+      requestBody = {
+        contents: [
+          {
+            parts: [
+              {
+                text: `${systemPrompt}\n\nUser: ${userMessage}`
+              }
+            ]
+          }
+        ],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 1000
+        }
+      };
+
+      response = await fetch(model.url, {
+        method: 'POST',
+        headers: model.headers,
+        body: JSON.stringify(requestBody)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Gemini API error: ${response.status}`);
+      }
+
+      const geminiData = await response.json();
+      return geminiData.candidates[0].content.parts[0].text;
+
+    default:
+      throw new Error(`Unsupported model: ${modelName}`);
+  }
+}
+
+// Utility function to detect language from text
+function detectLanguage(text) {
+  // Simple language detection based on character patterns
+  const russianPattern = /[а-яё]/i;
+  const karakalpakPattern = /[әғұқңһөүi]/i;
+  const polishPattern = /[ąćęłńóśźż]/i;
+
+  if (karakalpakPattern.test(text)) return 'kk';
+  if (russianPattern.test(text)) return 'ru';
+  if (polishPattern.test(text)) return 'pl';
+  return 'en'; // default to English
+}
+
+// Export for testing
+module.exports = { detectLanguage };
