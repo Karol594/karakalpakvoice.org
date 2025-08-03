@@ -1,0 +1,360 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-8">
+    <!-- Breadcrumb Navigation -->
+    <nav class="mb-8 text-sm text-gray-600 dark:text-gray-400">
+        <a href="{{ .Site.BaseURL }}" class="hover:text-blue-600 dark:hover:text-blue-400">
+            {{ if eq .Site.Language.Lang "ru" }}Главная
+            {{ else if eq .Site.Language.Lang "kk" }}Басты бет
+            {{ else if eq .Site.Language.Lang "pl" }}Strona główna
+            {{ else }}Home{{ end }}
+        </a>
+        <span class="mx-2">→</span>
+        <span class="text-gray-900 dark:text-white capitalize">{{ .Title }}</span>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="mb-12 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            {{ .Title }}
+        </h1>
+        
+        {{ if .Content }}
+        <div class="prose prose-lg max-w-3xl mx-auto dark:prose-invert mb-6">
+            {{ .Content }}
+        </div>
+        {{ end }}
+
+        {{ if .Description }}
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            {{ .Description }}
+        </p>
+        {{ end }}
+
+        <!-- Statistics -->
+        <div class="flex justify-center items-center space-x-8 mt-6 text-sm text-gray-500 dark:text-gray-400">
+            <div class="flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                <span>{{ len .Pages }} 
+                    {{ if eq .Site.Language.Lang "ru" }}материалов
+                    {{ else if eq .Site.Language.Lang "kk" }}материал
+                    {{ else if eq .Site.Language.Lang "pl" }}materiałów
+                    {{ else }}articles{{ end }}
+                </span>
+            </div>
+            
+            {{ if .Lastmod }}
+            <div class="flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>
+                    {{ if eq .Site.Language.Lang "ru" }}Обновлено
+                    {{ else if eq .Site.Language.Lang "kk" }}Жаңартылды
+                    {{ else if eq .Site.Language.Lang "pl" }}Zaktualizowano
+                    {{ else }}Updated{{ end }}
+                    {{ .Lastmod.Format "02.01.2006" }}
+                </span>
+            </div>
+            {{ end }}
+        </div>
+    </header>
+
+    <!-- Filter and Sort Options -->
+    {{ if .Pages }}
+    <div class="mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <!-- Category Filter (if applicable) -->
+        {{ if .IsSection }}
+        <div class="flex items-center space-x-2">
+            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                {{ if eq .Site.Language.Lang "ru" }}Фильтр:
+                {{ else if eq .Site.Language.Lang "kk" }}Сүзгі:
+                {{ else if eq .Site.Language.Lang "pl" }}Filtr:
+                {{ else }}Filter:{{ end }}
+            </label>
+            <select id="category-filter" class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm">
+                <option value="">
+                    {{ if eq .Site.Language.Lang "ru" }}Все категории
+                    {{ else if eq .Site.Language.Lang "kk" }}Барлық санаттар
+                    {{ else if eq .Site.Language.Lang "pl" }}Wszystkie kategorie
+                    {{ else }}All categories{{ end }}
+                </option>
+                {{ range .Site.Taxonomies.categories }}
+                <option value="{{ .Page.Title }}">{{ .Page.Title }} ({{ .Count }})</option>
+                {{ end }}
+            </select>
+        </div>
+        {{ end }}
+
+        <!-- Sort Options -->
+        <div class="flex items-center space-x-2">
+            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                {{ if eq .Site.Language.Lang "ru" }}Сортировка:
+                {{ else if eq .Site.Language.Lang "kk" }}Сұрыптау:
+                {{ else if eq .Site.Language.Lang "pl" }}Sortowanie:
+                {{ else }}Sort:{{ end }}
+            </label>
+            <select id="sort-filter" class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm">
+                <option value="date-desc">
+                    {{ if eq .Site.Language.Lang "ru" }}Сначала новые
+                    {{ else if eq .Site.Language.Lang "kk" }}Алдымен жаңалар
+                    {{ else if eq .Site.Language.Lang "pl" }}Najpierw najnowsze
+                    {{ else }}Newest first{{ end }}
+                </option>
+                <option value="date-asc">
+                    {{ if eq .Site.Language.Lang "ru" }}Сначала старые
+                    {{ else if eq .Site.Language.Lang "kk" }}Алдымен ескілер
+                    {{ else if eq .Site.Language.Lang "pl" }}Najpierw najstarsze
+                    {{ else }}Oldest first{{ end }}
+                </option>
+                <option value="title-asc">
+                    {{ if eq .Site.Language.Lang "ru" }}По алфавиту
+                    {{ else if eq .Site.Language.Lang "kk" }}Әліпби бойынша
+                    {{ else if eq .Site.Language.Lang "pl" }}Alfabetycznie
+                    {{ else }}Alphabetically{{ end }}
+                </option>
+            </select>
+        </div>
+    </div>
+    {{ end }}
+
+    <!-- Articles Grid -->
+    {{ if .Pages }}
+    <div id="articles-container" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+        {{ range .Paginate.Pages }}
+        <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group" 
+                 data-date="{{ .Date.Format "2006-01-02" }}" 
+                 data-title="{{ .Title }}"
+                 data-category="{{ if .Params.categories }}{{ index .Params.categories 0 }}{{ end }}">
+            
+            <!-- Article Image -->
+            {{ if .Params.image }}
+            <div class="relative overflow-hidden">
+                <img src="{{ .Params.image | absURL }}" 
+                     alt="{{ .Title }}" 
+                     class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                
+                <!-- Category Badge -->
+                {{ if .Params.categories }}
+                <div class="absolute top-3 left-3">
+                    <span class="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                        {{ index .Params.categories 0 }}
+                    </span>
+                </div>
+                {{ end }}
+
+                <!-- Reading Time Badge -->
+                <div class="absolute top-3 right-3">
+                    <span class="bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-xs">
+                        {{ .ReadingTime }}
+                        {{ if eq .Site.Language.Lang "ru" }}мин
+                        {{ else if eq .Site.Language.Lang "kk" }}мин
+                        {{ else if eq .Site.Language.Lang "pl" }}min
+                        {{ else }}min{{ end }}
+                    </span>
+                </div>
+            </div>
+            {{ else }}
+            <!-- No Image Placeholder -->
+            <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                <div class="text-center text-white">
+                    <svg class="w-12 h-12 mx-auto mb-2 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    {{ if .Params.categories }}
+                    <div class="text-sm font-medium">{{ index .Params.categories 0 }}</div>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+
+            <!-- Article Content -->
+            <div class="p-6">
+                <!-- Article Title -->
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h2>
+
+                <!-- Article Summary -->
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+                    {{ if .Summary }}{{ .Summary }}{{ else }}{{ .Content | plainify | truncate 150 }}{{ end }}
+                </p>
+
+                <!-- Article Meta -->
+                <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
+                    <div class="flex items-center space-x-3">
+                        <!-- Date -->
+                        <span class="flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            {{ .Date.Format "02.01.2006" }}
+                        </span>
+
+                        <!-- Author -->
+                        {{ if .Params.author }}
+                        <span class="flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                            {{ .Params.author }}
+                        </span>
+                        {{ end }}
+                    </div>
+
+                    <!-- Language -->
+                    <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-xs">
+                        {{ .Site.Language.Lang | upper }}
+                    </span>
+                </div>
+
+                <!-- Tags -->
+                {{ if .Params.tags }}
+                <div class="flex flex-wrap gap-1 mb-4">
+                    {{ range first 3 .Params.tags }}
+                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                        #{{ . }}
+                    </span>
+                    {{ end }}
+                    {{ if gt (len .Params.tags) 3 }}
+                    <span class="text-gray-500 dark:text-gray-400 text-xs">
+                        +{{ sub (len .Params.tags) 3 }}
+                    </span>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                <!-- Read More Button -->
+                <a href="{{ .Permalink }}" 
+                   class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm transition-colors">
+                    {{ if eq .Site.Language.Lang "ru" }}Читать далее
+                    {{ else if eq .Site.Language.Lang "kk" }}Толығырақ оқу
+                    {{ else if eq .Site.Language.Lang "pl" }}Czytaj więcej
+                    {{ else }}Read more{{ end }}
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+
+    <!-- Pagination -->
+    {{ if gt .Paginator.TotalPages 1 }}
+    <nav class="flex justify-center items-center space-x-2 mb-8">
+        {{ if .Paginator.HasPrev }}
+        <a href="{{ .Paginator.Prev.URL }}" 
+           class="flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            {{ if eq .Site.Language.Lang "ru" }}Предыдущая
+            {{ else if eq .Site.Language.Lang "kk" }}Алдыңғы
+            {{ else if eq .Site.Language.Lang "pl" }}Poprzednia
+            {{ else }}Previous{{ end }}
+        </a>
+        {{ end }}
+
+        {{ range .Paginator.Pagers }}
+        {{ if eq . $.Paginator }}
+        <span class="px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-300 rounded-lg dark:bg-blue-900 dark:border-blue-700 dark:text-blue-300">
+            {{ .PageNumber }}
+        </span>
+        {{ else }}
+        <a href="{{ .URL }}" 
+           class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            {{ .PageNumber }}
+        </a>
+        {{ end }}
+        {{ end }}
+
+        {{ if .Paginator.HasNext }}
+        <a href="{{ .Paginator.Next.URL }}" 
+           class="flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            {{ if eq .Site.Language.Lang "ru" }}Следующая
+            {{ else if eq .Site.Language.Lang "kk" }}Келесі
+            {{ else if eq .Site.Language.Lang "pl" }}Następna
+            {{ else }}Next{{ end }}
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </a>
+        {{ end }}
+    </nav>
+    {{ end }}
+
+    {{ else }}
+    <!-- No Articles Found -->
+    <div class="text-center py-16">
+        <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+            {{ if eq .Site.Language.Lang "ru" }}Материалы не найдены
+            {{ else if eq .Site.Language.Lang "kk" }}Материалдар табылмады
+            {{ else if eq .Site.Language.Lang "pl" }}Nie znaleziono materiałów
+            {{ else }}No articles found{{ end }}
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400">
+            {{ if eq .Site.Language.Lang "ru" }}В этой категории пока нет опубликованных материалов.
+            {{ else if eq .Site.Language.Lang "kk" }}Бұл санатта әлі жарияланған материалдар жоқ.
+            {{ else if eq .Site.Language.Lang "pl" }}W tej kategorii nie ma jeszcze opublikowanych materiałów.
+            {{ else }}There are no published articles in this category yet.{{ end }}
+        </p>
+    </div>
+    {{ end }}
+</div>
+
+<!-- Filter and Sort JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryFilter = document.getElementById('category-filter');
+    const sortFilter = document.getElementById('sort-filter');
+    const articlesContainer = document.getElementById('articles-container');
+    const articles = Array.from(document.querySelectorAll('.article-card'));
+
+    function filterAndSort() {
+        const categoryValue = categoryFilter ? categoryFilter.value : '';
+        const sortValue = sortFilter ? sortFilter.value : 'date-desc';
+        
+        // Filter articles
+        let filteredArticles = articles.filter(article => {
+            if (!categoryValue) return true;
+            return article.dataset.category === categoryValue;
+        });
+
+        // Sort articles
+        filteredArticles.sort((a, b) => {
+            switch(sortValue) {
+                case 'date-asc':
+                    return new Date(a.dataset.date) - new Date(b.dataset.date);
+                case 'date-desc':
+                    return new Date(b.dataset.date) - new Date(a.dataset.date);
+                case 'title-asc':
+                    return a.dataset.title.localeCompare(b.dataset.title);
+                default:
+                    return new Date(b.dataset.date) - new Date(a.dataset.date);
+            }
+        });
+
+        // Clear container and append sorted articles
+        if (articlesContainer) {
+            articlesContainer.innerHTML = '';
+            filteredArticles.forEach(article => {
+                articlesContainer.appendChild(article);
+            });
+        }
+    }
+
+    // Add event listeners
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', filterAndSort);
+    }
+    if (sortFilter) {
+        sortFilter.addEventListener('change', filterAndSort);
+    }
+});
+</script>
+{{ end }}
