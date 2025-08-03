@@ -1,8 +1,8 @@
 # Karakalpak Voice - Netlify Configuration
 
 [build]
-  # Build command
-  command = "hugo --minify --gc"
+  # Build command - ТҮЗЕТІЛДІ!
+  command = "hugo --minify"
   
   # Output directory
   publish = "public"
@@ -261,17 +261,17 @@
 
 # Context-specific builds
 [context.production]
-  command = "hugo --minify --gc"
+  command = "hugo --minify"
   [context.production.environment]
     HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "hugo --minify --gc --buildFuture -b $DEPLOY_PRIME_URL"
+  command = "hugo --minify --buildFuture -b $DEPLOY_PRIME_URL"
   [context.deploy-preview.environment]
     HUGO_ENV = "staging"
 
 [context.branch-deploy]
-  command = "hugo --minify --gc --buildFuture -b $DEPLOY_PRIME_URL"
+  command = "hugo --minify --buildFuture -b $DEPLOY_PRIME_URL"
   [context.branch-deploy.environment]
     HUGO_ENV = "staging"
 
