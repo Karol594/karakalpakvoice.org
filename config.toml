@@ -1,171 +1,61 @@
 baseURL = "https://karakalpakvoice.org"
-title = "Karakalpak Voice"
+languageCode = "kk"
+defaultContentLanguage = "kk"
+title = "Қарақалпақ Дауысы"
 theme = "karakalpakvoice"
-defaultContentLanguage = "ru"
-defaultContentLanguageInSubdir = true
 
-# Көптілді конфигурация
+# Multilingual Configuration
 [languages]
-  [languages.ru]
-    title = "Каракалпакский Голос"
-    weight = 1
-    languageName = "Русский"
-    languageCode = "ru"
-    [languages.ru.params]
-      description = "Независимый голос каракалпакского народа"
-      flag = "🇷🇺"
-    [languages.ru.menu]
-      [[languages.ru.menu.main]]
-        name = "Главная"
-        url = "/"
-        weight = 10
-      [[languages.ru.menu.main]]
-        name = "Суверенитет"
-        url = "/suverenitet/"
-        weight = 15
-      [[languages.ru.menu.main]]
-        name = "Новости"
-        url = "/news/"
-        weight = 20
-      [[languages.ru.menu.main]]
-        name = "Политика"
-        url = "/politics/"
-        weight = 25
-      [[languages.ru.menu.main]]
-        name = "История"
-        url = "/history/"
-        weight = 30
-      [[languages.ru.menu.main]]
-        name = "Спорт"
-        url = "/sport/"
-        weight = 35
-      [[languages.ru.menu.main]]
-        name = "Туризм"
-        url = "/tourism/"
-        weight = 40
-      [[languages.ru.menu.main]]
-        name = "Культура"
-        url = "/culture/"
-        weight = 45
-      [[languages.ru.menu.main]]
-        name = "О нас"
-        url = "/about/"
-        weight = 50
-
   [languages.kk]
-    title = "Қарақалпақ Дауысы"
-    weight = 2
     languageName = "Қарақалпақша"
-    languageCode = "kk"
+    weight = 1
+    title = "Қарақалпақ Дауысы"
     [languages.kk.params]
       description = "Қарақалпақ халқының тәуелсіз дауысы"
       flag = "🏳️"
-    [languages.kk.menu]
-      [[languages.kk.menu.main]]
-        name = "Бас бет"
-        url = "/kk/"
-        weight = 10
-      [[languages.kk.menu.main]]
-        name = "Суверенитет"
-        url = "/kk/suverenitet/"
-        weight = 15
-      [[languages.kk.menu.main]]
-        name = "Жаңалықлар"
-        url = "/kk/news/"
-        weight = 20
-      [[languages.kk.menu.main]]
-        name = "Сиясат"
-        url = "/kk/politics/"
-        weight = 25
-      [[languages.kk.menu.main]]
-        name = "Тарийх"
-        url = "/kk/history/"
-        weight = 30
-      [[languages.kk.menu.main]]
-        name = "Спорт"
-        url = "/kk/sport/"
-        weight = 35
-      [[languages.kk.menu.main]]
-        name = "Туризм"
-        url = "/kk/tourism/"
-        weight = 40
-      [[languages.kk.menu.main]]
-        name = "Мәдениат"
-        url = "/kk/culture/"
-        weight = 45
-      [[languages.kk.menu.main]]
-        name = "Биз туўралы"
-        url = "/kk/about/"
-        weight = 50
+
+  [languages.ru]
+    languageName = "Русский"
+    weight = 2
+    title = "Каракалпакский Голос"
+    [languages.ru.params]
+      description = "Независимый голос каракалпакского народа"
+      flag = "🇷🇺"
 
   [languages.en]
-    title = "Karakalpak Voice"
-    weight = 3
     languageName = "English"
-    languageCode = "en"
+    weight = 3
+    title = "Karakalpak Voice"
     [languages.en.params]
-      description = "Independent voice of Karakalpak people"
+      description = "Independent voice of the Karakalpak people"
       flag = "🇺🇸"
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        name = "Home"
-        url = "/en/"
-        weight = 10
-      [[languages.en.menu.main]]
-        name = "Sovereignty"
-        url = "/en/suverenitet/"
-        weight = 15
-      [[languages.en.menu.main]]
-        name = "News"
-        url = "/en/news/"
-        weight = 20
-      [[languages.en.menu.main]]
-        name = "Politics"
-        url = "/en/politics/"
-        weight = 25
-      [[languages.en.menu.main]]
-        name = "History"
-        url = "/en/history/"
-        weight = 30
-      [[languages.en.menu.main]]
-        name = "Sports"
-        url = "/en/sport/"
-        weight = 35
-      [[languages.en.menu.main]]
-        name = "Tourism"
-        url = "/en/tourism/"
-        weight = 40
-      [[languages.en.menu.main]]
-        name = "Culture"
-        url = "/en/culture/"
-        weight = 45
-      [[languages.en.menu.main]]
-        name = "About"
-        url = "/en/about/"
-        weight = 50
 
-# Жалпы параметрлер
+  [languages.pl]
+    languageName = "Polski"
+    weight = 4
+    title = "Głos Karakałpacki"
+    [languages.pl.params]
+      description = "Niezależny głos narodu karakałpackiego"
+      flag = "🇵🇱"
+
 [params]
-  author = "Karakalpak Voice Team"
-  description = "Independent voice of Karakalpak people worldwide"
-  keywords = "karakalpak, voice, culture, news, aral sea, sovereignty"
+  author = "Қарақалпақ Дауысы"
+  description = "Қарақалпақ халқының тәуелсіз ақпараттық платформасы"
+  keywords = ["қарақалпақстан", "арал", "егемендік", "жаңалықтар", "мәдениет"]
   
-  # QARA-AI интеграциясы
-  [params.qara_ai]
-    enabled = true
-    api_endpoint = "https://api.karakalpakvoice.org/qara-ai"
-    models = ["claude", "gpt", "gemini", "copilot"]
-    auto_translate = true
-    content_generation = true
+  # Site colors
+  colorScheme = "auto"
   
-  # Social Media
+  # Footer
+  footer = "© 2025 Қарақалпақ Дауысы. Барлық құқықтар сақталған."
+
+  # Social media
   [params.social]
-    twitter = "https://twitter.com/karakalpakvoice"
-    facebook = "https://facebook.com/karakalpakvoice"
     telegram = "https://t.me/karakalpakvoice"
+    twitter = "https://twitter.com/karakalpakvoice"
     youtube = "https://youtube.com/@karakalpakvoice"
-    instagram = "https://instagram.com/karakalpakvoice"
-  
+    facebook = "https://facebook.com/karakalpakvoice"
+
   # Crypto донация
   [params.crypto]
     bitcoin = "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh"
@@ -175,6 +65,12 @@ defaultContentLanguageInSubdir = true
   [params.analytics]
     matomo_url = "https://analytics.karakalpakvoice.org"
     matomo_site_id = "1"
+  
+  # QARA-AI Configuration
+  [params.qara_ai]
+    enabled = true
+    api_endpoint = "https://api.karakalpakvoice.org/qara-ai"
+    models = ["claude", "gpt", "llama"]
   
   # Features
   [params.features]
@@ -188,6 +84,37 @@ defaultContentLanguageInSubdir = true
     qara_ai_chat = true
     audio_bot = true
     youtube_bot = true
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Басты бет"
+    url = "/"
+    weight = 1
+    
+  [[menu.main]]
+    identifier = "news"
+    name = "Жаңалықтар"
+    url = "/news/"
+    weight = 2
+    
+  [[menu.main]]
+    identifier = "politics"
+    name = "Саясат"
+    url = "/politics/"
+    weight = 3
+    
+  [[menu.main]]
+    identifier = "culture"
+    name = "Мәдениет" 
+    url = "/culture/"
+    weight = 4
+    
+  [[menu.main]]
+    identifier = "environment"
+    name = "Экология"
+    url = "/environment/"
+    weight = 5
 
 # Таксономия
 [taxonomies]
@@ -221,3 +148,92 @@ paginate = 12
 [security]
   [security.funcs]
     getenv = ["^HUGO_", "^CI$"]
+
+# Privacy
+[privacy]
+  [privacy.disqus]
+    disable = false
+  [privacy.googleAnalytics]
+    disable = false
+    anonymizeIP = true
+  [privacy.instagram]
+    disable = false
+    simple = true
+  [privacy.twitter]
+    disable = false
+    enableDNT = true
+    simple = true
+  [privacy.vimeo]
+    disable = false
+    enableDNT = true
+    simple = true
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true
+
+# Permalinks
+[permalinks]
+  posts = "/:year/:month/:slug/"
+  news = "/news/:year/:month/:slug/"
+  politics = "/politics/:year/:month/:slug/"
+  culture = "/culture/:year/:month/:slug/"
+
+# Related content
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+  [[related.indices]]
+    name = "keywords"
+    weight = 100
+  [[related.indices]]
+    name = "tags"
+    weight = 80
+  [[related.indices]]
+    name = "categories"
+    weight = 60
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
+# Image processing
+[imaging]
+  resampleFilter = "lanczos"
+  quality = 85
+  anchor = "smart"
+
+# Minification
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  [minify.tdewolff]
+    [minify.tdewolff.css]
+      keepCSS2 = true
+      precision = 0
+    [minify.tdewolff.html]
+      keepComments = false
+      keepConditionalComments = true
+      keepDefaultAttrVals = true
+      keepDocumentTags = true
+      keepEndTags = true
+      keepQuotes = false
+      keepWhitespace = false
+    [minify.tdewolff.js]
+      keepVarNames = false
+      precision = 0
+    [minify.tdewolff.json]
+      precision = 0
+    [minify.tdewolff.svg]
+      precision = 0
+    [minify.tdewolff.xml]
+      keepWhitespace = false
+
+# Module configuration
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.119.0"
