@@ -1,16 +1,18 @@
 baseURL = "https://karol594.github.io/karakalpakvoice.org"
-languageCode = "en-us"
-title = "Голос Каракалпакстана | KarakalpakVoice"
-theme = "nevision"
+languageCode = "kaa"
+defaultContentLanguage = "kaa"
+title = "Қарақалпақ Даўысы | Голос Каракалпакстана"
 
 # Параметры сайта
 [params]
-  description = "Детективные новости Каракалпакстана"
+  description = "Детективные новости Каракалпакстана - Қарақалпақстанның детектив жаңалықлары"
   author = "KarakalpakVoice"
+  logo = "/images/logo.png"
+  favicon = "/favicon.ico"
   
-# Меню
+# Меню навигации
 [[menu.main]]
-  name = "Главная"
+  name = "Басты бет"
   url = "/"
   weight = 1
 
@@ -20,18 +22,18 @@ theme = "nevision"
   weight = 2
 
 [[menu.main]]
-  name = "Новости"
-  url = "/categories/новости/"
+  name = "Жаңалықлар"
+  url = "/categories/жаңалықлар/"
   weight = 3
 
 [[menu.main]]
-  name = "Политика"
-  url = "/categories/политика/"
+  name = "Сиясат"
+  url = "/categories/сиясат/"
   weight = 4
 
 [[menu.main]]
-  name = "История"
-  url = "/categories/история/"
+  name = "Тарийх"
+  url = "/categories/тарийх/"
   weight = 5
 
 [[menu.main]]
@@ -45,42 +47,181 @@ theme = "nevision"
   weight = 7
 
 [[menu.main]]
-  name = "Культура"
-  url = "/categories/культура/"
+  name = "Дәстүр"
+  url = "/categories/дәстүр/"
   weight = 8
 
 [[menu.main]]
-  name = "Религия"
-  url = "/categories/религия/"
+  name = "Дин"
+  url = "/categories/дин/"
   weight = 9
 
-# Языки
+# Многоязычная поддержка
 [languages]
-  [languages.ru]
+  [languages.kaa]
     weight = 1
+    languageName = "Қарақалпақ тили"
+    title = "Қарақалпақ Даўысы"
+    contentDir = "content"
+    
+    [[languages.kaa.menu.main]]
+      name = "Бас бет"
+      url = "/"
+      weight = 1
+    [[languages.kaa.menu.main]]
+      name = "Суверенитет"
+      url = "/categories/суверенитет/"
+      weight = 2
+    [[languages.kaa.menu.main]]
+      name = "Жаңалықлар"
+      url = "/categories/жаңалықлар/"
+      weight = 3
+    [[languages.kaa.menu.main]]
+      name = "Сиясат"
+      url = "/categories/сиясат/"
+      weight = 4
+    [[languages.kaa.menu.main]]
+      name = "Тарийх"
+      url = "/categories/тарийх/"
+      weight = 5
+      
+  [languages.ru]
+    weight = 2
     languageName = "Русский"
     title = "Голос Каракалпакстана"
+    contentDir = "content"
     
-  [languages.kaa]
-    weight = 2
-    languageName = "Қарақалпақ"
-    title = "Қарақалпақ Даўысы"
+    [[languages.ru.menu.main]]
+      name = "Главная"
+      url = "/ru/"
+      weight = 1
+    [[languages.ru.menu.main]]
+      name = "Суверенитет"
+      url = "/ru/categories/суверенитет/"
+      weight = 2
+    [[languages.ru.menu.main]]
+      name = "Новости"
+      url = "/ru/categories/новости/"
+      weight = 3
+    [[languages.ru.menu.main]]
+      name = "Политика"
+      url = "/ru/categories/политика/"
+      weight = 4
+    [[languages.ru.menu.main]]
+      name = "История"
+      url = "/ru/categories/история/"
+      weight = 5
     
   [languages.en]
     weight = 3
     languageName = "English"
     title = "Voice of Karakalpakstan"
+    contentDir = "content"
     
+    [[languages.en.menu.main]]
+      name = "Home"
+      url = "/en/"
+      weight = 1
+    [[languages.en.menu.main]]
+      name = "Sovereignty"
+      url = "/en/categories/sovereignty/"
+      weight = 2
+    [[languages.en.menu.main]]
+      name = "News"
+      url = "/en/categories/news/"
+      weight = 3
+    [[languages.en.menu.main]]
+      name = "Politics"
+      url = "/en/categories/politics/"
+      weight = 4
+    [[languages.en.menu.main]]
+      name = "History"
+      url = "/en/categories/history/"
+      weight = 5
+      
   [languages.pl]
     weight = 4
     languageName = "Polski"
     title = "Głos Karakałpakstanu"
+    contentDir = "content"
+    
+    [[languages.pl.menu.main]]
+      name = "Strona główna"
+      url = "/pl/"
+      weight = 1
+    [[languages.pl.menu.main]]
+      name = "Suwerenność"
+      url = "/pl/categories/suwerenność/"
+      weight = 2
+    [[languages.pl.menu.main]]
+      name = "Wiadomości"
+      url = "/pl/categories/wiadomości/"
+      weight = 3
+    [[languages.pl.menu.main]]
+      name = "Polityka"
+      url = "/pl/categories/polityka/"
+      weight = 4
+    [[languages.pl.menu.main]]
+      name = "Historia"
+      url = "/pl/categories/historia/"
+      weight = 5
 
-# Сборка
-[build]
-  writeStats = true
-  
+# Настройки разметки
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "github"
+    tabWidth = 4
+
+# Настройки сборки
+[build]
+  writeStats = true
+  
+# Типы выходных файлов
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  
+# Настройки RSS
+[services]
+  [services.rss]
+    limit = 20
+
+# Настройки URL
+[permalinks]
+  posts = "/:year/:month/:day/:slug/"
+  
+# Настройки изображений
+[imaging]
+  resampleFilter = "lanczos"
+  quality = 85
+  anchor = "smart"
+
+# Таксономии
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  author = "authors"
+  
+# Настройки минификации
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
