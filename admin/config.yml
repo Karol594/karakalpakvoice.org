@@ -20,7 +20,7 @@ collections:
   # 1. Орыс мақалалары (негизги)
   - name: "articles-ru"
     label: "📰 Статьи (Русский)"
-    folder: "content/articles/ru"
+    folder: "content/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -39,7 +39,7 @@ collections:
   # 2. Қарақалпақ мақалалары
   - name: "articles-kaa"
     label: "🏳️ Мақалалар (Қарақалпақ)"
-    folder: "content/articles/kaa"
+    folder: "content/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -58,7 +58,7 @@ collections:
   # 3. Англичан мақалалары
   - name: "articles-en"
     label: "🇺🇸 Articles (English)"
-    folder: "content/articles/en"
+    folder: "content/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -77,7 +77,7 @@ collections:
   # 4. Поляк мақалалары
   - name: "articles-pl"
     label: "🇵🇱 Artykuły (Polski)"
-    folder: "content/articles/pl"
+    folder: "content/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
