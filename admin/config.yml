@@ -1,0 +1,108 @@
+# Backend конфигурациясы GitHub ушын
+backend:
+  name: git-gateway
+  branch: main
+  repo: karol594/karakalpakvoice
+
+# Сайт конфигурациясы
+site_url: https://karakalpakvoice.org
+display_url: https://karakalpakvoice.org
+logo_url: https://karakalpakvoice.org/assets/images/logo.png
+
+# Медиа файллар
+media_folder: "public/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+# Редакциялық жумыс режими
+publish_mode: editorial_workflow
+
+# Көп тилли мазмун топламлары
+collections:
+  # 1. Орыс мақалалары (негизги)
+  - name: "articles-ru"
+    label: "📰 Статьи (Русский)"
+    folder: "content/articles/ru"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string"}
+      - {label: "Слаг", name: "slug", widget: "string"}
+      - {label: "Дата", name: "date", widget: "datetime"}
+      - {label: "Автор", name: "author", widget: "string", default: "Голос Каракалпакстана"}
+      - {label: "Категория", name: "category", widget: "select", options: ["Новости", "Суверенитет", "Политика", "История", "Культура", "Спорт", "Экономика"]}
+      - {label: "Изображение", name: "featured_image", widget: "image", required: false}
+      - {label: "Краткое описание", name: "excerpt", widget: "text"}
+      - {label: "Содержание", name: "body", widget: "markdown"}
+      - {label: "Теги", name: "tags", widget: "list", required: false}
+      - {label: "Language", name: "language", widget: "hidden", default: "ru"}
+
+  # 2. Қарақалпақ мақалалары
+  - name: "articles-kaa"
+    label: "🏳️ Мақалалар (Қарақалпақ)"
+    folder: "content/articles/kaa"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Атаўы", name: "title", widget: "string"}
+      - {label: "Слаг", name: "slug", widget: "string"}
+      - {label: "Күни", name: "date", widget: "datetime"}
+      - {label: "Автор", name: "author", widget: "string", default: "Қарақалпақстан Даўысы"}
+      - {label: "Категория", name: "category", widget: "select", options: ["Жаңалықлар", "Суверенитет", "Сиясат", "Тарийх", "Мәденият", "Спорт", "Экономика"]}
+      - {label: "Сүўрет", name: "featured_image", widget: "image", required: false}
+      - {label: "Қысқа текст", name: "excerpt", widget: "text"}
+      - {label: "Текст", name: "body", widget: "markdown"}
+      - {label: "Белгилер", name: "tags", widget: "list", required: false}
+      - {label: "Language", name: "language", widget: "hidden", default: "kaa"}
+
+  # 3. Ағылшын мақалалары
+  - name: "articles-en"
+    label: "🇺🇸 Articles (English)"
+    folder: "content/articles/en"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", default: "Voice of Karakalpakstan"}
+      - {label: "Category", name: "category", widget: "select", options: ["News", "Sovereignty", "Su "Politics", "History", "Culture", "Sports", "Economy"]}
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Language", name: "language", widget: "hidden", default: "en"}
+
+  # 4. Поляк мақалалары
+  - name: "articles-pl"
+    label: "🇵🇱 Artykuły (Polski)"
+    folder: "content/articles/pl"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Tytuł", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Autor", name: "author", widget: "string", default: "Głos Karakałpakstanu"}
+      - {label: "Kategoria", name: "category", widget: "select", options: ["Wiadomości", "Suwerenność", "Polityka", "Historia", "Kultura", "Sport", "Ekonomia"]}
+      - {label: "Zdjęcie", name: "featured_image", widget: "image", required: false}
+      - {label: "Streszczenie", name: "excerpt", widget: "text"}
+      - {label: "Treść", name: "body", widget: "markdown"}
+      - {label: "Tagi", name: "tags", widget: "list", required: false}
+      - {label: "Language", name: "language", widget: "hidden", default: "pl"}
+
+  # Бетлер топламлары
+  - name: "pages"
+    label: "📄 Бетлер"
+    files:
+      - label: "Биз туўралы (Орыс)"
+        name: "about-ru"
+        file: "content/pages/about-ru.md"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "Содержание", name: "body", widget: "markdown"}
+      - label: "Биз туўралы (Қарақалпақ)"
+        name: "about-kaa"
+        file: "content/pages/about-kaa.md"
+        fields:
+          - {label: "Атамасы", name: "title", widget: "string"}
+          - {label: "Текст", name: "body", widget: "markdown"}
