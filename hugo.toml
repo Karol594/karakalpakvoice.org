@@ -1,0 +1,86 @@
+baseURL = "https://karol594.github.io/karakalpakvoice.org"
+languageCode = "en-us"
+title = "Голос Каракалпакстана | KarakalpakVoice"
+theme = "nevision"
+
+# Параметры сайта
+[params]
+  description = "Детективные новости Каракалпакстана"
+  author = "KarakalpakVoice"
+  
+# Меню
+[[menu.main]]
+  name = "Главная"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Суверенитет"
+  url = "/categories/суверенитет/"
+  weight = 2
+
+[[menu.main]]
+  name = "Новости"
+  url = "/categories/новости/"
+  weight = 3
+
+[[menu.main]]
+  name = "Политика"
+  url = "/categories/политика/"
+  weight = 4
+
+[[menu.main]]
+  name = "История"
+  url = "/categories/история/"
+  weight = 5
+
+[[menu.main]]
+  name = "Спорт"
+  url = "/categories/спорт/"
+  weight = 6
+
+[[menu.main]]
+  name = "География"
+  url = "/categories/география/"
+  weight = 7
+
+[[menu.main]]
+  name = "Культура"
+  url = "/categories/культура/"
+  weight = 8
+
+[[menu.main]]
+  name = "Религия"
+  url = "/categories/религия/"
+  weight = 9
+
+# Языки
+[languages]
+  [languages.ru]
+    weight = 1
+    languageName = "Русский"
+    title = "Голос Каракалпакстана"
+    
+  [languages.kaa]
+    weight = 2
+    languageName = "Қарақалпақ"
+    title = "Қарақалпақ Даўысы"
+    
+  [languages.en]
+    weight = 3
+    languageName = "English"
+    title = "Voice of Karakalpakstan"
+    
+  [languages.pl]
+    weight = 4
+    languageName = "Polski"
+    title = "Głos Karakałpakstanu"
+
+# Сборка
+[build]
+  writeStats = true
+  
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
