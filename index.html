@@ -1,37 +1,95 @@
 <!DOCTYPE html>
-<html lang="kaa">
+<html lang="ru" id="html-element">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Қарақалпақ Даўысы | KarakalpakVoice.org</title>
-    <meta name="description" content="Ғәрезсиз Қарақалпақ мәлимлеме платформасы">
+    <title>🎤 Қарақалпақстан Даўысы</title>
+    <meta name="description" content="Ғәрезсиз медиа платформа">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #1e40af, #3b82f6);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            color: white; min-height: 100vh;
         }
-        .container { max-width: 800px; padding: 40px 20px; }
+        .header { padding: 20px; background: rgba(0,0,0,0.1); }
+        .nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; }
+        .lang-select { padding: 8px; border: none; border-radius: 5px; }
+        .menu { display: flex; gap: 20px; list-style: none; }
+        .menu a { color: white; text-decoration: none; }
+        .main { text-align: center; padding: 80px 20px; }
         h1 { font-size: 3rem; margin-bottom: 20px; }
-        p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
-        .status { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; }
+        p { font-size: 1.2rem; margin-bottom: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 50px; }
+        .card { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎤 Қарақалпақ Даўысы</h1>
-        <p>Ғәрезсиз Қарақалпақ мәлимлеме платформасы</p>
-        <div class="status">
-            <h2>✅ Сайт қурылыс басқышында</h2>
-            <p>Жақында толық нусқасы шығады!</p>
-            <p><strong>GitHub:</strong> karakalpakvoice.org</p>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">🎤 Қарақалпақстан Даўысы</div>
+            <select class="lang-select" onchange="changeLanguage(this.value)">
+                <option value="ru">🇷🇺 Русский</option>
+                <option value="kaa">🏳️ Қарақалпақша</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="pl">🇵🇱 Polski</option>
+            </select>
+        </nav>
+        <ul class="menu">
+            <li><a href="#home" data-key="home">Главная</a></li>
+            <li><a href="#sovereignty" data-key="sovereignty">Суверенитет</a></li>
+            <li><a href="#news" data-key="news">Новости</a></li>
+            <li><a href="#politics" data-key="politics">Политика</a></li>
+            <li><a href="#history" data-key="history">История</a></li>
+            <li><a href="#sports" data-key="sports">Спорт</a></li>
+            <li><a href="#geography" data-key="geography">География</a></li>
+            <li><a href="#culture" data-key="culture">Культура</a></li>
+            <li><a href="#islam" data-key="islam">Ислам</a></li>
+        </ul>
+    </header>
+
+    <main class="main">
+        <h1 data-key="title">🎤 Независимая медиа-платформа</h1>
+        <p data-key="description">Қарақалпақстан ҳаққында ҳақыйқый хабарлар</p>
+        
+        <div class="grid">
+            <div class="card"><h3 data-key="sovereignty">Суверенитет</h3></div>
+            <div class="card"><h3 data-key="news">Новости</h3></div>
+            <div class="card"><h3 data-key="politics">Политика</h3></div>
+            <div class="card"><h3 data-key="history">История</h3></div>
+            <div class="card"><h3 data-key="sports">Спорт</h3></div>
+            <div class="card"><h3 data-key="geography">География</h3></div>
+            <div class="card"><h3 data-key="culture">Культура</h3></div>
+            <div class="card"><h3 data-key="islam">Ислам</h3></div>
         </div>
-    </div>
+        
+        <p style="margin-top: 50px;">
+            <a href="/admin/" style="color: white; padding: 10px 20px; background: rgba(255,255,255,0.2); border-radius: 5px; text-decoration: none;">📝 Админ панель</a>
+        </p>
+    </main>
+
+    <script>
+        const translations = {
+            ru: { title: "🎤 Независимая медиа-платформа", description: "Объективные новости Каракалпакстана", home: "Главная", sovereignty: "Суверенитет", news: "Новости", politics: "Политика", history: "История", sports: "Спорт", geography: "География", culture: "Культура", islam: "Ислам" },
+            kaa: { title: "🎤 Ғәрезсиз медиа платформа", description: "Қарақалпақстан ҳаққында ҳақыйқый хабарлар", home: "Бас бет", sovereignty: "Суверенитет", news: "Жаңалықлар", politics: "Сиясат", history: "Тарийх", sports: "Спорт", geography: "География", culture: "Дәстүр", islam: "Ислам" },
+            en: { title: "🎤 Independent Media Platform", description: "Objective news from Karakalpakstan", home: "Home", sovereignty: "Sovereignty", news: "News", politics: "Politics", history: "History", sports: "Sports", geography: "Geography", culture: "Culture", islam: "Islam" },
+            pl: { title: "🎤 Niezależna platforma medialna", description: "Obiektywne wiadomości z Karakałpakstanu", home: "Główna", sovereignty: "Suwerenność", news: "Wiadomości", politics: "Polityka", history: "Historia", sports: "Sport", geography: "Geografia", culture: "Kultura", islam: "Islam" }
+        };
+        
+        function changeLanguage(lang) {
+            document.getElementById('html-element').lang = lang;
+            Object.keys(translations[lang]).forEach(key => {
+                const elements = document.querySelectorAll(`[data-key="${key}"]`);
+                elements.forEach(el => el.textContent = translations[lang][key]);
+            });
+            localStorage.setItem('selectedLanguage', lang);
+        }
+        
+        // Load saved language
+        const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
+        document.querySelector('.lang-select').value = savedLang;
+        changeLanguage(savedLang);
+    </script>
 </body>
 </html>
