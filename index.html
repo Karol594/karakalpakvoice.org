@@ -28,7 +28,7 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <div class="logo">🎤 Қарақалпақстан Даўысы</div>
+            <div class="logo" data-key="logo">🎤 Қарақалпақстан Даўысы</div>
             <select class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="ru">🇷🇺 Русский</option>
                 <option value="kaa">🏳️ Қарақалпақша</option>
@@ -45,7 +45,7 @@
             <li><a href="#sports" data-key="sports">Спорт</a></li>
             <li><a href="#geography" data-key="geography">География</a></li>
             <li><a href="#culture" data-key="culture">Культура</a></li>
-            <li><a href="#islam" data-key="islam">Ислам</a></li>
+            <li><a href="#religion" data-key="religion">Религия</a></li>
         </ul>
     </header>
 
@@ -61,7 +61,7 @@
             <div class="card"><h3 data-key="sports">Спорт</h3></div>
             <div class="card"><h3 data-key="geography">География</h3></div>
             <div class="card"><h3 data-key="culture">Культура</h3></div>
-            <div class="card"><h3 data-key="islam">Ислам</h3></div>
+            <div class="card"><h3 data-key="religion">Религия</h3></div>
         </div>
         
         <p style="margin-top: 50px;">
@@ -71,10 +71,62 @@
 
     <script>
         const translations = {
-            ru: { title: "🎤 Независимая медиа-платформа", description: "Объективные новости Каракалпакстана", home: "Главная", sovereignty: "Суверенитет", news: "Новости", politics: "Политика", history: "История", sports: "Спорт", geography: "География", culture: "Культура", islam: "Ислам" },
-            kaa: { title: "🎤 Ғәрезсиз медиа платформа", description: "Қарақалпақстан ҳаққында ҳақыйқый хабарлар", home: "Бас бет", sovereignty: "Суверенитет", news: "Жаңалықлар", politics: "Сиясат", history: "Тарийх", sports: "Спорт", geography: "География", culture: "Дәстүр", islam: "Ислам" },
-            en: { title: "🎤 Independent Media Platform", description: "Objective news from Karakalpakstan", home: "Home", sovereignty: "Sovereignty", news: "News", politics: "Politics", history: "History", sports: "Sports", geography: "Geography", culture: "Culture", islam: "Islam" },
-            pl: { title: "🎤 Niezależna platforma medialna", description: "Obiektywne wiadomości z Karakałpakstanu", home: "Główna", sovereignty: "Suwerenność", news: "Wiadomości", politics: "Polityka", history: "Historia", sports: "Sport", geography: "Geografia", culture: "Kultura", islam: "Islam" }
+            ru: { 
+                logo: "🎤 Голос Каракалпакстана", 
+                title: "🎤 Независимая медиа-платформа", 
+                description: "Объективные новости Каракалпакстана", 
+                home: "Главная", 
+                sovereignty: "Суверенитет", 
+                news: "Новости", 
+                politics: "Политика", 
+                history: "История", 
+                sports: "Спорт", 
+                geography: "География", 
+                culture: "Культура", 
+                religion: "Религия" 
+            },
+            kaa: { 
+                logo: "🎤 Қарақалпақстан Даўысы", 
+                title: "🎤 Ғәрезсиз медиа платформа", 
+                description: "Қарақалпақстан ҳаққында ҳақыйқый хабарлар", 
+                home: "Бас бет", 
+                sovereignty: "Суверенитет", 
+                news: "Жаңалықлар", 
+                politics: "Сиясат", 
+                history: "Тарийх", 
+                sports: "Спорт", 
+                geography: "География", 
+                culture: "Дәстүр", 
+                religion: "Дин" 
+            },
+            en: { 
+                logo: "🎤 Voice of Karakalpakstan", 
+                title: "🎤 Independent Media Platform", 
+                description: "Objective news from Karakalpakstan", 
+                home: "Home", 
+                sovereignty: "Sovereignty", 
+                news: "News", 
+                politics: "Politics", 
+                history: "History", 
+                sports: "Sports", 
+                geography: "Geography", 
+                culture: "Culture", 
+                religion: "Religion" 
+            },
+            pl: { 
+                logo: "🎤 Głos Karakałpakstanu", 
+                title: "🎤 Niezależna platforma medialna", 
+                description: "Obiektywne wiadomości z Karakałpakstanu", 
+                home: "Główna", 
+                sovereignty: "Suwerenność", 
+                news: "Wiadomości", 
+                politics: "Polityka", 
+                history: "Historia", 
+                sports: "Sport", 
+                geography: "Geografia", 
+                culture: "Kultura", 
+                religion: "Religia" 
+            }
         };
         
         function changeLanguage(lang) {
