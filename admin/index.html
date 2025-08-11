@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>🎤 Қарақалпақ Даўысы - Админ панель</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+    }
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">
+    <div>
+      🎤 Қарақалпақ Даўысы CMS жүклениўде...
+    </div>
+  </div>
+  
+  <!-- Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script>
+    // Рус тилин тийкарғы тил сыпатында орнатыў
+    CMS.registerLocale('ru', {
+      auth: { login: 'Войти', loggingIn: 'Вход...', loginWithNetlifyIdentity: 'Войти через Netlify Identity' },
+      app: { header: { content: 'Контент', workflow: 'Редакция', media: 'Медиа', quickAdd: 'Быстрое добавление' } }
+    });
+  </script>
+</body>
+</html>
