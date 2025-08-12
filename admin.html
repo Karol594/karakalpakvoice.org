@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="kaa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель - KarakalpakVoice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 30px;
+        }
+        
+        .admin-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-tab:hover, .nav-tab.active {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .tab-content {
+            display: none;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 14px;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .btn {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+        
+        .btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .btn-danger {
+            background: #f44336;
+        }
+        
+        .btn-danger:hover {
+            background: #da190b;
+        }
+        
+        .btn-secondary {
+            background: #666;
+        }
+        
+        .media-upload {
+            border: 2px dashed rgba(255,255,255,0.3);
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .media-upload:hover {
+            border-color: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .media-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .media-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .media-item img,
+        .media-item video {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .article-list {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .article-item {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .article-item:last-child {
+            border-bottom: none;
+        }
+        
+        .article-info h3 {
+            margin-bottom: 5px;
+            color: #4CAF50;
+        }
+        
+        .article-info p {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        .article-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .home-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .error-message {
+            background: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .admin-nav {
+                flex-direction: column;
+            }
+            .article-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="home-btn">🏠 Басты бетке</a>
+    
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>📝 Админ панель</h1>
+            <p>KarakalpakVoice мазмұн басқару жүйесі</p>
+        </div>
+        
+        <div class="admin-nav">
+            <button class="nav-tab active" onclick="showTab('articles')">📄 Мақалалар</button>
+            <button class="nav-tab" onclick="showTab('media')">📸 Медиа файлдар</button>
+            <button class="nav-tab" onclick="showTab('categories')">📂 Категориялар</button>
+            <button class="nav-tab" onclick="showTab('settings')">⚙️ Баптаулар</button>
+        </div>
+        
+        <!-- Мақалалар табы -->
+        <div id="articles" class="tab-content active">
+            <h2>Мақалалар басқару</h2>
+            
+            <div class="success-message" id="article-success"></div>
+            <div class="error-message" id="article-error"></div>
+            
+            <form id="article-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Мақала атауы:</label>
+                        <input type="text" id="article-title" placeholder="Мақала атауын жазыңыз..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Категория:</label>
+                        <select id="article-category" required>
+                            <option value="">Категория таңдаңыз</option>
+                            <option value="sovereignty">Суверенитет</option>
+                            <option value="news">Жаңалықлар</option>
+                            <option value="politics">Сиясат</option>
+                            <option value="history">Тарийх</option>
+                            <option value="sport">Спорт</option>
+                            <option value="geography">География</option>
+                            <option value="culture">Дәстүр</option>
+                            <option value="religion">Дин</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Автор:</label>
+                        <input type="text" id="article-author" value="KarakalpakVoice.org" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Тілі:</label>
+                        <select id="article-language" required>
+                            <option value="kaa">🏳️ Қарақалпақ</option>
+                            <option value="ru">🇷🇺 Орыс</option>
+                            <option value="en">🇺🇸 Ағылшын</option>
+                            <option value="pl">🇵🇱 Поляк</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Қысқа сипаттама:</label>
+                    <textarea id="article-excerpt" rows="3" placeholder="Мақаланың қысқа сипаттамасын жазыңыз..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Мақала мәтіні:</label>
+                    <textarea id="article-content" rows="15" placeholder="Мақаланың толық мәтінін жазыңыз..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Теглер (үтірмен бөліңіз):</label>
+                    <input type="text" id="article-tags" placeholder="Мысалы: суверенитет, тарих, саясат">
+                </div>
+                
+                <div class="form-group">
+                    <label>Басты сурет:</label>
+                    <input type="file" id="article-image" accept="image/*">
+                </div>
+                
+                <button type="submit" class="btn">💾 Мақаланы сақтау</button>
+                <button type="button" class="btn btn-secondary" onclick="resetArticleForm()">🔄 Тазалау</button>
+            </form>
+            
+            <hr style="margin: 40px 0; border: 1px solid rgba(255,255,255,0.2);">
+            
+            <h3>Барлық мақалалар</h3>
+            <div class="article-list" id="articles-list">
+                <!-- Мақалалар тізімі мұнда пайда болады -->
+            </div>
+        </div>
+        
+        <!-- Медиа файлдар табы -->
+        <div id="media" class="tab-content">
+            <h2>Медиа файлдар басқару</h2>
+            
+            <div class="success-message" id="media-success"></div>
+            <div class="error-message" id="media-error"></div>
+            
+            <div class="media-upload" onclick="document.getElementById('media-file').click()">
+                <p>📎 Файл жүктеу үшін басыңыз немесе файлды осы жерге тартыңыз</p>
+                <p><small>Қолдау: JPG, PNG, GIF, MP4, MP3, WAV</small></p>
+                <input type="file" id="media-file" multiple accept="image/*,video/*,audio/*" style="display: none;">
+            </div>
+            
+            <div class="media-preview" id="media-preview">
+                <!-- Медиа файлдар мұнда көрсетіледі -->
+            </div>
+        </div>
+        
+        <!-- Категориялар табы -->
+        <div id="categories" class="tab-content">
+            <h2>Категориялар басқару</h2>
+            
+            <div class="form-group">
+                <label>Жаңа категория қосу:</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="new-category" placeholder="Категория атауы...">
+                    <button class="btn" onclick="addCategory()">➕ Қосу</button>
+                </div>
+            </div>
+            
+            <div id="categories-list">
+                <!-- Категориялар тізімі -->
+            </div>
+        </div>
+        
+        <!-- Баптаулар табы -->
+        <div id="settings" class="tab-content">
+            <h2>Сайт баптаулары</h2>
+            
+            <div class="form-group">
+                <label>Сайт атауы:</label>
+                <input type="text" id="site-title" value="Медиа-платформа Nevisimage">
+            </div>
+            
+            <div class="form-group">
+                <label>Сайт сипаттамасы:</label>
+                <textarea id="site-description" rows="3">Қарақалпақстанның детектив жаңалықлары</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Байланыс email:</label>
+                <input type="email" id="contact-email" placeholder="info@karakalpakvoice.org">
+            </div>
+            
+            <button class="btn" onclick="saveSettings()">💾 Баптауларды сақтау</button>
+        </div>
+    </div>
+    
+    <script src="admin-functions.js"></script>
+</body>
+</html>
