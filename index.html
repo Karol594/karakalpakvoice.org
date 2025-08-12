@@ -3,838 +3,799 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Қарақалпақ Даўысы | Голос Каракалпакстана</title>
+    <title>KarakalpakVoice.org - Премиум дизайн</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #7c2d12 100%);
+            --bg-secondary: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(49, 46, 129, 0.9) 50%, rgba(124, 45, 18, 0.8) 100%);
+            --bg-card: linear-gradient(135deg, rgba(30, 58, 138, 0.3) 0%, rgba(124, 45, 18, 0.2) 100%);
+            --text-primary: #fbbf24;
+            --text-secondary: #f9fafb;
+            --text-accent: #dc2626;
+            --border-color: rgba(251, 191, 36, 0.3);
+            --shadow: rgba(124, 45, 18, 0.4);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #fef2f2 100%);
+            --bg-secondary: linear-gradient(135deg, rgba(239, 246, 255, 0.9) 0%, rgba(240, 249, 255, 0.9) 50%, rgba(254, 242, 242, 0.8) 100%);
+            --bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(254, 242, 242, 0.6) 100%);
+            --text-primary: #b45309;
+            --text-secondary: #1f2937;
+            --text-accent: #dc2626;
+            --border-color: rgba(180, 83, 9, 0.3);
+            --shadow: rgba(180, 83, 9, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: all 0.5s ease;
             min-height: 100vh;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 0;
-        }
-        
-        .logo {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-        
-        h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .subtitle {
-            font-size: 18px;
-            opacity: 0.9;
-            margin-bottom: 40px;
-        }
-        
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .nav-item {
-            background: rgba(255,255,255,0.1);
-            padding: 30px 20px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+
+        .theme-toggle {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1001;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 12px 20px;
             cursor: pointer;
-        }
-        
-        .nav-item:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        
-        .nav-item h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        
-        .nav-item p {
-            opacity: 0.8;
-            font-size: 14px;
-        }
-        
-        .articles-section {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .articles-title {
-            font-size: 28px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .article-card {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border-left: 4px solid #4CAF50;
-        }
-        
-        .article-title {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #4CAF50;
-        }
-        
-        .article-meta {
-            font-size: 12px;
-            opacity: 0.7;
-            margin-bottom: 10px;
-        }
-        
-        .article-excerpt {
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-        
-        .admin-panel {
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .admin-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
             font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px var(--shadow);
         }
-        
-        .admin-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.05);
+
+        .theme-toggle:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 40px var(--shadow);
+            background: var(--bg-secondary);
         }
-        
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+
+        .language-selector {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
             z-index: 1000;
         }
-        
+
         .lang-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            margin: 0 2px;
-            border-radius: 5px;
+            padding: 12px 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            color: var(--text-primary);
             cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 25px var(--shadow);
         }
-        
+
         .lang-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.1);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px var(--shadow);
+            background: var(--bg-secondary);
         }
-        
+
         .lang-btn.active {
-            background: rgba(255,255,255,0.5);
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background: var(--bg-secondary);
+            color: var(--text-accent);
+            border-color: var(--text-accent);
         }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
+
+        .hero {
+            min-height: 100vh;
+            background: var(--bg-primary);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
+            opacity: 0.7;
         }
-        
-        /* ЖАҢА: Жоғары көтерілу батырмасы */
-        .scroll-to-top {
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+            text-shadow: 3px 3px 10px var(--shadow);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.5)); }
+            to { filter: drop-shadow(0 0 35px rgba(220, 38, 38, 0.7)); }
+        }
+
+        .hero p {
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            font-weight: 400;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            padding: 100px 20px;
+            max-width: 1500px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            border-radius: 40px 40px 0 0;
+            margin-top: -40px;
+            position: relative;
+            z-index: 3;
+            backdrop-filter: blur(30px);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-bottom: 120px;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 45px;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 20px 50px var(--shadow);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+            transition: all 0.6s ease;
+            transform: scale(0);
+        }
+
+        .category-card:hover::before { transform: scale(1); }
+
+        .category-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 35px 70px var(--shadow);
+            border-color: var(--text-accent);
+            background: var(--bg-secondary);
+        }
+
+        .category-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: block;
+            filter: drop-shadow(0 5px 15px var(--shadow));
+        }
+
+        .category-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-shadow: 2px 2px 8px var(--shadow);
+        }
+
+        .category-card p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .articles-section {
+            background: var(--bg-primary);
+            padding: 120px 20px;
+            position: relative;
+        }
+
+        .articles-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(124, 45, 18, 0.1) 0%, transparent 70%);
+        }
+
+        .articles-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            text-align: center;
+            margin-bottom: 80px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 3px 3px 10px var(--shadow);
+            position: relative;
+            z-index: 2;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            max-width: 1500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .article-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.5s ease;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            box-shadow: 0 25px 60px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .article-card:hover::after { left: 100%; }
+
+        .article-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 40px 80px var(--shadow);
+            border-color: var(--text-accent);
+            background: var(--bg-secondary);
+        }
+
+        .article-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .article-date {
+            background: rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.5);
+        }
+
+        .article-source {
+            background: rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.5);
+        }
+
+        .article-category {
+            background: rgba(251, 191, 36, 0.3);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: var(--text-primary);
+            line-height: 1.4;
+            text-shadow: 1px 1px 5px var(--shadow);
+        }
+
+        .article-content {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
-            background: rgba(76, 175, 80, 0.9);
-            color: white;
-            border: none;
+            width: 65px;
+            height: 65px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
             border-radius: 50%;
-            font-size: 24px;
+            color: var(--text-primary);
             cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 26px;
+            font-weight: 700;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 40px var(--shadow);
             z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px);
         }
-        
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
+
+        .back-to-top:hover {
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: 0 25px 50px var(--shadow);
+            background: var(--bg-secondary);
+            border-color: var(--text-accent);
         }
-        
-        .scroll-to-top:hover {
-            background: rgba(76, 175, 80, 1);
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+
+        .back-to-top.show {
+            display: flex;
+            animation: slideInUp 0.6s ease;
         }
-        
-        .scroll-to-top:active {
-            transform: translateY(0) scale(0.95);
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        /* Батырманың ішіндегі стрелка анимациясы */
-        .scroll-to-top::before {
-            content: '↑';
-            display: block;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-5px);
-            }
-            60% {
-                transform: translateY(-3px);
-            }
-        }
-        
-        /* Прогресс индикаторы жоғары көтерілу үшін */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, #4CAF50, #2196F3);
-            z-index: 1001;
-            transition: width 0.1s ease;
-        }
-        
+
         @media (max-width: 768px) {
-            h1 { font-size: 28px; }
-            .nav-grid { grid-template-columns: 1fr; }
-            .container { padding: 10px; }
-            .language-switcher {
+            .theme-toggle, .language-selector {
                 position: relative;
-                top: 0;
-                right: 0;
-                text-align: center;
+                top: 15px;
                 margin-bottom: 20px;
             }
-            
-            /* Мобильде кіші батырма */
-            .scroll-to-top {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 20px;
+            .language-selector {
+                justify-content: center;
+                gap: 10px;
             }
+            .theme-toggle {
+                text-align: center;
+                margin: 0 auto 20px;
+                display: block;
+                width: fit-content;
+            }
+            .category-grid, .articles-grid { grid-template-columns: 1fr; }
+            .category-card, .article-card { padding: 30px; }
+            .nav-container { padding: 60px 20px; margin-top: -20px; }
         }
-        
-        .loading {
-            opacity: 0.5;
-            pointer-events: none;
-        }
-        
-        .success-notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #4CAF50;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            z-index: 1001;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .success-notification.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(20px);
-        }
+
+        html { scroll-behavior: smooth; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
-    <!-- Скролл прогресс бары -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <!-- Тіл ауыстыру батырмалары -->
-    <div class="language-switcher">
-        <button class="lang-btn active" onclick="changeLanguage('kaa')" title="Қарақалпақ тілі">🏳️ ҚА</button>
-        <button class="lang-btn" onclick="changeLanguage('ru')" title="Русский язык">🇷🇺 РУ</button>
-        <button class="lang-btn" onclick="changeLanguage('en')" title="English">🇺🇸 EN</button>
-        <button class="lang-btn" onclick="changeLanguage('pl')" title="Polski">🇵🇱 PL</button>
+    <button class="theme-toggle" id="themeToggle">
+        <span class="theme-icon">🌜</span>
+        <span class="theme-text" data-translate="dark_mode">Қараңғы режим</span>
+    </button>
+
+    <div class="language-selector">
+        <button class="lang-btn" data-lang="ru">🇷🇺 РУС</button>
+        <button class="lang-btn active" data-lang="kaa">🏳️ ҚАР</button>
+        <button class="lang-btn" data-lang="en">🇬🇧 ENG</button>
+        <button class="lang-btn" data-lang="pl">🇵🇱 POL</button>
     </div>
 
-    <!-- Жоғары көтерілу батырмасы -->
-    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()" title="Жоғарыға көтерілу"></button>
-
-    <div class="container">
-        <header>
-            <div class="logo">🎤</div>
-            <h1>Медиа-платформа Nevisimage</h1>
-            <p class="subtitle">Детективные новости Каракалпакстана</p>
-        </header>
-
-        <div class="nav-grid">
-            <div class="nav-item" onclick="showCategory('sovereignty')">
-                <h3>Суверенитет</h3>
-                <p>Қарақалпақстанның суверенитеті туралы</p>
-            </div>
-            <div class="nav-item" onclick="showCategory('news')">
-                <h3>Новости</h3>
-                <p>Соңғы жаңалықлар</p>
-            </div>
-            <div class="nav-item" onclick="showCategory('politics')">
-                <h3>Политика</h3>
-                <p>Сиясий шолулар</p>
-            </div>
-            <div class="nav-item" onclick="showCategory('history')">
-                <h3>История</h3>
-                <p>Тарийхый мақалалар</p>
-            </div>
-            <div class="nav-item" onclick="showCategory('sport')">
-                <h3>Спорт</h3>
-                <p>Спорт жаңалықлары</p>
-            </div>
-            <div class="nav-item" onclick="showCategory('geography')">
-                <h3>География</h3>
-                <p>Географиялық ақпарат</p>
-            </div>
-            <div class="nav-item" onclick="showCategory('culture')">
-                <h3>Культура</h3>
-                <p>Мәдениет ҳәм дәстүрлер</p>
-            </div>
-            <div class="nav-item" onclick="showCategory('religion')">
-                <h3>Религия</h3>
-                <p>Дин туралы мақалалар</p>
-            </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-translate="title">KarakalpakVoice.org</h1>
+            <p data-translate="subtitle">Қарақалпақстанның ақпараттық порталы</p>
         </div>
+    </section>
 
-        <div class="articles-section">
-            <h2 class="articles-title">Соңғы мақалалар</h2>
-            
-            <div class="article-card" id="sovereignty-article">
-                <h3 class="article-title">ҚАРАҚАЛПАҚСТАННЫҢ СУВЕРЕНИТЕТІ</h3>
-                <div class="article-meta">📅 2025-08-11 | ✍️ KarakalpakVoice.org | 🏷️ Суверенитет, Тарийх</div>
-                <div class="article-excerpt">
-                    <strong>Ҳақыйқат тарийх ҳәм нызамшылық дәлиллер</strong><br><br>
-                    1990-жыл 14-декабрь Қарақалпақстан тарийхында ең әҳмийетли ўақыя болды. Қарақалпақстан Жоқарғы Кеңесиниң 186 депутаты бир аўыздан Мәмлекетлик суверенитет ҳаққындағы декларацияны қабыл етти...
-                    <br><br>
-                    <button onclick="showFullArticle()" style="background: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">Толық оқу</button>
-                </div>
+    <div class="nav-container">
+        <div class="category-grid">
+            <div class="category-card fade-in" data-category="sovereignty">
+                <div class="category-icon">👑</div>
+                <h3 data-translate="sovereignty">Егемендилик</h3>
+                <p data-translate="sovereignty_desc">Қарақалпақстан егемендилиги ҳаққында</p>
             </div>
-
-            <div class="article-card">
-                <h3 class="article-title">Жаңа мақалалар жақында...</h3>
-                <div class="article-meta">📅 Жақында | ✍️ Редакция</div>
-                <div class="article-excerpt">
-                    Жаңа мақалалар мен жаңалықлар жақында жарияланады. Сайтты қадағалап отырыңыз!
-                </div>
+            <div class="category-card fade-in" data-category="news">
+                <div class="category-icon">📰</div>
+                <h3 data-translate="news">Жаңалықлар</h3>
+                <p data-translate="news_desc">Соңғы жаңалықлар</p>
             </div>
-            
-            <!-- Кеңейтілген мазмұн жоғары көтерілуді тест етуге -->
-            <div class="article-card">
-                <h3 class="article-title">Қосымша мақала 1</h3>
-                <div class="article-meta">📅 2025-08-10 | ✍️ Редакция</div>
-                <div class="article-excerpt">
-                    Бұл қосымша мақала жоғары көтерілу функциясын тест етуге арналған. Бет ұзын болған кезде жоғары көтерілу батырмасы пайда болуы керек.
-                </div>
+            <div class="category-card fade-in" data-category="politics">
+                <div class="category-icon">⚖️</div>
+                <h3 data-translate="politics">Саясат</h3>
+                <p data-translate="politics_desc">Саяси шолулар</p>
             </div>
-            
-            <div class="article-card">
-                <h3 class="article-title">Қосымша мақала 2</h3>
-                <div class="article-meta">📅 2025-08-09 | ✍️ Редакция</div>
-                <div class="article-excerpt">
-                    Тағы бір мақала. Бет төмен дейін скролл жасағанда жоғары көтерілу батырмасы көрінуі керек. Батырма жылтыр анимациямен келеді.
-                </div>
+            <div class="category-card fade-in" data-category="history">
+                <div class="category-icon">📜</div>
+                <h3 data-translate="history">Тарийх</h3>
+                <p data-translate="history_desc">Тарийхый мақалалар</p>
             </div>
-            
-            <div class="article-card">
-                <h3 class="article-title">Соңғы мақала</h3>
-                <div class="article-meta">📅 2025-08-08 | ✍️ Редакция</div>
-                <div class="article-excerpt">
-                    Бұл соңғы мақала. Енді жоғары көтерілу батырмасын басып, бет басына оралып көріңіз!
-                </div>
+            <div class="category-card fade-in" data-category="sport">
+                <div class="category-icon">🏆</div>
+                <h3 data-translate="sport">Спорт</h3>
+                <p data-translate="sport_desc">Спорт жаңалықлары</p>
             </div>
-        </div>
-
-        <div class="admin-panel">
-            <a href="/admin/" class="admin-btn" onclick="showAdminPanel(event)">📝 Админ панель</a>
+            <div class="category-card fade-in" data-category="geography">
+                <div class="category-icon">🌍</div>
+                <h3 data-translate="geography">География</h3>
+                <p data-translate="geography_desc">Географиялық ақпарат</p>
+            </div>
+            <div class="category-card fade-in" data-category="culture">
+                <div class="category-icon">🎭</div>
+                <h3 data-translate="culture">Маданият</h3>
+                <p data-translate="culture_desc">Маданият ҳәм дәстүрлер</p>
+            </div>
+            <div class="category-card fade-in" data-category="religion">
+                <div class="category-icon">🕌</div>
+                <h3 data-translate="religion">Дин</h3>
+                <p data-translate="religion_desc">Дин ҳаққында мақалалар</p>
+            </div>
         </div>
     </div>
 
-    <div id="successNotification" class="success-notification">
-        <span id="notificationText">Тіл ауыстырылды!</span>
-    </div>
+    <section class="articles-section">
+        <h2 data-translate="latest_articles">Соңғы мақалалар</h2>
+        <div class="articles-grid" id="articlesGrid"></div>
+    </section>
+
+    <button class="back-to-top" id="backToTop">↑</button>
 
     <script>
-        const languages = {
+        const translations = {
             kaa: {
-                siteName: "Медиа-платформа Nevisimage",
-                subtitle: "Қарақалпақстанның детектив жаңалықлары",
-                nav: {
-                    sovereignty: "Суверенитет", 
-                    news: "Жаңалықлар",
-                    politics: "Сиясат",
-                    history: "Тарийх",
-                    sport: "Спорт",
-                    geography: "География",
-                    culture: "Дәстүр",
-                    religion: "Дин"
-                },
-                descriptions: {
-                    sovereignty: "Қарақалпақстанның суверенитеті туралы",
-                    news: "Соңғы жаңалықлар",
-                    politics: "Сиясий шолулар",
-                    history: "Тарийхый мақалалар",
-                    sport: "Спорт жаңалықлары",
-                    geography: "Географиялық ақпарат",
-                    culture: "Мәдениет ҳәм дәстүрлер",
-                    religion: "Дин туралы мақалалар"
-                },
-                articles: {
-                    title: "Соңғы мақалалар",
-                    readMore: "Толық оқу",
-                    sovereignty: {
-                        title: "ҚАРАҚАЛПАҚСТАННЫҢ СУВЕРЕНИТЕТІ",
-                        subtitle: "Ҳақыйқат тарийх ҳәм нызамшылық дәлиллер",
-                        excerpt: "1990-жыл 14-декабрь Қарақалпақстан тарийхында ең әҳмийетли ўақыя болды. Қарақалпақстан Жоқарғы Кеңесиниң 186 депутаты бир аўыздан Мәмлекетлик суверенитет ҳаққындағы декларацияны қабыл етти..."
-                    },
-                    coming: {
-                        title: "Жаңа мақалалар жақында...",
-                        excerpt: "Жаңа мақалалар мен жаңалықлар жақында жарияланады. Сайтты қадағалап отырыңыз!"
-                    }
-                },
-                adminPanel: "Админ панель",
-                categoryInDev: "Бұл категория дамытылуда:",
-                languageChanged: "Тіл ауыстырылды!",
-                scrollToTop: "Жоғарыға көтерілу",
-                meta: {
-                    date: "2025-08-11",
-                    author: "KarakalpakVoice.org",
-                    tags: "Суверенитет, Тарийх"
-                }
+                title: "KarakalpakVoice.org",
+                subtitle: "Қарақалпақстанның ақпараттық порталы",
+                dark_mode: "Қараңғы режим",
+                light_mode: "Жарық режим",
+                sovereignty: "Егемендилик",
+                sovereignty_desc: "Қарақалпақстан егемендилиги ҳаққында",
+                news: "Жаңалықлар",
+                news_desc: "Соңғы жаңалықлар",
+                politics: "Саясат",
+                politics_desc: "Саяси шолулар",
+                history: "Тарийх",
+                history_desc: "Тарийхый мақалалар",
+                sport: "Спорт",
+                sport_desc: "Спорт жаңалықлары",
+                geography: "География",
+                geography_desc: "Географиялық ақпарат",
+                culture: "Маданият",
+                culture_desc: "Маданият ҳәм дәстүрлер",
+                religion: "Дин",
+                religion_desc: "Дин ҳаққында мақалалар",
+                latest_articles: "Соңғы мақалалар"
             },
             ru: {
-                siteName: "Медиа-платформа Nevisimage",
-                subtitle: "Детективные новости Каракалпакстана",
-                nav: {
-                    sovereignty: "Суверенитет",
-                    news: "Новости", 
-                    politics: "Политика",
-                    history: "История",
-                    sport: "Спорт",
-                    geography: "География",
-                    culture: "Культура",
-                    religion: "Религия"
-                },
-                descriptions: {
-                    sovereignty: "О суверенитете Каракалпакстана",
-                    news: "Последние новости",
-                    politics: "Политические обзоры", 
-                    history: "Исторические статьи",
-                    sport: "Спортивные новости",
-                    geography: "Географическая информация",
-                    culture: "Культура и традиции",
-                    religion: "Статьи о религии"
-                },
-                articles: {
-                    title: "Последние статьи",
-                    readMore: "Читать полностью",
-                    sovereignty: {
-                        title: "СУВЕРЕНИТЕТ КАРАКАЛПАКСТАНА",
-                        subtitle: "Исторические факты и правовые доказательства",
-                        excerpt: "14 декабря 1990 года стало самым важным событием в истории Каракалпакстана. 186 депутатов Верховного Совета Каракалпакстана единогласно приняли Декларацию о государственном суверенитете..."
-                    },
-                    coming: {
-                        title: "Новые статьи скоро...",
-                        excerpt: "Новые статьи и новости будут опубликованы в ближайшее время. Следите за обновлениями сайта!"
-                    }
-                },
-                adminPanel: "Админ панель",
-                categoryInDev: "Эта категория в разработке:",
-                languageChanged: "Язык изменён!",
-                scrollToTop: "Наверх",
-                meta: {
-                    date: "2025-08-11",
-                    author: "KarakalpakVoice.org",
-                    tags: "Суверенитет, История"
-                }
+                title: "KarakalpakVoice.org",
+                subtitle: "Информационный портал Каракалпакстана",
+                dark_mode: "Темный режим",
+                light_mode: "Светлый режим",
+                sovereignty: "Суверенитет",
+                sovereignty_desc: "О суверенитете Каракалпакстана",
+                news: "Новости",
+                news_desc: "Последние новости",
+                politics: "Политика",
+                politics_desc: "Политические обзоры",
+                history: "История",
+                history_desc: "Исторические статьи",
+                sport: "Спорт",
+                sport_desc: "Спортивные новости",
+                geography: "География",
+                geography_desc: "Географическая информация",
+                culture: "Культура",
+                culture_desc: "Культура и традиции",
+                religion: "Религия",
+                religion_desc: "Статьи о религии",
+                latest_articles: "Последние статьи"
             },
             en: {
-                siteName: "Nevisimage Media Platform",
-                subtitle: "Detective news of Karakalpakstan",
-                nav: {
-                    sovereignty: "Sovereignty",
-                    news: "News",
-                    politics: "Politics", 
-                    history: "History",
-                    sport: "Sports",
-                    geography: "Geography",
-                    culture: "Culture",
-                    religion: "Religion"
-                },
-                descriptions: {
-                    sovereignty: "About sovereignty of Karakalpakstan",
-                    news: "Latest news",
-                    politics: "Political reviews",
-                    history: "Historical articles", 
-                    sport: "Sports news",
-                    geography: "Geographic information",
-                    culture: "Culture and traditions",
-                    religion: "Articles about religion"
-                },
-                articles: {
-                    title: "Latest Articles",
-                    readMore: "Read More",
-                    sovereignty: {
-                        title: "SOVEREIGNTY OF KARAKALPAKSTAN",
-                        subtitle: "Historical Facts and Legal Evidence",
-                        excerpt: "December 14, 1990 became the most important event in the history of Karakalpakstan. 186 deputies of the Supreme Council of Karakalpakstan unanimously adopted the Declaration on State Sovereignty..."
-                    },
-                    coming: {
-                        title: "New articles coming soon...",
-                        excerpt: "New articles and news will be published soon. Stay tuned for website updates!"
-                    }
-                },
-                adminPanel: "Admin Panel",
-                categoryInDev: "This category is in development:",
-                languageChanged: "Language changed!",
-                scrollToTop: "Scroll to top",
-                meta: {
-                    date: "2025-08-11", 
-                    author: "KarakalpakVoice.org",
-                    tags: "Sovereignty, History"
-                }
+                title: "KarakalpakVoice.org",
+                subtitle: "Information Portal of Karakalpakstan",
+                dark_mode: "Dark Mode",
+                light_mode: "Light Mode",
+                sovereignty: "Sovereignty",
+                sovereignty_desc: "About Karakalpakstan's sovereignty",
+                news: "News",
+                news_desc: "Latest news",
+                politics: "Politics",
+                politics_desc: "Political reviews",
+                history: "History",
+                history_desc: "Historical articles",
+                sport: "Sports",
+                sport_desc: "Sports news",
+                geography: "Geography",
+                geography_desc: "Geographical information",
+                culture: "Culture",
+                culture_desc: "Culture and traditions",
+                religion: "Religion",
+                religion_desc: "Articles about religion",
+                latest_articles: "Latest Articles"
             },
             pl: {
-                siteName: "Platforma medialna Nevisimage",
-                subtitle: "Detektywistyczne wiadomości Karakałpakstanu",
-                nav: {
-                    sovereignty: "Suwerenność", 
-                    news: "Wiadomości",
-                    politics: "Polityka",
-                    history: "Historia",
-                    sport: "Sport",
-                    geography: "Geografia", 
-                    culture: "Kultura",
-                    religion: "Religia"
-                },
-                descriptions: {
-                    sovereignty: "O suwerenności Karakałpakstanu",
-                    news: "Najnowsze wiadomości",
-                    politics: "Przeglądy polityczne",
-                    history: "Artykuły historyczne",
-                    sport: "Wiadomości sportowe", 
-                    geography: "Informacje geograficzne",
-                    culture: "Kultura i tradycje",
-                    religion: "Artykuły o religii"
-                },
-                articles: {
-                    title: "Najnowsze Artykuły",
-                    readMore: "Czytaj więcej",
-                    sovereignty: {
-                        title: "SUWERENNOŚĆ KARAKAŁPAKSTANU",
-                        subtitle: "Fakty Historyczne i Dowody Prawne", 
-                        excerpt: "14 grudnia 1990 roku stało się najważniejszym wydarzeniem w historii Karakałpakstanu. 186 deputowanych Rady Najwyższej Karakałpakstanu jednogłośnie przyjęło Deklarację Suwerenności Państwowej..."
-                    },
-                    coming: {
-                        title: "Nowe artykuły wkrótce...",
-                        excerpt: "Nowe artykuły i wiadomości będą publikowane wkrótce. Śledź aktualizacje strony!"
-                    }
-                },
-                adminPanel: "Panel Administratora",
-                categoryInDev: "Ta kategoria jest w opracowaniu:",
-                languageChanged: "Język zmieniony!",
-                scrollToTop: "Do góry",
-                meta: {
-                    date: "2025-08-11",
-                    author: "KarakalpakVoice.org", 
-                    tags: "Suwerenność, Historia"
-                }
+                title: "KarakalpakVoice.org",
+                subtitle: "Portal Informacyjny Karakalpakstanu",
+                dark_mode: "Tryb ciemny",
+                light_mode: "Tryb jasny",
+                sovereignty: "Suwerenność",
+                sovereignty_desc: "O suwerenności Karakalpakstanu",
+                news: "Wiadomości",
+                news_desc: "Najnowsze wiadomości",
+                politics: "Polityka",
+                politics_desc: "Przeglądy polityczne",
+                history: "Historia",
+                history_desc: "Artykuły historyczne",
+                sport: "Sport",
+                sport_desc: "Wiadomości sportowe",
+                geography: "Geografia",
+                geography_desc: "Informacje geograficzne",
+                culture: "Kultura",
+                culture_desc: "Kultura i tradycje",
+                religion: "Religia",
+                religion_desc: "Artykuły o religii",
+                latest_articles: "Najnowsze Artykuły"
             }
         };
 
-        let currentLanguage = 'kaa';
+        const realArticles = {
+            kaa: [
+                {
+                    title: "ҚАРАҚАЛПАҚСТАН ЕГЕМЕНДИЛИГИ",
+                    date: "2025-08-12",
+                    source: "KarakalpakVoice.org",
+                    category: "Егемендилик",
+                    description: "16 декабрь 1990 жылы Қарақалпақстан егемендилигин жариялаған тарийхый күн. Бул күнде Қарақалпақ АССР-нинг Жоғарғы Советинде мҳим шешимлер қабылланды."
+                },
+                {
+                    title: "Қарақалпақ тилинин дамыўы",
+                    date: "2025-08-11",
+                    source: "Мәдениет порталы",
+                    category: "Тил",
+                    description: "Қарақалпақ тилин сақлаў ҳәм дамытыў бойынша жүргизилип атырған жұмыслар ҳаққында. Тил - халықтың рухы ҳәм маданиятынынг негизи."
+                }
+            ],
+            ru: [
+                {
+                    title: "СУВЕРЕНИТЕТ КАРАКАЛПАКСТАНА",
+                    date: "2025-08-12",
+                    source: "KarakalpakVoice.org",
+                    category: "Суверенитет",
+                    description: "16 декабря 1990 года - исторический день провозглашения суверенитета Каракалпакстана. В этот день в Верховном Совете Каракалпакской АССР были приняты важные решения."
+                },
+                {
+                    title: "Развитие каракалпакского языка",
+                    date: "2025-08-11",
+                    source: "Портал культуры",
+                    category: "Язык",
+                    description: "О работе по сохранению и развитию каракалпакского языка. Язык - душа народа и основа его культуры."
+                }
+            ],
+            en: [
+                {
+                    title: "KARAKALPAKSTAN SOVEREIGNTY",
+                    date: "2025-08-12",
+                    source: "KarakalpakVoice.org",
+                    category: "Sovereignty",
+                    description: "December 16, 1990 - the historic day of declaring Karakalpakstan's sovereignty. On this day, important decisions were made in the Supreme Council of the Karakalpak ASSR."
+                },
+                {
+                    title: "Development of Karakalpak Language",
+                    date: "2025-08-11",
+                    source: "Culture Portal",
+                    category: "Language",
+                    description: "About the work on preserving and developing the Karakalpak language. Language is the soul of the people and the foundation of their culture."
+                }
+            ],
+            pl: [
+                {
+                    title: "SUWERENNOŚĆ KARAKALPAKSTANU",
+                    date: "2025-08-12",
+                    source: "KarakalpakVoice.org",
+                    category: "Suwerenność",
+                    description: "16 grudnia 1990 roku - historyczny dzień proklamacji suwerenności Karakalpakstanu. W tym dniu w Radzie Najwyższej Karakalpakskiej ASRR podjęto ważne decyzje."
+                },
+                {
+                    title: "Rozwój języka karakalpakskiego",
+                    date: "2025-08-11",
+                    source: "Portal Kultury",
+                    category: "Język",
+                    description: "O pracy nad zachowaniem i rozwojem języka karakalpakskiego. Język to dusza narodu i podstawa jego kultury."
+                }
+            ]
+        };
 
-        // Тіл ауыстыру функциясы
-        function changeLanguage(lang) {
-            currentLanguage = lang;
-            updatePageContent();
+        let currentLanguage = 'kaa';
+        let currentTheme = 'dark';
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', currentTheme);
             
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`[onclick="changeLanguage('${lang}')"]`).classList.add('active');
+            const themeIcon = document.querySelector('.theme-icon');
+            const themeText = document.querySelector('.theme-text');
             
-            // Жоғары көтерілу батырмасының title-ын жаңарту
-            document.getElementById('scrollToTop').title = languages[lang].scrollToTop;
-            
-            showNotification(languages[lang].languageChanged);
-            
-            try {
-                localStorage.setItem('selectedLanguage', lang);
-            } catch(e) {
-                console.log('LocalStorage not available');
+            if (currentTheme === 'light') {
+                themeIcon.textContent = '🌞';
+                themeText.setAttribute('data-translate', 'light_mode');
+            } else {
+                themeIcon.textContent = '🌜';
+                themeText.setAttribute('data-translate', 'dark_mode');
             }
+            
+            translateInterface(currentLanguage);
         }
 
-        function updatePageContent() {
-            const lang = languages[currentLanguage];
+        function translateInterface(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        function displayArticles(lang) {
+            const articlesGrid = document.getElementById('articlesGrid');
+            articlesGrid.innerHTML = '';
             
-            document.body.classList.add('loading');
+            const articles = realArticles[lang] || realArticles['kaa'];
             
-            setTimeout(() => {
-                document.querySelector('h1').textContent = lang.siteName;
-                document.querySelector('.subtitle').textContent = lang.subtitle;
+            articles.forEach((article, index) => {
+                const articleElement = document.createElement('div');
+                articleElement.className = 'article-card fade-in';
+                articleElement.style.animationDelay = `${index * 0.2}s`;
                 
-                const navItems = document.querySelectorAll('.nav-item');
-                const navKeys = Object.keys(lang.nav);
-                const descKeys = Object.keys(lang.descriptions);
-                
-                navItems.forEach((item, index) => {
-                    if (index < navKeys.length) {
-                        const navKey = navKeys[index];
-                        const descKey = descKeys[index];
-                        
-                        item.querySelector('h3').textContent = lang.nav[navKey];
-                        item.querySelector('p').textContent = lang.descriptions[descKey];
-                    }
-                });
-                
-                document.querySelector('.articles-title').textContent = lang.articles.title;
-                
-                const sovereigntyCard = document.querySelector('#sovereignty-article');
-                sovereigntyCard.querySelector('.article-title').textContent = lang.articles.sovereignty.title;
-                sovereigntyCard.querySelector('.article-excerpt').innerHTML = `
-                    <strong>${lang.articles.sovereignty.subtitle}</strong><br><br>
-                    ${lang.articles.sovereignty.excerpt}
-                    <br><br>
-                    <button onclick="showFullArticle()" style="background: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">${lang.articles.readMore}</button>
+                articleElement.innerHTML = `
+                    <div class="article-header">
+                        <span class="article-tag article-date">📅 ${article.date}</span>
+                        <span class="article-tag article-source">🌐 ${article.source}</span>
+                        <span class="article-tag article-category">🏷️ ${article.category}</span>
+                    </div>
+                    <h3 class="article-title">${article.title}</h3>
+                    <p class="article-content">${article.description}</p>
                 `;
                 
-                const nextCard = sovereigntyCard.nextElementSibling;
-                nextCard.querySelector('.article-title').textContent = lang.articles.coming.title;
-                nextCard.querySelector('.article-excerpt').textContent = lang.articles.coming.excerpt;
-                
-                document.querySelector('.admin-btn').textContent = `📝 ${lang.adminPanel}`;
-                
-                const metaDiv = sovereigntyCard.querySelector('.article-meta');
-                metaDiv.innerHTML = `📅 ${lang.meta.date} | ✍️ ${lang.meta.author} | 🏷️ ${lang.meta.tags}`;
-                
-                document.body.classList.remove('loading');
-                
-                document.querySelector('.container').classList.add('fade-in');
-                setTimeout(() => {
-                    document.querySelector('.container').classList.remove('fade-in');
-                }, 500);
-            }, 200);
-        }
+                articlesGrid.appendChild(articleElement);
+            });
 
-        function showNotification(message) {
-            const notification = document.getElementById('successNotification');
-            const text = document.getElementById('notificationText');
-            
-            text.textContent = message;
-            notification.classList.add('show');
-            
             setTimeout(() => {
-                notification.classList.remove('show');
-            }, 2000);
+                document.querySelectorAll('.article-card.fade-in').forEach(card => {
+                    card.classList.add('visible');
+                });
+            }, 100);
         }
 
-        function showCategory(category) {
-            const lang = languages[currentLanguage];
-            showNotification(`${lang.categoryInDev} ${category}`);
-        }
-
-        function showFullArticle() {
-            let article = '';
-            if (currentLanguage === 'kaa') {
-                article = `ҚАРАҚАЛПАҚСТАННЫҢ СУВЕРЕНИТЕТІ\nҲақыйқат тарийх ҳәм нызамшылық дәлиллер\n\n1990-жыл 14-декабрь Қарақалпақстан тарийхында ең әҳмийетли ўақыя болды. Қарақалпақстан Жоқарғы Кеңесиниң 186 депутаты бир аўыздан Мәмлекетлик суверенитет ҳаққындағы декларацияны қабыл етти.\n\nДекларация тексти:\n1. Қарақалпақстан мәмлекетлик суверенитетин тастыйықлаў\n2. Қарақалпақстан халқының өзин-өзи басқарыў ҳуқықын тастыйықлаў\n3. Өз аймағында толық бийлик етиў ҳуқықын жәриялаў\n4. Халықаралық қатнасықларға кириў имканиятын нәзерде тутыў; } else if (currentLanguage === 'ru') { article = СУВЕРЕНИТЕТ КАРАКАЛПАКСТАНА\nИсторические факты и правовые доказательства\n\n14 декабря 1990 года стало самым важным событием в истории Каракалпакстана. 186 депутатов Верховного Совета Каракалпакстана единогласно приняли Декларацию о государственном суверенитете.\n\nТекст Декларации:\n1. Утверждение государственного суверенитета Каракалпакстана\n2. Утверждение права каракалпакского народа на самоопределение\n3. Провозглашение права полной власти на своей территории\n4. Предусмотрение возможности вступления в международные отношения; } else if (currentLanguage === 'en') { article = SOVEREIGNTY OF KARAKALPAKSTAN\nHistorical Facts and Legal Evidence\n\nDecember 14, 1990 became the most important event in the history of Karakalpakstan. 186 deputies of the Supreme Council of Karakalpakstan unanimously adopted the Declaration on State Sovereignty.\n\nDeclaration Text:\n1. Affirmation of state sovereignty of Karakalpakstan\n2. Affirmation of the right of the Karakalpak people to self-determination\n3. Proclamation of the right to full power in its territory\n4. Provision for the possibility of entering into international relations; } else if (currentLanguage === 'pl') { article = SUWERENNOŚĆ KARAKAŁPAKSTANU\nFakty Historyczne i Dowody Prawne\n\n14 grudnia 1990 roku stało się najważniejszym wydarzeniem w historii Karakałpakstanu. 186 deputowanych Rady Najwyższej Karakałpakstanu jednogłośnie przyjęło Deklarację Suwerenności Państwowej.\n\nTekst Deklaracji:\n1. Potwierdzenie suwerenności państwowej Karakałpakstanu\n2. Potwierdzenie prawa narodu karakałpackiego do samostanowienia\n3. Proklamacja prawa do pełnej władzy na swoim terytorium\n4. Przewidzenie możliwości wejścia w stosunki międzynarodowe`; } alert(article); }function showAdminPanel(event) {
-        event.preventDefault();
-        const lang = languages[currentLanguage];
-        showNotification(`${lang.adminPanel} - жақында іске қосылады!`);
-    }
-
-    // ЖАҢА: Жоғары көтерілу функциялары
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-        
-        // Батырма басылғанда анимация эффекті
-        const button = document.getElementById('scrollToTop');
-        button.style.transform = 'scale(0.9)';
-        setTimeout(() => {
-            button.style.transform = '';
-        }, 150);
-    }
-
-    // Скролл оқиғасын тыңдау
-    function handleScroll() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollProgress = (scrollTop / scrollHeight) * 100;
-        
-        // Прогресс барын жаңарту
-        document.getElementById('scrollProgress').style.width = scrollProgress + '%';
-        
-        // Жоғары көтерілу батырмасын көрсету/жасыру
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        if (scrollTop > 300) {
-            scrollToTopBtn.classList.add('visible');
-        } else {
-            scrollToTopBtn.classList.remove('visible');
-        }
-    }
-
-    // Админ панельмен байланыс
-    function loadArticles() {
-        try {
-            const savedArticles = JSON.parse(localStorage.getItem('articles') || '[]');
-            if (savedArticles.length > 0) {
-                // Жаңа мақалаларды көрсету логикасы
-                displayDynamicArticles(savedArticles);
-            }
-        } catch (e) {
-            console.log('Error loading articles:', e);
-        }
-    }
-
-    function displayDynamicArticles(articles) {
-        const articlesSection = document.querySelector('.articles-section');
-        
-        // Жаңа мақалаларды қосу
-        articles.slice(0, 5).forEach(article => {
-            const articleCard = document.createElement('div');
-            articleCard.className = 'article-card';
-            articleCard.innerHTML = `
-                <h3 class="article-title">${article.title}</h3>
-                <div class="article-meta">📅 ${article.date} | ✍️ ${article.author} | 🏷️ ${article.tags.join(', ')}</div>
-                <div class="article-excerpt">
-                    ${article.excerpt}
-                    <br><br>
-                    <button onclick="showDynamicArticle('${article.id}')" style="background: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">Толық оқу</button>
-                </div>
-            `;
+        function changeLanguage(lang) {
+            currentLanguage = lang;
             
-            // Суверенитет мақаласынан кейін қосу
-            const sovereigntyCard = document.getElementById('sovereignty-article');
-            sovereigntyCard.parentNode.insertBefore(articleCard, sovereigntyCard.nextSibling);
-        });
+            document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.remove('active'); if (btn.getAttribute('data-lang') === lang) { btn.classList.add('active'); } });translateInterface(lang);
+        displayArticles(lang);
+        document.documentElement.setAttribute('lang', lang);
     }
 
-    function showDynamicArticle(articleId) {
-        try {
-            const articles = JSON.parse(localStorage.getItem('articles') || '[]');
-            const article = articles.find(a => a.id === articleId);
-            if (article) {
-                alert(article.content);
-            }
-        } catch (e) {
-            console.log('Error showing article:', e);
-        }
-    }
-
-    function initializeLanguage() {
-        try {
-            const savedLang = localStorage.getItem('selectedLanguage');
-            if (savedLang && languages[savedLang]) {
-                currentLanguage = savedLang;
-            }
-        } catch(e) {
-            console.log('LocalStorage not available');
-        }
-        
-        updatePageContent();
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
         
         document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('active');
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
         });
-        document.querySelector(`[onclick="changeLanguage('${currentLanguage}')"]`).classList.add('active');
-        
-        // Жоғары көтерілу батырмасының title-ын орнату
-        document.getElementById('scrollToTop').title = languages[currentLanguage].scrollToTop;
-    }
 
-    // DOM жүктелгенде іске қосу
-    document.addEventListener('DOMContentLoaded', function() {
-        initializeLanguage();
-        loadArticles();
-        
-        // Скролл оқиғасын тыңдау
-        window.addEventListener('scroll', handleScroll);
-        
-        // Басталғанда прогресс барын орнату
-        handleScroll();
-        
-        // Қош келдіңіз хабарламасы
-        setTimeout(() => {
-            showNotification(`Қош келдіңіздер! Welcome! Добро пожаловать! Witamy!`);
-        }, 1000);
-    });
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                console.log(`Категория: ${category}, Тіл: ${currentLanguage}`);
+            });
+        });
 
-    // Keyboard навигациясы
-    document.addEventListener('keydown', function(e) {
-        // Home батырмасы - жоғарыға көтерілу
-        if (e.key === 'Home') {
-            e.preventDefault();
-            scrollToTop();
-        }
+        const backToTopBtn = document.getElementById('backToTop');
         
-        // End батырмасы - төменге түсу
-        if (e.key === 'End') {
-            e.preventDefault();
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function() {
             window.scrollTo({
-                top: document.documentElement.scrollHeight,
+                top: 0,
                 behavior: 'smooth'
             });
+        });
+
+        displayArticles(currentLanguage);
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }, 500);
+    });
+
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('.hero');
+        const speed = scrolled * 0.5;
+        
+        if (parallax) {
+            parallax.style.transform = `translateY(${speed}px)`;
         }
     });
 </script>
