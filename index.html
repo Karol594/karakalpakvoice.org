@@ -61,6 +61,7 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
         }
         
         .nav-item:hover {
@@ -146,6 +147,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
+            z-index: 1000;
         }
         
         .lang-btn {
@@ -157,27 +159,82 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
         }
         
         .lang-btn.active {
-            background: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.5);
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
+        /* Анимация для переключения языков */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Мобильная адаптация */
         @media (max-width: 768px) {
             h1 { font-size: 28px; }
             .nav-grid { grid-template-columns: 1fr; }
             .container { padding: 10px; }
+            .language-switcher {
+                position: relative;
+                top: 0;
+                right: 0;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* Загрузочная анимация */
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        /* Успех уведомление */
+        .success-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 1001;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .success-notification.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(20px);
         }
     </style>
 </head>
 <body>
+    <!-- Тіл ауыстыру батырмалары -->
     <div class="language-switcher">
-        <button class="lang-btn active">🏳️ ҚА</button>
-        <button class="lang-btn">🇷🇺 РУ</button>
-        <button class="lang-btn">🇺🇸 EN</button>
-        <button class="lang-btn">🇵🇱 PL</button>
+        <button class="lang-btn active" onclick="changeLanguage('kaa')" title="Қарақалпақ тілі">🏳️ ҚА</button>
+        <button class="lang-btn" onclick="changeLanguage('ru')" title="Русский язык">🇷🇺 РУ</button>
+        <button class="lang-btn" onclick="changeLanguage('en')" title="English">🇺🇸 EN</button>
+        <button class="lang-btn" onclick="changeLanguage('pl')" title="Polski">🇵🇱 PL</button>
     </div>
 
+    <!-- Үлкен контейнер -->
     <div class="container">
         <header>
             <div class="logo">🎤</div>
@@ -185,41 +242,43 @@
             <p class="subtitle">Детективные новости Каракалпакстана</p>
         </header>
 
+        <!-- Навигация торы -->
         <div class="nav-grid">
-            <div class="nav-item" onclick="showCategory('sovereignty')">
+            <div class="nav-item" onclick="showCategory('sovereignty')" data-category="sovereignty">
                 <h3>Суверенитет</h3>
                 <p>Қарақалпақстанның суверенитеті туралы</p>
             </div>
-            <div class="nav-item" onclick="showCategory('news')">
+            <div class="nav-item" onclick="showCategory('news')" data-category="news">
                 <h3>Новости</h3>
                 <p>Соңғы жаңалықлар</p>
             </div>
-            <div class="nav-item" onclick="showCategory('politics')">
+            <div class="nav-item" onclick="showCategory('politics')" data-category="politics">
                 <h3>Политика</h3>
                 <p>Сиясий шолулар</p>
             </div>
-            <div class="nav-item" onclick="showCategory('history')">
+            <div class="nav-item" onclick="showCategory('history')" data-category="history">
                 <h3>История</h3>
                 <p>Тарийхый мақалалар</p>
             </div>
-            <div class="nav-item" onclick="showCategory('sport')">
+            <div class="nav-item" onclick="showCategory('sport')" data-category="sport">
                 <h3>Спорт</h3>
                 <p>Спорт жаңалықлары</p>
             </div>
-            <div class="nav-item" onclick="showCategory('geography')">
+            <div class="nav-item" onclick="showCategory('geography')" data-category="geography">
                 <h3>География</h3>
                 <p>Географиялық ақпарат</p>
             </div>
-            <div class="nav-item" onclick="showCategory('culture')">
+            <div class="nav-item" onclick="showCategory('culture')" data-category="culture">
                 <h3>Культура</h3>
                 <p>Мәдениет ҳәм дәстүрлер</p>
             </div>
-            <div class="nav-item" onclick="showCategory('religion')">
+            <div class="nav-item" onclick="showCategory('religion')" data-category="religion">
                 <h3>Религия</h3>
                 <p>Дин туралы мақалалар</p>
             </div>
         </div>
 
+        <!-- Мақалалар бөлімі -->
         <div class="articles-section">
             <h2 class="articles-title">Соңғы мақалалар</h2>
             
@@ -243,67 +302,228 @@
             </div>
         </div>
 
+        <!-- Админ панель -->
         <div class="admin-panel">
-            <a href="/admin/" class="admin-btn">📝 Админ панель</a>
+            <a href="/admin/" class="admin-btn" onclick="showAdminPanel(event)">📝 Админ панель</a>
         </div>
     </div>
 
+    <!-- Уведомление об успехе -->
+    <div id="successNotification" class="success-notification">
+        <span id="notificationText">Тіл ауыстырылды!</span>
+    </div>
+
+    <!-- JavaScript кодтары -->
     <script>
-        function showCategory(category) {
-            alert('Бұл категория дамытылуда: ' + category);
-        }
+        // Тілдер файлын қосу
+        const languages = {
+            kaa: {
+                siteName: "Медиа-платформа Nevisimage",
+                subtitle: "Қарақалпақстанның детектив жаңалықлары",
+                nav: {
+                    sovereignty: "Суверенитет", 
+                    news: "Жаңалықлар",
+                    politics: "Сиясат",
+                    history: "Тарийх",
+                    sport: "Спорт",
+                    geography: "География",
+                    culture: "Культура",
+                    religion: "Религия"
+                },
+                descriptions: {
+                    sovereignty: "О суверенитете Каракалпакстана",
+                    news: "Последние новости",
+                    politics: "Политические обзоры", 
+                    history: "Исторические статьи",
+                    sport: "Спортивные новости",
+                    geography: "Географическая информация",
+                    culture: "Культура и традиции",
+                    religion: "Статьи о религии"
+                },
+                articles: {
+                    title: "Последние статьи",
+                    readMore: "Читать полностью",
+                    sovereignty: {
+                        title: "СУВЕРЕНИТЕТ КАРАКАЛПАКСТАНА",
+                        subtitle: "Исторические факты и правовые доказательства",
+                        excerpt: "14 декабря 1990 года стало самым важным событием в истории Каракалпакстана. 186 депутатов Верховного Совета Каракалпакстана единогласно приняли Декларацию о государственном суверенитете..."
+                    },
+                    coming: {
+                        title: "Новые статьи скоро...",
+                        excerpt: "Новые статьи и новости будут опубликованы в ближайшее время. Следите за обновлениями сайта!"
+                    }
+                },
+                adminPanel: "Админ панель",
+                categoryInDev: "Эта категория в разработке:",
+                languageChanged: "Язык изменён!",
+                meta: {
+                    date: "2025-08-11",
+                    author: "KarakalpakVoice.org",
+                    tags: "Суверенитет, История"
+                }
+            },
+            en: {
+                siteName: "Nevisimage Media Platform",
+                subtitle: "Detective news of Karakalpakstan",
+                nav: {
+                    sovereignty: "Sovereignty",
+                    news: "News",
+                    politics: "Politics", 
+                    history: "History",
+                    sport: "Sports",
+                    geography: "Geography",
+                    culture: "Culture",
+                    religion: "Religion"
+                },
+                descriptions: {
+                    sovereignty: "About sovereignty of Karakalpakstan",
+                    news: "Latest news",
+                    politics: "Political reviews",
+                    history: "Historical articles", 
+                    sport: "Sports news",
+                    geography: "Geographic information",
+                    culture: "Culture and traditions",
+                    religion: "Articles about religion"
+                },
+                articles: {
+                    title: "Latest Articles",
+                    readMore: "Read More",
+                    sovereignty: {
+                        title: "SOVEREIGNTY OF KARAKALPAKSTAN",
+                        subtitle: "Historical Facts and Legal Evidence",
+                        excerpt: "December 14, 1990 became the most important event in the history of Karakalpakstan. 186 deputies of the Supreme Council of Karakalpakstan unanimously adopted the Declaration on State Sovereignty..."
+                    },
+                    coming: {
+                        title: "New articles coming soon...",
+                        excerpt: "New articles and news will be published soon. Stay tuned for website updates!"
+                    }
+                },
+                adminPanel: "Admin Panel",
+                categoryInDev: "This category is in development:",
+                languageChanged: "Language changed!",
+                meta: {
+                    date: "2025-08-11", 
+                    author: "KarakalpakVoice.org",
+                    tags: "Sovereignty, History"
+                }
+            },
+            pl: {
+                siteName: "Platforma medialna Nevisimage",
+                subtitle: "Detektywistyczne wiadomości Karakałpakstanu",
+                nav: {
+                    sovereignty: "Suwerenność", 
+                    news: "Wiadomości",
+                    politics: "Polityka",
+                    history: "Historia",
+                    sport: "Sport",
+                    geography: "Geografia", 
+                    culture: "Kultura",
+                    religion: "Religia"
+                },
+                descriptions: {
+                    sovereignty: "O suwerenności Karakałpakstanu",
+                    news: "Najnowsze wiadomości",
+                    politics: "Przeglądy polityczne",
+                    history: "Artykuły historyczne",
+                    sport: "Wiadomości sportowe", 
+                    geography: "Informacje geograficzne",
+                    culture: "Kultura i tradycje",
+                    religion: "Artykuły o religii"
+                },
+                articles: {
+                    title: "Najnowsze Artykuły",
+                    readMore: "Czytaj więcej",
+                    sovereignty: {
+                        title: "SUWERENNOŚĆ KARAKAŁPAKSTANU",
+                        subtitle: "Fakty Historyczne i Dowody Prawne", 
+                        excerpt: "14 grudnia 1990 roku stało się najważniejszym wydarzeniem w historii Karakałpakstanu. 186 deputowanych Rady Najwyższej Karakałpakstanu jednogłośnie przyjęło Deklarację Suwerenności Państwowej..."
+                    },
+                    coming: {
+                        title: "Nowe artykuły wkrótce...",
+                        excerpt: "Nowe artykuły i wiadomości będą publikowane wkrótce. Śledź aktualizacje strony!"
+                    }
+                },
+                adminPanel: "Panel Administratora",
+                categoryInDev: "Ta kategoria jest w opracowaniu:",
+                languageChanged: "Język zmieniony!",
+                meta: {
+                    date: "2025-08-11",
+                    author: "KarakalpakVoice.org", 
+                    tags: "Suwerenność, Historia"
+                }
+            }
+        };
 
-        function showFullArticle() {
-            const article = `
-ҚАРАҚАЛПАҚСТАННЫҢ СУВЕРЕНИТЕТІ
-Ҳақыйқат тарийх ҳәм нызамшылық дәлиллер
+        // Ағымдағы тіл
+        let currentLanguage = 'kaa';
 
-СУВЕРЕНИТЕТ ТАРИЙХЫ
-
-1990-жылғы тарийхый мәўрит
-1990-жыл 14-декабрь Қарақалпақстан тарийхында ең әҳмийетли ўақыя болды. Қарақалпақстан Жоқарғы Кеңесиниң 186 депутаты бир аўыздан Мәмлекетлик суверенитет ҳаққындағы декларацияны қабыл етти.
-
-Үш тәреплеме келисим - 1990
-Сүўретте (шептен): Өзбекстан ССР Президенти И.А. Каримов, Қарақалпақстан ЖК Баслығы Даўлетбай Шамшетов ҳәм СССР Бас министри В.С. Павлов
-
-Бул тарийхый ушырасыўда СССР Бас министри В.С. Павлов Қарақалпақстанның Мәмлекетлик Суверенитети Декларациясын рәсмий түрде тән алды. Бул халықаралық дәрежедеги биринши рәсмий тән алыў болды.
-
-1990-ЖЫЛҒЫ ДЕКЛАРАЦИЯ ТЕКСТИ
-
-Декларацияның тийкарғы тексти:
-"Қарақалпақстан Автономиялы Совет Социалистлик Республикасының Жоқарғы Кеңеси мәмлекетлик суверенитет ҳаққында ДЕКЛАРАЦИЯ-ны қабыл етеди:
-
-1. Қарақалпақстан мәмлекетлик суверенитетин тастыйықлаў
-2. Қарақалпақстан халқының өзин-өзи басқарыў ҳуқықын тастыйықлаў
-3. Өз аймағында толық бийлик етиў ҳуқықын жәриялаў
-4. Халықаралық қатнасықларға кириў имканиятын нәзерде тутыў"
-
-ҚАРАҚАЛПАҚСТАН КОНСТИТУЦИЯСЫ
-
-Әмелдеги нызамлы статусы
-Өзбекстан Конституциясының 85-статьясы бойынша Қарақалпақстан елеге шекем "Суверен республика" болып есапланады.
-
-Конституциялық ҳуқықлар:
-- Өз конституциясына ийе болыў ҳуқықы
-- Мәмлекетлик тиллерди белгилеў ҳуқықы
-- Өз нызамшылығын қабыл етиў ҳуқықы
-
-2022-ЖЫЛҒЫ КОНСТИТУЦИЯЛЫҚ КРИЗИС
-
-Не болды?
-2022-жыл июльде Өзбекстан ҳүкимети Қарақалпақстанның "Суверен" статусын алып таслаўға ҳәрекет етти. Халық оған қарсы шықты.
-
-ХАЛЫҚАРАЛЫҚ ҲУҚЫҚ ТИЙКАРЛАРЫ
-
-БМШ Режеси - 1-статья
-"Барлық халықлардың тең ҳуқықлары ҳәм өзин-өзи басқарыўы"
-
-Халық аралық ҳуқық
-Қарақалпақстанның Суверен статусы Испаниядағы Баск провинциялары ямаса Финляндиядағы Аланд атаўлары сыяқлы халықаралық тәжирийбеге сәйкес келеди.
-            `;
+        // Тіл ауыстыру функциясы
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            updatePageContent();
             
-            alert(article);
+            // Белсенді тіл батырмасын өзгерту
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="changeLanguage('${lang}')"]`).classList.add('active');
+            
+            // Уведомление көрсету
+            showNotification(languages[lang].languageChanged);
+            
+            // LocalStorage-ға сақтау (егер қолжетімді болса)
+            try {
+                localStorage.setItem('selectedLanguage', lang);
+            } catch(e) {
+                // LocalStorage қолжетімсіз болса, ештеңе істемейміз
+                console.log('LocalStorage not available');
+            }
         }
-    </script>
-</body>
-</html>
+
+        // Бет мазмұнын жаңарту
+        function updatePageContent() {
+            const lang = languages[currentLanguage];
+            
+            // Жүктелу анимациясын қосу
+            document.body.classList.add('loading');
+            
+            setTimeout(() => {
+                // Сайт атауы мен subtitle
+                document.querySelector('h1').textContent = lang.siteName;
+                document.querySelector('.subtitle').textContent = lang.subtitle;
+                
+                // Навигация элементтері
+                const navItems = document.querySelectorAll('.nav-item');
+                const navKeys = Object.keys(lang.nav);
+                const descKeys = Object.keys(lang.descriptions);
+                
+                navItems.forEach((item, index) => {
+                    if (index < navKeys.length) {
+                        const navKey = navKeys[index];
+                        const descKey = descKeys[index];
+                        
+                        item.querySelector('h3').textContent = lang.nav[navKey];
+                        item.querySelector('p').textContent = lang.descriptions[descKey];
+                    }
+                });
+                
+                // Мақалалар бөлімі
+                document.querySelector('.articles-title').textContent = lang.articles.title;
+                
+                // Суверенитет мақаласы
+                const sovereigntyCard = document.querySelector('#sovereignty-article');
+                sovereigntyCard.querySelector('.article-title').textContent = lang.articles.sovereignty.title;
+                sovereigntyCard.querySelector('.article-excerpt').innerHTML = `
+                    <strong>${lang.articles.sovereignty.subtitle}</strong><br><br>
+                    ${lang.articles.sovereignty.excerpt}
+                    <br><br>
+                    <button onclick="showFullArticle()" style="background: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">${lang.articles.readMore}</button>
+                `;
+                
+                // Келесі мақала
+                const nextCard = sovereigntyCard.nextElementSibling;
+                nextCard.querySelector('.article-title').textContent = lang.articles.coming.title;
+                nextCard.querySelector('.article-excerpt').textContent = lang.articles.coming.excerpt;
+                
+                // Админ панель
+    
