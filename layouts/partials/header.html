@@ -1,0 +1,277 @@
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+        
+        <!-- Logo және Site Title -->
+        <div class="flex items-center space-x-4">
+            <a href="{{ .Site.BaseURL }}" class="flex items-center space-x-3 group">
+                <!-- QARA Logo -->
+                <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <span class="text-white font-bold text-lg">Q</span>
+                </div>
+                
+                <!-- Site Title -->
+                <div class="hidden sm:block">
+                    <h1 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
+                        QARA Voice
+                    </h1>
+                    <p class="text-xs text-gray-400">Қарақалпақстан даўысы</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+            
+            <!-- Main Menu -->
+            <div class="flex items-center space-x-6">
+                <a href="{{ .Site.BaseURL }}" 
+                   class="text-gray-300 hover:text-orange-400 px-3 py-2 text-sm font-medium transition-colors duration-200 {{ if .IsHome }}text-orange-400{{ end }}">
+                    🏠 Бас бет
+                </a>
+                
+                <a href="/news/" 
+                   class="text-gray-300 hover:text-orange-400 px-3 py-2 text-sm font-medium transition-colors duration-200 {{ if eq .Section "news" }}text-orange-400{{ end }}">
+                    📰 Мәлиметлер
+                </a>
+                
+                <a href="/culture/" 
+                   class="text-gray-300 hover:text-orange-400 px-3 py-2 text-sm font-medium transition-colors duration-200 {{ if eq .Section "culture" }}text-orange-400{{ end }}">
+                    🏛️ Мәденият
+                </a>
+                
+                <a href="/about/" 
+                   class="text-gray-300 hover:text-orange-400 px-3 py-2 text-sm font-medium transition-colors duration-200 {{ if eq .RelPermalink "/about/" }}text-orange-400{{ end }}">
+                    ℹ️ Биз туўралы 
+                </a>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="relative group">
+                <button class="flex items-center space-x-2 text-gray-300 hover:text-orange-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                        onclick="toggleLanguageMenu()" 
+                        id="language-button"
+                        aria-expanded="false"
+                        aria-haspopup="true">
+                    
+                    <!-- Current Language Flag & Name -->
+                    {{- if eq .Site.Language.Lang "ru" }}
+                    <span class="text-lg">🇷🇺</span>
+                    <span>Русский</span>
+                    {{- else if eq .Site.Language.Lang "kk" }}
+                    <span class="text-lg">🏳️</span>
+                    <span>Қарақалпақ</span>
+                    {{- else if eq .Site.Language.Lang "en" }}
+                    <span class="text-lg">🇺🇸</span>
+                    <span>English</span>
+                    {{- else if eq .Site.Language.Lang "pl" }}
+                    <span class="text-lg">🇵🇱</span>
+                    <span>Polski</span>
+                    {{- end }}
+                    
+                    <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+
+                <!-- Language Dropdown -->
+                <div id="language-menu" 
+                     class="hidden absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-xl border border-gray-700 z-50">
+                    
+                    <!-- Русский (дәслепки) -->
+                    <a href="/ru{{ .RelPermalink }}" 
+                       class="flex items-center space-x-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-orange-400 transition-colors duration-200 rounded-t-lg">
+                        <span class="text-lg">🇷🇺</span>
+                        <span>Русский</span>
+                        <span class="ml-auto text-xs text-orange-400">Основной</span>
+                    </a>
+                    
+                    <!-- Қарақалпақ -->
+                    <a href="/kk{{ .RelPermalink }}" 
+                       class="flex items-center space-x-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-orange-400 transition-colors duration-200">
+                        <span class="text-lg">🏳️</span>
+                        <span>Қарақалпақ</span>
+                    </a>
+                    
+                    <!-- English -->
+                    <a href="/en{{ .RelPermalink }}" 
+                       class="flex items-center space-x-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-orange-400 transition-colors duration-200">
+                        <span class="text-lg">🇺🇸</span>
+                        <span>English</span>
+                    </a>
+                    
+                    <!-- Polski -->
+                    <a href="/pl{{ .RelPermalink }}" 
+                       class="flex items-center space-x-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-orange-400 transition-colors duration-200 rounded-b-lg">
+                        <span class="text-lg">🇵🇱</span>
+                        <span>Polski</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Search Button -->
+            <button onclick="toggleSearch()" 
+                    class="text-gray-300 hover:text-orange-400 p-2 rounded-lg hover:bg-gray-800 transition-colors duration-200"
+                    aria-label="Излеў">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+            </button>
+
+            <!-- Theme Toggle -->
+            <button onclick="toggleTheme()" 
+                    class="text-gray-300 hover:text-orange-400 p-2 rounded-lg hover:bg-gray-800 transition-colors duration-200"
+                    aria-label="Тема алмастырыў">
+                <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center space-x-2">
+            
+            <!-- Mobile Theme Toggle -->
+            <button onclick="toggleTheme()" 
+                    class="text-gray-300 hover:text-orange-400 p-2 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                </svg>
+            </button>
+            
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileMenu()" 
+                    id="mobile-menu-button"
+                    class="text-gray-300 hover:text-orange-400 p-2 rounded-lg hover:bg-gray-800 transition-colors duration-200"
+                    aria-expanded="false"
+                    aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 bg-gray-800/95 backdrop-blur-sm rounded-lg mt-2 border border-gray-700">
+            
+            <!-- Mobile Navigation Links -->
+            <a href="{{ .Site.BaseURL }}" 
+               class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-orange-400 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                🏠 Бас бет
+            </a>
+            
+            <a href="/news/" 
+               class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-orange-400 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                📰 Мәлиметлер
+            </a>
+            
+            <a href="/culture/" 
+               class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-orange-400 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                🏛️ Мәденият
+            </a>
+            
+            <a href="/about/" 
+               class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-orange-400 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                ℹ️ Биз туўралы 
+            </a>
+
+            <!-- Mobile Language Selector -->
+            <div class="border-t border-gray-700 pt-2 mt-2">
+                <p class="px-3 py-1 text-xs font-medium text-gray-400 uppercase tracking-wider">Тил / Language</p>
+                
+                <a href="/ru{{ .RelPermalink }}" class="flex items-center space-x-3 px-3 py-2 text-sm text-gray-300 hover:text-orange-400 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                    <span>🇷🇺</span><span>Русский</span><span class="text-xs text-orange-400">Основной</span>
+                </a>
+                
+                <a href="/kk{{ .RelPermalink }}" class="flex items-center space-x-3 px-3 py-2 text-sm text-gray-300 hover:text-orange-400 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                    <span>🏳️</span><span>Қарақалпақ</span>
+                </a>
+                
+                <a href="/en{{ .RelPermalink }}" class="flex items-center space-x-3 px-3 py-2 text-sm text-gray-300 hover:text-orange-400 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                    <span>🇺🇸</span><span>English</span>
+                </a>
+                
+                <a href="/pl{{ .RelPermalink }}" class="flex items-center space-x-3 px-3 py-2 text-sm text-gray-300 hover:text-orange-400 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                    <span>🇵🇱</span><span>Polski</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Search Modal -->
+<div id="search-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-start justify-center pt-20">
+    <div class="bg-gray-800 rounded-lg shadow-xl border border-gray-700 w-full max-w-2xl mx-4">
+        <div class="p-4">
+            <div class="flex items-center space-x-3">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" 
+                       id="search-input"
+                       placeholder="Излеў..." 
+                       class="flex-1 bg-transparent text-white placeholder-gray-400 border-none outline-none text-lg">
+                <button onclick="toggleSearch()" class="text-gray-400 hover:text-white">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="search-results" class="mt-4 max-h-64 overflow-y-auto">
+                <!-- Search results will appear here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Language menu toggle
+    function toggleLanguageMenu() {
+        const menu = document.getElementById('language-menu');
+        const button = document.getElementById('language-button');
+        
+        menu.classList.toggle('hidden');
+        const isOpen = !menu.classList.contains('hidden');
+        button.setAttribute('aria-expanded', isOpen);
+    }
+
+    // Search modal toggle
+    function toggleSearch() {
+        const modal = document.getElementById('search-modal');
+        const input = document.getElementById('search-input');
+        
+        modal.classList.toggle('hidden');
+        
+        if (!modal.classList.contains('hidden')) {
+            input.focus();
+        }
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(event) {
+        const languageMenu = document.getElementById('language-menu');
+        const languageButton = document.getElementById('language-button');
+        const searchModal = document.getElementById('search-modal');
+        
+        // Close language menu
+        if (!languageButton.contains(event.target) && !languageMenu.contains(event.target)) {
+            languageMenu.classList.add('hidden');
+            languageButton.setAttribute('aria-expanded', 'false');
+        }
+        
+        // Close search modal
+        if (event.target === searchModal) {
+            searchModal.classList.add('hidden');
+        }
+    });
+
+    // Escape key to close modals
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            document.getElementById('language-menu').classList.add('hidden');
+            document.getElementById('search-modal').classList.add('hidden');
+            document.getElementById('language-button').setAttribute('aria-expanded', 'false');
+        }
+    });
+  </script>
