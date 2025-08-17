@@ -15,7 +15,7 @@ permissions:
   pages: write
   id-token: write
 
-# Бир уақытта тек бир деплой
+# Бир ўақытта тек бир деплой
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -43,14 +43,6 @@ jobs:
       - name: Pages орнатыў
         id: pages
         uses: actions/configure-pages@v5
-      - name: Node.js орнату
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - name: Dependencies орнатыў
-        run: |
-          [[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true
       - name: Hugo сайт қурыў
         env:
           HUGO_ENVIRONMENT: production
