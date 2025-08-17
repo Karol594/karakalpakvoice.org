@@ -1,0 +1,377 @@
+# ================================================
+# QARA VOICE - HUGO КОНФИГУРАЦИЯ ФАЙЛЫ
+# ================================================
+
+# Сайттың негизги орнатпалары
+baseURL = "https://karakalpakvoice.org"
+languageCode = "ru"
+defaultContentLanguage = "ru"
+title = "QARA Voice - Қарақалпақстан Даўысы"
+theme = ""
+
+# Hugo параметрлери
+timeZone = "Europe/Warsaw"
+enableRobotsTXT = true
+enableGitInfo = true
+enableEmoji = true
+hasCJKLanguage = false
+
+# Build орнатпалары
+disableKinds = ["taxonomy", "term"]
+paginate = 12
+paginatePath = "page"
+
+# Security орнатпалары
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+  [security.funcs]
+    getenv = ['^HUGO_', '^WC_']
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']
+
+# Markup орнатпалары
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github-dark"
+    lineNos = true
+    codeFences = true
+    guessSyntax = true
+
+# Media Types
+[mediaTypes]
+  [mediaTypes."application/manifest+json"]
+    suffixes = ["webmanifest"]
+  [mediaTypes."text/netlify"]
+    delimiter = ""
+    suffixes = [""]
+
+# Output Formats
+[outputFormats]
+  [outputFormats.WebAppManifest]
+    mediaType = "application/manifest+json"
+    rel = "manifest"
+    baseName = "site"
+    isPlainText = true
+    notAlternative = true
+  [outputFormats.Netlify]
+    mediaType = "text/netlify"
+    baseName = "_redirects"
+    isPlainText = true
+    notAlternative = true
+
+# Outputs
+[outputs]
+  home = ["HTML", "RSS", "WebAppManifest", "Netlify"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+# Тиллер конфигурациясы
+[languages]
+  # Русский (негизги тил)
+  [languages.ru]
+    languageCode = "ru"
+    languageName = "Русский"
+    title = "QARA Voice - Голос Каракалпакстана"
+    weight = 1
+    contentDir = "content/ru"
+    [languages.ru.params]
+      description = "Независимый медиа-портал Каракалпакстана"
+      keywords = ["Каракалпакстан", "медиа", "новости", "культура"]
+      flag = "🇷🇺"
+
+  # Қарақалпақ
+  [languages.kk]
+    languageCode = "kk"
+    languageName = "Қарақалпақ"
+    title = "QARA Voice - Қарақалпақстан Даўысы"
+    weight = 2
+    contentDir = "content/kk"
+    [languages.kk.params]
+      description = "Қарақалпақстанның ғәрезсиз мәлимлеме порталы"
+      keywords = ["Қарақалпақстан", "медиа", "мәлимет", "мәденият"]
+      flag = "🏳️"
+
+  # English
+  [languages.en]
+    languageCode = "en"
+    languageName = "English"
+    title = "QARA Voice - Voice of Karakalpakstan"
+    weight = 3
+    contentDir = "content/en"
+    [languages.en.params]
+      description = "Independent media portal of Karakalpakstan"
+      keywords = ["Karakalpakstan", "media", "news", "culture"]
+      flag = "🇺🇸"
+
+  # Polski
+  [languages.pl]
+    languageCode = "pl"
+    languageName = "Polski"
+    title = "QARA Voice - Głos Karakalpakstanu"
+    weight = 4
+    contentDir = "content/pl"
+    [languages.pl.params]
+      description = "Niezależny portal medialny Karakalpakstanu"
+      keywords = ["Karakalpakstan", "media", "wiadomości", "kultura"]
+      flag = "🇵🇱"
+
+# Меню конфигурациясы
+[menus]
+  # Русский меню
+  [[menus.main-ru]]
+    name = "Главная"
+    url = "/ru/"
+    weight = 10
+  [[menus.main-ru]]
+    name = "Новости"
+    url = "/ru/news/"
+    weight = 20
+  [[menus.main-ru]]
+    name = "Культура"
+    url = "/ru/culture/"
+    weight = 30
+  [[menus.main-ru]]
+    name = "О нас"
+    url = "/ru/about/"
+    weight = 40
+
+  # Қарақалпақ меню
+  [[menus.main-kk]]
+    name = "Бас бет"
+    url = "/kk/"
+    weight = 10
+  [[menus.main-kk]]
+    name = "Мәлиметлер"
+    url = "/kk/news/"
+    weight = 20
+  [[menus.main-kk]]
+    name = "Мәденият"
+    url = "/kk/culture/"
+    weight = 30
+  [[menus.main-kk]]
+    name = "Биз туўралы"
+    url = "/kk/about/"
+    weight = 40
+
+  # English меню
+  [[menus.main-en]]
+    name = "Home"
+    url = "/en/"
+    weight = 10
+  [[menus.main-en]]
+    name = "News"
+    url = "/en/news/"
+    weight = 20
+  [[menus.main-en]]
+    name = "Culture"
+    url = "/en/culture/"
+    weight = 30
+  [[menus.main-en]]
+    name = "About"
+    url = "/en/about/"
+    weight = 40
+
+  # Polski меню
+  [[menus.main-pl]]
+    name = "Strona główna"
+    url = "/pl/"
+    weight = 10
+  [[menus.main-pl]]
+    name = "Wiadomości"
+    url = "/pl/news/"
+    weight = 20
+  [[menus.main-pl]]
+    name = "Kultura"
+    url = "/pl/culture/"
+    weight = 30
+  [[menus.main-pl]]
+    name = "O nas"
+    url = "/pl/about/"
+    weight = 40
+
+# Параметрлер
+[params]
+  # Брендинг
+  brand = "QARA Voice"
+  brandFullName = "QARA Voice - Қарақалпақстан Даўысы"
+  description = "Қарақалпақстанның ғәрезсиз мәлимлеме порталы"
+  keywords = ["Қарақалпақстан", "медиа", "мәлимет", "мәденият", "тил"]
+  author = "QARA Voice Editorial Team"
+
+  # Social Media
+  twitter_site = "@Karakalpak45997"
+  twitter_creator = "@Karakalpak45997"
+  telegram_channel = "@kkvoice_org"
+  
+  # Images
+  og_image = "/images/og-default.png"
+  logo = "/images/logo.png"
+  favicon = "/favicon.ico"
+
+  # Features
+  enable_search = true
+  enable_comments = false
+  enable_analytics = true
+  enable_pwa = true
+  enable_offline = true
+
+  # Theme
+  primary_color = "#FF6B35"
+  secondary_color = "#F7931E"
+  accent_color = "#4CAF50"
+  
+  # Contact
+  email = "admin@karakalpakvoice.org"
+  contact_form = true
+
+  # PWA
+  [params.pwa]
+    name = "QARA Voice"
+    short_name = "QARA"
+    description = "Қарақалпақстанның мәлимлеме порталы"
+    theme_color = "#FF6B35"
+    background_color = "#1A1A1A"
+    display = "standalone"
+    orientation = "portrait"
+
+  # Analytics
+  [params.analytics]
+    google_analytics = ""
+    yandex_metrica = ""
+    enable_privacy_mode = true
+
+# Админ панель (Netlify CMS / Decap CMS)
+[params.admin]
+  enabled = true
+  backend = "git-gateway"
+  branch = "main"
+  
+  # CMS орнатпалары
+  [params.admin.cms]
+    name = "QARA Voice CMS"
+    description = "Контент басқарыў системасы"
+    logo_url = "/images/logo-admin.png"
+    
+  # Editor орнатпалары
+  [params.admin.editor]
+    preview = true
+    frame = true
+    
+  # Media орнатпалары
+  [params.admin.media]
+    folder = "static/images/uploads"
+    public_folder = "/images/uploads"
+    
+  # Collections
+  [params.admin.collections]
+    # Жаңалықлар
+    [[params.admin.collections.news]]
+      name = "news"
+      label = "Жаңалықлар / Новости"
+      folder = "content/news"
+      create = true
+      slug = "{{year}}-{{month}}-{{day}}-{{slug}}"
+      
+    # Мәденият  
+    [[params.admin.collections.culture]]
+      name = "culture"
+      label = "Мәденият / Культура"
+      folder = "content/culture"
+      create = true
+      slug = "{{slug}}"
+      
+    # Беттер
+    [[params.admin.collections.pages]]
+      name = "pages"
+      label = "Беттер / Страницы"
+      folder = "content"
+      create = false
+
+# Қәўипсизлик заголовкалары
+[params.security]
+  csp = "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; img-src 'self' data: https:; connect-src 'self' https:"
+  hsts = "max-age=31536000; includeSubDomains; preload"
+  frame_options = "DENY"
+  content_type_options = "nosniff"
+  xss_protection = "1; mode=block"
+
+# Сыртқы серверлер
+[params.external]
+  telegram_bot = "https://t.me/kkvoice_bot"
+  telegram_channel = "https://t.me/kkvoice_org"
+  email_contact = "admin@karakalpakvoice.org"
+  support_email = "support@karakalpakvoice.org"
+
+# SEO орнатпалары
+[params.seo]
+  enable_schema = true
+  enable_opengraph = true
+  enable_twitter_cards = true
+  enable_canonical = true
+  enable_robots = true
+
+# Performance орнатпалары
+[params.performance]
+  enable_minify = true
+  enable_gzip = true
+  enable_lazy_loading = true
+  enable_service_worker = true
+
+# Multilingual орнатпалары
+[params.i18n]
+  default_language = "ru"
+  enable_language_switcher = true
+  enable_auto_detect = false
+
+# Development орнатпалары
+[params.development]
+  enable_debug = false
+  enable_draft_preview = false
+  enable_future_posts = false
+
+# ================================================
+# ҚОСЫМША ФАЙЛЛАР КОНФИГУРАЦИЯСЫ
+# ================================================
+
+# Related content
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+  [[related.indices]]
+    name = "keywords"
+    weight = 100
+  [[related.indices]]
+    name = "tags"
+    weight = 80
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
+# Sitemap
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.8
+  filename = "sitemap.xml"
+
+# Privacy
+[privacy]
+  [privacy.googleAnalytics]
+    disable = false
+    respectDoNotTrack = true
+    anonymizeIP = true
+    useSessionStorage = true
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true
+
+# ================================================
+# QARA VOICE КОНФИГУРАЦИЯ СОҢЫ
+# ================================================
