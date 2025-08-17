@@ -1,0 +1,317 @@
+{{- define "main" -}}
+
+<article class="min-h-screen bg-gray-900">
+    
+    <!-- Article Header -->
+    <header class="relative py-20 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-orange-500/30 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-24 h-24 bg-yellow-500/30 rounded-full blur-xl"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Breadcrumb -->
+            <nav class="mb-8" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2 text-sm">
+                    <li>
+                        <a href="{{ .Site.BaseURL }}" class="text-gray-400 hover:text-orange-400 transition-colors duration-200">
+                            🏠 Бас бет
+                        </a>
+                    </li>
+                    <li class="text-gray-500">/</li>
+                    {{- if .Section }}
+                    <li>
+                        <a href="/{{ .Section }}/" class="text-gray-400 hover:text-orange-400 transition-colors duration-200 capitalize">
+                            {{- if eq .Section "news" }}📰 Мәлиметлер{{- end }}
+                            {{- if eq .Section "culture" }}🏛️ Мәденият{{- end }}
+                            {{- if eq .Section "language" }}📚 Тил{{- end }}
+                        </a>
+                    </li>
+                    <li class="text-gray-500">/</li>
+                    {{- end }}
+                    <li class="text-orange-400 font-medium">{{ .Title }}</li>
+                </ol>
+            </nav>
+            
+            <!-- Article Title -->
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                {{ .Title }}
+            </h1>
+            
+            <!-- Article Description -->
+            {{- if .Description }}
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                {{ .Description }}
+            </p>
+            {{- end }}
+            
+            <!-- Article Meta -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-gray-400">
+                <div class="flex items-center space-x-6">
+                    <!-- Author -->
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        <span>{{ .Params.author | default "QARA Voice" }}</span>
+                    </div>
+                    
+                    <!-- Date -->
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">
+                            {{ .Date.Format "02.01.2006" }}
+                        </time>
+                    </div>
+                    
+                    <!-- Reading Time -->
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>{{ .ReadingTime }} мин оқыў</span>
+                    </div>
+                </div>
+                
+                <!-- Share Buttons -->
+                <div class="flex items-center space-x-3">
+                    <span class="text-gray-500">Бөлисиң:</span>
+                    
+                    <!-- Telegram Share -->
+                    <a href="https://t.me/share/url?url={{ .Permalink }}&text={{ .Title }}" 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                       aria-label="Telegram менен бөлисиў">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- Twitter Share -->
+                    <a href="https://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}" 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                       aria-label="Twitter менен бөлисиў">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- Copy Link -->
+                    <button onclick="copyToClipboard('{{ .Permalink }}')" 
+                            class="text-gray-400 hover:text-green-400 transition-colors duration-200"
+                            aria-label="Силтемени көшириў">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Article Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                
+                <!-- Featured Image -->
+                {{- if .Params.featured_image }}
+                <div class="mb-8">
+                    <img src="{{ .Params.featured_image }}" 
+                         alt="{{ .Title }}"
+                         class="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-xl">
+                </div>
+                {{- end }}
+                
+                <!-- Article Body -->
+                <div class="prose prose-lg prose-invert max-w-none">
+                    <div class="text-gray-300 leading-relaxed">
+                        {{ .Content }}
+                    </div>
+                </div>
+                
+                <!-- Tags -->
+                {{- if .Params.tags }}
+                <div class="mt-12 pt-8 border-t border-gray-700">
+                    <h3 class="text-lg font-semibold text-white mb-4">Теглер:</h3>
+                    <div class="flex flex-wrap gap-2">
+                        {{- range .Params.tags }}
+                        <a href="/tags/{{ . | urlize }}/" 
+                           class="inline-block bg-gray-800 hover:bg-orange-500/20 text-gray-300 hover:text-orange-400 px-3 py-1 rounded-full text-sm transition-colors duration-200">
+                            #{{ . }}
+                        </a>
+                        {{- end }}
+                    </div>
+                </div>
+                {{- end }}
+                
+                <!-- Navigation -->
+                <nav class="mt-12 pt-8 border-t border-gray-700">
+                    <div class="flex justify-between items-center">
+                        {{- with .PrevInSection }}
+                        <a href="{{ .Permalink }}" 
+                           class="group flex items-center space-x-3 text-gray-400 hover:text-orange-400 transition-colors duration-200">
+                            <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                            <div>
+                                <div class="text-sm text-gray-500">Алдыңғы</div>
+                                <div class="font-medium">{{ .Title | truncate 50 }}</div>
+                            </div>
+                        </a>
+                        {{- else }}
+                        <div></div>
+                        {{- end }}
+                        
+                        {{- with .NextInSection }}
+                        <a href="{{ .Permalink }}" 
+                           class="group flex items-center space-x-3 text-gray-400 hover:text-orange-400 transition-colors duration-200 text-right">
+                            <div>
+                                <div class="text-sm text-gray-500">Келеси</div>
+                                <div class="font-medium">{{ .Title | truncate 50 }}</div>
+                            </div>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        {{- else }}
+                        <div></div>
+                        {{- end }}
+                    </div>
+                </nav>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="lg:col-span-1">
+                <div class="sticky top-24 space-y-8">
+                    
+                    <!-- Table of Contents -->
+                    {{- if .TableOfContents }}
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                            </svg>
+                            <span>Мазмуны</span>
+                        </h3>
+                        <div class="text-sm text-gray-300 space-y-1">
+                            {{ .TableOfContents }}
+                        </div>
+                    </div>
+                    {{- end }}
+                    
+                    <!-- Related Articles -->
+                    {{- $related := .Site.RegularPages.Related . | first 3 }}
+                    {{- if $related }}
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                            </svg>
+                            <span>Уқсас мақалалар</span>
+                        </h3>
+                        <div class="space-y-4">
+                            {{- range $related }}
+                            <a href="{{ .Permalink }}" 
+                               class="block group">
+                                <div class="text-sm text-gray-400 mb-1">{{ .Date.Format "02.01.2006" }}</div>
+                                <div class="text-gray-300 group-hover:text-orange-400 transition-colors duration-200 font-medium leading-snug">
+                                    {{ .Title | truncate 60 }}
+                                </div>
+                            </a>
+                            {{- end }}
+                        </div>
+                    </div>
+                    {{- end }}
+                    
+                    <!-- Share Widget -->
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                            </svg>
+                            <span>Бөлисиң</span>
+                        </h3>
+                        <div class="space-y-3">
+                            <a href="https://t.me/share/url?url={{ .Permalink }}&text={{ .Title }}" 
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors duration-200">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                                </svg>
+                                <span>Telegram</span>
+                            </a>
+                            
+                            <a href="https://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}" 
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors duration-200">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                                <span>Twitter</span>
+                            </a>
+                            
+                            <button onclick="copyToClipboard('{{ .Permalink }}')" 
+                                    class="flex items-center space-x-3 text-gray-300 hover:text-green-400 transition-colors duration-200 w-full text-left">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                </svg>
+                                <span>Силтемени көшириў</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</article>
+
+<script>
+    // Copy to clipboard function
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            // Show success notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            notification.textContent = 'Силтеме көширилди!';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        });
+    }
+
+    // Smooth scroll for TOC links
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('#TableOfContents a');
+        
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+{{- end -}}
