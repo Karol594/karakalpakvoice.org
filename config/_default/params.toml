@@ -1,0 +1,326 @@
+# ================================================
+# QARA KARAKALPAKVOICE.ORG - ПАРАМЕТРЛЕР КОНФИГУРАЦИЯСЫ
+# ================================================
+
+# 🏳️ QARA БРЕНД МАҒЛЫЎМАТЫ
+brand = "QARA"
+brandFullName = "QARA Voice - Қарақалпақ Даўысы"
+brandSlogan = "Қарақалпақстанның ғәрезсиз даўысы"
+brandDescription = "Цензурасыз жаңалықлар, мәденият пенен тарийхты сақлаў"
+
+# 🎨 ДИЗАЙН ПАРАМЕТРЛЕРИ
+[design]
+primaryColor = "#FF6B35"
+secondaryColor = "#F7931E"
+accentColor = "#4CAF50"
+backgroundColor = "#1A1A1A"
+textColor = "#FFFFFF"
+borderColor = "rgba(255, 107, 53, 0.3)"
+
+# Қарақалпақстан фон эффектлери
+enableKarakalpakBackground = true
+enableAnimations = true
+enableParallax = true
+enableGlow = true
+
+# 📱 PWA КОНФИГУРАЦИЯСЫ
+[pwa]
+enabled = true
+name = "QARA Voice"
+shortName = "QARA"
+description = "Қарақалпақстанның ғәрезсиз мәлимлеме порталы"
+themeColor = "#FF6B35"
+backgroundColor = "#1A1A1A"
+displayMode = "standalone"
+orientation = "portrait"
+startUrl = "/"
+scope = "/"
+
+# 🔍 SEO ПАРАМЕТРЛЕРИ
+[seo]
+enabled = true
+enableSchemaMarkup = true
+enableOpenGraph = true
+enableTwitterCards = true
+enableCanonical = true
+enableRobots = true
+
+# Meta теглери
+keywords = ["Қарақалпақстан", "жаңалықлар", "суверенитет", "мәденият", "тил", "QARA"]
+author = "QARA Voice Editorial Team"
+publisher = "QARA Voice"
+copyright = "© 2024 QARA Voice. Барлық ҳуқықтар қорғалған."
+
+# Social Meta
+ogImage = "/images/og-default.png"
+ogImageWidth = 1200
+ogImageHeight = 630
+twitterCard = "summary_large_image"
+twitterSite = "@Karakalpak45997"
+twitterCreator = "@Karakalpak45997"
+
+# 📧 БАЙЛАНЫС МАҒЛЫЎМАТЛАРЫ
+[contact]
+email = "admin@karakalpakvoice.org"
+phone = "+48 ххх ххх ххх"
+address = "Варшава, Польша"
+workingHours = "24/7"
+timezone = "Europe/Warsaw"
+
+# Резерв байланыс
+emergencyEmail = "secure@karakalpakvoice.org"
+telegramContact = "@kkvoice_admin"
+signalContact = "+48 123456789"
+
+# 📊 АНАЛИТИКА
+[analytics]
+enabled = true
+googleAnalytics = "G-XXXXXXXXXX"
+yandexMetrica = "XXXXXXXX"
+enablePrivacyMode = true
+cookieConsent = true
+anonymizeIP = true
+
+# 🛡️ ҚӘЎИПСИЗЛИК
+[security]
+enableCSP = true
+enableHSTS = true
+enableXSS = true
+enableClickjacking = false
+enableReferrer = "strict-origin-when-cross-origin"
+enableCORS = true
+
+# SSL/TLS
+enforceHTTPS = true
+tlsVersion = "1.3"
+hpkp = false # HPKP deprecated
+
+# 🤖 ТЕЛЕГРАМ БОТ ИНТЕГРАЦИЯСЫ
+[telegram]
+enabled = true
+botUsername = "@kkvoice_bot"
+channelUsername = "@kkvoice_org"
+groupUsername = "@kkvoice_group"
+enableAutoPost = true
+enableWebhook = true
+enableNotifications = true
+
+# 📱 QR КОД ПАРАМЕТРЛЕРИ
+[qr]
+enabled = true
+image = "/images/qr-code-site.png"
+title = "QR код арқалы тез кириў"
+description = "Мобил қурылмада сайтқа кириў ушын QR кодты сканерлең."
+size = "200x200"
+errorCorrection = "M"
+
+# Көп тилли QR текстлер
+[qr.text]
+kk = "QR код арқалы тез кириў"
+ru = "Быстрый доступ через QR код"
+en = "Quick access via QR code"
+pl = "Szybki dostęp przez kod QR"
+
+# 💾 КЭШЛЕЎ
+[cache]
+enableBrowserCache = true
+enableServiceWorker = true
+cacheStrategy = "stale-while-revalidate"
+maxAge = 86400
+staticMaxAge = 31536000
+
+# 🖼️ МЕДИА ОРНАТПАЛАРЫ
+[media]
+enableLazyLoading = true
+enableImageOptimization = true
+enableVideoPlayer = true
+enableAudioPlayer = true
+enableGallery = true
+enableLightbox = true
+
+# Сүўрет форматлары
+supportedImageFormats = ["webp", "avif", "jpg", "png", "svg"]
+defaultImageFormat = "webp"
+imageQuality = 85
+
+# 📝 МАЗМУН ОРНАТПАЛАРЫ
+[content]
+enableComments = false # Моментально отключаем комментарии
+enableSharing = true
+enableRelatedPosts = true
+enableBreadcrumbs = true
+enableTableOfContents = true
+enableReadingTime = true
+
+# Мақала параметрлери
+articlesPerPage = 10
+excerptLength = 150
+relatedPostsCount = 3
+
+# 🔍 ИЗЛЕЎ 
+[search]
+enabled = true
+provider = "fuse"
+indexContent = true
+threshold = 0.3
+maxResults = 20
+enableHighlight = true
+
+# 📬 ЖАЗЫЛЫЎ (Email Newsletter)
+[newsletter]
+enabled = false # Монетизация жоқ деп отключаем
+provider = "none"
+
+# 🌙 ҚАРАҢҒЫ/ЖАРЫҚ РЕЖИМ
+[theme]
+enableDarkMode = true
+enableAutoTheme = true
+defaultTheme = "dark"
+enableThemeToggle = true
+
+# 📱 МОБИЛ ОРНАТПАЛАРЫ
+[mobile]
+enableTouchGestures = true
+enableSwipeNavigation = true
+enablePullToRefresh = true
+enableOfflineMode = true
+
+# 🎵 АУДИО/ВИДЕО
+[multimedia]
+enableAutoplay = false
+enableLoop = false
+defaultVolume = 0.7
+enableFullscreen = true
+enablePictureInPicture = true
+
+# 🔐 КОНФИДЕНЦИАЛЛЫҚ
+[privacy]
+enableGDPR = true
+enableCookieConsent = true
+privacyPolicyURL = "/privacy"
+termsOfServiceURL = "/terms"
+enableDataExport = true
+enableDataDeletion = true
+enableAnonymization = true
+
+# ⚡ ӨНИМДАРЛЫҚ
+[performance]
+enableMinification = true
+enableCompression = true
+enableLazyLoading = true
+enablePrefetching = true
+enableServiceWorker = true
+
+# 📊 МОНИТОРИНГ
+[monitoring]
+enabled = true
+uptimeRobot = "YOUR_UPTIME_ROBOT_ID"
+statusPage = "https://status.karakalpakvoice.org"
+enableHealthCheck = true
+healthCheckInterval = 300 # 5 minutes
+
+# 🌍 CDN ОРНАТПАЛАРЫ
+[cdn]
+enabled = true
+provider = "cloudflare"
+enableImageResize = true
+enableWebP = true
+enableBrotli = true
+
+# 📰 RSS ОРНАТПАЛАРЫ
+[rss]
+enabled = true
+limit = 50
+enableFullContent = true
+enableImages = true
+enableEnclosures = true
+
+# 👤 АВТОРЛАР
+[authors]
+enableAuthorPages = true
+enableAuthorProfiles = true
+defaultAuthor = "QARA Voice Editorial Team"
+enableAuthorBio = true
+enableAuthorSocial = true
+
+# 📂 АРХИВ
+[archive]
+enableArchive = true
+archiveLayout = "yearly"
+enableTagCloud = true
+enableCategoryIndex = true
+
+# 🔄 API ОРНАТПАЛАРЫ
+[api]
+enabled = false # Пока не нужно
+version = "v1"
+baseURL = "https://api.karakalpakvoice.org"
+enableAuth = false
+rateLimit = 100
+
+# 🚀 ДЕПЛОЙ ОРНАТПАЛАРЫ
+[deploy]
+environment = "production"
+enableMinify = true
+enableCompress = true
+enableFingerprint = true
+
+# 📝 ЛОГЛАЎ
+[logging]
+enabled = true
+level = "info"
+enableRemoteLogging = false
+maxLogSize = "10MB"
+
+# 🔧 ДЕБАГ (тек development ушын)
+[debug]
+enabled = false
+showBuildInfo = false
+showTimings = false
+enableLiveReload = false
+
+# 🎯 ФУНКЦИОНАЛЬНОСТЬ
+[features]
+enablePWA = true
+enableOffline = true
+enableNotifications = false # Push уведомления отключаем
+enableGeolocation = false
+enableCamera = false
+enableMicrophone = false
+
+# 📺 СОЦИАЛ МЕДИА ВИДЖЕТЛЕРИ
+[social]
+enableWidgets = true
+enableShareButtons = true
+enableFollowButtons = true
+enableSocialLogin = false # Авторизация через соцсети отключена
+
+# 🎨 КАСТОМИЗАЦИЯ
+[customization]
+enableCustomCSS = true
+enableCustomJS = true
+customCSSFile = "/css/custom.css"
+customJSFile = "/js/custom.js"
+
+# 📧 EMAIL ОРНАТПАЛАРЫ
+[email]
+provider = "none" # Email сервис отключен
+enableNewsletter = false
+enableNotifications = false
+
+# 💰 МОНЕТИЗАЦИЯ (ТОЛЫҚ ӨШИРИЛГЕН)
+[monetization]
+enabled = false
+enableDonations = false
+enableSubscriptions = false
+enableAdvertising = false
+enableSponsorship = false
+enablePaywall = false
+
+# ================================================================
+# 🏳️ QARA VOICE - ҚАРАҚАЛПАҚСТАННЫҢ ДАЎЫСЫ
+# ================================================================
+# Версия: 1.0.0
+# Параметрлер файлы: params.toml
+# Монетизация толық өширилген - тек мәлимет портал
+# ================================================================
