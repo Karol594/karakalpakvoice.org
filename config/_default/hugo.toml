@@ -1,0 +1,450 @@
+# ================================================
+# QARA KARAKALPAKVOICE.ORG - HUGO КОНФИГУРАЦИЯСЫ
+# ================================================
+
+# Негизги сайт мәлимәтлери
+baseURL = "https://karakalpakvoice.org"
+title = "QARA Voice - Қарақалпақ Дауысы"
+description = "Қарақалпақстанның ғәрезсиз мәлиметлер порталы. Цензурасыз жаңалықлар, мәдений мийрас, тилди раўажландырыў."
+keywords = ["Қарақалпақстан", "жаңалықлар", "суверенитет", "мәденият", "тил", "QARA"]
+
+# Hugo орта системасы
+hugo_version = "0.120.0"
+theme = "qara-karakalpak"
+contentDir = "content"
+layoutDir = "layouts"
+staticDir = "static"
+archetypeDir = "archetypes"
+dataDir = "data"
+i18nDir = "i18n"
+
+# Дәслепки тил
+languageCode = "ru"
+defaultContentLanguage = "ru"
+defaultContentLanguageInSubdir = false
+
+# URL структурасы
+removePathAccents = true
+disablePathToLower = false
+pluralizeListTitles = false
+canonifyURLs = true
+relativeURLs = false
+
+# Мазмун басқарыўы
+paginate = 10
+paginatePath = "page"
+summaryLength = 100
+rssLimit = 20
+
+# Файл форматлары
+enableRobotsTXT = true
+enableGitInfo = true
+enableEmoji = true
+
+# Markdown рендерер
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.parser]
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+  
+  [markup.highlight]
+    style = "github"
+    lineNos = true
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ""
+    lineNumbersInTable = false
+    noClasses = false
+    tabWidth = 4
+
+# Көп тилли конфигурация
+[languages]
+  [languages.ru]
+    title = "QARA Voice - Каракалпакский Голос"
+    description = "Независимый информационный портал Каракалпакстана"
+    weight = 1
+    languageName = "Русский"
+    languageCode = "ru"
+    contentDir = "content/ru"
+    [languages.ru.params]
+      flag = "🇷🇺"
+      locale = "ru_RU"
+
+  [languages.kk]
+    title = "QARA Voice - Қарақалпақ Даўысы"
+    description = "Қарақалпақстанның ғәрезсиз мәлиметлер порталы"
+    weight = 2
+    languageName = "Қарақалпақша"
+    languageCode = "kk"
+    contentDir = "content/kk"
+    [languages.kk.params]
+      flag = "🏳️"
+      locale = "kk_KZ"
+
+  [languages.en]
+    title = "QARA Voice - Karakalpak Voice"
+    description = "Independent information portal of Karakalpakstan"
+    weight = 3
+    languageName = "English"
+    languageCode = "en"
+    contentDir = "content/en"
+    [languages.en.params]
+      flag = "🇺🇸"
+      locale = "en_US"
+
+  [languages.pl]
+    title = "QARA Voice - Głos Karakałpacki"
+    description = "Niezależny portal informacyjny Karakałpakstanu"
+    weight = 4
+    languageName = "Polski"
+    languageCode = "pl"
+    contentDir = "content/pl"
+    [languages.pl.params]
+      flag = "🇵🇱"
+      locale = "pl_PL"
+
+# Меню конфигурациясы
+[menu]
+  [[menu.main]]
+    name = "Басты"
+    pageRef = "/"
+    weight = 10
+
+  [[menu.main]]
+    name = "Жаңалықлар"
+    pageRef = "/news"
+    weight = 20
+
+  [[menu.main]]
+    name = "Суверенитет"
+    pageRef = "/sovereignty"
+    weight = 30
+
+  [[menu.main]]
+    name = "Тарийх"
+    pageRef = "/history"
+    weight = 40
+
+  [[menu.main]]
+    name = "Мәденият"
+    pageRef = "/culture"
+    weight = 50
+
+  [[menu.main]]
+    name = "География"
+    pageRef = "/geography"
+    weight = 60
+
+  [[menu.main]]
+    name = "Дин"
+    pageRef = "/religion"
+    weight = 70
+
+  [[menu.main]]
+    name = "Спорт"
+    pageRef = "/sport"
+    weight = 80
+
+  [[menu.footer]]
+    name = "Биз туўралы"
+    pageRef = "/about"
+    weight = 10
+
+  [[menu.footer]]
+    name = "Байланыс"
+    pageRef = "/contact"
+    weight = 20
+
+  [[menu.footer]]
+    name = "Қупыя"
+    pageRef = "/privacy"
+    weight = 30
+
+  [[menu.footer]]
+    name = "VPN Guide"
+    pageRef = "/vpn-guide"
+    weight = 40
+
+# Негизги параметрлер
+[params]
+  # QARA бренд мағлыўматы
+  brand = "QARA"
+  brandFullName = "QARA Voice - Қарақалпақ Даўысы"
+  logo = "/images/qara-logo-main.png"
+  favicon = "/favicon/favicon.ico"
+  
+  # Контент мағлыўматлары
+  author = "QARA Voice Editorial Team"
+  email = "admin@karakalpakvoice.org"
+  phone = "+48 123 456 789"
+  address = "Варшава, Польша"
+  
+  # Сайт имканиятлары
+  enableSearch = true
+  enableComments = true
+  enableSharing = true
+  enableDarkMode = true
+  enablePWA = true
+  enableAnalytics = true
+  
+  # QR код
+  qrCode = "/images/qr-code-site.png"
+  qrCodeText = "QR код арқалы тез кириў"
+  
+  # Дизайн параметрлери
+  primaryColor = "#FF6B35"
+  secondaryColor = "#F7931E"
+  backgroundColor = "#1A1A1A"
+  textColor = "#FFFFFF"
+  
+  # Қарақалпақстан фон эффектлери
+  enableKarakalpakBackground = true
+  enableAnimations = true
+  enableParallax = true
+  
+  # SEO параметрлери
+  enableSEO = true
+  enableSchemaMarkup = true
+  enableOpenGraph = true
+  enableTwitterCards = true
+  
+  # Қәўипсизлик
+  enableCSP = true
+  enableHTTPS = true
+  enableHSTS = true
+
+# Социалды тармақлар
+[params.social]
+  telegram = "https://t.me/kkvoice_org"
+  facebook = "https://www.facebook.com/share/1FifdzG23b/"
+  instagram = "https://www.instagram.com/karakalpakvoice_org/"
+  tiktok = "https://www.tiktok.com/@karakalpakvoice"
+  youtube = "https://youtube.com/@karakalpakvoice_org"
+  twitter = "https://x.com/Karakalpak45997"
+
+# Netlify CMS
+[params.cms]
+  enabled = true
+  branch = "main"
+  mediaFolder = "/static/uploads"
+  publicFolder = "/uploads"
+
+# PWA параметрлери
+[params.pwa]
+  name = "QARA Voice"
+  shortName = "QARA"
+  description = "Қарақалпақстанның ғәрезсиз порталы"
+  themeColor = "#FF6B35"
+  backgroundColor = "#1A1A1A"
+  displayMode = "standalone"
+  orientation = "portrait"
+
+# Аналитика
+[params.analytics]
+  googleAnalytics = "G-XXXXXXXXXX"
+  yandexMetrica = "XXXXXXXX"
+  enablePrivacyMode = true
+
+# Қәўипсизлик темалары
+[params.security]
+  enableCSP = true
+  enableCORS = true
+  enableClickjacking = false
+  enableXSS = true
+  enableReferrer = "strict-origin-when-cross-origin"
+
+# Телеграм бот интеграциясы
+[params.telegram]
+  botToken = "YOUR_BOT_TOKEN"
+  chatId = "YOUR_CHAT_ID"
+  enableAutoPost = true
+  enableWebhook = true
+
+# Басып шығарыў конфигурациясы
+[build]
+  command = "hugo --minify"
+  publish = "public"
+  environment = "production"
+
+# Минификация
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+
+# Сервер конфигурациясы
+[server]
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      X-Frame-Options = "DENY"
+      X-XSS-Protection = "1; mode=block"
+      X-Content-Type-Options = "nosniff"
+      Referrer-Policy = "strict-origin-when-cross-origin"
+      Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
+
+# Модульлер 
+[module]
+  [[module.imports]]
+    path = "github.com/qara-voice/qara-karakalpak-theme"
+  
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+
+# Таксономиялар
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  author = "authors"
+  region = "regions"
+  topic = "topics"
+
+# Мазмун түрлери
+[permalinks]
+  news = "/news/:year/:month/:slug/"
+  sovereignty = "/sovereignty/:slug/"
+  history = "/history/:slug/"
+  culture = "/culture/:slug/"
+  geography = "/geography/:slug/"
+  religion = "/religion/:slug/"
+  sport = "/sport/:slug/"
+  authors = "/authors/:slug/"
+  pages = "/:slug/"
+
+# Sitemap конфигурациясы
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+# Cloudflare конфигурациясы
+[params.cloudflare]
+  zone = "YOUR_ZONE_ID"
+  enableCaching = true
+  enableMinification = true
+  enableBrotli = true
+  enableHTTP2 = true
+  enableHTTP3 = true
+
+# Мониторинг
+[params.monitoring]
+  uptimeRobot = "YOUR_UPTIME_ROBOT_ID"
+  statusPage = "https://status.karakalpakvoice.org"
+  enableHealthCheck = true
+
+# Резерв көширме
+[params.backup]
+  enableAutoBackup = true
+  backupInterval = "daily"
+  retentionDays = 30
+  s3Bucket = "qara-voice-backups"
+
+# Жеке мағлыўматларды қорғаў (GDPR)
+[params.privacy]
+  enableGDPR = true
+  enableCookieConsent = true
+  privacyPolicyURL = "/privacy"
+  enableDataExport = true
+  enableDataDeletion = true
+
+# Қол жетимлилик
+[params.accessibility]
+  enableA11y = true
+  enableScreenReader = true
+  enableKeyboardNav = true
+  enableHighContrast = true
+  enableFontScaling = true
+
+# Өнимдарлық
+[params.performance]
+  enableLazyLoading = true
+  enableImageOptimization = true
+  enableCompression = true
+  enableCaching = true
+  enableCDN = true
+
+# Дурыс мағлыўматлар
+[params.rss]
+  enableFullContent = true
+  limit = 50
+  enableImages = true
+  enableEnclosures = true
+
+# Излеў
+[params.search]
+  enableFuse = true
+  enableLunr = false
+  indexContent = true
+  threshold = 0.3
+  maxResults = 20
+
+# Пикиррлер (болашақта)
+[params.comments]
+  enabled = false
+  provider = "disqus"
+  disqusShortname = "qara-voice"
+  enableModeration = true
+
+# Электрон пошта дизими
+[params.newsletter]
+  enabled = true
+  provider = "mailchimp"
+  apiKey = "YOUR_MAILCHIMP_API_KEY"
+  listId = "YOUR_LIST_ID"
+
+# Көп медиа
+[params.media]
+  enableVideoPlayer = true
+  enableAudioPlayer = true
+  enableGallery = true
+  enableLightbox = true
+  defaultVideoProvider = "youtube"
+
+# API конфигурациясы
+[params.api]
+  enabled = true
+  version = "v1"
+  baseURL = "https://api.karakalpakvoice.org"
+  enableCORS = true
+  enableAuth = false
+
+# Кэш конфигурациясы
+[params.cache]
+  enableBrowserCache = true
+  enableServiceWorker = true
+  cacheStrategy = "stale-while-revalidate"
+  maxAge = 86400
+
+# Логлаў
+[params.logging]
+  enableAccessLogs = true
+  enableErrorLogs = true
+  logLevel = "info"
+  enableRemoteLogging = true
+
+# ================================================================
+# 🏳️ QARA VOICE - ҚАРАҚАЛПАҚСТАННЫҢ ДАЎЫСЫ 
+# ================================================================
+# Версия: 1.0.0
+# Соңғы жаңалаў: 2025-08-18
+# Дизайнер: QARA Voice Team
+# ================================================================
