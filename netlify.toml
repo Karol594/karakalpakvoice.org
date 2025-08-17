@@ -1,0 +1,251 @@
+# ================================================
+# QARA VOICE - NETLIFY ДЕПЛОЙ КОНФИГУРАЦИЯСЫ
+# ================================================
+
+[build]
+  # Hugo build команды
+  publish = "public"
+  command = "hugo --gc --minify"
+  
+[build.environment]
+  # Hugo версиясы
+  HUGO_VERSION = "0.121.1"
+  
+  # Node.js версиясы
+  NODE_VERSION = "18"
+  
+  # Go версиясы
+  GO_VERSION = "1.21.5"
+  
+  # Production режим
+  HUGO_ENV = "production"
+  
+  # Hugo орнатпалары
+  HUGO_ENABLEGITINFO = "true"
+
+# Deploy preview орнатпалары
+[context.deploy-preview]
+  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+# Production орнатпалары
+[context.production]
+  command = "hugo --gc --minify"
+
+# Headers орнатпалары
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Қәўипсизлик заголовкалары
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    
+    # Cache Control
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Статик файллар ушын caching
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# PWA файллар
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# CMS файллар
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    
+# API endpoints үшин CORS
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "https://karakalpakvoice.org"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+
+# Redirects орнатпалары
+[[redirects]]
+  # Root to Russian (default language)
+  from = "/"
+  to = "/ru/"
+  status = 302
+  force = false
+
+# Language redirects
+[[redirects]]
+  from = "/news"
+  to = "/ru/news/"
+  status = 301
+
+[[redirects]]
+  from = "/culture"
+  to = "/ru/culture/"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/ru/about/"
+  status = 301
+
+# Legacy URLs
+[[redirects]]
+  from = "/posts/*"
+  to = "/ru/news/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/articles/*"
+  to = "/ru/news/:splat"
+  status = 301
+
+# Admin redirect
+[[redirects]]
+  from = "/admin"
+  to = "/admin/"
+  status = 301
+
+# API redirects
+[[redirects]]
+  from = "/api/v1/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# 404 handling for SPA behavior
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# Functions орнатпалары
+[functions]
+  directory = "netlify/functions"
+  
+# Edge Functions
+[edge_functions]
+  directory = "netlify/edge-functions"
+
+# Plugin орнатпалары
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+  
+  [plugins.inputs]
+    buildDir = "public"
+    exclude = [
+      "/admin/**",
+      "/404.html"
+    ]
+
+[[plugins]]
+  package = "netlify-plugin-hugo-cache-resources"
+  
+  [plugins.inputs]
+    debug = true
+
+# Form handling
+[forms]
+  # Contact forms
+  [[forms.contacts]]
+    name = "contact"
+    action = "/thank-you"
+    fields = ["name", "email", "message"]
+    
+# Dev орнатпалары
+[dev]
+  command = "hugo server --disableFastRender --navigateToChanged"
+  port = 1313
+  publish = "public"
+  autoLaunch = false
+
+# Processing орнатпалары
+[build.processing]
+  skip_processing = false
+  
+[build.processing.css]
+  bundle = true
+  minify = true
+  
+[build.processing.js]
+  bundle = true
+  minify = true
+  
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Template орнатпалары
+[template.environment]
+  HUGO_VERSION = "0.121.1"
+  NODE_VERSION = "18"
+
+# Bandwidth орнатпалары
+[build.limits]
+  # 30 минут build time
+  build_timeout = "30m"
+
+# Analytics
+[analytics]
+  provider = "netlify"
+
+# Identity орнатпалары (CMS ушын)
+[context.production.environment]
+  NETLIFY_SITE_ID = "your-site-id"
+
+# Build hooks
+[build.hooks]
+  # Scheduled builds (daily at 6 AM UTC)
+  scheduled = [
+    {
+      name = "daily-build",
+      cron = "0 6 * * *",
+      branch = "main"
+    }
+  ]
+
+# Split testing
+[split_testing]
+  # A/B testing орнатпалары
+  enabled = false
+
+# Large Media орнатпалары
+[lfs]
+  enabled = true
+
+# Redirects from _redirects file
+[redirects]
+  from = "/.well-known/security.txt"
+  to = "/security.txt"
+  status = 200
+
+# ================================================
+# QARA VOICE NETLIFY КОНФИГУРАЦИЯ СОҢЫ
+# ================================================
