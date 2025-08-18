@@ -7,7 +7,6 @@ baseURL = "https://karakalpakvoice.org"
 languageCode = "ru"
 defaultContentLanguage = "ru"
 title = "QARA Voice - Қарақалпақстан Даўысы"
-theme = ""
 
 # Hugo параметрлери
 timeZone = "Europe/Warsaw"
