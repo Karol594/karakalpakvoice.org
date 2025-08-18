@@ -1,8 +1,0 @@
-baseURL = "https://karol594.github.io/karakalpakvoice.org/"
-languageCode = "kaa"
-title = "Karakalpak Voice"
-defaultContentLanguage = "kaa"
-enableRobotsTXT = true
-
-[params]
-  description = "Karakalpak Voice - Хабар, Мәденийет, Интернет"
