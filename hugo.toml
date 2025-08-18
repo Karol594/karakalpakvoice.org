@@ -1,4 +1,4 @@
-# QARA VOICE - Қарапайым Hugo конфигурация
+# QARA VOICE - Ақырғы Hugo конфигурация
 baseURL = "https://karol594.github.io/karakalpakvoice.org/"
 languageCode = "kk"
 title = "QARA Voice - Қарақалпақстан Даўысы"
@@ -14,23 +14,31 @@ paginate = 10
     [markup.goldmark.renderer]
       unsafe = true
 
-# Тиллер
+# Көп тилди қоллаў
 [languages]
-  [languages.kk]
-    languageCode = "kk"
-    languageName = "Қарақалпақ"
-    title = "QARA Voice - Қарақалпақстан Даўысы"
-    weight = 1
-    [languages.kk.params]
-      description = "Қарақалпақстанның ғәрезсиз мәлимлеме порталы"
-
   [languages.ru]
     languageCode = "ru"
     languageName = "Русский"
     title = "QARA Voice - Голос Каракалпакстана"
+    weight = 1
+
+  [languages.kk]
+    languageCode = "kk"
+    languageName = "Қарақалпақ"
+    title = "QARA Voice - Қарақалпақстан Даўысы"
     weight = 2
-    [languages.ru.params]
-      description = "Независимый медиа-портал Каракалпакстана"
+
+  [languages.en]
+    languageCode = "en"
+    languageName = "English"
+    title = "QARA Voice - Voice of Karakalpakstan"
+    weight = 3
+
+  [languages.pl]
+    languageCode = "pl"
+    languageName = "Polski"
+    title = "QARA Voice - Głos Karakalpakstanu"
+    weight = 4
 
 # Меню
 [menus]
@@ -42,17 +50,8 @@ paginate = 10
     name = "Мәлиметлер"
     url = "/news/"
     weight = 20
-  [[menus.main]]
-    name = "Мәденият"
-    url = "/culture/"
-    weight = 30
-  [[menus.main]]
-    name = "Биз туўралы"
-    url = "/about/"
-    weight = 40
 
 # Параметрлер
 [params]
   brand = "QARA Voice"
   description = "Қарақалпақстанның ғәрезсиз мәлимлеме порталы"
-  author = "QARA Voice Team"
