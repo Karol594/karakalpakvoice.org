@@ -1,16 +1,8 @@
 baseURL = "https://karol594.github.io/karakalpakvoice.org/"
-languageCode = "kk"
-title = "QARA Voice - Қарақалпақстан Даўысы"
-
+languageCode = "kaa"
+title = "Karakalpak Voice"
+defaultContentLanguage = "kaa"
 enableRobotsTXT = true
-enableEmoji = true
-paginate = 10
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
 
 [params]
-  brand = "QARA Voice"
-  description = "Қарақалпақстанның ғәрезсиз мәлимлеме порталы"
+  description = "Karakalpak Voice - Хабар, Мәденийет, Интернет"
