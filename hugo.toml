@@ -1,57 +1,16 @@
-# QARA VOICE - Ақырғы Hugo конфигурация
 baseURL = "https://karol594.github.io/karakalpakvoice.org/"
 languageCode = "kk"
 title = "QARA Voice - Қарақалпақстан Даўысы"
 
-# Hugo параметрлери
 enableRobotsTXT = true
 enableEmoji = true
 paginate = 10
 
-# Markup орнатпалары
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
 
-# Көп тилди қоллаў
-[languages]
-  [languages.ru]
-    languageCode = "ru"
-    languageName = "Русский"
-    title = "QARA Voice - Голос Каракалпакстана"
-    weight = 1
-
-  [languages.kk]
-    languageCode = "kk"
-    languageName = "Қарақалпақ"
-    title = "QARA Voice - Қарақалпақстан Даўысы"
-    weight = 2
-
-  [languages.en]
-    languageCode = "en"
-    languageName = "English"
-    title = "QARA Voice - Voice of Karakalpakstan"
-    weight = 3
-
-  [languages.pl]
-    languageCode = "pl"
-    languageName = "Polski"
-    title = "QARA Voice - Głos Karakalpakstanu"
-    weight = 4
-
-# Меню
-[menus]
-  [[menus.main]]
-    name = "Бас бет"
-    url = "/"
-    weight = 10
-  [[menus.main]]
-    name = "Мәлиметлер"
-    url = "/news/"
-    weight = 20
-
-# Параметрлер
 [params]
   brand = "QARA Voice"
   description = "Қарақалпақстанның ғәрезсиз мәлимлеме порталы"
