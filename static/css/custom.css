@@ -1,0 +1,19 @@
+/* ================================================
+   QARA Brand – Custom Styles
+   ================================================ */
+:root {
+  --qara-orange: #FF6B35;
+  --qara-dark:   #1A1A1A;
+}
+
+body {
+  background: var(--qara-dark);
+  color: #fff;
+  font-family: 'KarLibay Sans', Arial, sans-serif;
+}
+
+a {
+  color: var(--qara-orange);
+  transition: .3s;
+}
+a:hover { opacity: .8; }
