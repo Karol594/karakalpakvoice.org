@@ -1,6 +1,0 @@
-# ================================================
-# QARA Voice – robots.txt
-# ================================================
-User-agent: *
-Allow: /
-Sitemap: https://karakalpakvoice.org/sitemap.xml
