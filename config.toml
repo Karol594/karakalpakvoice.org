@@ -1,7 +1,7 @@
 baseURL = "https://karakalpakvoice.org"
-languageCode = "kaa"
-title = "QARA Voice - Қарақалпақстан Даўысы"
-defaultContentLanguage = "kaa"
+languageCode = "ru"
+title = "QARA Voice - Голос Каракалпакстана"
+defaultContentLanguage = "ru"
 enableRobotsTXT = true
 
 [markup]
@@ -10,4 +10,4 @@ enableRobotsTXT = true
       unsafe = true
 
 [params]
-  description = "Қарақалпақстанның ғәрезсиз мәлимлеме порталы"
+  description = "Независимый медиа-портал Каракалпакстана"
