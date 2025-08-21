@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="infinity">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - KarakalpakVoice.org</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="admin-body">
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="infinity-symbol">∞</div>
+                <h1>KarakalpakVoice.org</h1>
+                <p>Админ-панель</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Логин:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn-primary login-btn">
+                    <span>Войти</span>
+                    <div class="loading-spinner" style="display: none;"></div>
+                </button>
+            </form>
+            
+            <div id="loginError" class="login-error" style="display: none;">
+                Неправильный логин или пароль!
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel" style="display: none;">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-nav">
+                <div class="admin-logo">
+                    <div class="infinity-symbol">∞</div>
+                    <span>KarakalpakVoice Admin</span>
+                </div>
+                
+                <nav class="admin-menu">
+                    <button class="menu-btn active" data-section="dashboard">📊 Панель</button>
+                    <button class="menu-btn" data-section="articles">📝 Статьи</button>
+                    <button class="menu-btn" data-section="media">🖼️ Медиа</button>
+                    <button class="menu-btn" data-section="settings">⚙️ Настройки</button>
+                </nav>
+                
+                <button id="logoutBtn" class="logout-btn">🚪 Выйти</button>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboardSection" class="admin-section active">
+            <div class="admin-container">
+                <h2>📊 Панель управления</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📰</div>
+                        <div class="stat-info">
+                            <h3 id="totalArticles">0</h3>
+                            <p>Всего статей</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <h3 id="publishedArticles">0</h3>
+                            <p>Опубликовано</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-info">
+                            <h3 id="draftArticles">0</h3>
+                            <p>Черновики</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🖼️</div>
+                        <div class="stat-info">
+                            <h3 id="totalMedia">0</h3>
+                            <p>Медиафайлы</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <h3>Последняя активность</h3>
+                    <div id="activityLog" class="activity-log">
+                        <!-- Activity items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Section -->
+        <section id="articlesSection" class="admin-section">
+            <div class="admin-container">
+                <div class="section-header">
+                    <h2>📝 Управление статьями</h2>
+                    <button id="newArticleBtn" class="btn-primary">+ Новая статья</button>
+                </div>
+                
+                <div class="articles-filter">
+                    <select id="categoryFilter">
+                        <option value="all">Все категории</option>
+                        <option value="sovereignty">Суверенитет</option>
+                        <option value="news">Новости</option>
+                        <option value="politics">Политика</option>
+                        <option value="history">История</option>
+                        <option value="sports">Спорт</option>
+                        <option value="geography">География</option>
+                        <option value="culture">Традиции</option>
+                        <option value="religion">Религия</option>
+                    </select>
+                    
+                    <select id="statusFilter">
+                        <option value="all">Все статусы</option>
+                        <option value="published">Опубликовано</option>
+                        <option value="draft">Черновик</option>
+                    </select>
+                    
+                    <input type="search" id="searchArticles" placeholder="Поиск статей...">
+                </div>
+                
+                <div class="articles-table">
+                    <table id="articlesTable">
+                        <thead>
+                            <tr>
+                                <th>Заголовок</th>
+                                <th>Категория</th>
+                                <th>Статус</th>
+                                <th>Дата</th>
+                                <th>Языки</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="articlesTableBody">
+                            <!-- Articles will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Section -->
+        <section id="mediaSection" class="admin-section">
+            <div class="admin-container">
+                <div class="section-header">
+                    <h2>🖼️ Медиафайлы</h2>
+                    <button id="uploadMediaBtn" class="btn-primary">📁 Загрузить файл</button>
+                </div>
+                
+                <div class="media-grid" id="mediaGrid">
+                    <!-- Media files will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settingsSection" class="admin-section">
+            <div class="admin-container">
+                <h2>⚙️ Настройки</h2>
+                
+                <div class="settings-tabs">
+                    <button class="tab-btn active" data-tab="general">Общие</button>
+                    <button class="tab-btn" data-tab="security">Безопасность</button>
+                    <button class="tab-btn" data-tab="backup">Резервные копии</button>
+                </div>
+                
+                <div class="settings-content">
+                    <div id="generalTab" class="tab-content active">
+                        <form id="generalSettings" class="settings-form">
+                            <div class="form-group">
+                                <label>Название сайта:</label>
+                                <input type="text" value="KarakalpakVoice.org" readonly>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Email администратора:</label>
+                                <input type="email" value="admin@karakalpakvoice.org">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Локация:</label>
+                                <input type="text" value="Варшава, Польша">
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">Сохранить</button>
+                        </form>
+                    </div>
+                    
+                    <div id="securityTab" class="tab-content">
+                        <form id="securitySettings" class="settings-form">
+                            <div class="form-group">
+                                <label>Изменить пароль:</label>
+                                <input type="password" placeholder="Новый пароль">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Подтвердить пароль:</label>
+                                <input type="password" placeholder="Подтвердите пароль">
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">Обновить пароль</button>
+                        </form>
+                    </div>
+                    
+                    <div id="backupTab" class="tab-content">
+                        <div class="backup-section">
+                            <h3>Создать резервную копию</h3>
+                            <p>Последняя копия: 25 августа 2025, 14:30</p>
+                            <button class="btn-primary">📦 Создать копию</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Article Editor Modal -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="modalTitle">Новая статья</h2>
+                <button class="modal-close" onclick="closeArticleModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="articleForm" class="article-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Категория:</label>
+                            <select id="articleCategory" required>
+                                <option value="">Выберите категорию</option>
+                                <option value="sovereignty">Суверенитет</option>
+                                <option value="news">Новости</option>
+                                <option value="politics">Политика</option>
+                                <option value="history">История</option>
+                                <option value="sports">Спорт</option>
+                                <option value="geography">География</option>
+                                <option value="culture">Традиции</option>
+                                <option value="religion">Религия</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Статус:</label>
+                            <select id="articleStatus">
+                                <option value="draft">Черновик</option>
+                                <option value="published">Опубликовать</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Language Tabs -->
+                    <div class="language-tabs">
+                        <button type="button" class="lang-tab active" data-lang="ru">Русский</button>
+                        <button type="button" class="lang-tab" data-lang="kaa">Қарақалпақ</button>
+                        <button type="button" class="lang-tab" data-lang="en">English</button>
+                        <button type="button" class="lang-tab" data-lang="pl">Polski</button>
+                    </div>
+                    
+                    <!-- Russian Content -->
+                    <div class="lang-content active" data-lang="ru">
+                        <div class="form-group">
+                            <label>Заголовок (Русский):</label>
+                            <input type="text" id="titleRu" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Краткое описание:</label>
+                            <textarea id="excerptRu" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Содержание:</label>
+                            <textarea id="contentRu" rows="15" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Karakalpak Content -->
+                    <div class="lang-content" data-lang="kaa">
+                        <div class="form-group">
+                            <label>Заголовок (Қарақалпақ):</label>
+                            <input type="text" id="titleKaa">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Қысқаша мазмуны:</label>
+                            <textarea id="excerptKaa" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Толық мазмуны:</label>
+                            <textarea id="contentKaa" rows="15"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- English Content -->
+                    <div class="lang-content" data-lang="en">
+                        <div class="form-group">
+                            <label>Title (English):</label>
+                            <input type="text" id="titleEn">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Excerpt:</label>
+                            <textarea id="excerptEn" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Content:</label>
+                            <textarea id="contentEn" rows="15"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Polish Content -->
+                    <div class="lang-content" data-lang="pl">
+                        <div class="form-group">
+                            <label>Tytuł (Polski):</label>
+                            <input type="text" id="titlePl">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Streszczenie:</label>
+                            <textarea id="excerptPl" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Treść:</label>
+                            <textarea id="contentPl" rows="15"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Изображение:</label>
+                        <input type="file" id="articleImage" accept="image/*">
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" onclick="closeArticleModal()" class="btn-secondary">Отмена</button>
+                        <button type="submit" class="btn-primary">Сохранить статью</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Media Upload Modal -->
+    <div id="mediaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Загрузить медиафайл</h2>
+                <button class="modal-close" onclick="closeMediaModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <p>Перетащите файлы сюда или <button type="button" id="selectFiles">выберите файлы</button></p>
+                    <input type="file" id="mediaFiles" multiple accept="image/*,video/*,audio/*,.pdf" style="display: none;">
+                </div>
+                
+                <div id="uploadProgress" class="upload-progress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <p class="progress-text">Загрузка: 0%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/translations.js"></script>
+    <script src="../js/admin.js"></script>
+
+    <style>
+        /* Admin Panel Styles */
+        .admin-body {
+            margin: 0;
+            font-family: var(--font-primary);
+            background: var(--light);
+        }
+
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--infinity-gradient);
+        }
+
+        .login-container {
+            background: var(--karakalpak-white);
+            padding: var(--spacing-3xl);
+            border-radius: 15px;
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            min-width: 400px;
+        }
+
+        .login-header {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .login-header .infinity-symbol {
+            font-size: var(--font-size-4xl);
+            color: var(--karakalpak-blue);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .login-form {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: var(--font-size-base);
+            transition: border-color var(--transition-base);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--karakalpak-blue);
+        }
+
+        .login-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+
+        .login-error {
+            color: #dc3545;
+            background: rgba(220, 53, 69, 0.1);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-top: var(--spacing-md);
+        }
+
+        .admin-panel {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-header {
+            background: var(--karakalpak-white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: var(--spacing-md) 0;
+        }
+
+        .admin-nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            font-weight: 600;
+            color: var(--karakalpak-blue);
+        }
+
+        .admin-menu {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-weight: 500;
+        }
+
+        .menu-btn:hover,
+        .menu-btn.active {
+            background: var(--karakalpak-blue);
+            color: var(--karakalpak-white);
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .admin-section {
+            display: none;
+            flex: 1;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .stat-card {
+            background: var(--karakalpak-white);
+            padding: var(--spacing-xl);
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .stat-icon {
+            font-size: var(--font-size-3xl);
+        }
+
+        .stat-info h3 {
+            font-size: var(--font-size-2xl);
+            margin: 0;
+            color: var(--karakalpak-blue);
+        }
+
+        .stat-info p {
+            margin: 0;
+            color: var(--gray-600);
+        }
+
+        .articles-filter {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .articles-table {
+            background: var(--karakalpak-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .articles-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .articles-table th,
+        .articles-table td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .articles-table th {
+            background: var(--light);
+            font-weight: 600;
+        }
+
+        .language-tabs {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .lang-tab {
+            background: none;
+            border: none;
+            padding: var(--spacing-md) var(--spacing-lg);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all var(--transition-base);
+        }
+
+        .lang-tab.active {
+            border-bottom-color: var(--karakalpak-blue);
+            color: var(--karakalpak-blue);
+            font-weight: 600;
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: flex-end;
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .modal-content.large {
+            max-width: 1000px;
+            width: 95%;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--gray-300);
+            border-radius: 10px;
+            padding: var(--spacing-3xl);
+            text-align: center;
+            transition: border-color var(--transition-base);
+        }
+
+        .upload-area:hover {
+            border-color: var(--karakalpak-blue);
+        }
+
+        .upload-icon {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .settings-tabs {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: var(--spacing-md) var(--spacing-lg);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all var(--transition-base);
+        }
+
+        .tab-btn.active {
+            border-bottom-color: var(--karakalpak-blue);
+            color: var(--karakalpak-blue);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .settings-form {
+            max-width: 500px;
+        }
+
+        @media (max-width: 768px) {
+            .admin-nav {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+            
+            .admin-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .articles-filter {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .language-tabs {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</body>
+</html>
