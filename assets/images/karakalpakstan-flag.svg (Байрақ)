@@ -1,0 +1,22 @@
+<svg width="150" height="100" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue stripe -->
+  <rect x="0" y="0" width="150" height="33.33" fill="#0066CC"/>
+  
+  <!-- Yellow stripe -->
+  <rect x="0" y="33.33" width="150" height="33.33" fill="#FFD700"/>
+  
+  <!-- Green stripe -->
+  <rect x="0" y="66.66" width="150" height="33.33" fill="#009639"/>
+  
+  <!-- Crescent and stars (simplified) -->
+  <g fill="#FFD700">
+    <!-- Crescent -->
+    <path d="M 20 15 C 15 20, 15 25, 20 30 C 18 28, 17 22, 18 17 C 18.5 15.5, 19 15, 20 15"/>
+    <!-- Stars -->
+    <circle cx="30" cy="12" r="1"/>
+    <circle cx="33" cy="15" r="1"/>
+    <circle cx="35" cy="19" r="1"/>
+    <circle cx="33" cy="23" r="1"/>
+    <circle cx="30" cy="26" r="1"/>
+  </g>
+</svg>
