@@ -1,165 +1,960 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="infinity">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KarakalpakVoice.org - Ғәрезсиз Қарақалпақстан мәлимлеме платформасы</title>
-    <meta name="description" content="Voice of Karakalpakstan - Қарақалпақстан халқының еркин мағлыўматлар алыў платформасы">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
-</head>
-<body>
-    <!-- Домалақ курсор -->
-    <div class="circle-cursor" id="circleCursor">
-        <div class="circle-flag"></div>
-    </div>
+    <title>KarakalpakVoice.org - Голос Каракалпакстана | Независимая платформа</title>
+    <meta name="description" content="Независимая информационная платформа Каракалпакстана. Донести голос народа до мирового сообщества без цензуры. Суверенитет, правда, справедливость.">
+    <meta name="keywords" content="Каракалпакстан, суверенитет, независимость, права человека, Нукус, Каракалпакстан, голос народа">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="KarakalpakVoice.org">
+    <link rel="canonical" href="https://karakalpakvoice.org/">
     
+    <!-- SECURITY & ANTI-BLOCKING -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https:; img-src 'self' data: https:; font-src 'self' data: https: fonts.googleapis.com fonts.gstatic.com;">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <!-- ICONS & FAVICON -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.svg">
+    <link rel="manifest" href="assets/manifest.json">
+    <meta name="theme-color" content="#0066CC">
+    <meta name="msapplication-TileColor" content="#0066CC">
+    
+    <!-- OPEN GRAPH (Social Media) -->
+    <meta property="og:title" content="KarakalpakVoice.org - Голос Каракалпакстана">
+    <meta property="og:description" content="Независимая информационная платформа. Донести голос народа Каракалпакстана до мирового сообщества без цензуры.">
+    <meta property="og:image" content="https://karakalpakvoice.org/assets/images/logo.svg">
+    <meta property="og:url" content="https://karakalpakvoice.org">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KarakalpakVoice.org">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="kaa_UZ">
+    <meta property="og:locale:alternate" content="pl_PL">
+    
+    <!-- TWITTER CARDS -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KarakalpakVoice.org - Голос Каракалпакстана">
+    <meta name="twitter:description" content="Независимая информационная платформа без цензуры">
+    <meta name="twitter:image" content="https://karakalpakvoice.org/assets/images/logo.svg">
+    <meta name="twitter:site" content="@KarakalpakVoice">
+    
+    <!-- LANGUAGE ALTERNATIVES -->
+    <link rel="alternate" hreflang="ru" href="https://karakalpakvoice.org/">
+    <link rel="alternate" hreflang="kaa" href="https://karakalpakvoice.org/?lang=kaa">
+    <link rel="alternate" hreflang="en" href="https://karakalpakvoice.org/?lang=en">
+    <link rel="alternate" hreflang="pl" href="https://karakalpakvoice.org/?lang=pl">
+    <link rel="alternate" hreflang="x-default" href="https://karakalpakvoice.org/">
+    
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- STRUCTURED DATA (SEO) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "KarakalpakVoice.org",
+        "description": "Независимая информационная платформа Каракалпакстана",
+        "url": "https://karakalpakvoice.org",
+        "logo": "https://karakalpakvoice.org/assets/images/logo.svg",
+        "sameAs": [
+            "https://t.me/karakalpakvoice",
+            "https://twitter.com/karakalpakvoice"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "admin@karakalpakvoice.org",
+            "contactType": "Customer Service"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Warsaw",
+            "addressCountry": "Poland"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- SECURITY WARNING (Hidden from normal users) -->
+    <noscript>
+        <div style="background: #dc3545; color: white; padding: 10px; text-align: center; font-weight: bold;">
+            ⚠️ Для полной безопасности включите JavaScript
+        </div>
+    </noscript>
+
+    <!-- Infinity Design Background -->
+    <div class="infinity-bg">
+        <div class="infinity-particles"></div>
+        <!-- Hero Background Integration -->
+        <div class="hero-background" style="background-image: url('assets/images/hero-bg.svg'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; width: 100%; height: 100vh; opacity: 0.3; z-index: -1;"></div>
+    </div>
+
+    <!-- Anti-Bot & Security Layer -->
+    <div id="securityCheck" style="display: none;">
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: flex; align-items: center; justify-content: center; color: white;">
+            <div style="text-align: center;">
+                <h2>🔐 Security Verification</h2>
+                <p>Проверка безопасности...</p>
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="ru" title="Русский">RU</button>
+            <button class="lang-btn" data-lang="kaa" title="Қарақалпақ тили">🏳️ QAA</button>
+            <button class="lang-btn" data-lang="en" title="English">EN</button>
+            <button class="lang-btn" data-lang="pl" title="Polski">PL</button>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon">🎤</div>
-                <div class="logo-text">KarakalpakVoice</div>
-            </div>
-            
-            <div class="header-controls">
-                <!-- Language Selector -->
-                <div class="language-selector">
-                    <select id="languageSelect">
-                        <option value="ru">🇷🇺 Русский</option>
-                        <option value="kaa">🏳️ Қарақалпақша</option>
-                        <option value="en">🇬🇧 English</option>
-                        <option value="pl">🇵🇱 Polski</option>
-                    </select>
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo with Flag Colors -->
+                <div class="logo">
+                    <a href="index.html" title="KarakalpakVoice.org - Главная">
+                        <div class="logo-container">
+                            <img src="assets/images/logo.svg" alt="KarakalpakVoice.org - Голос Каракалпакстана" class="logo-image">
+                            <div class="logo-text">
+                                <h1>KarakalpakVoice.org</h1>
+                                <p data-translate="site_subtitle">Независимая информационная платформа</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                
-                <!-- Mobile Menu Toggle -->
-                <div class="menu-toggle" id="menuToggle">
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" aria-label="Открыть меню" title="Меню">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
+
+                <!-- Navigation -->
+                <nav class="nav" role="navigation" aria-label="Основная навигация">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="active" data-translate="nav_home">Главная</a></li>
+                        <li><a href="pages/sovereignty.html" data-translate="nav_sovereignty">Суверенитет</a></li>
+                        <li><a href="pages/news.html" data-translate="nav_news">Новости</a></li>
+                        <li><a href="pages/politics.html" data-translate="nav_politics">Политика</a></li>
+                        <li><a href="pages/history.html" data-translate="nav_history">История</a></li>
+                        <li><a href="pages/sports.html" data-translate="nav_sports">Спорт</a></li>
+                        <li><a href="pages/geography.html" data-translate="nav_geography">География</a></li>
+                        <li><a href="pages/traditions.html" data-translate="nav_culture">Традиции</a></li>
+                        <li><a href="pages/religion.html" data-translate="nav_religion">Религия</a></li>
+                        <li><a href="pages/about.html" data-translate="nav_about">О нас</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
-    
-    <!-- Mobile Navigation -->
-    <nav class="mobile-nav" id="mobileNav">
-        <ul>
-            <li><a href="index.html">Бас бет</a></li>
-            <li><a href="pages/sovereignty.html">Суверенитет</a></li>
-            <li><a href="pages/news.html">Жаңалықлар</a></li>
-            <li><a href="pages/politics.html">Сиясат</a></li>
-            <li><a href="pages/history.html">Тарийх</a></li>
-            <li><a href="pages/sports.html">Спорт</a></li>
-            <li><a href="pages/geography.html">География</a></li>
-            <li><a href="pages/traditions.html">Дәстүр</a></li>
-            <li><a href="pages/religion.html">Дин</a></li>
-        </ul>
-    </nav>
-    
+
     <!-- Main Content -->
-    <main class="container">
+    <main class="main" role="main">
         <!-- Hero Section -->
-        <section class="hero">
-            <h1 class="hero-title">KarakalpakVoice</h1>
-            <p class="hero-subtitle">
-                Voice of Karakalpakstan — бул Қарақалпақстан халқының еркин мағлыўматлар алыў ҳәм өз пикирлерин билдириў мүмкиншилигин беретуғын платформа.
-            </p>
-        </section>
-        
-        <!-- Main Purpose Section -->
-        <section class="content-section">
-            <h2>Сайттың тийкарғы махсети:</h2>
-            <ul>
-                <li>Цензурасыз жаңалықлар тарқатыў</li>
-                <li>Ҳуқықты қорғаў, мәдений мийрас ҳәм тилди сақлаў</li>
-                <li>Рус дәслепки тил, Қарақалпақ, Англичан, Поляк тиллеринде қоллап-қуўатлаў</li>
-            </ul>
-            <p>
-                Бул сайт Қарақалпақстан халқының даўысын дүньяға жеткериў ушын жаратылған. Биз халқымыздың тарийхын, мәдениятын, ҳақыйқатын ҳәм келешек әрманларын дүньяға жеткериўге ҳәрекет етемиз. Ҳәр бир мақала, жаңалық ҳәм материал арқалы биз Қарақалпақстан ҳаққында ҳақыйқый мағлыўматларды тарқатамыз ҳәм халқымыз даўысын күшейтемиз.
-            </p>
-        </section>
-        
-        <!-- Mission Section -->
-        <section class="content-section">
-            <h2>БИЗИҢ МИССИЯМЫЗ:</h2>
-            <ul>
-                <li>Қарақалпақ халқының даўысын әлемге жеткизиў</li>
-                <li>Цензурасыз ҳәм объективли мәлимлеме бериў</li>
-                <li>Мәдений мийрас пенен тилди сақлаў</li>
-                <li>Халықтың ҳуқықларын қорғаў</li>
-            </ul>
-        </section>
-        
-        <!-- Principles Section -->
-        <section class="content-section">
-            <h2>БИЗИҢ ПРИНЦИПЛЕРИМИЗ:</h2>
-            <ul>
-                <li>Ашықлық ҳәм шынайылық</li>
-                <li>Көп тилде қоллап-қуўатлаў</li>
-                <li>Мәдений толерантлық</li>
-                <li>Ғәрезсиз ҳәм объективлилик</li>
-            </ul>
-        </section>
-        
-        <!-- Team Section -->
-        <section class="content-section">
-            <h2>КОМАНДА:</h2>
-            <p>
-                Биз - жас журналистлер, блогерлер ҳәм белсендилер топарымыз. Бизиң махсетимиз - Қарақалпақстан ҳаққында дурыс хабарды дүньяға тарқатыў.
-            </p>
-        </section>
-        
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <h2>📍 Мәнзил: Варшава, Польша</h2>
-            <p>Байланысыў ушын: <a href="mailto:admin@karakalpakvoice.org">admin@karakalpakvoice.org</a></p>
-        </section>
-        
-        <!-- QR Code Section -->
-        <section class="qr-section">
-            <h2>Сайтты бөлисиў ушын QR код</h2>
-            <div class="qr-code">
-                <div class="qr-actual"></div>
-                <div class="flag-overlay">🗣️</div>
-            </div>
-            <p>QR кодты сканерлеп, сайтты досларыңыз бенен бөлисиңиз!</p>
-        </section>
-        
-        <!-- reCAPTCHA Section -->
-        <section class="recaptcha-section">
-            <h2>Қәўипсизлик тексериўи</h2>
-            <div class="recaptcha-container">
-                <div class="recaptcha-checkbox">
-                    <input type="checkbox" id="recaptcha">
-                    <label for="recaptcha">Мен робот емеспен</label>
-                </div>
-                <div class="recaptcha-logo">
-                    🔒 reCAPTCHA арқалы қорғалған
+        <section class="hero" role="banner">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title" data-translate="hero_title">
+                            Голос Каракалпакстана
+                        </h2>
+                        <p class="hero-subtitle" data-translate="hero_subtitle">
+                            Доносим правду до мирового сообщества без цензуры
+                        </p>
+                        
+                        <!-- Mission Statement -->
+                        <div class="hero-mission">
+                            <div class="mission-flag">
+                                <img src="assets/images/karakalpakstan-flag.svg" alt="Флаг Каракалпакстана" class="flag-image">
+                            </div>
+                            <div class="mission-text">
+                                <p data-translate="mission_statement">
+                                    <strong>НАША МИССИЯ:</strong> Защита прав народа Каракалпакстана, 
+                                    сохранение суверенитета и культурной идентичности. 
+                                    Мы - голос тех, кого пытаются заставить молчать.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">4</span>
+                                <span class="stat-label" data-translate="stat_languages">языка</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">10</span>
+                                <span class="stat-label" data-translate="stat_sections">разделов</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label" data-translate="stat_truth">правды</span>
+                            </div>
+                        </div>
+
+                        <!-- Call to Action -->
+                        <div class="hero-actions">
+                            <a href="pages/sovereignty.html" class="btn-primary hero-btn">
+                                <span data-translate="learn_sovereignty">Узнать о суверенитете</span>
+                            </a>
+                            <a href="pages/news.html" class="btn-secondary hero-btn">
+                                <span data-translate="latest_news">Последние новости</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- QR Code Section -->
+                    <div class="hero-qr">
+                        <div class="qr-container">
+                            <div class="qr-header">
+                                <h3 data-translate="share_site">Поделиться сайтом</h3>
+                                <p data-translate="qr_description">Распространите правду!</p>
+                            </div>
+                            <div class="qr-code">
+                                <canvas id="qr-canvas" width="150" height="150"></canvas>
+                            </div>
+                            <div class="qr-actions">
+                                <button class="btn-share" onclick="shareContent()">
+                                    📤 <span data-translate="share">Поделиться</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p>Сайттың қәўипсизлигин тәмийинлеў ушын reCAPTCHA қолланылады</p>
+        </section>
+
+        <!-- Security Notice -->
+        <section class="security-notice">
+            <div class="container">
+                <div class="notice-content">
+                    <div class="notice-icon">🛡️</div>
+                    <div class="notice-text">
+                        <h3 data-translate="security_title">Внимание: Безопасность</h3>
+                        <p data-translate="security_notice">
+                            Мы используем передовые технологии защиты от блокировки и цензуры. 
+                            Ваша безопасность - наш приоритет. Остерегайтесь подделок!
+                        </p>
+                    </div>
+                    <div class="notice-actions">
+                        <a href="pages/about.html#security" class="security-link">
+                            <span data-translate="security_details">Подробнее о безопасности</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breaking News Banner -->
+        <section class="breaking-banner" id="breakingBanner">
+            <div class="container">
+                <div class="breaking-content">
+                    <div class="breaking-badge">
+                        <span class="breaking-icon">🔥</span>
+                        <span data-translate="breaking_news">СРОЧНЫЕ НОВОСТИ</span>
+                    </div>
+                    <div class="breaking-text" data-translate="breaking_message">
+                        Международные организации призывают к соблюдению прав народа Каракалпакстана
+                    </div>
+                    <a href="pages/news.html" class="breaking-link">
+                        <span data-translate="read_more">Читать →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Content -->
+        <section class="featured-content">
+            <div class="container">
+                <h2 class="section-title" data-translate="featured_title">Важные материалы</h2>
+                
+                <div class="featured-grid">
+                    <!-- Sovereignty Card -->
+                    <article class="featured-card sovereignty-card">
+                        <div class="card-image">
+                            <div class="card-badge" data-translate="card_important">Важно</div>
+                            <div class="sovereignty-visual">
+                                <div class="infinity-symbol large">∞</div>
+                                <h3>1990</h3>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-translate="sovereignty_card_title">Декларация о суверенитете 1990</h3>
+                            <p data-translate="sovereignty_card_desc">
+                                Историческая декларация о государственном суверенитете 
+                                Каракалпакстана, принятая 14 декабря 1990 года.
+                            </p>
+                            <a href="pages/sovereignty.html" class="card-link">
+                                <span data-translate="read_declaration">Читать декларацию</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Rights Card -->
+                    <article class="featured-card rights-card">
+                        <div class="card-image">
+                            <div class="card-badge" data-translate="card_urgent">Актуально</div>
+                            <div class="rights-visual">
+                                <div class="justice-symbol">⚖️</div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-translate="rights_card_title">Права человека</h3>
+                            <p data-translate="rights_card_desc">
+                                Документы и факты о нарушениях прав человека 
+                                в Каракалпакстане. Международное внимание к проблеме.
+                            </p>
+                            <a href="pages/politics.html" class="card-link">
+                                <span data-translate="learn_more">Узнать больше</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Culture Card -->
+                    <article class="featured-card culture-card">
+                        <div class="card-image">
+                            <div class="card-badge" data-translate="card_heritage">Наследие</div>
+                            <div class="culture-visual">
+                                <div class="culture-symbol">🏛️</div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-translate="culture_card_title">Культура и язык</h3>
+                            <p data-translate="culture_card_desc">
+                                Сохранение каракалпакского языка, традиций и 
+                                культурной идентичности народа.
+                            </p>
+                            <a href="pages/traditions.html" class="card-link">
+                                <span data-translate="explore_culture">Изучить культуру</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+                        </section>
+
+        <!-- Sections Navigation -->
+        <section class="sections-nav">
+            <div class="container">
+                <h2 class="section-title" data-translate="explore_sections">Изучайте разделы</h2>
+                <div class="sections-grid">
+                    <a href="pages/sovereignty.html" class="section-card">
+                        <div class="section-icon">🏛️</div>
+                        <h3 data-translate="nav_sovereignty">Суверенитет</h3>
+                        <p data-translate="section_sovereignty_desc">История и правовые основы</p>
+                    </a>
+                    <a href="pages/news.html" class="section-card">
+                        <div class="section-icon">📰</div>
+                        <h3 data-translate="nav_news">Новости</h3>
+                        <p data-translate="section_news_desc">Актуальные события</p>
+                    </a>
+                    <a href="pages/politics.html" class="section-card">
+                        <div class="section-icon">⚖️</div>
+                        <h3 data-translate="nav_politics">Политика</h3>
+                        <p data-translate="section_politics_desc">Политическая ситуация</p>
+                    </a>
+                    <a href="pages/history.html" class="section-card">
+                        <div class="section-icon">📚</div>
+                        <h3 data-translate="nav_history">История</h3>
+                        <p data-translate="section_history_desc">Наше прошлое</p>
+                    </a>
+                    <a href="pages/sports.html" class="section-card">
+                        <div class="section-icon">⚽</div>
+                        <h3 data-translate="nav_sports">Спорт</h3>
+                        <p data-translate="section_sports_desc">Спортивные достижения</p>
+                    </a>
+                    <a href="pages/geography.html" class="section-card">
+                        <div class="section-icon">🗺️</div>
+                        <h3 data-translate="nav_geography">География</h3>
+                        <p data-translate="section_geography_desc">Наша земля</p>
+                    </a>
+                    <a href="pages/traditions.html" class="section-card">
+                        <div class="section-icon">🎭</div>
+                        <h3 data-translate="nav_culture">Традиции</h3>
+                        <p data-translate="section_culture_desc">Культурное наследие</p>
+                    </a>
+                    <a href="pages/religion.html" class="section-card">
+                        <div class="section-icon">🕌</div>
+                        <h3 data-translate="nav_religion">Религия</h3>
+                        <p data-translate="section_religion_desc">Духовные ценности</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="support-section">
+            <div class="container">
+                <div class="support-content">
+                    <h2 data-translate="support_title">Поддержите голос правды</h2>
+                    <p data-translate="support_description">
+                        Помогите нам распространять правду о Каракалпакстане. 
+                        Каждый голос важен в борьбе за справедливость.
+                    </p>
+                    <div class="support-actions">
+                        <button class="btn-primary" onclick="shareContent()">
+                            📢 <span data-translate="spread_word">Распространить</span>
+                        </button>
+                        <a href="pages/about.html#contact" class="btn-secondary">
+                            📧 <span data-translate="contact_us">Связаться с нами</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
-    
-    <!-- Admin Panel Button -->
-    <button class="admin-btn" id="adminBtn" title="Admin Panel">⚙️</button>
-    
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" title="Жоғарыға көтерилиў">↑</button>
-    
+
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 KarakalpakVoice.org - Ғәрезсиз Қарақалпақ мәлимлеме платформасы</p>
-        <p>Қарақалпақ халқының даўысын - әлемге жеткериў</p>
-        <p>Варшава, Польша | <a href="mailto:admin@karakalpakvoice.org">admin@karakalpakvoice.org</a></p>
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.svg" alt="KarakalpakVoice.org" class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <div class="infinity-symbol">∞</div>
+                            <span>KarakalpakVoice.org</span>
+                        </div>
+                    </div>
+                    <p data-translate="footer_mission">
+                        Миссия: донести голос народа до мирового сообщества
+                    </p>
+                    <div class="footer-location">
+                        <span>📍</span>
+                        <span data-translate="footer_location">Варшава, Польша</span>
+                    </div>
+                    <div class="footer-security">
+                        <span>🔒</span>
+                        <span data-translate="footer_security">Защищено от блокировки</span>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 data-translate="footer_contact">Безопасные контакты</h4>
+                    <div class="contact-methods">
+                        <p>📧 <span class="contact-email" data-email="admin@karakalpakvoice.org">Показать email</span></p>
+                        <p>📱 <span data-translate="footer_telegram">Telegram: @KarakalpakVoice</span></p>
+                        <p>🔐 <span data-translate="footer_secure">Secure: Signal/Tor доступны</span></p>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-translate="footer_important">Важные ссылки</h4>
+                    <ul>
+                        <li><a href="pages/sovereignty.html" data-translate="footer_link_sovereignty">Декларация суверенитета</a></li>
+                        <li><a href="pages/about.html#security" data-translate="footer_link_security">Как остаться в безопасности</a></li>
+                        <li><a href="pages/about.html#mirrors" data-translate="footer_link_mirrors">Зеркала сайта</a></li>
+                        <li><a href="pages/about.html#contact" data-translate="footer_link_contact">Связь с нами</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 KarakalpakVoice.org - <span data-translate="footer_rights">Все права защищены</span></p>
+                    <p class="footer-disclaimer">
+                        <span data-translate="footer_disclaimer">
+                            Сайт создан для информационных целей. Мы выступаем за мирное решение всех вопросов.
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="footer-languages">
+                    <span data-translate="footer_available">Доступно на:</span>
+                    <a href="?lang=ru" class="footer-lang">Русский</a>
+                    <a href="?lang=kaa" class="footer-lang">Қарақалпақ</a>
+                    <a href="?lang=en" class="footer-lang">English</a>
+                    <a href="?lang=pl" class="footer-lang">Polski</a>
+                </div>
+            </div>
+        </div>
     </footer>
-    
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/navigation.js"></script>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor">
+        <div class="cursor-dot"></div>
+    </div>
+
+    <!-- JavaScript -->
     <script src="js/translations.js"></script>
-</body>
-</html>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+    <!-- Security & Anti-Bot Script -->
+    <script>
+        // Basic security check
+        (function() {
+            // Check if user agent looks suspicious
+            const ua = navigator.userAgent.toLowerCase();
+            const suspiciousPatterns = ['bot', 'crawler', 'spider', 'scraper'];
+            
+            if (suspiciousPatterns.some(pattern => ua.includes(pattern))) {
+                console.log('Automated access detected');
+                return;
+            }
+            
+            // Simple human verification
+            let humanVerified = false;
+            
+            // Verify human interaction
+            const verifyHuman = () => {
+                if (!humanVerified) {
+                    humanVerified = true;
+                    document.body.classList.add('human-verified');
+                }
+            };
+            
+            // Add event listeners for human verification
+            ['click', 'keydown', 'scroll', 'mousemove'].forEach(event => {
+                document.addEventListener(event, verifyHuman, { once: true });
+            });
+            
+            // Show contact email only to verified humans
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('contact-email')) {
+                    if (humanVerified) {
+                        e.target.textContent = e.target.dataset.email;
+                        e.target.href = 'mailto:' + e.target.dataset.email;
+                    }
+                }
+            });
+        })();
+        
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            if ('performance' in window) {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                if (perfData && perfData.loadEventEnd - perfData.loadEventStart > 5000) {
+                    console.warn('Slow loading detected');
+                }
+            }
+        });
+    </script>
+
+    <!-- Additional CSS for new components -->
+    <style>
+        /* Logo Styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .logo-image {
+            height: 60px;
+            width: auto;
+            transition: transform var(--transition-base);
+        }
+        
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Mission Section */
+        .hero-mission {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            border-left: 4px solid var(--karakalpak-blue);
+        }
+        
+        .flag-image {
+            width: 60px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .mission-text strong {
+            color: var(--karakalpak-blue);
+        }
+        
+        /* Security Notice */
+        .security-notice {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .notice-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            text-align: left;
+        }
+        
+        .notice-icon {font-size: var(--font-size-3xl); }.security-link {
+        color: white;
+        text-decoration: underline;
+        font-weight: 600;
+    }
+    
+    /* Breaking Banner */
+    .breaking-banner {
+        background: linear-gradient(135deg, #dc3545, #c82333);
+        color: white;
+        padding: var(--spacing-md) 0;
+        animation: urgentPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes urgentPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.9; }
+    }
+    
+    .breaking-content {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+        justify-content: space-between;
+    }
+    
+    .breaking-badge {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    
+    .breaking-icon {
+        animation: warningPulse 1s ease-in-out infinite;
+    }
+    
+    .breaking-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    
+    /* Featured Content */
+    .featured-content {
+        padding: var(--spacing-3xl) 0;
+        background: var(--light);
+    }
+    
+    .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-xl);
+    }
+    
+    .featured-card {
+        background: var(--karakalpak-white);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: all var(--transition-base);
+    }
+    
+    .featured-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-xl);
+    }
+    
+    .card-image {
+        position: relative;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    
+    .sovereignty-card .card-image {
+        background: var(--infinity-gradient);
+    }
+    
+    .rights-card .card-image {
+        background: linear-gradient(135deg, #17a2b8, #138496);
+    }
+    
+    .culture-card .card-image {
+        background: linear-gradient(135deg, #6f42c1, #5a2d91);
+    }
+    
+    .card-badge {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--dark);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 15px;
+        font-size: var(--font-size-xs);
+        font-weight: 600;
+    }
+    
+    .sovereignty-visual,
+    .rights-visual,
+    .culture-visual {
+        text-align: center;
+        color: white;
+    }
+    
+    .infinity-symbol.large {
+        font-size: 4rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .justice-symbol,
+    .culture-symbol {
+        font-size: 4rem;
+    }
+    
+    .card-content {
+        padding: var(--spacing-xl);
+    }
+    
+    .card-content h3 {
+        margin-bottom: var(--spacing-md);
+        color: var(--karakalpak-blue);
+    }
+    
+    .card-link {
+        color: var(--karakalpak-blue);
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        margin-top: var(--spacing-md);
+    }
+    
+    /* Hero Actions */
+    .hero-actions {
+        display: flex;
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
+    }
+    
+    .hero-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+    
+    /* QR Enhanced */
+    .qr-header {
+        text-align: center;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .qr-header h3 {
+        margin: 0 0 var(--spacing-xs) 0;
+        color: var(--karakalpak-blue);
+    }
+    
+    .qr-header p {
+        margin: 0;
+        font-size: var(--font-size-sm);
+        color: var(--gray-600);
+    }
+    
+    .qr-actions {
+        margin-top: var(--spacing-md);
+    }
+    
+    .btn-share {
+        background: var(--karakalpak-green);
+        color: white;
+        border: none;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Support Section */
+    .support-section {
+        padding: var(--spacing-3xl) 0;
+        background: var(--infinity-gradient);
+        color: white;
+        text-align: center;
+    }
+    
+    .support-actions {
+        display: flex;
+        gap: var(--spacing-lg);
+        justify-content: center;
+        margin-top: var(--spacing-xl);
+    }
+    
+    .support-section .btn-primary {
+        background: white;
+        color: var(--karakalpak-blue);
+    }
+    
+    .support-section .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+    
+    /* Footer Enhanced */
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .footer-logo-img {
+        height: 40px;
+        width: auto;
+    }
+    
+    .footer-logo-text {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .footer-security {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        color: var(--karakalpak-green);
+        font-weight: 600;
+        margin-top: var(--spacing-sm);
+    }
+    
+    .contact-methods p {
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .contact-email {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .footer-links li {
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .footer-links a {
+        color: var(--gray-400);
+        text-decoration: none;
+    }
+    
+    .footer-links a:hover {
+        color: var(--karakalpak-yellow);
+    }
+    
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--gray-800);
+        padding-top: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
+    }
+    
+    .footer-disclaimer {
+        font-size: var(--font-size-sm);
+        color: var(--gray-500);
+        margin-top: var(--spacing-xs);
+    }
+    
+    .footer-languages {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .footer-lang {
+        color: var(--gray-400);
+        text-decoration: none;
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 5px;
+        transition: all var(--transition-base);
+    }
+    
+    .footer-lang:hover {
+        background: var(--gray-800);
+        color: var(--karakalpak-yellow);
+    }
+    
+    /* Section descriptions */
+    .sections-grid .section-card p {
+        font-size: var(--font-size-sm);
+        color: var(--gray-600);
+        margin-top: var(--spacing-sm);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .logo-image {
+            height: 50px;
+        }
+        
+        .hero-mission {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .notice-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .breaking-content {
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+        
+        .hero-actions {
+            flex-direction: column;
+        }
+        
+        .support-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-bottom {
+            flex-direction: column;
+            gap: var(--spacing-md);
+            text-align: center;
+        }
+        
+        .footer-languages {
+            justify-content: center;
+        }
+    }
+    
+    /* Security styles */
+    .human-verified .contact-email[data-email]:hover {
+        color: var(--karakalpak-yellow);
+    }
+</style>
