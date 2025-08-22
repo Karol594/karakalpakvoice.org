@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="traditions.title">Традиции - KarakalpakVoice.org</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <!-- Infinity Design Background -->
+    <div class="infinity-bg">
+        <div class="infinity-particles"></div>
+        <div class="infinity-waves"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <img src="../assets/logo.svg" alt="KarakalpakVoice" class="logo">
+                <span class="brand-text" data-translate="site.title">KarakalpakVoice.org</span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link" data-translate="nav.home">Главная</a>
+                <a href="news.html" class="nav-link" data-translate="nav.news">Новости</a>
+                <a href="sovereignty.html" class="nav-link" data-translate="nav.sovereignty">Суверенитет</a>
+                <a href="politics.html" class="nav-link" data-translate="nav.politics">Политика</a>
+                <a href="history.html" class="nav-link" data-translate="nav.history">История</a>
+                <a href="sports.html" class="nav-link" data-translate="nav.sports">Спорт</a>
+                <a href="geography.html" class="nav-link" data-translate="nav.geography">География</a>
+                <a href="traditions.html" class="nav-link active" data-translate="nav.traditions">Традиции</a>
+                <a href="religion.html" class="nav-link" data-translate="nav.religion">Религия</a>
+                <a href="about.html" class="nav-link" data-translate="nav.about">О сайте</a>
+            </div>
+
+            <div class="nav-controls">
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="kaa">🏳️ QAA</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="pl">PL</button>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-translate="traditions.hero.title">
+                    Традиции Каракалпакстана
+                </h1>
+                <p class="hero-subtitle" data-translate="traditions.hero.subtitle">
+                    Богатое культурное наследие нашего народа
+                </p>
+                <div class="hero-flag">
+                    <img src="../assets/flag.svg" alt="Каракалпакстан" class="flag-icon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Articles Section -->
+                <section class="articles-section">
+                    <div class="section-header">
+                        <h2 data-translate="traditions.articles.title">Культурное наследие</h2>
+                        <p data-translate="traditions.articles.description">
+                            Материалы о традициях и обычаях Каракалпакского народа
+                        </p>
+                    </div>
+                    
+                    <div class="articles-grid" id="articlesGrid">
+                        <!-- Articles will be loaded here by admin -->
+                        <div class="article-card placeholder">
+                            <div class="article-image">
+                                <div class="placeholder-icon">🎭</div>
+                            </div>
+                            <div class="article-content">
+                                <h3 data-translate="traditions.placeholder.title">
+                                    Статьи о традициях будут добавлены
+                                </h3>
+                                <p data-translate="traditions.placeholder.description">
+                                    Здесь будут размещены материалы о культуре Каракалпакстана
+                                </p>
+                                <div class="article-meta">
+                                    <span class="article-date">2025</span>
+                                    <span class="article-category" data-translate="traditions.category">Традиции</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="load-more-container">
+                        <button class="load-more-btn" id="loadMoreBtn" data-translate="common.loadMore">
+                            Загрузить еще
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Traditional Categories -->
+                    <div class="sidebar-widget">
+                        <h3 data-translate="traditions.sidebar.categories">Виды традиций</h3>
+                        <div class="tradition-categories">
+                            <div class="tradition-item">
+                                <span class="tradition-icon">🎵</span>
+                                <span data-translate="traditions.categories.music">Музыка и песни</span>
+                            </div>
+                            <div class="tradition-item">
+                                <span class="tradition-icon">💃</span>
+                                <span data-translate="traditions.categories.dance">Танцы</span>
+                            </div>
+                            <div class="tradition-item">
+                                <span class="tradition-icon">🎨</span>
+                                <span data-translate="traditions.categories.crafts">Ремесла</span>
+                            </div>
+                            <div class="tradition-item">
+                                <span class="tradition-icon">🍽️</span>
+                                <span data-translate="traditions.categories.cuisine">Кухня</span>
+                            </div>
+                            <div class="tradition-item">
+                                <span class="tradition-icon">👗</span>
+                                <span data-translate="traditions.categories.clothing">Одежда</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Festivals -->
+                    <div class="sidebar-widget">
+                        <h3 data-translate="traditions.sidebar.festivals">Праздники</h3>
+                        <div class="festivals-list">
+                            <div class="festival-item">
+                                <span class="festival-icon">🌸</span>
+                                <div class="festival-info">
+                                    <div class="festival-name" data-translate="traditions.festivals.navruz">Навруз</div>
+                                    <div class="festival-date" data-translate="traditions.festivals.spring">Весенний праздник</div>
+                                </div>
+                            </div>
+                            <div class="festival-item">
+                                <span class="festival-icon">🎊</span>
+                                <div class="festival-info">
+                                    <div class="festival-name" data-translate="traditions.festivals.wedding">Свадебные обряды</div>
+                                    <div class="festival-date" data-translate="traditions.festivals.family">Семейные традиции</div>
+                                </div>
+                            </div>
+                            <div class="festival-item">
+                                <span class="festival-icon">🏺</span>
+                                <div class="festival-info">
+                                    <div class="festival-name" data-translate="traditions.festivals.harvest">Праздник урожая</div>
+                                    <div class="festival-date" data-translate="traditions.festivals.autumn">Осенние традиции</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cultural Topics -->
+                    <div class="sidebar-widget">
+                        <h3 data-translate="traditions.sidebar.topics">Культурные темы</h3>
+                        <div class="topic-tags">
+                            <span class="tag" data-translate="traditions.topics.folklore">Фольклор</span>
+                            <span class="tag" data-translate="traditions.topics.legends">Легенды</span>
+                            <span class="tag" data-translate="traditions.topics.epics">Эпосы</span>
+                            <span class="tag" data-translate="traditions.topics.rituals">Обряды</span>
+                            <span class="tag" data-translate="traditions.topics.customs">Обычаи</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="sidebar-widget">
+                        <h3 data-translate="traditions.sidebar.quickLinks">Связанные темы</h3>
+                        <div class="quick-links">
+                            <a href="history.html" class="quick-link">
+                                <span class="link-icon">📜</span>
+                                <span data-translate="nav.history">История</span>
+                            </a>
+                            <a href="religion.html" class="quick-link">
+                                <span class="link-icon">☪️</span>
+                                <span data-translate="nav.religion">Религия</span>
+                            </a>
+                            <a href="geography.html" class="quick-link">
+                                <span class="link-icon">🗺️</span>
+                                <span data-translate="nav.geography">География</span>
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../assets/logo.svg" alt="KarakalpakVoice" class="footer-logo">
+                    <p data-translate="footer.description">
+                        Голос Каракалпакстана - правда о нашем народе
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 data-translate="footer.navigation">Навигация</h4>
+                        <a href="../index.html" data-translate="nav.home">Главная</a>
+                        <a href="news.html" data-translate="nav.news">Новости</a>
+                        <a href="sovereignty.html" data-translate="nav.sovereignty">Суверенитет</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer.topics">Темы</h4>
+                        <a href="politics.html" data-translate="nav.politics">Политика</a>
+                        <a href="history.html" data-translate="nav.history">История</a>
+                        <a href="traditions.html" data-translate="nav.traditions">Традиции</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer.info">Информация</h4>
+                        <a href="about.html" data-translate="nav.about">О сайте</a>
+                        <a href="#" data-translate="footer.contact">Контакты</a>
+                        <a href="#" data-translate="footer.privacy">Конфиденциальность</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 KarakalpakVoice.org - <span data-translate="footer.rights">Все права защищены</span></p>
+                <div class="footer-flags">
+                    <img src="../assets/flag.svg" alt="Каракалпакстан" class="footer-flag">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/translations.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTraditionsArticles();
+            initTraditionCategories();
+            initFestivals();
+            initLoadMore();
+        });
+
+        function loadTraditionsArticles() {
+            const articlesGrid = document.getElementById('articlesGrid');
+            const savedArticles = localStorage.getItem('traditions_articles');
+            if (savedArticles) {
+                const articles = JSON.parse(savedArticles);
+                displayArticles(articles);
+            }
+        }
+
+        function displayArticles(articles) {
+            const articlesGrid = document.getElementById('articlesGrid');
+            articlesGrid.innerHTML = '';
+            
+            articles.forEach(article => {
+                const articleCard = createArticleCard(article);
+                articlesGrid.appendChild(articleCard);
+            });
+        }
+
+        function createArticleCard(article) {
+            const card = document.createElement('div');
+            card.className = 'article-card';
+            card.innerHTML = `
+                <div class="article-image">
+                    <img src="${article.image || '../assets/placeholder.jpg'}" alt="${article.title}">
+                </div>
+                <div class="article-content">
+                    <h3>${article.title}</h3>
+                    <p>${article.excerpt}</p>
+                    <div class="article-meta">
+                        <span class="article-date">${new Date(article.date).toLocaleDateString()}</span>
+                        <span class="article-category">${article.category}</span>
+                    </div>
+                    <a href="#" class="read-more" onclick="openArticle('${article.id}')">
+                        Читать далее
+                    </a>
+                </div>
+            `;
+            return card;
+        }
+
+        function openArticle(articleId) {
+            console.log('Opening article:', articleId);
+        }
+
+        function initTraditionCategories() {
+            const traditionItems = document.querySelectorAll('.tradition-item');
+            traditionItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const tradition = this.querySelector('span:last-child').textContent;
+                    console.log('Selected tradition:', tradition);
+                });
+            });
+        }
+
+        function initFestivals() {
+            const festivalItems = document.querySelectorAll('.festival-item');
+            festivalItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const festival = this.querySelector('.festival-name').textContent;
+                    console.log('Selected festival:', festival);
+                });
+            });
+        }
+
+        function initLoadMore() {
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            loadMoreBtn.addEventListener('click', function() {
+                console.log('Loading more articles...');
+            });
+        }
+    </script>
+
+    <style>
+        .tradition-categories {
+            padding: 15px 0;
+        }
+
+        .tradition-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tradition-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .tradition-icon {
+            font-size: 20px;
+            margin-right: 12px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .festivals-list {
+            padding: 15px 0;
+        }
+
+        .festival-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .festival-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .festival-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .festival-info {
+            flex: 1;
+        }
+
+        .festival-name {
+            font-weight: bold;
+            color: #00d4ff;
+            font-size: 14px;
+        }
+
+        .festival-date {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</body>
+</html>
