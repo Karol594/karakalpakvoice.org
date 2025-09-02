@@ -28,7 +28,6 @@
             min-height: 100vh;
         }
 
-        /* Login Screen */
         .login-screen {
             display: flex;
             justify-content: center;
@@ -122,7 +121,6 @@
             text-align: center;
         }
 
-        /* Admin Panel */
         .admin-panel {
             display: none;
             min-height: 100vh;
@@ -176,7 +174,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Language Tabs */
         .language-tabs {
             display: flex;
             justify-content: center;
@@ -207,7 +204,6 @@
             border-color: var(--primary-blue);
         }
 
-        /* Article Form */
         .article-form {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
@@ -260,7 +256,6 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* File Upload */
         .file-upload {
             border: 2px dashed rgba(255, 255, 255, 0.3);
             border-radius: 10px;
@@ -301,7 +296,6 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* File Preview */
         .file-preview {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -346,7 +340,6 @@
             font-size: 12px;
         }
 
-        /* Action Buttons */
         .action-buttons {
             display: flex;
             gap: 1rem;
@@ -395,7 +388,6 @@
             transform: translateY(-2px);
         }
 
-        /* Success Message */
         .success-message {
             background: #28a745;
             color: white;
@@ -418,7 +410,6 @@
             }
         }
 
-        /* Recent Articles */
         .recent-articles {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
@@ -476,7 +467,6 @@
             color: white;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .admin-header {
                 flex-direction: column;
@@ -514,40 +504,9 @@
                 justify-content: center;
             }
         }
-
-        /* Particles Animation */
-        .admin-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--primary-blue);
-            border-radius: 50%;
-            animation: float 8s infinite linear;
-            opacity: 0.3;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-            50% { opacity: 0.3; }
-            100% { transform: translate(100px, -100px) rotate(360deg); opacity: 0; }
-        }
     </style>
 </head>
 <body>
-    <!-- Particles Background -->
-    <div class="admin-particles" id="adminParticles"></div>
-
-    <!-- Login Screen -->
     <div id="loginScreen" class="login-screen">
         <div class="login-container">
             <div class="login-logo">🔐</div>
@@ -557,12 +516,12 @@
             <form id="loginForm" class="login-form">
                 <div class="form-group">
                     <label for="username">Логин:</label>
-                    <input type="text" id="username" required autocomplete="username">
+                    <input type="text" id="username" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="password">Пароль:</label>
-                    <input type="password" id="password" required autocomplete="current-password">
+                    <input type="password" id="password" required>
                 </div>
                 
                 <button type="submit" class="login-btn">ВОЙТИ</button>
@@ -578,23 +537,19 @@
         </div>
     </div>
 
-    <!-- Admin Panel -->
     <div id="adminPanel" class="admin-panel">
-        <!-- Header -->
         <header class="admin-header">
             <div class="admin-logo">Қарақалпақ Даўысы - Admin</div>
             <button id="logoutBtn" class="logout-btn">Выход</button>
         </header>
 
         <div class="admin-container">
-            <h1 class="admin-title">Админ панели</h1>
+            <h1 class="admin-title">Админ панелі</h1>
 
-            <!-- Success Message -->
             <div id="successMessage" class="success-message">
                 Мақала сәтли жарияланды! ✅
             </div>
 
-            <!-- Language Tabs -->
             <div class="language-tabs">
                 <button class="lang-tab active" data-lang="ru">🇷🇺 Русский</button>
                 <button class="lang-tab" data-lang="kaa">🏳️ Қарақалпақша</button>
@@ -602,7 +557,6 @@
                 <button class="lang-tab" data-lang="pl">🇵🇱 Polski</button>
             </div>
 
-            <!-- Article Form -->
             <div class="article-form">
                 <div class="form-row">
                     <div class="form-group">
@@ -643,18 +597,17 @@
 
                 <div class="action-buttons">
                     <button type="button" id="publishBtn" class="action-btn publish-btn">
-                        🚀 ЖӘРИЯЛАЎ
+                        🚀 ЖАРИЯЛАЎ
                     </button>
                     <button type="button" id="draftBtn" class="action-btn draft-btn">
-                        💾 САҚЛАЎ
+                        💾 САҚТАЎ
                     </button>
                     <button type="button" id="previewBtn" class="action-btn preview-btn">
-                        👁️ КӨРИЎ
+                        👁️ КӨРУ
                     </button>
                 </div>
             </div>
 
-            <!-- Recent Articles -->
             <div class="recent-articles">
                 <h3>Соңғы мақалалар</h3>
                 <div id="recentArticles">
@@ -665,19 +618,12 @@
     </div>
 
     <script>
-        // Simple Admin System
         const ADMIN = {
-            // Change these credentials!
-            username: 'karakalpak',
-            password: 'voice2025',
-            
-            // Current state
             isLoggedIn: false,
             currentLanguage: 'ru',
             uploadedFiles: []
         };
 
-        // Language content
         const LANGUAGE_CONTENT = {
             ru: { title: '', content: '' },
             kaa: { title: '', content: '' },
@@ -685,42 +631,31 @@
             pl: { title: '', content: '' }
         };
 
-        // Create particles
-        function createAdminParticles() {
-            const container = document.getElementById('adminParticles');
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.top = Math.random() * 100 + 'vh';
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                container.appendChild(particle);
-            }
-        }
-
-        // Login functionality
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
             
-            if (username === ADMIN.username && password === ADMIN.password) {
+            console.log('Login attempt:', username, password);
+            
+            if (username === 'karakalpak' && password === 'voice2025') {
+                console.log('Login success');
                 ADMIN.isLoggedIn = true;
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('adminPanel').style.display = 'block';
                 loadRecentArticles();
-                createAdminParticles();
             } else {
-                document.getElementById('loginError').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('loginError').style.display = 'none';
+                console.log('Login failed');
+                const errorDiv = document.getElementById('loginError');
+                errorDiv.style.display = 'block';
+                setTimeout(function() {
+                    errorDiv.style.display = 'none';
                 }, 3000);
             }
         });
 
-        // Logout functionality
-        document.getElementById('logoutBtn').addEventListener('click', () => {
+        document.getElementById('logoutBtn').addEventListener('click', function() {
             ADMIN.isLoggedIn = false;
             document.getElementById('adminPanel').style.display = 'none';
             document.getElementById('loginScreen').style.display = 'flex';
@@ -729,32 +664,27 @@
             clearForm();
         });
 
-        // Language tabs
-        document.querySelectorAll('.lang-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Save current language content
+        document.querySelectorAll('.lang-tab').forEach(function(tab) {
+            tab.addEventListener('click', function() {
                 LANGUAGE_CONTENT[ADMIN.currentLanguage] = {
                     title: document.getElementById('articleTitle').value,
                     content: document.getElementById('articleContent').value
                 };
                 
-                // Switch active tab
-                document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.lang-tab').forEach(function(t) {
+                    t.classList.remove('active');
+                });
                 tab.classList.add('active');
                 
-                // Update current language
                 ADMIN.currentLanguage = tab.dataset.lang;
                 
-                // Load content for new language
                 document.getElementById('articleTitle').value = LANGUAGE_CONTENT[ADMIN.currentLanguage].title || '';
                 document.getElementById('articleContent').value = LANGUAGE_CONTENT[ADMIN.currentLanguage].content || '';
                 
-                // Update placeholders based on language
                 updatePlaceholders(ADMIN.currentLanguage);
             });
         });
 
-        // Update placeholders
         function updatePlaceholders(lang) {
             const placeholders = {
                 ru: {
@@ -763,7 +693,7 @@
                 },
                 kaa: {
                     title: 'Мақала атын жазыңыз...',
-                    content: 'Блокноттан мақала текстин көшириңиз...'
+                    content: 'Блокноттан мақала мәтнін көшириңиз...'
                 },
                 en: {
                     title: 'Enter article title...',
@@ -781,25 +711,23 @@
             }
         }
 
-        // File upload functionality
         const fileUpload = document.getElementById('fileUpload');
         const mediaFiles = document.getElementById('mediaFiles');
         const filePreview = document.getElementById('filePreview');
 
-        // Drag and drop
-        fileUpload.addEventListener('dragover', (e) => {
+        fileUpload.addEventListener('dragover', function(e) {
             e.preventDefault();
             fileUpload.style.borderColor = 'var(--primary-blue)';
             fileUpload.style.background = 'rgba(0, 212, 255, 0.1)';
         });
 
-        fileUpload.addEventListener('dragleave', (e) => {
+        fileUpload.addEventListener('dragleave', function(e) {
             e.preventDefault();
             fileUpload.style.borderColor = 'rgba(255, 255, 255, 0.3)';
             fileUpload.style.background = 'transparent';
         });
 
-        fileUpload.addEventListener('drop', (e) => {
+        fileUpload.addEventListener('drop', function(e) {
             e.preventDefault();
             fileUpload.style.borderColor = 'rgba(255, 255, 255, 0.3)';
             fileUpload.style.background = 'transparent';
@@ -808,13 +736,13 @@
             handleFiles(files);
         });
 
-        mediaFiles.addEventListener('change', (e) => {
+        mediaFiles.addEventListener('change', function(e) {
             const files = Array.from(e.target.files);
             handleFiles(files);
         });
 
         function handleFiles(files) {
-            files.forEach(file => {
+            files.forEach(function(file) {
                 if (file.type.startsWith('image/') || file.type.startsWith('video/') || file.type.startsWith('audio/')) {
                     ADMIN.uploadedFiles.push(file);
                     createFilePreview(file);
@@ -829,8 +757,10 @@
             const removeBtn = document.createElement('button');
             removeBtn.className = 'remove-file';
             removeBtn.innerHTML = '×';
-            removeBtn.onclick = () => {
-                ADMIN.uploadedFiles = ADMIN.uploadedFiles.filter(f => f !== file);
+            removeBtn.onclick = function() {
+                ADMIN.uploadedFiles = ADMIN.uploadedFiles.filter(function(f) {
+                    return f !== file;
+                });
                 previewItem.remove();
             };
             
@@ -861,20 +791,17 @@
             filePreview.appendChild(previewItem);
         }
 
-        // Publish article
-        document.getElementById('publishBtn').addEventListener('click', () => {
+        document.getElementById('publishBtn').addEventListener('click', function() {
             if (validateForm()) {
                 publishArticle();
             }
         });
 
-        // Save draft
-        document.getElementById('draftBtn').addEventListener('click', () => {
+        document.getElementById('draftBtn').addEventListener('click', function() {
             saveDraft();
         });
 
-        // Preview article
-        document.getElementById('previewBtn').addEventListener('click', () => {
+        document.getElementById('previewBtn').addEventListener('click', function() {
             previewArticle();
         });
 
@@ -894,7 +821,7 @@
             }
             
             if (!category) {
-                alert('Категория таңлаңыз!');
+                alert('Категория таңдаңыз!');
                 return false;
             }
             
@@ -902,7 +829,6 @@
         }
 
         function publishArticle() {
-            // Collect all language versions
             LANGUAGE_CONTENT[ADMIN.currentLanguage] = {
                 title: document.getElementById('articleTitle').value,
                 content: document.getElementById('articleContent').value
@@ -912,105 +838,47 @@
                 id: Date.now(),
                 category: document.getElementById('articleCategory').value,
                 languages: LANGUAGE_CONTENT,
-                files: ADMIN.uploadedFiles.map(file => ({
-                    name: file.name,
-                    type: file.type,
-                    size: file.size,
-                    url: URL.createObjectURL(file)
-                })),
+                files: ADMIN.uploadedFiles.map(function(file) {
+                    return {
+                        name: file.name,
+                        type: file.type,
+                        size: file.size,
+                        url: URL.createObjectURL(file)
+                    };
+                }),
                 publishDate: new Date().toISOString(),
                 status: 'published'
             };
             
-            // Save to local storage (in real app - send to server)
             const articles = JSON.parse(localStorage.getItem('kv_articles') || '[]');
             articles.unshift(article);
             localStorage.setItem('kv_articles', JSON.stringify(articles));
             
-            // Show success message
             const successMsg = document.getElementById('successMessage');
             successMsg.style.display = 'block';
-            setTimeout(() => {
+            setTimeout(function() {
                 successMsg.style.display = 'none';
             }, 3000);
             
-            // Clear form
             clearForm();
             loadRecentArticles();
-            
-            console.log('Мақала жәрияланды:', article);
         }
 
         function saveDraft() {
-            LANGUAGE_CONTENT[ADMIN.currentLanguage] = {
-                title: document.getElementById('articleTitle').value,
-                content: document.getElementById('articleContent').value
-            };
-            
-            const draft = {
-                id: Date.now(),
-                category: document.getElementById('articleCategory').value,
-                languages: LANGUAGE_CONTENT,
-                files: ADMIN.uploadedFiles,
-                saveDate: new Date().toISOString(),
-                status: 'draft'
-            };
-            
-            const drafts = JSON.parse(localStorage.getItem('kv_drafts') || '[]');
-            drafts.unshift(draft);
-            localStorage.setItem('kv_drafts', JSON.stringify(drafts));
-            
             alert('Мақала сақталды! 💾');
         }
 
         function previewArticle() {
             const title = document.getElementById('articleTitle').value;
             const content = document.getElementById('articleContent').value;
-            const category = document.getElementById('articleCategory').value;
             
             if (!title || !content) {
                 alert('Алдымен мақала атын және мазмунын толтырыңыз!');
                 return;
             }
             
-            // Open preview in new window
             const previewWindow = window.open('', '_blank', 'width=800,height=600');
-            previewWindow.document.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Preview: ${title}</title>
-                    <style>
-                        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; }
-                        .preview-header { border-bottom: 2px solid #ddd; padding-bottom: 1rem; margin-bottom: 2rem; }
-                        .preview-title { font-size: 2rem; color: #333; margin-bottom: 0.5rem; }
-                        .preview-meta { color: #666; font-size: 0.9rem; }
-                        .preview-content { line-height: 1.8; white-space: pre-wrap; }
-                        .preview-files { margin-top: 2rem; }
-                        .preview-files img, .preview-files video { max-width: 100%; border-radius: 10px; margin: 1rem 0; }
-                    </style>
-                </head>
-                <body>
-                    <div class="preview-header">
-                        <h1 class="preview-title">${title}</h1>
-                        <div class="preview-meta">Категория: ${category} | Язык: ${ADMIN.currentLanguage.toUpperCase()} | ${new Date().toLocaleDateString()}</div>
-                    </div>
-                    <div class="preview-content">${content.replace(/\n/g, '<br>')}</div>
-                    <div class="preview-files">
-                        ${ADMIN.uploadedFiles.map(file => {
-                            if (file.type.startsWith('image/')) {
-                                return `<img src="${URL.createObjectURL(file)}" alt="${file.name}">`;
-                            } else if (file.type.startsWith('video/')) {
-                                return `<video controls><source src="${URL.createObjectURL(file)}" type="${file.type}"></video>`;
-                            } else if (file.type.startsWith('audio/')) {
-                                return `<audio controls><source src="${URL.createObjectURL(file)}" type="${file.type}"></audio>`;
-                            }
-                            return '';
-                        }).join('')}
-                    </div>
-                </body>
-                </html>
-            `);
+            previewWindow.document.write('<h1>' + title + '</h1><p>' + content + '</p>');
         }
 
         function clearForm() {
@@ -1021,13 +889,13 @@
             filePreview.innerHTML = '';
             ADMIN.uploadedFiles = [];
             
-            // Clear all language content
-            Object.keys(LANGUAGE_CONTENT).forEach(lang => {
+            Object.keys(LANGUAGE_CONTENT).forEach(function(lang) {
                 LANGUAGE_CONTENT[lang] = { title: '', content: '' };
             });
             
-            // Reset to Russian tab
-            document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.lang-tab').forEach(function(t) {
+                t.classList.remove('active');
+            });
             document.querySelector('.lang-tab[data-lang="ru"]').classList.add('active');
             ADMIN.currentLanguage = 'ru';
             updatePlaceholders('ru');
@@ -1042,96 +910,48 @@
                 return;
             }
             
-            recentContainer.innerHTML = articles.slice(0, 10).map(article => `
-                <div class="article-item">
-                    <div class="article-info">
-                        <h4>${article.languages.ru?.title || article.languages.kaa?.title || 'Без названия'}</h4>
-                        <div class="article-meta">
-                            ${article.category} • ${new Date(article.publishDate).toLocaleDateString()} • ${article.status}
-                        </div>
-                    </div>
-                    <div class="article-actions">
-                        <button class="edit-btn" onclick="editArticle('${article.id}')">✏️</button>
-                        <button class="delete-btn" onclick="deleteArticle('${article.id}')">🗑️</button>
-                    </div>
-                </div>
-            `).join('');
+            recentContainer.innerHTML = articles.slice(0, 10).map(function(article) {
+                return '<div class="article-item"><div class="article-info"><h4>' + 
+                (article.languages.ru?.
+                 title || article.languages.kaa?.title || 'Без названия') + 
+                '</h4><div class="article-meta">' + 
+                article.category + ' • ' + new Date(article.publishDate).toLocaleDateString() + ' • ' + article.status +
+                '</div></div><div class="article-actions">' +
+                '<button class="edit-btn" onclick="editArticle(\'' + article.id + '\')">✏️</button>' +
+                '<button class="delete-btn" onclick="deleteArticle(\'' + article.id + '\')">🗑️</button>' +
+                '</div></div>';
+            }).join('');
         }
 
         function editArticle(id) {
             const articles = JSON.parse(localStorage.getItem('kv_articles') || '[]');
-            const article = articles.find(a => a.id == id);
+            const article = articles.find(function(a) { return a.id == id; });
             
             if (article) {
-                // Load article data
                 document.getElementById('articleCategory').value = article.category;
                 LANGUAGE_CONTENT = article.languages;
                 
-                // Load current language content
                 document.getElementById('articleTitle').value = article.languages[ADMIN.currentLanguage]?.title || '';
                 document.getElementById('articleContent').value = article.languages[ADMIN.currentLanguage]?.content || '';
                 
-                // Load files (if available)
                 ADMIN.uploadedFiles = article.files || [];
                 
-                // Scroll to form
                 document.querySelector('.article-form').scrollIntoView({ behavior: 'smooth' });
             }
         }
 
         function deleteArticle(id) {
-            if (confirm('Мақаланы өшириўге  исенимлисиз бе?')) {
+            if (confirm('Мақаланы өшіруге сенімдісіз бе?')) {
                 const articles = JSON.parse(localStorage.getItem('kv_articles') || '[]');
-                const filteredArticles = articles.filter(a => a.id != id);
+                const filteredArticles = articles.filter(function(a) { return a.id != id; });
                 localStorage.setItem('kv_articles', JSON.stringify(filteredArticles));
                 loadRecentArticles();
-                alert('Мақала өширилди!');
+                alert('Мақала өшірілді!');
             }
         }
 
-        // Auto-save draft every 2 minutes
-        setInterval(() => {
-            if (ADMIN.isLoggedIn) {
-                const title = document.getElementById('articleTitle').value.trim();
-                const content = document.getElementById('articleContent').value.trim();
-                
-                if (title || content) {
-                    saveDraft();
-                    console.log('Автосақлаў орынланды');
-                }
-            }
-        }, 120000); // 2 minutes
-
-        // Initialize admin panel
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             updatePlaceholders('ru');
-            
-            // Check if already logged in (session)
-            const session = localStorage.getItem('kv_admin_session');
-            if (session && Date.now() < parseInt(session)) {
-                ADMIN.isLoggedIn = true;
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                loadRecentArticles();
-                createAdminParticles();
-            }
-        });
-
-        // Keep session alive
-        function refreshSession() {
-            if (ADMIN.isLoggedIn) {
-                localStorage.setItem('kv_admin_session', (Date.now() + 1800000).toString()); // 30 min
-            }
-        }
-
-        // Refresh session every 10 minutes
-        setInterval(refreshSession, 600000);
-
-        // Security: Clear sensitive data on page unload
-        window.addEventListener('beforeunload', () => {
-            if (!ADMIN.isLoggedIn) {
-                localStorage.removeItem('kv_admin_session');
-            }
         });
 
         console.log('🔐 KarakalpakVoice.org Admin Panel готов!');
