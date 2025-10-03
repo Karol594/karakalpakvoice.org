@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "news": "Wiadomości",
+    "sport": "Sport",
+    "tradition": "Tradycja",
+    "religion": "Religia",
+    "history": "Historia",
+    "geography": "Geografia",
+    "people": "Osobowości",
+    "contact": "Kontakt"
+  },
+  "header": {
+    "title": "KarakalpakVoice.org",
+    "subtitle": "Głos narodu karakałpackiego"
+  },
+  "footer": {
+    "description": "Platforma do zachowania, rozwoju i promocji bogatego dziedzictwa kulturowego narodu karakałpackiego",
+    "email": "info@karakalpakvoice.org",
+    "location": "Warszawa, Polska",
+    "copyright": "© 2025 Karakalpakvoice.org. Wszelkie prawa zastrzeżone."
+  },
+  "widgets": {
+    "weather": "Pogoda",
+    "currency": "Kurs walut",
+    "comingSoon": "Wkrótce dodamy..."
+  }
+}
