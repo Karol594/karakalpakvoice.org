@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Бас бет",
+    "news": "Жаңалықлар",
+    "sport": "Спорт",
+    "tradition": "Дәстүр",
+    "religion": "Дин",
+    "history": "Тарийх",
+    "geography": "География",
+    "people": "Тулғалар",
+    "contact": "Байланысыў"
+  },
+  "header": {
+    "title": "KarakalpakVoice.org",
+    "subtitle": "Қарақалпақстан даўысы"
+  },
+  "footer": {
+    "description": "Қарақалпақстан халқының бай мәдений мийрасын сақлаў, раўажландырыў ҳәм дүнья жүзине танытыўға арналған платформа",
+    "email": "info@karakalpakvoice.org",
+    "location": "Варшава, Польша",
+    "copyright": "© 2025 Karakalpakvoice.org. Барлық ҳүқықлар қорғалған."
+  },
+  "widgets": {
+    "weather": "Ҳаўа-райы",
+    "currency": "Курс валюта",
+    "comingSoon": "Жақын күнлерде қосамыз..."
+  }
+}
