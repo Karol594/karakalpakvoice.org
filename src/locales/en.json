@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Home",
+    "news": "News",
+    "sport": "Sport",
+    "tradition": "Tradition",
+    "religion": "Religion",
+    "history": "History",
+    "geography": "Geography",
+    "people": "People",
+    "contact": "Contact"
+  },
+  "header": {
+    "title": "KarakalpakVoice.org",
+    "subtitle": "Voice of the Karakalpak People"
+  },
+  "footer": {
+    "description": "Platform for preserving, developing and promoting the rich cultural heritage of the Karakalpak people",
+    "email": "info@karakalpakvoice.org",
+    "location": "Warsaw, Poland",
+    "copyright": "© 2025 Karakalpakvoice.org. All rights reserved."
+  },
+  "widgets": {
+    "weather": "Weather",
+    "currency": "Currency",
+    "comingSoon": "Coming soon..."
+  }
+}
