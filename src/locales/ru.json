@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Главная",
+    "news": "Новости",
+    "sport": "Спорт",
+    "tradition": "Традиции",
+    "religion": "Религия",
+    "history": "История",
+    "geography": "География",
+    "people": "Личности",
+    "contact": "Контакты"
+  },
+  "header": {
+    "title": "KarakalpakVoice.org",
+    "subtitle": "Голос Каракалпакского народа"
+  },
+  "footer": {
+    "description": "Платформа для сохранения, развития и продвижения богатого культурного наследия Каракалпакского народа",
+    "email": "info@karakalpakvoice.org",
+    "location": "Варшава, Польша",
+    "copyright": "© 2025 Karakalpakvoice.org. Все права защищены."
+  },
+  "widgets": {
+    "weather": "Погода",
+    "currency": "Курс валют",
+    "comingSoon": "Скоро добавим..."
+  }
+}
