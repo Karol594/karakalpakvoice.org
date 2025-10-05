@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import WeatherWidget from '../components/WeatherWidget';
 import CurrencyWidget from '../components/CurrencyWidget';
@@ -10,6 +11,7 @@ function Home() {
   const sections = [
     { 
       id: 'sovereignty', 
+      path: '/sovereignty',
       title: 'Суверенитет', 
       icon: Award,
       color: 'bg-blue-500',
@@ -17,6 +19,7 @@ function Home() {
     },
     { 
       id: 'declaration', 
+      path: '/declaration',
       title: 'Декларация', 
       icon: Landmark,
       color: 'bg-green-500',
@@ -24,6 +27,7 @@ function Home() {
     },
     { 
       id: 'constitution', 
+      path: '/constitution',
       title: 'Конституция', 
       icon: BookOpen,
       color: 'bg-purple-500',
@@ -31,6 +35,7 @@ function Home() {
     },
     { 
       id: 'qara-ai', 
+      path: '/qara-ai',
       title: 'QARA-AI', 
       icon: Bot,
       color: 'bg-indigo-500',
@@ -38,6 +43,7 @@ function Home() {
     },
     { 
       id: 'bots', 
+      path: '/bots',
       title: 'Ботлар', 
       icon: Bot,
       color: 'bg-teal-500',
@@ -45,6 +51,7 @@ function Home() {
     },
     { 
       id: 'about', 
+      path: '/about',
       title: 'Биз туўралы', 
       icon: Users,
       color: 'bg-orange-500',
@@ -85,9 +92,10 @@ function Home() {
         {sections.map((section) => {
           const Icon = section.icon;
           return (
-            <div 
+            <Link 
               key={section.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer overflow-hidden"
+              to={section.path}
+              className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 overflow-hidden block"
             >
               <div className={`${section.color} p-4 flex items-center justify-center`}>
                 <Icon size={48} className="text-white" />
@@ -96,7 +104,7 @@ function Home() {
                 <h3 className="text-xl font-bold mb-2 text-gray-800">{section.title}</h3>
                 <p className="text-gray-600">{section.description}</p>
               </div>
-            </div>
+            </Link>
           );
         })}
       </section>
@@ -108,9 +116,12 @@ function Home() {
         <p className="text-lg mb-6">
           Қарақалпақстан халқының даўысын жеткизиўге өз үлесиңизди қосыңыз
         </p>
-        <button className="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+        <Link 
+          to="/join"
+          className="inline-block bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105"
+        >
           Қосылыў
-        </button>
+        </Link>
       </section>
     </div>
   );
