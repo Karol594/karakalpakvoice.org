@@ -1,10 +1,10 @@
-import Hero from "./components/Hhero";
+import Hero from "./components/Hero";
 
 function App() {
   return (
-    <main className="min-h-screen w-full">
+    <div className="min-h-screen bg-gray-900 text-white">
       <Hero />
-    </main>
+    </div>
   );
 }
 
