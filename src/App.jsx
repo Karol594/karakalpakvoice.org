@@ -1,11 +1,9 @@
 import Hero from "./components/Hero";
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <main className="w-full min-h-screen">
       <Hero />
-    </div>
+    </main>
   );
 }
-
-export default App;
