@@ -2,9 +2,9 @@ export default function Hero() {
   return (
     <section
       className="h-screen flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/hero-photo.webp')" }}
+      style={{ backgroundImage: "url('/images/hero-photo.jpg')" }}
     >
-      <div className="text-center bg-black/40 p-6 rounded-xl backdrop-blur-sm">
+      <div className="text-center bg-black/40 p-6 rounded-xl backdrop-blur-sm text-white">
         <h1 className="text-5xl font-bold mb-4">
           Қарақалпақ Империя
         </h1>
