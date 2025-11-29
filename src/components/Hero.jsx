@@ -12,7 +12,7 @@ export default function Hero() {
           Қарақалпақстан халқының даўысын дүнья жүзине жеткизиўге арналған медиа платформа
         </p>
         <button className="mt-6 px-6 py-3 text-lg bg-blue-600 hover:bg-blue-700 rounded-lg">
-          Жаңалықтар
+          Жаңалықлар
         </button>
       </div>
     </section>
