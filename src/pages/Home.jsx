@@ -1,124 +1,91 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import WeatherWidget from '../components/WeatherWidget';
-import CurrencyWidget from '../components/CurrencyWidget';
-import { Newspaper, Award, Landmark, BookOpen, Bot, Users, UserPlus } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Bot, Award, Landmark, BookOpen, Users, UserPlus } from "lucide-react";
 
-function Home() {
-  const { t } = useTranslation();
-
-  const sections = [
-    { 
-      id: 'sovereignty', 
-      path: '/sovereignty',
-      title: 'Суверенитет', 
-      icon: Award,
-      color: 'bg-blue-500',
-      description: 'Қарақалпақстан Суверенитети туўралы'
-    },
-    { 
-      id: 'declaration', 
-      path: '/declaration',
-      title: 'Декларация', 
-      icon: Landmark,
-      color: 'bg-green-500',
-      description: 'Мәмлекетлик Суверенитет Декларациясы'
-    },
-    { 
-      id: 'constitution', 
-      path: '/constitution',
-      title: 'Конституция', 
-      icon: BookOpen,
-      color: 'bg-purple-500',
-      description: 'Республика Конституциясы'
-    },
-    { 
-      id: 'qara-ai', 
-      path: '/qara-ai',
-      title: 'QARA-AI', 
-      icon: Bot,
-      color: 'bg-indigo-500',
-      description: 'Жасанды интеллект көмекшиси'
-    },
-    { 
-      id: 'bots', 
-      path: '/bots',
-      title: 'Ботлар', 
-      icon: Bot,
-      color: 'bg-teal-500',
-      description: 'Telegram ботлары'
-    },
-    { 
-      id: 'about', 
-      path: '/about',
-      title: 'Биз туўралы', 
-      icon: Users,
-      color: 'bg-orange-500',
-      description: 'Команда ҳәм махсетлер'
-    }
-  ];
-
+export default function Home() {
   return (
-    <div className="space-y-8">
-      {/* Виджетлер */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <CurrencyWidget />
-        <WeatherWidget />
-      </div>
+    <div className="w-full h-full bg-black text-white">
+      {/* HERO */}
+      <section className="relative h-screen flex items-center justify-center">
+        
+        {/* VIDEO or IMAGE */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
 
-      {/* Соңғы мақалалар */}
-      <section className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex items-center space-x-3 mb-4">
-          <Newspaper className="text-blue-600" size={28} />
-          <h2 className="text-2xl font-bold text-gray-800">Соңғы мақалалар</h2>
+        {/* OR simple image fallback */}
+        <div className="absolute inset-0 bg-cover bg-center opacity-70"
+             style={{ backgroundImage: "url('/images/hero-photo.jpg')" }} />
+
+        {/* CONTENT */}
+        <div className="relative z-10 text-center px-6 max-w-3xl">
+          <h1 className="text-6xl font-extrabold tracking-tight mb-6">
+            Karakalpak Voice
+          </h1>
+          <p className="text-xl text-gray-200 leading-relaxed">
+            Қарақалпақ халқының хауазын дүньяға жеткизиу.  
+            Мәдений мийрасты сақлаў хәм раўажландырыў.
+          </p>
+
+          <Link
+            to="/about"
+            className="mt-10 inline-block px-8 py-3 bg-white text-black rounded-full
+                       text-lg font-semibold hover:scale-105 transition"
+          >
+            Биз туўралы
+          </Link>
         </div>
-        <p className="text-gray-600">
-          Жақын күнлерде мақалалар жәриялаймыз...
-        </p>
       </section>
 
-      {/* Сайт туўралы */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg p-8 text-white">
-        <h2 className="text-3xl font-bold mb-4">KarakalpakVoice.org</h2>
-        <p className="text-lg leading-relaxed">
-          Қарақалпақстан халқының даўысын дүнья жүзине жеткизиў, мәдений мийрасын 
-          сақлаў ҳәм раўажландырыўға арналған медиа платформа.
-        </p>
+      {/* SECTIONS */}
+      <section className="px-8 py-20 max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold mb-12 text-center">
+          Бөлимлер
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <Card icon={Award} title="Суверенитет" path="/sovereignty">
+            Қарақалпақстан Суверенитети туўралы
+          </Card>
+
+          <Card icon={Landmark} title="Декларация" path="/declaration">
+            Мәмлекетлик Суверенитет Декларациясы
+          </Card>
+
+          <Card icon={BookOpen} title="Конституция" path="/constitution">
+            Республика Конституциясы
+          </Card>
+
+          <Card icon={Bot} title="QARA-AI" path="/qara-ai">
+            Жасанды интеллект платформа
+          </Card>
+
+          <Card icon={Bot} title="Ботлар" path="/bots">
+            Telegram хызметлер
+          </Card>
+
+          <Card icon={Users} title="Команда" path="/about">
+            Биз туўралы & махсет
+          </Card>
+        </div>
       </section>
 
-      {/* Негизги бөлимлер */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sections.map((section) => {
-          const Icon = section.icon;
-          return (
-            <Link 
-              key={section.id}
-              to={section.path}
-              className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 overflow-hidden block"
-            >
-              <div className={`${section.color} p-4 flex items-center justify-center`}>
-                <Icon size={48} className="text-white" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{section.title}</h3>
-                <p className="text-gray-600">{section.description}</p>
-              </div>
-            </Link>
-          );
-        })}
-      </section>
-
-      {/* Бизге қосылың */}
-      <section className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-8 text-white text-center">
-        <UserPlus size={48} className="mx-auto mb-4" />
-        <h2 className="text-3xl font-bold mb-4">Бизге қосылың!</h2>
-        <p className="text-lg mb-6">
-          Қарақалпақстан халқының даўысын жеткизиўге өз үлесиңизди қосыңыз
-        </p>
-        <Link 
+      {/* CTA */}
+      <section className="py-24 bg-gradient-to-r from-purple-600 to-pink-600 text-center">
+        <UserPlus size={64} className="mx-auto mb-6" />
+        <h2 className="text-4xl font-bold mb-4">Қарақалпақстанға қоллау бериң!</h2>
+        <p className="text-xl mb-10">Дәуысынызды белгилең, халыкка қосылың.</p>
+        <Link
           to="/join"
-          className="inline-block bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105"
+          className="bg-white text-purple-600 px-10 py-4 rounded-full
+                     text-lg font-semibold hover:bg-gray-100 transition"
         >
           Қосылыў
         </Link>
@@ -127,4 +94,18 @@ function Home() {
   );
 }
 
-export default Home;
+/* CARD COMPONENT */
+function Card({ icon: Icon, title, children, path }) {
+  return (
+    <Link
+      to={path}
+      className="bg-zinc-900 border border-zinc-800 p-8 rounded-xl
+                 hover:-translate-y-1 hover:border-purple-500 transition
+                 block group"
+    >
+      <Icon size={40} className="text-purple-400 mb-4 group-hover:text-purple-300" />
+      <h3 className="text-2xl font-semibold mb-2">{title}</h3>
+      <p className="text-gray-400">{children}</p>
+    </Link>
+  );
+}
