@@ -69,4 +69,14 @@
     "unCharter": "UN Charter - Article 1",
     "unCharterText": "Equal rights and self-determination of all peoples",
     "civilPact": "International Covenant on Civil and Political Rights - Article 1",
-    "civilPactText": "All
+    "civilPactText": "All peoples have the right to self-determination",
+    "intlPractice": "International Practice",
+    "intlPracticeText": "Karakalpakstan's sovereign status is consistent with international experience such as the Basque Country in Spain or the Åland Islands in Finland.",
+    "finalMessage": "Hear our voice!",
+    "truthWins": "Truth will prevail!",
+    "photoNote": "Note: Photos will be added later."
+  },
+  "declaration": {
+    "fullText": "Supreme Council of the Karakalpak Autonomous Soviet Socialist Republic:\n\nTo determine the fate of a multinational people, assuming historical significance, asserting its independence, respecting the sovereignty of all peoples of the USSR, relying on the exclusive right of all peoples to self-determination, on the basis of all that relates to the Karakalpak Autonomous Soviet Socialist Republic, reviewing all previously adopted provisions and laws that contradict the current relations between the USSR, The Uzbek SSR and the Karakalpak ASSR, having informed the Supreme Soviet of the Uzbek SSR, adopted this present resolution..."
+  }
+}
