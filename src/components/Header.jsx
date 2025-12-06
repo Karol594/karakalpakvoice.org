@@ -6,8 +6,8 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   const languages = [
-    { code: "kk", label: "Qaraqalpaq" },
     { code: "ru", label: "Русский" },
+    { code: "kk", label: "Qaraqalpaq" },
     { code: "en", label: "English" },
     { code: "pl", label: "Polski" }
   ];
