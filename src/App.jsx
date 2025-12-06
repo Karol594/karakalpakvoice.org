@@ -1,10 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
 import Home from "./pages/Home";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <main className="w-full min-h-screen bg-gray-50">
+      <Header />
+
+      <main className="pt-20 w-full min-h-screen bg-black text-white">
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
