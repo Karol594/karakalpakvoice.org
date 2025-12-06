@@ -1,132 +1,171 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Menu, X, Globe, Moon, Sun } from "lucide-react";
+import i18n from "../i18n";
+import { useTranslation } from "react-i18next";
 
 export default function Navigation() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [lang, setLang] = useState("RU");
-  const [dark, setDark] = useState(false);
+  const { t } = useTranslation();
 
-  // Dark mode body class
-  useEffect(() => {
-    if (dark) {
-      document.body.classList.add("dark");
-      document.body.style.background = "#000";
-      document.body.style.color = "#fff";
-    } else {
-      document.body.classList.remove("dark");
-      document.body.style.background = "#fff";
-      document.body.style.color = "#000";
-    }
-  }, [dark]);
+  const [open, setOpen] = useState(false);
+  const [dark, setDark] = useState(true);
 
-  // Language switching (RU → KK → EN → PL)
+  const [lang, setLang] = useState(
+    i18n.language.toUpperCase() || "RU"
+  );
+
   const toggleLang = () => {
-    if (lang === "RU") setLang("KK");
-    else if (lang === "KK") setLang("EN");
-    else if (lang === "EN") setLang("PL");
-    else setLang("RU");
+    if (lang === "RU") {
+      setLang("KK");
+      i18n.changeLanguage("kk");
+    } else if (lang === "KK") {
+      setLang("EN");
+      i18n.changeLanguage("en");
+    } else if (lang === "EN") {
+      setLang("PL");
+      i18n.changeLanguage("pl");
+    } else {
+      setLang("RU");
+      i18n.changeLanguage("ru");
+    }
+  };
+
+  const toggleDark = () => {
+    setDark(!dark);
+    document.documentElement.classList.toggle("dark");
   };
 
   return (
-    <nav
-      style={{
-        width: "100%",
-        background: dark ? "#111" : "#f8f8f8",
-        color: dark ? "#fff" : "#000",
-        borderBottom: dark ? "1px solid #333" : "1px solid #ddd",
-        padding: "5px 0 10px 0",
-        position: "sticky",
-        top: 0,
-        zIndex: 50,
-      }}
-    >
-      {/* Top info panel */}
-      <div
-        style={{
-          display: "flex",
-          gap: "15px",
-          fontSize: "14px",
-          justifyContent: "flex-end",
-          padding: "0 16px",
-        }}
-      >
-        <button onClick={toggleLang} style={{ background: "none", border: "none", color: "inherit" }}>
-          🌐 Тил: {lang}
-        </button>
+    <header className="w-full fixed top-0 left-0 z-50 bg-black/70 backdrop-blur text-white">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 
-        <button
-          onClick={() => alert("Курс сервиси жуwма даяры болады.")}
-          style={{ background: "none", border: "none", color: "inherit" }}
-        >
-          💲 USD: 11350
-        </button>
-
-        <button
-          onClick={() => alert("Ҳаўа-райы сервиси жуwма даяры болады.")}
-          style={{ background: "none", border: "none", color: "inherit" }}
-        >
-          ☀ Нукус: +4°C
-        </button>
-
-        <button
-          onClick={() => setDark(!dark)}
-          style={{ background: "none", border: "none", color: "inherit" }}
-        >
-          {dark ? "🌙 Dark" : "☀ Light"}
-        </button>
-      </div>
-
-      {/* Main navigation */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "5px 16px",
-          marginTop: "5px",
-          alignItems: "center",
-        }}
-      >
-        {/* Logo */}
-        <Link to="/">
-          <img src="/logo.png" alt="logo" style={{ height: "36px" }} />
+        {/* LOGO */}
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/images/logo-full.svg"
+            alt="logo"
+            className="h-8 w-auto"
+          />
         </Link>
 
-        {/* Hamburger button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          style={{
-            display: "block",
-            background: "none",
-            border: "none",
-            fontSize: "26px",
-          }}
-        >
-          ☰
-        </button>
+        {/* DESKTOP NAV */}
+        <nav className="hidden md:flex items-center gap-8 text-lg">
+
+          <Link to="/" className="hover:text-purple-300">
+            {t("nav.home")}
+          </Link>
+
+          <Link to="/news" className="hover:text-purple-300">
+            {t("nav.news")}
+          </Link>
+
+          <Link to="/sport" className="hover:text-purple-300">
+            {t("nav.sport")}
+          </Link>
+
+          <Link to="/tradition" className="hover:text-purple-300">
+            {t("nav.tradition")}
+          </Link>
+
+          <Link to="/religion" className="hover:text-purple-300">
+            {t("nav.religion")}
+          </Link>
+
+          <Link to="/history" className="hover:text-purple-300">
+            {t("nav.history")}
+          </Link>
+
+          <Link to="/geography" className="hover:text-purple-300">
+            {t("nav.geography")}
+          </Link>
+
+          <Link to="/people" className="hover:text-purple-300">
+            {t("nav.people")}
+          </Link>
+
+          <Link to="/contact" className="hover:text-purple-300">
+            {t("nav.contact")}
+          </Link>
+        </nav>
+
+        {/* ACTION BUTTONS */}
+        <div className="flex items-center gap-4">
+
+          {/* LANGUAGE */}
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1 bg-zinc-800 px-3 py-1 rounded-full text-sm"
+          >
+            <Globe size={16} />
+            {lang}
+          </button>
+
+          {/* DARK MODE */}
+          <button
+            onClick={toggleDark}
+            className="p-2 rounded-full bg-zinc-800"
+          >
+            {dark ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+
+          {/* HAMBURGER */}
+          <button
+            onClick={() => setOpen(true)}
+            className="md:hidden p-2"
+          >
+            <Menu size={28} />
+          </button>
+        </div>
       </div>
 
-      {/* Dropdown menu */}
-      {menuOpen && (
-        <div
-          style={{
-            background: dark ? "#111" : "#fff",
-            borderTop: dark ? "1px solid #333" : "1px solid #ddd",
-            padding: "10px 0",
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px", paddingLeft: "16px" }}>
-            <Link to="/" onClick={() => setMenuOpen(false)}>Басты бет</Link>
-            <Link to="/news" onClick={() => setMenuOpen(false)}>Жаңалықлар</Link>
-            <Link to="/sport" onClick={() => setMenuOpen(false)}>Спорт</Link>
-            <Link to="/tradition" onClick={() => setMenuOpen(false)}>Дәстүр</Link>
-            <Link to="/religion" onClick={() => setMenuOpen(false)}>Дин</Link>
-            <Link to="/history" onClick={() => setMenuOpen(false)}>Тарийх</Link>
-            <Link to="/geography" onClick={() => setMenuOpen(false)}>География</Link>
-            <Link to="/people" onClick={() => setMenuOpen(false)}>Тулғалар</Link>
-            <Link to="/contact" onClick={() => setMenuOpen(false)}>Байланыс</Link>
-          </div>
+      {/* MOBILE MENU */}
+      {open && (
+        <div className="fixed inset-0 bg-black/90 text-white z-50 flex flex-col p-8 space-y-6 text-2xl">
+
+          <button
+            onClick={() => setOpen(false)}
+            className="self-end mb-6"
+          >
+            <X size={36} />
+          </button>
+
+          <Link to="/" onClick={() => setOpen(false)}>
+            {t("nav.home")}
+          </Link>
+
+          <Link to="/news" onClick={() => setOpen(false)}>
+            {t("nav.news")}
+          </Link>
+
+          <Link to="/sport" onClick={() => setOpen(false)}>
+            {t("nav.sport")}
+          </Link>
+
+          <Link to="/tradition" onClick={() => setOpen(false)}>
+            {t("nav.tradition")}
+          </Link>
+
+          <Link to="/religion" onClick={() => setOpen(false)}>
+            {t("nav.religion")}
+          </Link>
+
+          <Link to="/history" onClick={() => setOpen(false)}>
+            {t("nav.history")}
+          </Link>
+
+          <Link to="/geography" onClick={() => setOpen(false)}>
+            {t("nav.geography")}
+          </Link>
+
+          <Link to="/people" onClick={() => setOpen(false)}>
+            {t("nav.people")}
+          </Link>
+
+          <Link to="/contact" onClick={() => setOpen(false)}>
+            {t("nav.contact")}
+          </Link>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
