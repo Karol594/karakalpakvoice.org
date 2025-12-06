@@ -1,103 +1,184 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X, Globe, Moon, Sun } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Globe, DollarSign, Cloud, ChevronDown } from 'lucide-react';
 
 export default function Navigation() {
-  const { i18n } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const [lang, setLang] = useState('KK');
+  const [showLangMenu, setShowLangMenu] = useState(false);
+  const location = useLocation();
 
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [dark, setDark] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
+  // Мобиль мәзірді жабу (бетке өткенде)
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
-  const changeLang = (lng) => {
-    i18n.changeLanguage(lng);
-    setLangOpen(false);
-  };
+  const languages = [
+    { code: 'KK', flag: '🇰🇿', name: 'Қарақалпақша' },
+    { code: 'RU', flag: '🇷🇺', name: 'Русский' },
+    { code: 'EN', flag: '🇬🇧', name: 'English' },
+    { code: 'PL', flag: '🇵🇱', name: 'Polski' }
+  ];
 
-  const toggleDark = () => {
-    setDark(!dark);
-    document.documentElement.classList.toggle("dark");
-  };
+  const navLinks = [
+    { path: '/', label: 'Басты' },
+    { path: '/sovereignty', label: 'Суверенитет' },
+    { path: '/declaration', label: 'Декларация' },
+    { path: '/constitution', label: 'Конституция' },
+    { path: '/qara-ai', label: 'QARA-AI' },
+    { path: '/news', label: 'Жаңалықлар' },
+    { path: '/about', label: 'Біз туралы' },
+    { path: '/contact', label: 'Байланыс' }
+  ];
+
+  const currentLang = languages.find(l => l.code === lang);
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 bg-white dark:bg-black border-b border-gray-300 dark:border-gray-700">
-      <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg border-b border-zinc-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          
+          {/* LOGO */}
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/50">
+              <span className="text-white font-bold text-xl">K</span>
+            </div>
+            <span className="hidden sm:block text-white font-bold text-lg group-hover:text-purple-400 transition">
+              KarakalpakVoice
+            </span>
+          </Link>
 
-        {/* LOGO */}
-        <Link to="/" className="text-2xl font-bold dark:text-white">
-          KarakalpakVoice
-        </Link>
-
-        {/* DESKTOP MENU */}
-        <nav className="hidden md:flex items-center gap-6 text-lg">
-          <Link className="hover:text-purple-600 dark:text-gray-300" to="/">Home</Link>
-          <Link className="hover:text-purple-600 dark:text-gray-300" to="/news">News</Link>
-          <Link className="hover:text-purple-600 dark:text-gray-300" to="/sport">Sport</Link>
-          <Link className="hover:text-purple-600 dark:text-gray-300" to="/tradition">Tradition</Link>
-          <Link className="hover:text-purple-600 dark:text-gray-300" to="/history">History</Link>
-
-          {/* LANGUAGE SELECT */}
-          <div className="relative">
-            <button
-              className="flex items-center gap-2 dark:text-white"
-              onClick={() => setLangOpen(!langOpen)}
-            >
-              <Globe size={20} />
-              {i18n.language.toUpperCase()}
-            </button>
-
-            {langOpen && (
-              <div className="absolute right-0 mt-2 w-32 bg-white dark:bg-zinc-900 shadow-lg rounded-md border dark:border-zinc-700">
-                <button onClick={() => changeLang("ru")} className="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-800 text-left">Русский</button>
-                <button onClick={() => changeLang("kk")} className="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-800 text-left">Qaraqalpaqsha</button>
-                <button onClick={() => changeLang("en")} className="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-800 text-left">English</button>
-                <button onClick={() => changeLang("pl")} className="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-800 text-left">Polski</button>
-              </div>
-            )}
+          {/* DESKTOP MENU */}
+          <div className="hidden lg:flex items-center space-x-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`px-4 py-2 rounded-lg transition ${
+                  location.pathname === link.path
+                    ? 'bg-purple-600 text-white'
+                    : 'text-gray-300 hover:text-white hover:bg-zinc-800'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          {/* DARK MODE */}
-          <button onClick={toggleDark} className="dark:text-white">
-            {dark ? <Sun size={22} /> : <Moon size={22} />}
-          </button>
-        </nav>
+          {/* RIGHT WIDGETS */}
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            
+            {/* ТІЛ */}
+            <div className="relative">
+              <button
+                onClick={() => setShowLangMenu(!showLangMenu)}
+                className="flex items-center space-x-2 px-3 py-2 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition"
+              >
+                <Globe size={16} className="text-purple-400" />
+                <span className="hidden sm:inline text-white text-sm font-medium">
+                  {currentLang.flag} {lang}
+                </span>
+                <ChevronDown size={14} className="text-gray-400" />
+              </button>
+              
+              {/* Тіл мәзірі */}
+              {showLangMenu && (
+                <>
+                  <div 
+                    className="fixed inset-0 z-10" 
+                    onClick={() => setShowLangMenu(false)}
+                  />
+                  <div className="absolute top-full mt-2 right-0 w-48 bg-zinc-900 border border-zinc-800 rounded-lg shadow-2xl z-20">
+                    {languages.map((l) => (
+                      <button
+                        key={l.code}
+                        onClick={() => {
+                          setLang(l.code);
+                          setShowLangMenu(false);
+                        }}
+                        className={`w-full px-4 py-3 text-left hover:bg-zinc-800 transition first:rounded-t-lg last:rounded-b-lg flex items-center space-x-3 ${
+                          lang === l.code ? 'bg-zinc-800 text-white' : 'text-gray-300'
+                        }`}
+                      >
+                        <span className="text-xl">{l.flag}</span>
+                        <span className="text-sm">{l.name}</span>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
 
-        {/* MOBILE BUTTON */}
-        <button
-          className="md:hidden dark:text-white"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+            {/* КУРС */}
+            <div className="hidden md:flex items-center space-x-2 px-3 py-2 bg-zinc-800 rounded-lg">
+              <DollarSign size={16} className="text-green-400" />
+              <div className="text-xs">
+                <div className="text-white font-medium">11350</div>
+                <div className="text-gray-400 text-[10px]">UZS/USD</div>
+              </div>
+            </div>
+
+            {/* АУА РАЙЫ */}
+            <div className="hidden md:flex items-center space-x-2 px-3 py-2 bg-zinc-800 rounded-lg">
+              <Cloud size={16} className="text-blue-400" />
+              <div className="text-xs">
+                <div className="text-white font-medium">+4°C</div>
+                <div className="text-gray-400 text-[10px]">Нөкис</div>
+              </div>
+            </div>
+
+            {/* ГАМБУРГЕР */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2 text-gray-300 hover:text-white hover:bg-zinc-800 rounded-lg transition"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* MOBILE MENU */}
-      {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-black border-t border-gray-300 dark:border-gray-700 px-5 py-4 text-lg">
-          <Link onClick={() => setMenuOpen(false)} className="block py-2" to="/">Home</Link>
-          <Link onClick={() => setMenuOpen(false)} className="block py-2" to="/news">News</Link>
-          <Link onClick={() => setMenuOpen(false)} className="block py-2" to="/sport">Sport</Link>
-          <Link onClick={() => setMenuOpen(false)} className="block py-2" to="/tradition">Tradition</Link>
-          <Link onClick={() => setMenuOpen(false)} className="block py-2" to="/history">History</Link>
+      {isOpen && (
+        <div className="lg:hidden bg-zinc-900 border-t border-zinc-800 max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="px-4 py-4 space-y-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`block px-4 py-3 rounded-lg transition ${
+                  location.pathname === link.path
+                    ? 'bg-purple-600 text-white'
+                    : 'text-gray-300 hover:text-white hover:bg-zinc-800'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
 
-          {/* MOBILE LANGUAGE */}
-          <div className="mt-4">
-            <p className="text-gray-500 dark:text-gray-400 mb-1">Language</p>
-            <div className="flex gap-3">
-              <button onClick={() => changeLang("ru")} className="px-3 py-1 bg-gray-200 dark:bg-zinc-800 rounded">RU</button>
-              <button onClick={() => changeLang("kk")} className="px-3 py-1 bg-gray-200 dark:bg-zinc-800 rounded">KK</button>
-              <button onClick={() => changeLang("en")} className="px-3 py-1 bg-gray-200 dark:bg-zinc-800 rounded">EN</button>
-              <button onClick={() => changeLang("pl")} className="px-3 py-1 bg-gray-200 dark:bg-zinc-800 rounded">PL</button>
+            {/* MOBILE INFO */}
+            <div className="pt-4 border-t border-zinc-800 space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex items-center justify-between px-4 py-3 bg-zinc-800 rounded-lg">
+                  <DollarSign size={16} className="text-green-400" />
+                  <div className="text-right">
+                    <div className="text-white text-sm font-medium">11350</div>
+                    <div className="text-gray-400 text-xs">USD</div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between px-4 py-3 bg-zinc-800 rounded-lg">
+                  <Cloud size={16} className="text-blue-400" />
+                  <div className="text-right">
+                    <div className="text-white text-sm font-medium">+4°C</div>
+                    <div className="text-gray-400 text-xs">Нөкис</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* MOBILE DARK MODE */}
-          <button onClick={toggleDark} className="mt-4 flex items-center gap-2 dark:text-white">
-            {dark ? <Sun size={22} /> : <Moon size={22} />} Dark Mode
-          </button>
         </div>
       )}
-    </header>
+    </nav>
   );
 }
