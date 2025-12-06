@@ -1,15 +1,16 @@
 {
   "nav": {
     "home": "Strona główna",
-    "news": "Wiadomości",
+    "news": "Aktualności",
     "sport": "Sport",
-    "tradition": "Tradycja",
+    "tradition": "Tradycje",
     "religion": "Religia",
     "history": "Historia",
     "geography": "Geografia",
     "people": "Osobowości",
     "contact": "Kontakt"
-  },
+  }
+}
   "header": {
     "title": "KarakalpakVoice.org",
     "subtitle": "Głos narodu karakałpackiego"
