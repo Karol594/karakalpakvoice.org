@@ -5,31 +5,24 @@ import { Bot, Award, Landmark, BookOpen, Users, UserPlus } from "lucide-react";
 export default function Home() {
   return (
     <div className="w-full h-full bg-black text-white">
-      {/* HERO */}
+      
+      {/* HERO SECTION */}
       <section className="relative h-screen flex items-center justify-center">
         
-        {/* VIDEO or IMAGE */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
-        >
-          <source src="/hero-bg.mp4" type="video/mp4" />
-        </video>
-
-        {/* OR simple image fallback */}
-        <div className="absolute inset-0 bg-cover bg-center opacity-70"
-             style={{ backgroundImage: "url('/images/hero-photo.jpg')" }} />
+        {/* BACKGROUND IMAGE */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center opacity-70"
+          style={{ backgroundImage: "url('/images/hero-photo.jpg')" }}
+        />
 
         {/* CONTENT */}
         <div className="relative z-10 text-center px-6 max-w-3xl">
           <h1 className="text-6xl font-extrabold tracking-tight mb-6">
             Karakalpak Voice
           </h1>
+
           <p className="text-xl text-gray-200 leading-relaxed">
-            Қарақалпақ халқының хауазын дүньяға жеткизиу.  
+            Қарақалпақ халқының даўысын дүньяға жеткизиў.
             Мәдений мийрасты сақлаў хәм раўажландырыў.
           </p>
 
@@ -45,9 +38,7 @@ export default function Home() {
 
       {/* SECTIONS */}
       <section className="px-8 py-20 max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">
-          Бөлимлер
-        </h2>
+        <h2 className="text-4xl font-bold mb-12 text-center">Бөлимлер</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
@@ -68,20 +59,28 @@ export default function Home() {
           </Card>
 
           <Card icon={Bot} title="Ботлар" path="/bots">
-            Telegram хызметлер
+            Telegram бот хызметлер
           </Card>
 
           <Card icon={Users} title="Команда" path="/about">
             Биз туўралы & махсет
           </Card>
+
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-24 bg-gradient-to-r from-purple-600 to-pink-600 text-center">
         <UserPlus size={64} className="mx-auto mb-6" />
-        <h2 className="text-4xl font-bold mb-4">Қарақалпақстанға қоллау бериң!</h2>
-        <p className="text-xl mb-10">Дәуысынызды белгилең, халыкка қосылың.</p>
+
+        <h2 className="text-4xl font-bold mb-4">
+          Қарақалпақстанға қоллаў бериң!
+        </h2>
+
+        <p className="text-xl mb-10">
+          Қарақалпақстан даўысын дүньяға жеткериўге үлесиңизди қосың!
+        </p>
+
         <Link
           to="/join"
           className="bg-white text-purple-600 px-10 py-4 rounded-full
