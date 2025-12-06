@@ -1,60 +1,40 @@
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import LanguageSwitcher from './LanguageSwitcher';
-import Navigation from './Navigation';
+import React from "react";
+import { Globe, DollarSign, CloudSun } from "lucide-react";
+import { Link } from "react-router-dom";
 
-function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+export default function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-white/60 dark:bg-black/40 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between">
-          {/* Logo + Menu */}
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-              aria-label="Меню"
-            >
-              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
+    <header className="w-full fixed top-0 left-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-            <a href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-md hero-gradient flex items-center justify-center shadow-soft-lg">
-                {/* Logo: simple initial — replace with svg if available */}
-                <span className="font-bold text-white">Q</span>
-              </div>
-              <div className="leading-tight">
-                <h1 className="text-lg md:text-xl font-extrabold tracking-tight">KarakalpakVoice</h1>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Қарақалпақтың дауысы</div>
-              </div>
-            </a>
+        {/* Logo */}
+        <Link to="/" className="flex items-center space-x-3">
+          <img src="/images/logo-full.svg" alt="logo" className="h-9" />
+        </Link>
+
+        {/* Navigation */}
+        <nav className="flex items-center space-x-10 text-gray-200">
+          
+          {/* Language */}
+          <div className="flex items-center space-x-2 cursor-pointer hover:text-white">
+            <Globe size={20} />
+            <span>Тил: KK</span>
           </div>
 
-          <div className="flex items-center gap-4">
-            <nav className="hidden md:flex items-center gap-4">
-              <a href="/" className="nav-link text-sm text-gray-700 dark:text-gray-200 hover:text-qara-500">Жаңалықлар</a>
-              <a href="/sovereignty" className="nav-link text-sm text-gray-700 dark:text-gray-200 hover:text-qara-500">Суверенитет</a>
-              <a href="/culture" className="nav-link text-sm text-gray-700 dark:text-gray-200 hover:text-qara-500">Мәдениет</a>
-            </nav>
-
-            <LanguageSwitcher />
-
-            <a
-              href="/admin"
-              className="ml-2 px-3 py-1 rounded-md bg-qara-500 text-white text-sm hover:opacity-95"
-            >
-              Admin
-            </a>
+          {/* Exchange Rate */}
+          <div className="flex items-center space-x-2 cursor-pointer hover:text-white">
+            <DollarSign size={20} />
+            <span>USD: 11350</span>
           </div>
-        </div>
+
+          {/* Weather */}
+          <div className="flex items-center space-x-2 cursor-pointer hover:text-white">
+            <CloudSun size={20} />
+            <span>Нукус: +4°C</span>
+          </div>
+
+        </nav>
       </div>
-
-      {/* Mobile navigation (slide) */}
-      <Navigation isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </header>
   );
 }
-
-export default Header;
