@@ -25,8 +25,6 @@ function App() {
         <Route path="/geography" element={<Geography />} />
         <Route path="/people" element={<People />} />
         <Route path="/contact" element={<Contact />} />
-
-        {/* Болашақ бетлерге орын қалдырылды */}
       </Routes>
     </Router>
   );
