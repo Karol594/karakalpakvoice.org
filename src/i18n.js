@@ -10,13 +10,13 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
-      kk: { translation: kk },
       ru: { translation: ru },
+      kk: { translation: kk },
       en: { translation: en },
       pl: { translation: pl }
     },
-    lng: "kk",
-    fallbackLng: "kk",
+    lng: "ru",           // ← ӘДЕПКІ ТІЛ РУССКИЙ
+    fallbackLng: "ru",
     interpolation: { escapeValue: false }
   });
 
