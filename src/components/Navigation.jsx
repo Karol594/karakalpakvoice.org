@@ -8,21 +8,21 @@ export default function Navigation() {
   const [showLangMenu, setShowLangMenu] = useState(false);
   const location = useLocation();
 
-  // Мобиль мәзірді жабу (бетке өткенде)
+  // Мобиль меню жабыў (бетке өткенде)
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
 
   const languages = [
-    { code: 'KK', flag: 'kk', name: 'Қарақалпақша' },
+    { code: 'KK', flag: '🏳️', name: 'Қарақалпақша' },
     { code: 'RU', flag: '🇷🇺', name: 'Русский' },
     { code: 'EN', flag: '🇬🇧', name: 'English' },
     { code: 'PL', flag: '🇵🇱', name: 'Polski' }
   ];
 
   const navLinks = [
-    { path: '/', label: 'Басты' },
-    { path: '/about', label: 'Биз тууралы' },
+    { path: '/', label: 'Бас' },
+    { path: '/about', label: 'Биз туўралы' },
     { path: '/news', label: 'Жаңалықлар' },
     { path: '/contact', label: 'Байланыс' }
   ];
@@ -64,7 +64,7 @@ export default function Navigation() {
           {/* RIGHT WIDGETS */}
           <div className="flex items-center space-x-2 sm:space-x-4">
             
-            {/* ТІЛ */}
+            {/* ТИЛ */}
             <div className="relative">
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
@@ -114,7 +114,7 @@ export default function Navigation() {
               </div>
             </div>
 
-            {/* ХАУА РАЙЫ */}
+            {/* ҲАЎА РАЙЫ */}
             <div className="hidden md:flex items-center space-x-2 px-3 py-2 bg-zinc-800 rounded-lg">
               <Cloud size={16} className="text-blue-400" />
               <div className="text-xs">
