@@ -14,7 +14,7 @@ export default function Navigation() {
   }, [location]);
 
   const languages = [
-    { code: 'KK', flag: '🇰🇿', name: 'Қарақалпақша' },
+    { code: 'KK', flag: 'kk', name: 'Қарақалпақша' },
     { code: 'RU', flag: '🇷🇺', name: 'Русский' },
     { code: 'EN', flag: '🇬🇧', name: 'English' },
     { code: 'PL', flag: '🇵🇱', name: 'Polski' }
@@ -22,7 +22,7 @@ export default function Navigation() {
 
   const navLinks = [
     { path: '/', label: 'Басты' },
-    { path: '/about', label: 'Біз туралы' },
+    { path: '/about', label: 'Биз тууралы' },
     { path: '/news', label: 'Жаңалықлар' },
     { path: '/contact', label: 'Байланыс' }
   ];
@@ -77,7 +77,7 @@ export default function Navigation() {
                 <ChevronDown size={14} className="text-gray-400" />
               </button>
               
-              {/* Тіл мәзірі */}
+              {/* Тил меню */}
               {showLangMenu && (
                 <>
                   <div 
@@ -114,7 +114,7 @@ export default function Navigation() {
               </div>
             </div>
 
-            {/* АУА РАЙЫ */}
+            {/* ХАУА РАЙЫ */}
             <div className="hidden md:flex items-center space-x-2 px-3 py-2 bg-zinc-800 rounded-lg">
               <Cloud size={16} className="text-blue-400" />
               <div className="text-xs">
