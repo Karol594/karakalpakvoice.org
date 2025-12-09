@@ -4,10 +4,10 @@ import { Bot, Award, Landmark, BookOpen, Users, UserPlus, ArrowRight } from "luc
 
 export default function Home() {
   return (
-    <div className="w-full bg-black text-white">
+    <div className="w-full bg-black text-white pt-16">
       
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         
         {/* BACKGROUND */}
         <div 
@@ -30,7 +30,7 @@ export default function Home() {
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8">
             <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
-              Қарақалпақ Даўысы 
+              Қарақалпақ Даўысы
             </span>
           </h1>
           
@@ -43,7 +43,7 @@ export default function Home() {
               to="/about"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-lg font-bold hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300"
             >
-              Биз туўралы
+              Биз туўралы 
               <ArrowRight size={20} />
             </Link>
             
@@ -71,7 +71,7 @@ export default function Home() {
             Бөлимлер
           </h2>
           <p className="text-gray-400 text-xl max-w-2xl mx-auto">
-            Қарақалпақстан туўралы исенимли мағлыўмат
+            Қарақалпақстан туўралы исенимли мағлыўматлар
           </p>
         </div>
 
@@ -106,7 +106,7 @@ export default function Home() {
             title="QARA-AI" 
             path="/qara-ai" 
             color="pink"
-            description="Жасанды интеллект платформасы"
+            description="Жасанды интеллект платформа"
           />
 
           <Card 
@@ -136,7 +136,7 @@ export default function Home() {
           <UserPlus size={72} className="mx-auto mb-8 text-white drop-shadow-2xl" />
           
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
-            Қарақалпақстанға қоллаў бериң!
+            Қарақалпақстанды қоллап-қуўатлаң!
           </h2>
           
           <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-2xl mx-auto leading-relaxed">
