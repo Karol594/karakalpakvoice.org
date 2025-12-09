@@ -4,43 +4,48 @@ import { Menu, X, Globe, DollarSign, Cloud, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function Navigation() {
+  const { t, i18n } = useTranslation();
+
   const [isOpen, setIsOpen] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false);
-  const { t, i18n } = useTranslation();
   const location = useLocation();
 
-  // Мобиль менюди жабыў
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
 
   const languages = [
-    { code: 'kk', flag: '🏳️', name: 'Қарақалпақша' },
-    { code: 'ru', flag: '🇷🇺', name: 'Русский' },
-    { code: 'en', flag: '🇬🇧', name: 'English' },
-    { code: 'pl', flag: '🇵🇱', name: 'Polski' }
+    { code: 'kk', flag: '🏳️', name: t('lang.kk') },
+    { code: 'ru', flag: '🇷🇺', name: t('lang.ru') },
+    { code: 'en', flag: '🇬🇧', name: t('lang.en') },
+    { code: 'pl', flag: '🇵🇱', name: t('lang.pl') }
   ];
 
-  const currentLang = languages.find(l => l.code === i18n.language);
+  const currentLang = i18n.language.toUpperCase();
 
   const navLinks = [
-    { path: '/', label: t('nav.home') },
-    { path: '/about', label: t('nav.about') },
-    { path: '/news', label: t('nav.news') },
-    { path: '/sovereignty', label: t('nav.sovereignty') },
-    { path: '/history', label: t('nav.history') },
-    { path: '/geography', label: t('nav.geography') },
-    { path: '/people', label: t('nav.people') },
-    { path: '/tradition', label: t('nav.tradition') },
-    { path: '/sport', label: t('nav.sport') },
-    { path: '/contact', label: t('nav.contact') }
+    { path: '/', label: t('navigation.home') },
+    { path: '/about', label: t('navigation.about') },
+    { path: '/news', label: t('navigation.news') },
+    { path: '/sovereignty', label: t('navigation.sovereignty') },
+    { path: '/history', label: t('navigation.history') },
+    { path: '/geography', label: t('navigation.geography') },
+    { path: '/people', label: t('navigation.people') },
+    { path: '/tradition', label: t('navigation.tradition') },
+    { path: '/sport', label: t('navigation.sport') },
+    { path: '/contact', label: t('navigation.contact') },
+    { path: '/bots', label: t('navigation.bots') },
+    { path: '/qara-ai', label: t('navigation.qara_ai') },
+    { path: '/join', label: t('navigation.join') },
+    { path: '/constitution', label: t('navigation.constitution') },
+    { path: '/declaration', label: t('navigation.declaration') }
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-
+          
           {/* LOGO */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/50">
@@ -51,7 +56,7 @@ export default function Navigation() {
             </span>
           </Link>
 
-          {/* DESKTOP NAV */}
+          {/* DESKTOP MENU */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Link
@@ -68,10 +73,10 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* RIGHT SIDE */}
+          {/* RIGHT */}
           <div className="flex items-center space-x-2 sm:space-x-4">
 
-            {/* LANGUAGE SWITCH */}
+            {/* LANGUAGE */}
             <div className="relative">
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
@@ -79,18 +84,17 @@ export default function Navigation() {
               >
                 <Globe size={16} className="text-purple-400" />
                 <span className="hidden sm:inline text-white text-sm font-medium">
-                  {currentLang.flag} {currentLang.code.toUpperCase()}
+                  {currentLang}
                 </span>
                 <ChevronDown size={14} className="text-gray-400" />
               </button>
 
               {showLangMenu && (
                 <>
-                  <div
-                    className="fixed inset-0 z-10"
+                  <div 
+                    className="fixed inset-0 z-10" 
                     onClick={() => setShowLangMenu(false)}
                   />
-
                   <div className="absolute top-full mt-2 right-0 w-48 bg-zinc-900 border border-zinc-800 rounded-lg shadow-2xl z-20">
                     {languages.map((l) => (
                       <button
@@ -100,9 +104,7 @@ export default function Navigation() {
                           setShowLangMenu(false);
                         }}
                         className={`w-full px-4 py-3 text-left hover:bg-zinc-800 transition flex items-center space-x-3 ${
-                          i18n.language === l.code
-                            ? 'bg-zinc-800 text-white'
-                            : 'text-gray-300'
+                          i18n.language === l.code ? 'bg-zinc-800 text-white' : 'text-gray-300'
                         }`}
                       >
                         <span className="text-xl">{l.flag}</span>
@@ -114,7 +116,7 @@ export default function Navigation() {
               )}
             </div>
 
-            {/* USD RATE */}
+            {/* USD */}
             <div className="hidden md:flex items-center space-x-2 px-3 py-2 bg-zinc-800 rounded-lg">
               <DollarSign size={16} className="text-green-400" />
               <div className="text-xs">
@@ -143,7 +145,7 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* MOBILE NAV */}
+      {/* MOBILE MENU */}
       {isOpen && (
         <div className="lg:hidden bg-zinc-900 border-t border-zinc-800 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="px-4 py-4 space-y-2">
@@ -160,28 +162,6 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
-
-            {/* MOBILE INFO */}
-            <div className="pt-4 border-t border-zinc-800 space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="flex items-center justify-between px-4 py-3 bg-zinc-800 rounded-lg">
-                  <DollarSign size={16} className="text-green-400" />
-                  <div className="text-right">
-                    <div className="text-white text-sm font-medium">11350</div>
-                    <div className="text-gray-400 text-xs">USD</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between px-4 py-3 bg-zinc-800 rounded-lg">
-                  <Cloud size={16} className="text-blue-400" />
-                  <div className="text-right">
-                    <div className="text-white text-sm font-medium">+4°C</div>
-                    <div className="text-gray-400 text-xs">Нөкис</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       )}
