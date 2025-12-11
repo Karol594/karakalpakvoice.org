@@ -1,15 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Bot, Award, Landmark, BookOpen, Users, UserPlus, ArrowRight } from "lucide-react";
+import { ArrowRight, Award, Landmark, BookOpen, Bot, Users, UserPlus } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="w-full bg-black text-white pt-16">
-      
+
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        
-        {/* BACKGROUND */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
@@ -17,23 +15,21 @@ export default function Home() {
             filter: "brightness(0.3)"
           }}
         />
-        
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
 
-        {/* CONTENT */}
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <div className="mb-6">
             <span className="inline-block px-6 py-2 bg-purple-600/20 backdrop-blur-sm border border-purple-500/50 rounded-full text-purple-300 text-sm font-medium">
               Қарақалпақстан медиа платформасы
             </span>
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8">
             <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
               Қарақалпақ Даўысы
             </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed mb-12 max-w-3xl mx-auto">
             Қарақалпақстан халқының даўысын дүньяға жеткизиўге арналған медиа платформа
           </p>
@@ -56,7 +52,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* SCROLL */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
             <div className="w-1 h-3 bg-white/50 rounded-full animate-pulse" />
@@ -64,71 +59,67 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTIONS */}
-      <section className="px-6 py-24 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Бөлимлер
-          </h2>
-          <p className="text-gray-400 text-xl max-w-2xl mx-auto">
-            Қарақалпақстан туўралы исенимли мағлыўматлар
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <Card 
-            icon={Award} 
-            title="Суверенитет" 
-            path="/sovereignty" 
-            color="purple"
-            description="Қарақалпақстан Суверенитети туўралы"
-          />
+      {/* ================= FULLSCREEN 6 SECTIONS ================= */}
 
-          <Card 
-            icon={Landmark} 
-            title="Декларация" 
-            path="/declaration" 
-            color="blue"
-            description="Мәмлекетлик Суверенитет Декларациясы"
-          />
 
-          <Card 
-            icon={BookOpen} 
-            title="Конституция" 
-            path="/constitution" 
-            color="green"
-            description="Республика Конституциясы"
-          />
+      {/* 1 — СУВЕРЕНИТЕТ */}
+      <FullscreenBlock
+        icon={Award}
+        title="Суверенитет"
+        description="Қарақалпақстан Суверенитети туўралы"
+        link="/sovereignty"
+        bg="url('/images/sovereignty.jpg')"
+      />
 
-          <Card 
-            icon={Bot} 
-            title="QARA-AI" 
-            path="/qara-ai" 
-            color="pink"
-            description="Жасанды интеллект платформа"
-          />
+      {/* 2 — ДЕКЛАРАЦИЯ */}
+      <FullscreenBlock
+        icon={Landmark}
+        title="Декларация"
+        description="Мәмлекетлик Суверенитет ҳаққындағы Декларациясы"
+        link="/declaration"
+        bg="url('/images/declaration.jpg')"
+      />
 
-          <Card 
-            icon={Bot} 
-            title="Ботлар" 
-            path="/bots" 
-            color="cyan"
-            description="Telegram хызметлер"
-          />
+      {/* 3 — КОНСТИТУЦИЯ */}
+      <FullscreenBlock
+        icon={BookOpen}
+        title="Конституция"
+        description="Республика Конституциясы"
+        link="/constitution"
+        bg="url('/images/constitution.jpg')"
+      />
 
-          <Card 
-            icon={Users} 
-            title="Команда" 
-            path="/about" 
-            color="orange"
-            description="Биз туўралы & махсет"
-          />
-          
-        </div>
-      </section>
+      {/* 4 — QARA-AI */}
+      <FullscreenBlock
+        icon={Bot}
+        title="QARA-AI"
+        description="Жасанды интеллект платформа"
+        link="/qara-ai"
+        bg="url('/images/qara-ai.jpg')"
+      />
 
-      {/* CTA */}
+      {/* 5 — БОТЛАР */}
+      <FullscreenBlock
+        icon={Bot}
+        title="Ботлар"
+        description="Telegram хызметлер"
+        link="/bots"
+        bg="url('/images/bots.jpg')"
+      />
+
+      {/* 6 — КОМАНДА */}
+      <FullscreenBlock
+        icon={Users}
+        title="Команда"
+        description="Биз туўралы & махсет"
+        link="/about"
+        bg="url('/images/team.jpg')"
+      />
+
+
+
+      {/* CTA — unchanged */}
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600" />
         
@@ -136,7 +127,7 @@ export default function Home() {
           <UserPlus size={72} className="mx-auto mb-8 text-white drop-shadow-2xl" />
           
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
-            Қарақалпақстанды қоллап-қуўатлаң!
+            Қарақалпақ даўысын қоллап-қуўатлаң!
           </h2>
           
           <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-2xl mx-auto leading-relaxed">
@@ -152,48 +143,46 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      
+
     </div>
   );
 }
 
-/* CARD */
-function Card({ icon: Icon, title, description, path, color }) {
-  const colorClasses = {
-    purple: 'from-purple-500/10 to-purple-600/10 border-purple-500/30 hover:border-purple-400 hover:shadow-purple-500/20',
-    blue: 'from-blue-500/10 to-blue-600/10 border-blue-500/30 hover:border-blue-400 hover:shadow-blue-500/20',
-    green: 'from-green-500/10 to-green-600/10 border-green-500/30 hover:border-green-400 hover:shadow-green-500/20',
-    pink: 'from-pink-500/10 to-pink-600/10 border-pink-500/30 hover:border-pink-400 hover:shadow-pink-500/20',
-    cyan: 'from-cyan-500/10 to-cyan-600/10 border-cyan-500/30 hover:border-cyan-400 hover:shadow-cyan-500/20',
-    orange: 'from-orange-500/10 to-orange-600/10 border-orange-500/30 hover:border-orange-400 hover:shadow-orange-500/20'
-  };
 
-  const iconColors = {
-    purple: 'text-purple-400',
-    blue: 'text-blue-400',
-    green: 'text-green-400',
-    pink: 'text-pink-400',
-    cyan: 'text-cyan-400',
-    orange: 'text-orange-400'
-  };
 
+/* ================= FULLSCREEN BLOCK COMPONENT ================= */
+
+function FullscreenBlock({ icon: Icon, title, description, link, bg }) {
   return (
-    <Link
-      to={path}
-      className={`group relative bg-gradient-to-br ${colorClasses[color]} backdrop-blur-sm border-2 p-8 rounded-2xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 block overflow-hidden`}
+    <section
+      className="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden"
     >
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-bl-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500" />
-      
-      <Icon size={48} className={`${iconColors[color]} mb-4 group-hover:scale-110 transition-transform relative z-10`} />
-      
-      <h3 className="text-2xl font-bold mb-3 relative z-10">{title}</h3>
-      
-      <p className="text-gray-400 leading-relaxed relative z-10">{description}</p>
-      
-      <div className="mt-4 flex items-center text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity relative z-10">
-        <span className={iconColors[color]}>Толығырақ</span>
-        <ArrowRight size={16} className={`ml-2 ${iconColors[color]} group-hover:translate-x-1 transition-transform`} />
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: bg, filter: "brightness(0.25)" }}
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black" />
+
+      <div className="relative z-10 max-w-3xl mx-auto">
+        <Icon size={72} className="mx-auto mb-6 text-purple-300" />
+
+        <h2 className="text-5xl md:text-6xl font-bold mb-6">
+          {title}
+        </h2>
+
+        <p className="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed">
+          {description}
+        </p>
+
+        <Link
+          to={link}
+          className="inline-flex items-center gap-3 bg-purple-600 px-10 py-4 rounded-full text-white text-lg font-bold hover:bg-purple-700 hover:scale-105 transition-all duration-300"
+        >
+          Оқыў
+          <ArrowRight size={22} />
+        </Link>
       </div>
-    </Link>
+    </section>
   );
 }
