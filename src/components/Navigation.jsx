@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Globe, DollarSign, Cloud, ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [lang, setLang] = useState(localStorage.getItem('lang') || 'KK');
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem('theme') === 'dark'
   );
 
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
-  // Mobile меню жабыў
+  // Mobile меню автомат жабылысы
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
 
-  // Dark режим ислетиў
+  // Dark режим
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -28,84 +29,28 @@ export default function Navigation() {
     }
   }, [darkMode]);
 
-  // Тил тандаўын сақтау
-  useEffect(() => {
-    localStorage.setItem('lang', lang);
-  }, [lang]);
-
-  // Барлық тиллер ушын текстлер
-  const translations = {
-    KK: {
-      home: 'Бас бет',
-      about: 'Биз тўғаралы',
-      news: 'Жаңалықлар',
-      sovereignty: 'Суверенитет',
-      history: 'Тарийх',
-      geography: 'География',
-      people: 'Тулғалар',
-      tradition: 'Дәстүр',
-      sport: 'Спорт',
-      contact: 'Байланыс',
-    },
-    RU: {
-      home: 'Главная',
-      about: 'О нас',
-      news: 'Новости',
-      sovereignty: 'Суверенитет',
-      history: 'История',
-      geography: 'География',
-      people: 'Личности',
-      tradition: 'Традиции',
-      sport: 'Спорт',
-      contact: 'Контакты',
-    },
-    EN: {
-      home: 'Home',
-      about: 'About',
-      news: 'News',
-      sovereignty: 'Sovereignty',
-      history: 'History',
-      geography: 'Geography',
-      people: 'People',
-      tradition: 'Tradition',
-      sport: 'Sport',
-      contact: 'Contact',
-    },
-    PL: {
-      home: 'Strona główna',
-      about: 'O nas',
-      news: 'Aktualności',
-      sovereignty: 'Suwerenność',
-      history: 'Historia',
-      geography: 'Geografia',
-      people: 'Ludzie',
-      tradition: 'Tradycje',
-      sport: 'Sport',
-      contact: 'Kontakt',
-    },
-  };
-
+  // Тил тандау
   const languages = [
-    { code: 'KK', flag: '🏳️', name: 'Қарақалпақша' },
-    { code: 'RU', flag: '🇷🇺', name: 'Русский' },
-    { code: 'EN', flag: '🇬🇧', name: 'English' },
-    { code: 'PL', flag: '🇵🇱', name: 'Polski' },
+    { code: 'kk', flag: '🏳️', name: 'Қарақалпақша' },
+    { code: 'ru', flag: '🇷🇺', name: 'Русский' },
+    { code: 'en', flag: '🇬🇧', name: 'English' },
+    { code: 'pl', flag: '🇵🇱', name: 'Polski' },
   ];
 
+  const currentLang = languages.find((l) => l.code === i18n.language);
+
+  // Навигация бетлері
   const navLinks = [
-    { path: '/', key: 'home' },
-    { path: '/about', key: 'about' },
-    { path: '/news', key: 'news' },
-    { path: '/sovereignty', key: 'sovereignty' },
-    { path: '/history', key: 'history' },
-    { path: '/geography', key: 'geography' },
-    { path: '/people', key: 'people' },
-    { path: '/tradition', key: 'tradition' },
-    { path: '/sport', key: 'sport' },
-    { path: '/contact', key: 'contact' },
+    { path: '/', text: t('nav.home') },
+    { path: '/about', text: t('nav.about') },
+    { path: '/news', text: t('nav.news') },
+    { path: '/history', text: t('nav.history') },
+    { path: '/geography', text: t('nav.geography') },
+    { path: '/people', text: t('nav.people') },
+    { path: '/tradition', text: t('nav.tradition') },
+    { path: '/sport', text: t('nav.sport') },
+    { path: '/contact', text: t('nav.contact') },
   ];
-
-  const currentLang = languages.find((l) => l.code === lang);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black/95 backdrop-blur-lg border-b border-zinc-300 dark:border-zinc-800 transition">
@@ -122,7 +67,7 @@ export default function Navigation() {
             </span>
           </Link>
 
-          {/* DESKTOP MENU */}
+          {/* Desktop меню */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Link
@@ -134,7 +79,7 @@ export default function Navigation() {
                     : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-800'
                 }`}
               >
-                {translations[lang][link.key]}
+                {link.text}
               </Link>
             ))}
           </div>
@@ -142,7 +87,7 @@ export default function Navigation() {
           {/* RIGHT WIDGETS */}
           <div className="flex items-center space-x-2 sm:space-x-4">
 
-            {/* DARK MODE */}
+            {/* DARK / LIGHT */}
             <button
               onClick={() => setDarkMode(!darkMode)}
               className="p-2 bg-zinc-200 dark:bg-zinc-800 text-black dark:text-white rounded-lg transition"
@@ -158,9 +103,9 @@ export default function Navigation() {
               >
                 <Globe size={16} className="text-purple-400" />
                 <span className="hidden sm:inline text-sm font-medium">
-                  {currentLang.flag} {lang}
+                  {currentLang?.flag} {i18n.language.toUpperCase()}
                 </span>
-                <ChevronDown size={14} className="text-gray-500 dark:text-gray-300" />
+                <ChevronDown size={14} />
               </button>
 
               {showLangMenu && (
@@ -174,11 +119,11 @@ export default function Navigation() {
                       <button
                         key={l.code}
                         onClick={() => {
-                          setLang(l.code);
+                          i18n.changeLanguage(l.code);
                           setShowLangMenu(false);
                         }}
-                        className={`w-full px-4 py-3 text-left hover:bg-zinc-200 dark:hover:bg-zinc-800 transition first:rounded-t-lg last:rounded-b-lg flex items-center space-x-3 ${
-                          lang === l.code
+                        className={`w-full px-4 py-3 text-left hover:bg-zinc-200 dark:hover:bg-zinc-800 transition flex items-center space-x-3 ${
+                          i18n.language === l.code
                             ? 'bg-zinc-300 dark:bg-zinc-800 text-black dark:text-white'
                             : 'text-gray-700 dark:text-gray-300'
                         }`}
@@ -197,76 +142,50 @@ export default function Navigation() {
               <DollarSign size={16} className="text-green-500" />
               <div className="text-xs">
                 <div className="text-black dark:text-white font-medium">11350</div>
-                <div className="text-gray-600 dark:text-gray-400 text-[10px]">
-                  UZS/USD
-                </div>
+                <div className="text-gray-600 dark:text-gray-400 text-[10px]">UZS/USD</div>
               </div>
             </div>
 
             {/* WEATHER */}
             <div className="hidden md:flex items-center space-x-2 px-3 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-lg">
-              <Cloud size={16} className="text-blue-400" />
+              <Cloud size={16} className="text-blue-500" />
               <div className="text-xs">
-                <div className="text-black dark:text-white font-medium">+4°C</div>
+                <div className="text-black dark:text-white font-medium">10°C</div>
                 <div className="text-gray-600 dark:text-gray-400 text-[10px]">
-                  Нөкис
+                  Nukus
                 </div>
               </div>
             </div>
 
-            {/* MOBILE MENU BUTTON */}
+            {/* MOBILE BTN */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-lg transition"
+              className="lg:hidden p-2 text-black dark:text-white"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
-      </div>
 
-      {/* MOBILE MENU */}
-      {isOpen && (
-        <div className="lg:hidden bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 max-h-[calc(100vh-4rem)] overflow-y-auto">
-          <div className="px-4 py-4 space-y-2">
+        {/* MOBILE MENU */}
+        {isOpen && (
+          <div className="lg:hidden pb-4 space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block px-4 py-3 rounded-lg transition ${
+                className={`block px-4 py-3 rounded-lg ${
                   location.pathname === link.path
                     ? 'bg-purple-600 text-white'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-800'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-zinc-200 dark:hover:bg-zinc-800'
                 }`}
               >
-                {translations[lang][link.key]}
+                {link.text}
               </Link>
             ))}
-
-            {/* MOBILE EXTRA INFO */}
-            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="flex items-center justify-between px-4 py-3 bg-zinc-200 dark:bg-zinc-800 rounded-lg">
-                  <DollarSign size={16} className="text-green-500" />
-                  <div className="text-right">
-                    <div className="text-black dark:text-white text-sm font-medium">11350</div>
-                    <div className="text-gray-600 dark:text-gray-400 text-xs">USD</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between px-4 py-3 bg-zinc-200 dark:bg-zinc-800 rounded-lg">
-                  <Cloud size={16} className="text-blue-400" />
-                  <div className="text-right">
-                    <div className="text-black dark:text-white text-sm font-medium">+4°C</div>
-                    <div className="text-gray-600 dark:text-gray-400 text-xs">Нөкис</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   );
-    }
+}
