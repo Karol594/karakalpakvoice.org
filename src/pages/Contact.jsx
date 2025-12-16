@@ -1,228 +1,275 @@
-import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, RefreshCw } from 'lucide-react';
+import React, { useState } from 'react';
+import { Send, Mail, Phone, MapPin, Globe } from 'lucide-react';
 
 export default function Contact() {
-  const [lang, setLang] = useState(localStorage.getItem('lang') || 'KK');
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, answer: '' });
+  const [language, setLanguage] = useState('ru');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
   const [status, setStatus] = useState({ type: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    generateCaptcha();
-    const handleStorageChange = () => setLang(localStorage.getItem('lang') || 'KK');
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
-
-  const generateCaptcha = () => {
-    const num1 = Math.floor(Math.random() * 10) + 1;
-    const num2 = Math.floor(Math.random() * 10) + 1;
-    setCaptcha({ num1, num2, answer: '' });
+  const translations = {
+    ru: {
+      title: 'Свяжитесь с нами',
+      subtitle: 'Отправьте свои вопросы и предложения',
+      name: 'Ваше имя',
+      email: 'Email адрес',
+      message: 'Сообщение',
+      send: 'Отправить',
+      sending: 'Отправка...',
+      info: 'Контактная информация',
+      address: '📍Варшава, Польша',
+      errors: {
+        required: 'Заполните все поля',
+        email: 'Неверный формат email',
+        failed: 'Произошла ошибка. Попробуйте снова.'
+      },
+      success: 'Ваше сообщение отправлено!'
+    },
+    kk: {
+      title: 'Биз менен байланысыў',
+      subtitle: 'Сораўларыңызды ҳәм усынысларыңызды жибериң',
+      name: 'Атыңыз-жөниңиз',
+      email: 'Email мәнзили',
+      message: 'Хабарлама',
+      send: 'Жибериў',
+      sending: 'Жиберилип атыр...',
+      info: 'Байланыс мағлыўматы',
+      address: '📍Варшава, Польша',
+      errors: {
+        required: 'Барлық майданларды толтырың',
+        email: 'Email форматы дурыс емес',
+        failed: 'Қәте болды. Қайталап көриң.'
+      },
+      success: 'Хабарламаңыз жиберилди!'
+    },
+    en: {
+      title: 'Contact Us',
+      subtitle: 'Send us your questions and suggestions',
+      name: 'Your Name',
+      email: 'Email Address',
+      message: 'Message',
+      send: 'Send',
+      sending: 'Sending...',
+      info: 'Contact Information',
+      address: '📍Warsaw, Poland',
+      errors: {
+        required: 'Please fill all fields',
+        email: 'Invalid email format',
+        failed: 'An error occurred. Please try again.'
+      },
+      success: 'Your message has been sent!'
+    },
+    pl: {
+      title: 'Skontaktuj się z nami',
+      subtitle: 'Wyślij nam swoje pytania i sugestie',
+      name: 'Twoje imię',
+      email: 'Adres email',
+      message: 'Wiadomość',
+      send: 'Wyślij',
+      sending: 'Wysyłanie...',
+      info: 'Informacje kontaktowe',
+      address: '📍Warszawa, Polska',
+      errors: {
+        required: 'Wypełnij wszystkie pola',
+        email: 'Nieprawidłowy format email',
+        failed: 'Wystąpił błąd. Spróbuj ponownie.'
+      },
+      success: 'Twoja wiadomość została wysłana!'
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const t = translations[language];
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     setStatus({ type: '', message: '' });
 
-    // Validate captcha
-    if (parseInt(captcha.answer) !== captcha.num1 + captcha.num2) {
-      setStatus({ 
-        type: 'error', 
-        message: t.errors.captcha 
-      });
-      generateCaptcha();
-      return;
-    }
-
     // Validate form
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name  !formData.email  !formData.message) {
       setStatus({ type: 'error', message: t.errors.required });
       return;
     }
 
-    setIsSubmitting(true);
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setStatus({ type: 'error', message: t.errors.email });
+      return;
+    }
+
+    setStatus({ type: 'loading', message: t.sending });
 
     // Simulate API call
     setTimeout(() => {
       setStatus({ type: 'success', message: t.success });
       setFormData({ name: '', email: '', message: '' });
-      generateCaptcha();
-      setIsSubmitting(false);
     }, 1500);
   };
 
-  const t = {
-    KK: {
-      title: "Байланысыў",
-      subtitle: "Биз бенен байланысың. Сизиң пикириңиз биз үшын әҳимийетли.",
-      form: { name: "Атыңыз", email: "Email", message: "Хабар", send: "Жибериў" },
-      captcha: { label: "Робот емес екениңизди дәлиллең", placeholder: "Жуўабы" },
-      info: { email: "Email мәнзил", phone: "Телефон", address: "Мәнзил" },
-      success: "Хабарыңыз жиберилди! Тез арада жуўап беремиз.",
-      errors: { captcha: "Қәте жуўап. Қайта ҳәрекет қылың.", required: "Барлық майданларды толтырың!" }
-    },
-    RU: {
-      title: "Контакты",
-      subtitle: "Свяжитесь с нами. Ваше мнение важно для нас.",
-      form: { name: "Ваше имя", email: "Email", message: "Сообщение", send: "Отправить" },
-      captcha: { label: "Докажите, что вы не робот", placeholder: "Ответ" },
-      info: { email: "Email адрес", phone: "Телефон", address: "Адрес" },
-      success: "Ваше сообщение отправлено! Мы ответим в ближайшее время.",
-      errors: { captcha: "Неверный ответ. Попробуйте снова.", required: "Заполните все поля!" }
-    },
-    EN: {
-      title: "Contact",
-      subtitle: "Get in touch with us. Your opinion matters to us.",
-      form: { name: "Your name", email: "Email", message: "Message", send: "Send" },
-      captcha: { label: "Prove you're not a robot", placeholder: "Answer" },
-      info: { email: "Email address", phone: "Phone", address: "Address" },
-      success: "Your message has been sent! We'll respond soon.",
-      errors: { captcha: "Wrong answer. Try again.", required: "Fill in all fields!" }
-    },
-    PL: {
-      title: "Kontakt",
-      subtitle: "Skontaktuj się z nami. Twoja opinia jest dla nas ważna.",
-      form: { name: "Twoje imię", email: "Email", message: "Wiadomość", send: "Wyślij" },
-      captcha: { label: "Udowodnij, że nie jesteś robotem", placeholder: "Odpowiedź" },
-      info: { email: "Adres email", phone: "Telefon", address: "Adres" },
-      success: "Twoja wiadomość została wysłana! Odpowiemy wkrótce.",
-      errors: { captcha: "Zła odpowiedź. Spróbuj ponownie.", required: "Wypełnij wszystkie pola!" }
-    }
-  }[lang];
+  const contactInfo = [
+    { icon: Mail, text: 'info@karakalpakvoice.org', href: 'mailto:info@karakalpakvoice.org' },
+    { icon: Phone, text: '+48 600 687 894', href: 'tel:+48600687894' },
+    { icon: MapPin, text: t.address, href: '#' },
+    { icon: Globe, text: 'www.karakalpakvoice.org', href: 'https://karakalpakvoice.org' }
+  ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-24 pb-16">
-      <div className="max-w-6xl mx-auto px-6">
-        
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      {/* Language Selector */}
+      <div className="fixed top-6 right-6 z-50 flex gap-2">
+        {[
+          { code: 'ru', label: 'РУС' },
+          { code: 'kk', label: 'ҚҚ' },
+          { code: 'en', label: 'ENG' },
+          { code: 'pl', label: 'POL' }
+        ].map(lang => (
+          <button
+            key={lang.code}
+            onClick={() => setLanguage(lang.code)}
+            className={`px-3 py-1.5
+
+roun
+
+ded-lg text-sm font-medium transition-all ${
+              language === lang.code
+                ? 'bg-indigo-600 text-white shadow-lg'
+                : 'bg-white/80 text-gray-700 hover:bg-white'
+            }`}
+          >
+            {lang.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 py-20">
+        {/* Header */}
+        <div className="text-center mb-16 animate-[fadeIn_0.6s_ease-out]">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
             {t.title}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             {t.subtitle}
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          
-          {/* FORM */}
-          <div className="p-8 bg-gray-50 dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              
+          {/* Contact Card */}
+          <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-white/20 animate-[slideInLeft_0.8s_ease-out]">
+            <div className="space-y-6">
               <div>
-                <label className="block text-sm font-semibold mb-2">{t.form.name}</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.name}
+                </label>
                 <input
                   type="text"
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-3 bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                  placeholder={t.name}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2">{t.form.email}</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.email}
+                </label>
                 <input
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-3 bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                  placeholder={t.email}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2">{t.form.message}</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.message}
+                </label>
                 <textarea
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  rows={5}
-                  className="w-full px-4 py-3 bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 resize-none"
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  rows="6"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none resize-none"
+                  placeholder={t.message}
                 />
               </div>
 
-              {/* CAPTCHA */}
-              <div className="p-6 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-2xl">
-                <label className="block text-sm font-semibold mb-3">{t.captcha.label}</label>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-3 text-2xl font-bold">
-                    <span>{captcha.num1}</span>
-                    <span>+</span>
-                    <span>{captcha.num2}</span>
-                    <span>=</span>
-                  </div>
-                  <input
-                    type="number"
-                    value={captcha.answer}
-                    onChange={(e) => setCaptcha({...captcha, answer: e.target.value})}
-                    placeholder={t.captcha.placeholder}
-                    className="w-20 px-3 py-2 bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg text-center font-bold"
-                  />
-                  <button
-                    type="button"
-                    onClick={generateCaptcha}
-                    className="p-2 hover:bg-white/50 dark:hover:bg-black/20 rounded-lg transition"
-                  >
-                    <RefreshCw size={20} />
-                  </button>
-                </div>
-              </div>
-
-              {/* STATUS */}
               {status.message && (
-                <div className={`flex items-center gap-3 p-4 rounded-xl ${
-                  status.type === 'success' 
-                    ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' 
-                    : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
+                <div className={`p-4 rounded-xl ${
+                  status.type === 'error' ? 'bg-red-50 text-red-700' :
+                  status.type === 'success' ? 'bg-green-50 text-green-700' :
+                  'bg-blue-50 text-blue-700'
                 }`}>
-                  {status.type === 'success' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
-                  <p className="text-sm font-medium">{status.message}</p>
+                  {status.message}
                 </div>
               )}
 
               <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                onClick={handleSubmit}
+                disabled={status.type === 'loading'}
+                className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 text-white py-4 rounded-xl font-semibold hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
               >
-                {isSubmitting ? (
-                  <RefreshCw size={20} className="animate-spin" />
-                ) : (
-                  <>
-                    <Send size={20} />
-                    {t.form.send}
-                  </>
-                )}
+                <Send className="w-5 h-5" />
+                {status.type === 'loading' ? t.sending : t.send}
               </button>
-            </form>
-          </div>
-
-          {/* INFO */}
-          <div className="space-y-6">
-            <div className="p-8 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 rounded-3xl border border-gray-200 dark:border-gray-800">
-              <Mail size={32} className="text-purple-600 dark:text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">{t.info.email}</h3>
-              <a href="mailto:info@karakalpakvoice.org" className="text-lg text-purple-600 dark:text-purple-400 hover:underline">
-                info@karakalpakvoice.org
-              </a>
-            </div>
-
-            <div className="p-8 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/20 dark:to-cyan-950/20 rounded-3xl border border-gray-200 dark:border-gray-800">
-              <Phone size={32} className="text-blue-600 dark:text-blue-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">{t.info.phone}</h3>
-              <a href="tel:+48123456789" className="text-lg text-blue-600 dark:text-blue-400 hover:underline">
-                +48 123 456 789
-              </a>
-            </div>
-
-            <div className="p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 rounded-3xl border border-gray-200 dark:border-gray-800">
-              <MapPin size={32} className="text-green-600 dark:text-green-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">{t.info.address}</h3>
-              <p className="text-lg">Варшава, Польша</p>
             </div>
           </div>
 
+          {/* Contact Info */}
+          <div className="space-y-6 animate-[slideInRight_0.8s_ease-out]">
+            <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-white/20">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                {t.info}
+              </h2>
+              <div className="space-y-4">
+                {contactInfo.map((item, index) => (
+                  <a
+
+key={index}
+                    href={item.href}
+                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-indigo-50 transition-all group"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center group-hover:bg-indigo-600 group-hover:scale-110 transition-all">
+                      <item.icon className="w-6 h-6 text-indigo-600 group-hover:text-white" />
+                    </div>
+                    <span className="text-gray-700 group-hover:text-indigo-600 font-medium">
+                      {item.text}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Map Placeholder */}
+            <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-white/20 h-64 flex items-center justify-center">
+              <div className="text-center">
+                <MapPin className="w-16 h-16 text-indigo-400 mx-auto mb-4" />
+                <p className="text-gray-600 font-medium">{t.address}</p>
+                <p className="text-sm text-gray-500 mt-2">+48 600 687 894</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+          from { opacity: 0; transform: translateX(-50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+          from { opacity: 0; transform: translateX(50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+      `}</style>
     </div>
   );
-}
+      }
