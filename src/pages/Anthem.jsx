@@ -72,7 +72,7 @@ export default function AnthemPage() {
       section6: {
         title: "Визуал белгилер",
         icons: [
-          { title: "1993-жылы қабыл етилди", icon: BookOpen },
+          { title: "1993-жылы 24-декабрь куни қабыл етилди", icon: BookOpen },
           { title: "Музыка: Н. Мухаммеддинов", icon: Music },
           { title: "Сөзи: И. Юсупов", icon: Feather },
           { title: "Туўылған жердиң әжайыплылығы", icon: Mountain },
@@ -124,7 +124,7 @@ export default function AnthemPage() {
         music: "Музыка",
         musicAuthor: "Наджимаддин Мухаммеддинов",
         lyrics: "Слова",
-        lyricsAuthor: "Ибрагим Юсупов"
+        lyricsAuthor: "Ибраим Юсупов"
       },
 
       section3: {
