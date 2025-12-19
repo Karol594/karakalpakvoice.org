@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navigation from "./components/Navigation";
 
-// Бетлерди импортлаў
+// Беттерді импортлау
 import Home from "./pages/Home";
 import About from "./pages/About";
 import News from "./pages/News";
@@ -15,6 +15,8 @@ import Religion from "./pages/Religion";
 import Tradition from "./pages/Tradition";
 import Sport from "./pages/Sport";
 import Contact from "./pages/Contact";
+import Flag from "./pages/Flag";
+import Anthem from "./pages/Anthem";
 
 export default function App() {
   return (
@@ -34,6 +36,8 @@ export default function App() {
           <Route path="/tradition" element={<Tradition />} />
           <Route path="/sport" element={<Sport />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/flag" element={<Flag />} />
+          <Route path="/anthem" element={<Anthem />} />
         </Routes>
       </div>
     </Router>
