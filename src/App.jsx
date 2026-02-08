@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer'; 
 import ScrollToTop from './components/ScrollToTop';
 
+<<<<<<< HEAD
 // Бетлер (Тийкарғы)
 import Home from './pages/Home';
 import Qaraqalpaqstan from './pages/Qaraqalpaqstan';
@@ -20,6 +21,22 @@ import News from './pages/News';
 import NewsPost from './pages/NewsPost';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound'; // ✅ 404 БЕТІ ҚОСЫЛДЫ
+=======
+// Беттерді импортлау
+import Home from "./pages/Home";
+import About from "./pages/About";
+import News from "./pages/News";
+import Sovereignty from "./pages/Sovereignty";
+import History from "./pages/History";
+import Geography from "./pages/Geography";
+import People from "./pages/People";
+import Religion from "./pages/Religion";
+import Tradition from "./pages/Tradition";
+import Sport from "./pages/Sport";
+import Contact from "./pages/Contact";
+import Flag from "./pages/Flag";
+import Anthem from "./pages/Anthem";
+>>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
 
 // "Биз ҳаққында" бөлими
 import About from './pages/About'; 
@@ -51,6 +68,7 @@ import './App.css';
 
 function App() {
   return (
+<<<<<<< HEAD
     <div className="App flex flex-col min-h-screen"> 
         <ScrollToTop /> 
         
@@ -114,6 +132,29 @@ function App() {
 
         <Footer />
     </div>
+=======
+    <Router>
+      <Navigation />
+
+      <div className="pt-[90px]">  
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/sovereignty" element={<Sovereignty />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/geography" element={<Geography />} />
+          <Route path="/people" element={<People />} />
+          <Route path="/religion" element={<Religion />} />
+          <Route path="/tradition" element={<Tradition />} />
+          <Route path="/sport" element={<Sport />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/flag" element={<Flag />} />
+          <Route path="/anthem" element={<Anthem />} />
+        </Routes>
+      </div>
+    </Router>
+>>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
   );
 }
 
