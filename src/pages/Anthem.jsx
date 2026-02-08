@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-<<<<<<< HEAD
 import { Music, BookOpen, Feather, Mountain, Heart, Users, Volume2, Facebook, Instagram, Twitter, Youtube, Send, Link as LinkIcon, Check } from 'lucide-react';
 
 // TikTok иконкасы
@@ -43,48 +42,21 @@ export default function AnthemPage() {
   const translations = {
     KK: {
       title: "ҚАРАҚАЛПАҚСТАН РЕСПУБЛИКАСЫНЫҢ МӘМЛЕКЕТЛИК ГИМНИ",
-      subtitle: "«МӘМЛЕКЕТЛИК ГЕРБ»",
-=======
-import { Music, BookOpen, Feather, Mountain, Heart, Users, Volume2 } from 'lucide-react';
-
-export default function AnthemPage() {
-  const [lang, setLang] = useState(localStorage.getItem('lang') || 'KK');
-
-  useEffect(() => {
-    const handleStorageChange = () => setLang(localStorage.getItem('lang') || 'KK');
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
-
-  const translations = {
-    KK: {
-      title: "ҚАРАҚАЛПАҚСТАН РЕСПУБЛИКАСЫНЫҢ МӘМЛЕКЕТЛИК ГИМНИ",
-      
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section1: {
         title: "Улыўма мағлыўмат",
         status: "Статус",
         statusDesc: "Қарақалпақстан Республикасының Мәмлекетлик символы",
         legal: "Ҳуқықлық негиз",
-<<<<<<< HEAD
         legalDesc: "«Қарақалпақстан Республикасының Мәмлекетлик гимни ҳаққында» Нызам",
-=======
-        legalDesc: "«Қарақалпақстан Республикасының Мәмлекетлик гимни ҳаққында»-ғы Нызам",
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
         date: "Қабыл етилген күни",
         dateDesc: "1993-жыл 24-декабрь",
         organ: "Орган",
         organDesc: "Қарақалпақстан Республикасы Жоғарғы Кеңесиниң XIV сессиясы"
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section2: {
         title: "Авторлар",
         music: "Музыка",
         musicAuthor: "Нажимаддин Мухаммеддинов",
-<<<<<<< HEAD
         lyrics: "Сөзлер",
         lyricsAuthor: "Ибрагим Юсупов"
       },
@@ -95,25 +67,11 @@ export default function AnthemPage() {
           "Жайҳун бойында жайласқан үлкенниң уллылығы ҳәм әжайыплығы",
           "Елдиң тынышлық сүйиўши сыпаты ҳәм раўажланыўға умтылыўы",
           "Халықтың мийнет сүйгишлиги, батырлығы ҳәм миймандослығы.",
-=======
-        lyrics: "Сөзи",
-        lyricsAuthor: "Ибрайым Юсупов"
-      },
-
-      section3: {
-        title: "Гимнниң идеясы ҳәм мазмуны",
-        intro: "Қарақалпақстан Республикасының гимни халықтың түп қәдириятлары ҳәм туўылған жердиң өзгешеликлерин өзинде жәмлейди:",
-        values: [
-          "Жайҳун бойында жайласқан үлкениң уллылығы ҳәм әжайыплығы",
-          "Елдиң тынышлық сүйиўши сыпаты ҳәм раўажланыўға ынтылыўы",
-          "Халықтың мийнет сүйгишлиги, батырлығы ҳәм миймандослығы",
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
           "Тарийх ҳәм дәстүрлерге ҳүрмет",
           "Билимге, өсиўге ҳәм жарқын келешекке ынтылыў",
           "«Қарақалпақстан» атын келешек әўладлардың жүрегинде сақлаў идеясы"
         ]
       },
-<<<<<<< HEAD
       section4: {
         title: "Символлық мәнис",
         intro: "Гимн бирнеше әҳмийетли функцияларды атқарады.:",
@@ -124,25 +82,10 @@ export default function AnthemPage() {
           { title: "Салтанатлы", desc: "Мәмлекетлик илажлар, есабатлар ҳәм ресмий ўақыяларда қолланылады." }
         ]
       },
-=======
-
-      section4: {
-        title: "Символлық мәнис",
-        intro: "Гимн бирнеше әҳмийетли функцияларды атқарады:",
-        functions: [
-          { title: "Бирлестириўши", desc: "Миллий бирлик ҳәм улыўма шахслығымызды беккемлейди" },
-          { title: "Тарийхый", desc: "Әўладлар арасында даўамлылықты жеткерип береди" },
-          { title: "Тәрбиялық", desc: "Туўылған жерге ҳәм мәмлекетлик қәдириятларға ҳүрметти қәлиплестиреди" },
-          { title: "Салтанатлы", desc: "Мәмлекетлик илажлар, мәресимлер ҳәм ресмий илажларға жолдаслық етеди" }
-        ]
-      },
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section5: {
         title: "Гимнниң қолланылыўы",
         intro: "Мәмлекетлик гимн қолланылады:",
         uses: [
-<<<<<<< HEAD
           "Қарақалпақстан Республикасының ресмий шараларында",
           "Мәмлекетлик байрақ көтерилгенде",
           "Халықаралық ушрасыўларда ҳәм дипломатиялық қабыллаўларда",
@@ -156,27 +99,10 @@ export default function AnthemPage() {
           { title: "Музыка: Н. Мухаммеддинов", icon: Music },
           { title: "Сөзи: И. Юсупов", icon: Feather },
           { title: "Туўылған жердиң әжайыплығы", icon: Mountain },
-=======
-          "Қарақалпақстан Республикасының ресмий илажларында",
-          "Мәмлекетлик байрақ көтерилгенде",
-          "Халықаралық ушрасыўларда ҳәм дипломатиялық қабыллаўларда",
-          "Патриотлық тәрбия барысында билим бериў орынларында"
-        ]
-      },
-
-      section6: {
-        title: "Визуал белгилер",
-        icons: [
-          { title: "1993-жылы 24-декабрь куни қабыл етилди", icon: BookOpen },
-          { title: "Музыка: Н. Мухаммеддинов", icon: Music },
-          { title: "Сөзи: И. Юсупов", icon: Feather },
-          { title: "Туўылған жердиң әжайыплылығы", icon: Mountain },
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
           { title: "Әўладлар жүрегинде", icon: Heart },
           { title: "Халық, мәденият, даўамлылық", icon: Users }
         ]
       },
-<<<<<<< HEAD
       anthemText: {
         title: "Гимн тексти (Қарақалпақша)",
         lyrics: `Жәйҳун жағасында өскен байтерек,
@@ -201,47 +127,20 @@ export default function AnthemPage() {
 «Қарақалпақстан» деген атыңды,
 Әўладлар әдиўлер жүрек төринде.`
       },
-=======
-
-      anthemText: {
-        title: "Гимн тексти (Қарақалпақша)",
-        lyrics: "Жәйҳун жағасында өскен байтерек,\nТүби бир, шақасы мың болар демек,\nСен сондай саялы, қуяшлы елсең,\nТынышлық ҳәм ығбал сендеги тилек.\n\nНақыраты:\nДыйхан баба нәпеси бар жеринде,\nЖуўсан аңқып, кийик қашар шөлинде,\n«Қарақалпақстан» деген атыңды,\nӘўладлар әдиўлер жүрек төринде.\n\nАйдын келешекке шақырар заман,\nМәртлик мийнет, билим жеткизер оған,\nХалқың бар азамат, дос ҳәм мийрибан,\nЕркин жайнап-жаснап, мәңги бол аман.\n\nНақыраты:\nДыйхан баба нәпеси бар жеринде,\nЖуўсан аңқып, кийик қашар шөлинде,\n«Қарақалпақстан» деген атыңды,\nӘўладлар әдиўлер жүрек төринде."
-      },
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       summary: {
         title: "Қысқаша анықлама",
         name: "Аты",
         nameValue: "Қарақалпақстан Республикасының Мәмлекетлик гимни",
         year: "Бекитилген жылы",
-<<<<<<< HEAD
         yearValue: "1993-12-24",
         authors: "Авторлар",
         meaning: "Мәнис",
         meaningValue: "Тынышлық, мийнет, қәдир-қымбат, келешек, туўылған жерге муҳабат"
       },
-      shareTitle: "Биз бенен байланысың", copyLink: "Силтемени көшириў", copied: "Көширилди!"
+      shareTitle: "Бөлисиў", copyLink: "Силтемени көшириў", copied: "Көширилди!"
     },
     RU: {
       title: "ГОСУДАРСТВЕННЫЙ ГИМН РЕСПУБЛИКИ КАРАКАЛПАКСТАН",
-=======
-        yearValue: "1993.12.24",
-        authors: "Авторлар",
-        meaning: "Мәнис",
-        meaningValue: "Тынышлық, мийнет, қәдир-қымбат, келешек, туўылған жерге мухаббат"
-      },
-
-      join: {
-        title: "Қарақалпақстан даўысын қоллап-қуўатлаң!",
-        subtitle: "Даўысыңызды белгилең, халыққа қосылың. Биз бирге күшлимиз!",
-        button: "Қосылыў"
-      }
-    },
-
-    RU: {
-      title: "ГОСУДАРСТВЕННЫЙ ГИМН РЕСПУБЛИКИ КАРАКАЛПАКСТАН",
-      
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section1: {
         title: "Общая информация",
         status: "Статус",
@@ -253,23 +152,13 @@ export default function AnthemPage() {
         organ: "Орган",
         organDesc: "XIV сессия Верховного Совета Республики Каракалпакстан"
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section2: {
         title: "Авторы",
         music: "Музыка",
         musicAuthor: "Наджимаддин Мухаммеддинов",
         lyrics: "Слова",
-<<<<<<< HEAD
         lyricsAuthor: "Ибрагим Юсупов"
       },
-=======
-        lyricsAuthor: "Ибраим Юсупов"
-      },
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section3: {
         title: "Идея и содержание гимна",
         intro: "Гимн Республики Каракалпакстан отражает ключевые ценности народа и особенности родной земли:",
@@ -282,10 +171,6 @@ export default function AnthemPage() {
           "Идею сохранения имени «Каракалпакстан» в сердцах будущих поколений"
         ]
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section4: {
         title: "Символическое значение",
         intro: "Гимн выполняет несколько важных функций:",
@@ -296,10 +181,6 @@ export default function AnthemPage() {
           { title: "Торжественная", desc: "Сопровождает государственные мероприятия, церемонии и официальные события" }
         ]
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section5: {
         title: "Использование гимна",
         intro: "Государственный гимн исполняется:",
@@ -310,10 +191,6 @@ export default function AnthemPage() {
           "В образовательных учреждениях в рамках патриотического воспитания"
         ]
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section6: {
         title: "Визуальные символы",
         icons: [
@@ -325,7 +202,6 @@ export default function AnthemPage() {
           { title: "Народ, культура, преемственность", icon: Users }
         ]
       },
-<<<<<<< HEAD
       anthemText: {
         title: "Текст гимна (перевод на русский)",
         lyrics: `На берегу Джейхуна растёт высокий тополь,
@@ -350,46 +226,20 @@ export default function AnthemPage() {
 Твоё имя «Каракалпакстан, Каракалпакстан»
 Потомки произносят в глубине своего сердца.`
       },
-=======
-
-      anthemText: {
-        title: "Текст гимна (перевод на русский)",
-        lyrics: "На берегу Джейхуна растёт высокий тополь,\nКорням которого тысяча лет,\nТы такой тенистый, солнечный край,\nТвое желание это счастье и мир.\n\nПрипев:\nДыхание дедушки дехканина есть на твоей земле,\nПолынью пахнет, сайгак бегает по твоим пустыням,\nТвоё имя «Каракалпакстан, Каракалпакстан»\nПотомки произносят в глубине своего сердца.\n\nВ светлое будущее зовёт эта эпоха,\nМужество и мудрость преподносят,\nТвой народ мужественен, дружелюбен и добр,\nСвободным цвети и развивайся, навечно будь таким.\n\nПрипев:\nДыхание дедушки дехканина есть на твоей земле,\nПолынью пахнет, сайгак бегает по твоим пустыням,\nТвоё имя «Каракалпакстан, Каракалпакстан»\nПотомки произносят в глубине своего сердца."
-      },
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       summary: {
         title: "Краткая справка",
         name: "Название",
         nameValue: "Государственный гимн Республики Каракалпакстан",
         year: "Год утверждения",
-<<<<<<< HEAD
         yearValue: "1993-12-24",
-=======
-        yearValue: "1993.12.24",
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
         authors: "Авторы",
         meaning: "Смысл",
         meaningValue: "Мир, труд, достоинство, будущее, любовь к родной земле"
       },
-<<<<<<< HEAD
-      shareTitle: "Свяжитесь с нами", copyLink: "Скопировать ссылку", copied: "Скопировано!"
-   },
-    EN: {
-      title: "STATE ANTHEM OF THE REPUBLIC OF KARAKALPAKSTAN",
-=======
-
-      join: {
-        title: "Поддержите голос Каракалпакстана!",
-        subtitle: "Выразите свою поддержку, присоединяйтесь к народу. Вместе мы сильнее!",
-        button: "Присоединиться"
-      }
+      shareTitle: "Поделиться", copyLink: "Скопировать ссылку", copied: "Скопировано!"
     },
-
     EN: {
       title: "STATE ANTHEM OF THE REPUBLIC OF KARAKALPAKSTAN",
-      
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section1: {
         title: "General Information",
         status: "Status",
@@ -401,10 +251,6 @@ export default function AnthemPage() {
         organ: "Authority",
         organDesc: "XIV session of the Supreme Council of the Republic of Karakalpakstan"
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section2: {
         title: "Authors",
         music: "Music",
@@ -412,10 +258,6 @@ export default function AnthemPage() {
         lyrics: "Lyrics",
         lyricsAuthor: "Ibragim Yusupov"
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section3: {
         title: "Idea and Content of the Anthem",
         intro: "The anthem of the Republic of Karakalpakstan reflects the key values of the people and features of the native land:",
@@ -428,10 +270,6 @@ export default function AnthemPage() {
           "The idea of preserving the name 'Karakalpakstan' in the hearts of future generations"
         ]
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section4: {
         title: "Symbolic Meaning",
         intro: "The anthem performs several important functions:",
@@ -442,10 +280,6 @@ export default function AnthemPage() {
           { title: "Ceremonial", desc: "Accompanies state events, ceremonies and official occasions" }
         ]
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section5: {
         title: "Use of the Anthem",
         intro: "The state anthem is performed:",
@@ -456,10 +290,6 @@ export default function AnthemPage() {
           "In educational institutions as part of patriotic education"
         ]
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section6: {
         title: "Visual Symbols",
         icons: [
@@ -471,7 +301,6 @@ export default function AnthemPage() {
           { title: "People, culture, continuity", icon: Users }
         ]
       },
-<<<<<<< HEAD
       anthemText: {
         title: "Anthem Text (English translation)",
         lyrics: `On the banks of Jayhun grows a tall poplar,
@@ -496,46 +325,20 @@ Smelling of wormwood, saiga runs through your deserts,
 Your name "Karakalpakstan, Karakalpakstan"
 Descendants pronounce in the depths of their hearts.`
       },
-=======
-
-      anthemText: {
-        title: "Anthem Text (English translation)",
-        lyrics: "On the banks of Jayhun grows a tall poplar,\nWhose roots are a thousand years old,\nYou are such a shady, sunny land,\nYour wish is happiness and peace.\n\nChorus:\nThe breath of grandfather farmer is on your land,\nSmelling of wormwood, saiga runs through your deserts,\nYour name \"Karakalpakstan, Karakalpakstan\"\nDescendants pronounce in the depths of their hearts.\n\nThis era calls to a bright future,\nCourage and wisdom present,\nYour people are courageous, friendly and kind,\nFlourish freely and develop, be forever so.\n\nChorus:\nThe breath of grandfather farmer is on your land,\nSmelling of wormwood, saiga runs through your deserts,\nYour name \"Karakalpakstan, Karakalpakstan\"\nDescendants pronounce in the depths of their hearts."
-      },
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       summary: {
         title: "Brief Summary",
         name: "Name",
         nameValue: "State Anthem of the Republic of Karakalpakstan",
         year: "Year of approval",
-<<<<<<< HEAD
         yearValue: "1993-12-24",
-=======
-        yearValue: "24.12.1993",
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
         authors: "Authors",
         meaning: "Meaning",
         meaningValue: "Peace, labor, dignity, future, love for native land"
       },
-<<<<<<< HEAD
-      shareTitle: "Connect with us", copyLink: "Copy Link", copied: "Copied!"
+      shareTitle: "Share", copyLink: "Copy Link", copied: "Copied!"
     },
     PL: {
       title: "HYMN PAŃSTWOWY REPUBLIKI KARAKAŁPAKSTANU",
-=======
-
-      join: {
-        title: "Support the Voice of Karakalpakstan!",
-        subtitle: "Make your voice heard, join the people. Together we are stronger!",
-        button: "Join"
-      }
-    },
-
-    PL: {
-      title: "HYMN PAŃSTWOWY REPUBLIKI KARAKAŁPAKSTANU",
-      
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section1: {
         title: "Informacje ogólne",
         status: "Status",
@@ -547,10 +350,6 @@ Descendants pronounce in the depths of their hearts.`
         organ: "Organ",
         organDesc: "XIV sesja Rady Najwyższej Republiki Karakałpakstanu"
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section2: {
         title: "Autorzy",
         music: "Muzyka",
@@ -558,10 +357,6 @@ Descendants pronounce in the depths of their hearts.`
         lyrics: "Słowa",
         lyricsAuthor: "Ibragim Jusupow"
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section3: {
         title: "Idea i treść hymnu",
         intro: "Hymn Republiki Karakałpakstanu odzwierciedla kluczowe wartości narodu i cechy ojczystej ziemi:",
@@ -574,10 +369,6 @@ Descendants pronounce in the depths of their hearts.`
           "Idea zachowania nazwy 'Karakałpakstan' w sercach przyszłych pokoleń"
         ]
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section4: {
         title: "Znaczenie symboliczne",
         intro: "Hymn pełni kilka ważnych funkcji:",
@@ -588,10 +379,6 @@ Descendants pronounce in the depths of their hearts.`
           { title: "Uroczystą", desc: "Towarzyszy wydarzeniom państwowym, ceremoniom i oficjalnym okazjom" }
         ]
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section5: {
         title: "Użycie hymnu",
         intro: "Hymn państwowy jest wykonywany:",
@@ -602,10 +389,6 @@ Descendants pronounce in the depths of their hearts.`
           "W placówkach edukacyjnych w ramach edukacji patriotycznej"
         ]
       },
-<<<<<<< HEAD
-=======
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       section6: {
         title: "Symbole wizualne",
         icons: [
@@ -617,7 +400,6 @@ Descendants pronounce in the depths of their hearts.`
           { title: "Naród, kultura, ciągłość", icon: Users }
         ]
       },
-<<<<<<< HEAD
       anthemText: {
         title: "Tekst hymnu (tłumaczenie na polski)",
         lyrics: `Nad brzegami Dżejchunu rośnie wysoka topola,
@@ -642,52 +424,26 @@ Pachnie piołunem, sajga biega po twoich pustyniach,
 Twoje imię "Karakałpakstan, Karakałpakstan"
 Potomkowie wymawiają w głębi swoich serc.`
       },
-=======
-
-      anthemText: {
-        title: "Tekst hymnu (tłumaczenie na polski)",
-        lyrics: "Nad brzegami Dżejchunu rośnie wysoka topola,\nKtórej korzenie mają tysiąc lat,\nJesteś taką cienistą, słoneczną krainą,\nTwoim życzeniem jest szczęście i pokój.\n\nRefren:\nOddech dziadka rolnika jest na twojej ziemi,\nPachnie piołunem, sajga biega po twoich pustyniach,\nTwoje imię \"Karakałpakstan, Karakałpakstan\"\nPotomkowie wymawiają w głębi swoich serc.\n\nTa epoka wzywa do jasnej przyszłości,\nMęstwo i mądrość przedstawiają,\nTwój naród jest odważny, przyjazny i dobry,\nKwitnij swobodnie i rozwijaj się, bądź na zawsze taki.\n\nRefren:\nOddech dziadka rolnika jest na twojej ziemi,\nPachnie piołunem, sajga biega po twoich pustyniach,\nTwoje imię \"Karakałpakstan, Karakałpakstan\"\nPotomkowie wymawiają w głębi swoich serc."
-      },
-
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
       summary: {
         title: "Krótkie podsumowanie",
         name: "Nazwa",
         nameValue: "Hymn Państwowy Republiki Karakałpakstanu",
         year: "Rok zatwierdzenia",
-<<<<<<< HEAD
         yearValue: "1993-12-24",
-=======
-        yearValue: "24.12.1993",
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
         authors: "Autorzy",
         meaning: "Znaczenie",
         meaningValue: "Pokój, praca, godność, przyszłość, miłość do ojczystej ziemi"
       },
-<<<<<<< HEAD
-        shareTitle: "Połącz się z nami", copyLink: "Kopiuj link", copied: "Skopiowano!"
+      shareTitle: "Udostępnij", copyLink: "Kopiuj link", copied: "Skopiowano!"
     }
   };
 
   const t = translations[lang] || translations['RU'];
-=======
-
-      join: {
-        title: "Wesprzyj głos Karakałpakstanu!",
-        subtitle: "Wyraź swoje poparcie, dołącz do narodu. Razem jesteśmy silniejsi!",
-        button: "Dołącz"
-      }
-    }
-  };
-
-  const t = translations[lang];
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-black text-gray-900 dark:text-white">
       <div className="max-w-6xl mx-auto px-6 py-20">
         
-<<<<<<< HEAD
         {/* 🎵 ANTHEM VIDEO */}
         <section className="mb-16 bg-black rounded-2xl overflow-hidden shadow-2xl">
           <div className="relative w-full aspect-video">
@@ -707,8 +463,6 @@ Potomkowie wymawiają w głębi swoich serc.`
           </div>
         </section>
 
-=======
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
         <div className="text-center mb-16">
           <Volume2 className="w-20 h-20 mx-auto mb-6 text-purple-600 dark:text-purple-400 animate-pulse" />
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
@@ -784,7 +538,6 @@ Potomkowie wymawiają w głębi swoich serc.`
             {t.section4.functions.map((func, i) => (
               <div key={i} className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
                 <h3 className="text-xl font-bold text-purple-700 dark:text-purple-400 mb-3">{func.title}</h3>
-<<<<<<< HEAD
                 <p>{func.desc}</p>
               </div>
             ))}
@@ -922,5 +675,3 @@ Potomkowie wymawiają w głębi swoich serc.`
     </div>
   );
 }
-=======
->>>>>>> ada8ad33363af76bb9bc1b46ad8fc671bbe1487d
