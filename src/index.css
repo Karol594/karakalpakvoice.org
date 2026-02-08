@@ -1,142 +1,27 @@
-/* ===========================================
-   KarakalpakVoice v1.0 UI Base
-   Author: GPT
-   =========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-/* Tailwind layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* -----------------------------------------
-   Global Reset
------------------------------------------ */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* -----------------------------------------
-   Base Theme Vars
------------------------------------------ */
-:root {
-  --qara-500: #1e3a8a;
-  --qara-600: #1c2d6f;
-  --qara-700: #0a1025;
-
-  --bg-light: #ffffff;
-  --bg-soft: #f5f6fb;
-  --bg-dark: #05060a;
-
-  --glass-1: rgba(255,255,255,0.45);
-  --glass-2: rgba(255,255,255,0.10);
-
-  --soft-shadow: 0 12px 22px rgba(0,0,0,0.12);
-}
-
-/* -----------------------------------------
-   Typography
------------------------------------------ */
-body {
-  font-family: Inter, -apple-system, BlinkMacSystemFont,'Segoe UI', Roboto,'Helvetica Neue', Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #f3f4f8 60%,
-    #e7e9ef 100%
-  );
-  color: #0f172a;
-  min-height: 100vh;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   body {
-    background: linear-gradient(
-      180deg,
-      #080b12 0%,
-      #0d1119 70%,
-      #05060a 100%
-    );
-    color: #dbe4f1;
+    @apply bg-matrix-bg text-matrix-text antialiased; /* Қап-қара фон */
+  }
+  
+  /* Барлық тақырыптар Matrix сияқты Serif шрифтімен болады */
+  h1, h2, h3, h4 {
+    @apply font-serif font-bold tracking-tight;
   }
 }
 
-/* -----------------------------------------
-   HERO SECTION
------------------------------------------ */
-.hero-gradient {
-  background: linear-gradient(
-    135deg,
-    rgba(102,126,234,0.14),
-    rgba(118,75,162,0.14)
-  );
+/* Скроллбар (жіңішке) */
+::-webkit-scrollbar {
+  width: 6px;
 }
-
-/* Accent Tag (Linear style) */
-.accent-pill{
-  display:inline-block;
-  background:linear-gradient(90deg,#1e3a8a,#764ba2);
-  color:white;
-  padding:.32rem .7rem;
-  font-size:.78rem;
-  font-weight:600;
-  border-radius:999px;
-  letter-spacing:0.2px;
+::-webkit-scrollbar-track {
+  background: #080808;
 }
-
-/* -----------------------------------------
-   Glass UI
------------------------------------------ */
-.card-glass {
-  backdrop-filter: blur(18px);
-  background: rgba(255,255,255,0.55);
-  border: 1px solid rgba(255,255,255,0.45);
-  border-radius: 14px;
-  box-shadow: var(--soft-shadow);
-}
-
-@media (prefers-color-scheme: dark) {
-  .card-glass {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.10);
-  }
-}
-
-/* -----------------------------------------
-   Buttons
------------------------------------------ */
-.btn{
-  font-weight:600;
-  transition:0.25s ease;
-}
-.btn:hover{
-  transform:translateY(-3px);
-}
-
-/* -----------------------------------------
-   Brand Color Class
------------------------------------------ */
-.text-qara-500{
-  color:var(--qara-500);
-}
-
-/* -----------------------------------------
-   Nav / Actions
------------------------------------------ */
-.nav-link{
-  opacity:.82;
-}
-.nav-link:hover{
-  opacity:1;
-  transform:translateY(-2px);
+::-webkit-scrollbar-thumb {
+  background: #333;
 }

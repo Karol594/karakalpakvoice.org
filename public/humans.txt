@@ -1,0 +1,15 @@
+/* TEAM */
+  Founder: Karakalpak Voice Team
+  Contact: contact@karakalpakvoice.org
+  Location: Nukus, Karakalpakstan
+  From: Warsaw, Poland
+
+/* SITE */
+  Last update: 2026/01/20
+  Language: English, Karakalpak, Russian, Polish
+  Standards: HTML5, CSS3, React, Vite
+  Components: Google Analytics, SEO Optimized
+
+/* PURPOSE */
+  Independent media platform dedicated to the Karakalpak people, 
+  culture, and heritage. The authentic voice of Karakalpakstan.

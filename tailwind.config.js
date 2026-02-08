@@ -7,32 +7,24 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        // Matrix.org: Тақырыптар үшін "Georgia", мәтін үшін "Inter"
+        sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
+        serif: ['Georgia', 'Times New Roman', 'serif'], 
+      },
       colors: {
-        qara: {
-          50:  '#f5f8ff',
-          100: '#e6f0ff',
-          300: '#8fb0ff',
-          500: '#2563EB', // акцент (қарақалпақ көк)
-          700: '#164bd6',
-        },
-        accent: {
-          50: '#fff8fb',
-          100: '#ffeef7',
-          300: '#ffb3d8',
-          500: '#764ba2', // лувр-акцент
-        },
-        bg: {
-          light: '#ffffff',
-          dark: '#0f1419'
+        // Matrix қара түстері
+        matrix: {
+          bg: '#080808',      // Негізгі фон (өте қою)
+          card: '#121212',    // Карточкалардың фоны
+          border: '#333333',  // Жіңішке сызықтар
+          text: '#F4F4F4',    // Ақ мәтін
+          muted: '#888888',   // Сұр мәтін
         }
       },
-      fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
-      },
-      boxShadow: {
-        'soft-lg': '0 10px 30px rgba(2,6,23,0.08)'
-      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

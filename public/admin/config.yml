@@ -1,46 +1,19 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main # Егер репозиторийіңіз басқа бұтақта болса (мысалы, master), соны жазыңыз
 
-media_folder: "public/uploads"
-public_folder: "/uploads"
-
-locale: "en"
-site_url: "https://karakalpakvoice.org"
-
-auth:
-  editorial_workflow: true
+media_folder: "public/images/uploads" # Суреттер сақталатын жер
+public_folder: "/images/uploads"
 
 collections:
   - name: "news"
     label: "Жаңалықтар"
-    folder: "content/news"
+    folder: "content/news" # Мақалалар сақталатын папка
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "date", label: "Date", widget: "datetime" }
-      - { name: "author", label: "Author", widget: "string" }
-      - { name: "category", label: "Category", widget: "select", options: ["Politics", "Society", "Culture", "Sovereignty"] }
-      - { name: "image", label: "Cover image", widget: "image" }
-      - { name: "excerpt", label: "Excerpt", widget: "text" }
-      - { name: "body", label: "Body", widget: "markdown" }
-      - { name: "lang", label: "Language", widget: "select", options: ["kk","ru","en","pl"], default: "kk" }
-
-  - name: "pages"
-    label: "Pages"
-    folder: "content/pages"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "body", label: "Body", widget: "markdown" }
-
-  - name: "media"
-    label: "Media (links only)"
-    folder: "content/media"
-    create: true
-    fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "file", label: "File URL", widget: "string" }
-      - { name: "type", label: "Type", widget: "select", options: ["image","video","audio","document"] }
+      - { label: "Тақырыбы", name: "title", widget: "string" }
+      - { label: "Шыққан күні", name: "date", widget: "datetime" }
+      - { label: "Қысқаша сипаттама", name: "description", widget: "text" }
+      - { label: "Негізгі сурет", name: "image", widget: "image", required: false }
+      - { label: "Мәтін", name: "body", widget: "markdown" }

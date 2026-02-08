@@ -3,11 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KarakalpakVoice.org - Қарақалпақ медиа платформасы</title>
-    <meta name="description" content="Қарақалпақ халқының даўысы - жаңалықлар, мәденият, тарийх" />
+    
+    <meta name="google-site-verification" content="RcvvJ02cn4zFfhxCuRQMC--e-hpGsiVpHgsWvt2YFSM" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
+    <title>Karakalpak Voice | Independent Media Platform</title>
+    <meta name="description" content="Official media platform of the Republic of Karakalpakstan. Latest news, history, sovereignty, culture, and human rights. The authentic voice of the Karakalpak people." />
+    <meta name="keywords" content="Karakalpakstan, Karakalpak, Nukus, Sovereignty, Constitution, Declaration, Central Asia, News, Human Rights, Indigenous People" />
+    <meta name="author" content="Karakalpak Voice Editorial Team" />
+    
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <link rel="canonical" href="https://karakalpakvoice.org/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://karakalpakvoice.org/" />
+    <meta property="og:title" content="Karakalpak Voice | Independent Media Platform" />
+    <meta property="og:description" content="The voice of the Karakalpak people. News, culture, history, and the fight for truth and dignity." />
+    <meta property="og:site_name" content="Karakalpak Voice" />
+    <meta property="og:image" content="https://karakalpakvoice.org/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Karakalpak Voice | Independent Media Platform" />
+    <meta name="twitter:description" content="Independent media platform dedicated to the Karakalpak people and their cultural heritage." />
+    <meta name="twitter:image" content="https://karakalpakvoice.org/og-image.png" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsMediaOrganization",
+      "name": "Karakalpak Voice",
+      "alternateName": "Қарақалпақ Даўысы",
+      "url": "https://karakalpakvoice.org",
+      "logo": "https://karakalpakvoice.org/logo.png",
+      "description": "Independent media platform dedicated to the Karakalpak people, culture, and heritage",
+      "foundingDate": "2024",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Karakalpakstan"
+      },
+      "sameAs": [
+        "https://www.facebook.com/share/1FifdzG23b/",
+        "https://x.com/Karakalpak45997",
+        "https://t.me/kkvoice_org",
+        "https://www.instagram.com/karakalpakvoice_org/",
+        "https://youtube.com/@karakalpakvoice_org"
+      ],
+      "publishingPrinciples": "https://karakalpakvoice.org/policy"
+    }
+    </script>
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <div id="root"></div>
+    
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>

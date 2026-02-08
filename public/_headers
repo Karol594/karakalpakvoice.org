@@ -1,0 +1,30 @@
+# 1. Қәўипсизлик қағыйдалары (Хакерлерден қорғаў)
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# 2. Суўретлерди есте сақлаў (Сайт тез ашылыўы ушын)
+# Логотип, фон, og-image 1 жылға шекем телефон жадында сақланады
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+# 3. Шрифтлер ҳәм стильлер
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# 4. JSON ҳәм XML файллар (Роботлар тез оқыўы ушын)
+/*.json
+  Cache-Control: public, max-age=0, must-revalidate
+/*.xml
+  Cache-Control: public, max-age=0, must-revalidate

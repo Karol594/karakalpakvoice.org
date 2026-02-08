@@ -1,0 +1,13 @@
+# Барлық роботлар ушын руқсат (Google, Bing, Yandex)
+User-agent: *
+Allow: /
+
+# Мына техникалық бетлерди индексация қылмаў (жасырыў)
+Disallow: /admin
+Disallow: /login
+Disallow: /private
+Disallow: /404
+Disallow: /tmp
+
+# Сайт картасының жолы (Ең әҳмийетли жери)
+Sitemap: https://karakalpakvoice.org/sitemap.xml

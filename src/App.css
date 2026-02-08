@@ -1,38 +1,101 @@
+/* App.css - Минимал глобал стильлер */
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+/* Smooth scroll әдеп бойынша */
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.8);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.8);
+}
+
+/* ================================================= */
+/* ПРИНТЕРГЕ АРНАЛҒАН ЖАҢА ЕРЕЖЕЛЕР (ТҮЗЕТІЛГЕН) */
+/* ================================================= */
+@media print {
+  
+  /* 1. БАРЛЫҒЫН ЖАСЫРАМЫЗ (Бірақ биіктігін 0 қылмаймыз, тек көрсетпейміз) */
+  body * {
+    visibility: hidden;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* 2. ТЕК "printable-content" БЛОГЫН КӨРСЕТЕМІЗ */
+  #printable-content, #printable-content * {
+    visibility: visible;
+    opacity: 1 !important;
+  }
+
+  /* 3. ОНЫ ҚАҒАЗДЫҢ ЕҢ БАСЫНА ОРНАЛАСТЫРАМЫЗ */
+  #printable-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background-color: white !important;
+    color: black !important;
+    height: auto !important; /* Биіктікті еркін жібереміз */
+    overflow: visible !important;
+  }
+
+  /* 4. ӘРІПТЕРДІҢ ТҮСІН МІНДЕТТІ ТҮРДЕ ҚАРА ҚЫЛАМЫЗ */
+  /* (Ақ қағазда ақ әріп болып қалмауы үшін) */
+  #printable-content p, 
+  #printable-content h1, 
+  #printable-content h2, 
+  #printable-content h3, 
+  #printable-content span, 
+  #printable-content li, 
+  #printable-content div {
+    color: black !important;
+    -webkit-text-fill-color: black !important;
+    text-shadow: none !important;
+  }
+
+  /* 5. СУРЕТТІ ЫҚШАМДАУ */
+  /* Сурет тым үлкен болып, мәтінді ысырып жібермеуі үшін */
+  #printable-content img {
+    max-height: 400px !important; /* Сурет биіктігін шектейміз */
+    object-fit: contain !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* 6. КЕРЕК ЕМЕС БӨЛШЕКТЕРДІ (Кнопка, Футер) МҮЛДЕМ ӨШІРЕМІЗ */
+  .no-print, button, nav, footer {
+    display: none !important;
+  }
+  
+  /* Фондық суреттерді және түстерді алып тастау (экономия үшін) */
+  .absolute.inset-0 {
+    background: none !important;
+    display: none !important;
   }
 }

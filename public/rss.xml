@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Karakalpak Voice</title>
+    <link>https://karakalpakvoice.org/</link>
+    <description>Official media platform of the Republic of Karakalpakstan. News, history, and sovereignty.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Jan 2026 10:00:00 +0500</lastBuildDate>
+    <atom:link href="https://karakalpakvoice.org/rss.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+        <title>Declaration of State Sovereignty of Karakalpakstan</title>
+        <link>https://karakalpakvoice.org/declaration</link>
+        <guid>https://karakalpakvoice.org/declaration</guid>
+        <description>The historic declaration adopted on December 14, 1990, establishing the sovereignty of the Republic of Karakalpakstan.</description>
+        <pubDate>Fri, 14 Dec 1990 00:00:00 +0500</pubDate>
+    </item>
+
+    <item>
+        <title>Constitution of the Republic of Karakalpakstan</title>
+        <link>https://karakalpakvoice.org/constitution</link>
+        <guid>https://karakalpakvoice.org/constitution</guid>
+        <description>The supreme law of Karakalpakstan, defining the rights and freedoms of its citizens.</description>
+        <pubDate>Fri, 09 Apr 1993 00:00:00 +0500</pubDate>
+    </item>
+
+    <item>
+        <title>State Flag of Karakalpakstan</title>
+        <link>https://karakalpakvoice.org/flag</link>
+        <guid>https://karakalpakvoice.org/flag</guid>
+        <description>Symbolism and history of the National Flag of the Republic of Karakalpakstan.</description>
+        <pubDate>Mon, 14 Dec 1992 00:00:00 +0500</pubDate>
+    </item>
+
+</channel>
+</rss>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Karakalpak Voice</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #e0e7ff);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #1e3a8a;
+        }
+        .container { padding: 2rem; max-width: 600px; }
+        h1 {
+            font-size: 8rem; margin: 0; font-weight: 900;
+            color: #2563eb; line-height: 1; opacity: 0.2;
+        }
+        h2 { font-size: 2rem; margin-bottom: 1rem; margin-top: -4rem; position: relative; }
+        p { font-size: 1.1rem; color: #4b5563; margin-bottom: 2rem; line-height: 1.6; }
+        .btn {
+            display: inline-block; padding: 12px 30px;
+            background-color: #2563eb; color: white;
+            text-decoration: none; border-radius: 50px;
+            font-weight: 600; transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            background-color: #1d4ed8;
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2 id="title">Page Not Found</h2>
+        <p id="desc">
+            The page you are looking for might have been removed or relocated.<br>
+            But the most interesting news is on the Home page!
+        </p>
+        <a href="/" id="btn" class="btn">Back to Home</a>
+    </div>
+
+    <script>
+        // Тиллер базасы
+        const translations = {
+            kk: {
+                title: "Кешириңиз, бет табылмады",
+                desc: "Сиз излеген мақала өширилген ямаса басқа жерге көширилген болыўы мүмкин.<br>Бирақ ең қызықлы жаңалықлар Бас бетте!",
+                btn: "Бас бетке қайтыў"
+            },
+            ru: {
+                title: "Извините, страница не найдена",
+                desc: "Страница, которую вы ищете, могла быть удалена или перемещена.<br>Но самые интересные новости — на Главной!",
+                btn: "Вернуться на главную"
+            },
+            en: {
+                title: "Page Not Found",
+                desc: "The page you are looking for might have been removed or relocated.<br>But the most interesting news is on the Home page!",
+                btn: "Back to Home"
+            },
+            pl: {
+                title: "Strona nie znaleziona",
+                desc: "Strona, której szukasz, mogła zostać usunięta lub przeniesiona.<br>Ale najciekawsze wiadomości są na stronie głównej!",
+                btn: "Powrót do strony głównej"
+            }
+        };
+
+        // 1. Алдымен сайтта таңланған тилди тексеремиз (localStorage)
+        // 2. Егер ол жоқ болса, Браузер тилин тексеремиз
+        // 3. Табылмаса, англичан тилин қоямыз
+        const savedLang = localStorage.getItem('lang')?.toLowerCase();
+        const browserLang = navigator.language.slice(0, 2).toLowerCase();
+        
+        // Қайсы тилди көрсетемиз?
+        const currentLang = translations[savedLang] ? savedLang : (translations[browserLang] ? browserLang : 'en');
+
+        // Текстлерди алмастырыў
+        document.getElementById('title').innerHTML = translations[currentLang].title;
+        document.getElementById('desc').innerHTML = translations[currentLang].desc;
+        document.getElementById('btn').innerText = translations[currentLang].btn;
+    </script>
+</body>
+</html>

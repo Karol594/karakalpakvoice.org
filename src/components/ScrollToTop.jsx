@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ChevronUp } from 'lucide-react';
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
+  // Scroll позициясын тынлаў
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
@@ -20,24 +21,28 @@ export default function ScrollToTop() {
     };
   }, []);
 
+  // Жоқары scroll қылыў
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
   };
 
-  if (!isVisible) {
-    return null;
-  }
-
   return (
-    <button
-      onClick={scrollToTop}
-      className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full shadow-2xl hover:scale-110 hover:shadow-purple-500/50 transition-all duration-300 group"
-      aria-label="Жоқары көтерилиў"
-    >
-      <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform" />
-    </button>
+    <>
+      {isVisible && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-3 bg-blue-600 dark:bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-all duration-300 hover:scale-110 group"
+          aria-label="Жоқары көтериў"
+        >
+          <ChevronUp 
+            size={24} 
+            className="group-hover:-translate-y-1 transition-transform duration-300" 
+          />
+        </button>
+      )}
+    </>
   );
 }

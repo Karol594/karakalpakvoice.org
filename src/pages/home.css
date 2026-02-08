@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+.home-root {
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8vw;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, #1a1a1a, transparent 60%),
+    radial-gradient(circle at 70% 60%, #0f0f0f, transparent 60%),
+    linear-gradient(180deg, #000, #050505);
+  z-index: -1;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+  margin-top: 24px;
+  font-size: 1.1rem;
+  max-width: 420px;
+}
+
+/* SECTION */
+.section {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 0 10vw;
+}
+
+.section.dark {
+  background: #050505;
+}
+
+.section-content {
+  max-width: 520px;
+}
+
+.section-content h2 {
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.section-content p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+/* PARALLAX */
+.parallax {
+  height: 70vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at center, #111, transparent 65%);
+}
+
+/* FOOTER */
+.footer {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  opacity: 0.4;
+}
