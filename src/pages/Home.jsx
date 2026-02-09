@@ -458,8 +458,8 @@ export default function Home() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-[120px] animate-pulse transition-colors duration-500" style={{animationDelay: '1s'}}></div>
       </div>
 
-      {/* --- 1. HERO SECTION (АДАПТИВТІ ТҮЗЕТУ) --- */}
-      <section className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-12 md:pt-40 md:pb-32 z-10">
+      {/* --- 1. HERO SECTION (ТУЗЕТИЛГЕН) --- */}
+      <section className="relative flex flex-col items-center justify-center px-4 pt-24 pb-8 md:min-h-screen md:pt-40 md:pb-32 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -472,7 +472,7 @@ export default function Home() {
             >
               <div className="absolute inset-0 bg-amber-500/10 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
               
-              <h1 className="text-[8vw] sm:text-[9vw] md:text-[8.5vw] lg:text-[8.2vw] font-black tracking-tighter leading-none mb-2 px-4">
+              <h1 className="text-[11vw] sm:text-[9vw] md:text-[8.5vw] lg:text-[8.2vw] font-black tracking-tighter leading-none mb-2 px-4">
                 <span className="bg-clip-text text-transparent bg-gradient-to-b from-amber-200 via-amber-500 to-amber-800 drop-shadow-[0_5px_15px_rgba(0,0,0,0.9)] transition-all duration-500 group-hover:drop-shadow-[0_0_40px_rgba(251,191,36,0.6)]">
                   KARAKALPAKSTAN
                 </span>
@@ -526,8 +526,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- MANIFESTO SECTION (АДАПТИВТІ ТҮЗЕТУ) --- */}
-      <section className="relative py-12 md:py-24 px-6 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-t border-b border-gray-100 dark:border-gray-800">
+      {/* --- MANIFESTO SECTION (ТУЗЕТИЛГЕН) --- */}
+      <section className="relative py-8 md:py-24 px-4 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-t border-b border-gray-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="order-2 md:order-1 space-y-8 animate-fade-in">
@@ -571,8 +571,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 2. VALUES SECTION (АДАПТИВТІ ТҮЗЕТУ) --- */}
-      <section className="relative flex flex-col justify-center py-12 md:min-h-screen md:py-32 px-6 z-10">
+      {/* --- 2. VALUES SECTION (ТУЗЕТИЛГЕН) --- */}
+      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -697,8 +697,8 @@ export default function Home() {
         </div>
       )}
 
-      {/* --- 3. NEWS SECTION (АДАПТИВТІ ТҮЗЕТУ) --- */}
-      <section className="relative flex flex-col justify-center py-12 md:min-h-screen md:py-32 px-6 z-10 bg-gray-50/50 dark:bg-white/[0.02] transition-colors duration-500">
+      {/* --- 3. NEWS SECTION (ТУЗЕТИЛГЕН) --- */}
+      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10 bg-gray-50/50 dark:bg-white/[0.02] transition-colors duration-500">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -763,8 +763,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 4. SECTIONS GRID (Символика) (АДАПТИВТІ ТҮЗЕТУ) --- */}
-      <section className="relative flex flex-col justify-center py-12 md:min-h-screen md:py-32 px-6 z-10">
+      {/* --- 4. SECTIONS GRID (Символика) (ТУЗЕТИЛГЕН) --- */}
+      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -806,8 +806,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 5. TEAM CTA (Команда) (АДАПТИВТІ ТҮЗЕТУ) --- */}
-      <section className="relative flex flex-col justify-center py-12 md:min-h-screen md:py-32 px-6 z-10">
+      {/* --- 5. TEAM CTA (Команда) (ТУЗЕТИЛГЕН) --- */}
+      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>

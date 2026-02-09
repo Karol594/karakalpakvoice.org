@@ -1,5 +1,5 @@
+```css
 /* App.css - Минимал глобал стильлер */
-
 .App {
   min-height: 100vh;
   width: 100%;
@@ -37,21 +37,47 @@ html {
 }
 
 /* ================================================= */
+/* МОБИЛЬДІ ТЕЛЕФОНДА ЖАЗУЛАРДЫ ОҚЫЛАТЫН ҚЫЛУ */
+/* ================================================= */
+@media (max-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+  
+  p {
+    line-height: 1.6 !important;
+    font-size: 1.1rem !important;
+  }
+  
+  h1 { 
+    font-size: 2.2rem !important; 
+  }
+  
+  h2 { 
+    font-size: 1.8rem !important; 
+  }
+  
+  h3 { 
+    font-size: 1.5rem !important; 
+  }
+}
+
+/* ================================================= */
 /* ПРИНТЕРГЕ АРНАЛҒАН ЖАҢА ЕРЕЖЕЛЕР (ТҮЗЕТІЛГЕН) */
 /* ================================================= */
 @media print {
   
-  /* 1. БАРЛЫҒЫН ЖАСЫРАМЫЗ (Бірақ биіктігін 0 қылмаймыз, тек көрсетпейміз) */
+  /* 1. БАРЛЫҒЫН ЖАСЫРАМЫЗ */
   body * {
     visibility: hidden;
   }
-
+  
   /* 2. ТЕК "printable-content" БЛОГЫН КӨРСЕТЕМІЗ */
   #printable-content, #printable-content * {
     visibility: visible;
     opacity: 1 !important;
   }
-
+  
   /* 3. ОНЫ ҚАҒАЗДЫҢ ЕҢ БАСЫНА ОРНАЛАСТЫРАМЫЗ */
   #printable-content {
     position: absolute;
@@ -62,12 +88,11 @@ html {
     padding: 20px;
     background-color: white !important;
     color: black !important;
-    height: auto !important; /* Биіктікті еркін жібереміз */
+    height: auto !important;
     overflow: visible !important;
   }
-
+  
   /* 4. ӘРІПТЕРДІҢ ТҮСІН МІНДЕТТІ ТҮРДЕ ҚАРА ҚЫЛАМЫЗ */
-  /* (Ақ қағазда ақ әріп болып қалмауы үшін) */
   #printable-content p, 
   #printable-content h1, 
   #printable-content h2, 
@@ -79,23 +104,23 @@ html {
     -webkit-text-fill-color: black !important;
     text-shadow: none !important;
   }
-
+  
   /* 5. СУРЕТТІ ЫҚШАМДАУ */
-  /* Сурет тым үлкен болып, мәтінді ысырып жібермеуі үшін */
   #printable-content img {
-    max-height: 400px !important; /* Сурет биіктігін шектейміз */
+    max-height: 400px !important;
     object-fit: contain !important;
     margin-bottom: 20px !important;
   }
-
-  /* 6. КЕРЕК ЕМЕС БӨЛШЕКТЕРДІ (Кнопка, Футер) МҮЛДЕМ ӨШІРЕМІЗ */
+  
+  /* 6. КЕРЕК ЕМЕС БӨЛШЕКТЕРДІ ӨШІРЕМІЗ */
   .no-print, button, nav, footer {
     display: none !important;
   }
   
-  /* Фондық суреттерді және түстерді алып тастау (экономия үшін) */
+  /* Фондық суреттерді алып тастау */
   .absolute.inset-0 {
     background: none !important;
     display: none !important;
   }
 }
+```
