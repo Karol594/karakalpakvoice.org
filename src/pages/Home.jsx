@@ -440,15 +440,12 @@ export default function Home() {
 
   const sectionImages = [ sovereigntyImg, declarationImg, constitutionImg, flagImg, emblemImg, anthemImg ];
 
-  // Helper to get icon component by name for values
   const getIconByName = (iconName) => {
     const icons = { Shield, Globe2, Heart, Users };
     return icons[iconName] || Shield;
   };
 
-  // Команда дерегін табу (ID: team)
   const teamData = valuesData.find(item => item.id === 'team');
-  // Values деректерін сүзу (team еместерін алу)
   const onlyValues = valuesData.filter(item => item.id !== 'team');
 
   return (
@@ -461,8 +458,8 @@ export default function Home() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-[120px] animate-pulse transition-colors duration-500" style={{animationDelay: '1s'}}></div>
       </div>
 
-      {/* --- 1. HERO SECTION --- */}
-      <section className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-12 md:pt-40 md:pb-32 z-10">
+      {/* --- 1. HERO SECTION (АДАПТИВТІ ТҮЗЕТУ) --- */}
+      <section className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-12 md:pt-40 md:pb-32 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -529,7 +526,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- MANIFESTO SECTION --- */}
+      {/* --- MANIFESTO SECTION (АДАПТИВТІ ТҮЗЕТУ) --- */}
       <section className="relative py-12 md:py-24 px-6 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-t border-b border-gray-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -548,7 +545,6 @@ export default function Home() {
                 {t.manifesto.desc}
               </p>
               
-              {/* --- ТҮЗЕТУ 1: МАНИФЕСТ БАТЫРМАСЫ ("Керемет" дизайн) --- */}
               <div className="pt-4">
                 <Link 
                   to="/manifesto"
@@ -575,14 +571,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 2. VALUES SECTION --- */}
-      <section className="relative md:min-h-screen flex flex-col justify-center py-16 md:py-32 px-6 z-10">
+      {/* --- 2. VALUES SECTION (АДАПТИВТІ ТҮЗЕТУ) --- */}
+      <section className="relative flex flex-col justify-center py-12 md:min-h-screen md:py-32 px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <h2 className="text-4xl md:text-6xl font-black text-center mb-20 tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-black text-center mb-12 md:mb-20 tracking-tight">
             {t.values.title}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -621,7 +617,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- VALUES & TEAM MODAL (ТОЛЫҚ ЭКРАН) --- */}
+      {/* --- VALUES & TEAM MODAL --- */}
       {selectedValue && (
         <div 
           ref={modalRef}
@@ -701,17 +697,16 @@ export default function Home() {
         </div>
       )}
 
-      {/* --- 3. NEWS SECTION --- */}
-      <section className="relative md:min-h-screen flex flex-col justify-center py-16 md:py-32 px-6 z-10 bg-gray-50/50 dark:bg-white/[0.02] transition-colors duration-500">
+      {/* --- 3. NEWS SECTION (АДАПТИВТІ ТҮЗЕТУ) --- */}
+      <section className="relative flex flex-col justify-center py-12 md:min-h-screen md:py-32 px-6 z-10 bg-gray-50/50 dark:bg-white/[0.02] transition-colors duration-500">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="flex items-center justify-between mb-20">
+          <div className="flex items-center justify-between mb-12 md:mb-20">
             <h2 className="text-4xl md:text-6xl font-black tracking-tight">{t.news.title}</h2>
             
-            {/* --- ТҮЗЕТУ 2: "Все ->" БАТЫРМАСЫ ("Керемет" дизайн) --- */}
             <Link 
               to="/news" 
               className="group flex items-center gap-2 px-6 py-2 rounded-full bg-blue-50 dark:bg-white/10 text-blue-600 dark:text-blue-400 font-bold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 transition-all shadow-md"
@@ -757,7 +752,6 @@ export default function Home() {
                       </p>
                     )}
                     
-                    {/* --- ТҮЗЕТУ 3: ЖАҢАЛЫҚ "ОҚЫЎ" БАТЫРМАСЫ --- */}
                     <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center text-blue-600 dark:text-blue-400 font-bold group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
                        {t.news.readMore} <ArrowRight size={16} className="ml-2 group-hover:translate-x-2 transition-transform" />
                     </div>
@@ -769,8 +763,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 4. SECTIONS GRID (Символика) --- */}
-      <section className="relative md:min-h-screen flex flex-col justify-center py-16 md:py-32 px-6 z-10">
+      {/* --- 4. SECTIONS GRID (Символика) (АДАПТИВТІ ТҮЗЕТУ) --- */}
+      <section className="relative flex flex-col justify-center py-12 md:min-h-screen md:py-32 px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -802,7 +796,6 @@ export default function Home() {
                     {s.desc}
                   </p>
                   
-                  {/* --- ТҮЗЕТУ 4: СИМВОЛИКА "ТОЛЫҚ ОҚЫЎ" БАТЫРМАСЫ --- */}
                   <span className="mt-4 px-6 py-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white font-bold hover:bg-white hover:text-black transition-all flex items-center gap-2">
                      {t.readMore} <ArrowRight size={16} />
                   </span>
@@ -813,8 +806,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 5. TEAM CTA (Команда) --- */}
-      <section className="relative md:min-h-screen flex flex-col justify-center py-16 md:py-32 px-6 z-10">
+      {/* --- 5. TEAM CTA (Команда) (АДАПТИВТІ ТҮЗЕТУ) --- */}
+      <section className="relative flex flex-col justify-center py-12 md:min-h-screen md:py-32 px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -852,13 +845,11 @@ export default function Home() {
       </div>
 
       <div className="text-center relative z-10">
-        {/* ТҮЗЕТУ: text-gray-600 (жарықта қою сұр) және dark:text-gray-300 (қараңғыда ашық сұр) */}
         <p className="text-base md:text-lg font-light text-gray-600 dark:text-gray-300 max-w-3xl mx-auto italic">
           "{t.footer.slogan}"
         </p>
       </div>
 
-      {/* ЖАҢА КОМПОНЕНТ: SHARE SECTION */}
       <ShareSection 
         titleText={t.shareTitle}
         copyTitle={t.copyLink}

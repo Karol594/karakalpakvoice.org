@@ -48,7 +48,7 @@ const Mission = () => {
   const t = translations[lang] || translations.RU;
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative flex items-center justify-center overflow-hidden py-16 px-6 md:min-h-screen md:py-0">
       
       {/* 1. BACKGROUND IMAGE */}
       {/* Сүўретти public/images/mission.jpg деп сақлаңыз */}

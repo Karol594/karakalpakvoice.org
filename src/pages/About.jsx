@@ -240,9 +240,9 @@ const About = () => {
       backgroundColor: isDarkMode ? '#111827' : '#f9fafb', 
       color: isDarkMode ? '#f3f4f6' : '#111827', 
       minHeight: '100vh',
-      padding: '120px 5% 80px',
+      padding: '100px 5% 60px',
       transition: 'background 0.3s ease, color 0.3s ease'
-    }}>
+    }} className="md:py-32">
       <style>{`
         .intro-section { max-width: 1000px; margin: 0 auto; }
         .hero-title { 
