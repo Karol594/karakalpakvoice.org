@@ -462,7 +462,7 @@ export default function Home() {
       </div>
 
       {/* --- 1. HERO SECTION --- */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-40 pb-32 z-10">
+      <section className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-12 md:pt-40 md:pb-32 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -530,7 +530,7 @@ export default function Home() {
       </section>
 
       {/* --- MANIFESTO SECTION --- */}
-      <section className="relative py-24 px-6 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-t border-b border-gray-100 dark:border-gray-800">
+      <section className="relative py-12 md:py-24 px-6 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-t border-b border-gray-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="order-2 md:order-1 space-y-8 animate-fade-in">
@@ -576,7 +576,7 @@ export default function Home() {
       </section>
 
       {/* --- 2. VALUES SECTION --- */}
-      <section className="relative min-h-screen flex flex-col justify-center py-32 px-6 z-10">
+      <section className="relative md:min-h-screen flex flex-col justify-center py-16 md:py-32 px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -702,7 +702,7 @@ export default function Home() {
       )}
 
       {/* --- 3. NEWS SECTION --- */}
-      <section className="relative min-h-screen flex flex-col justify-center py-32 px-6 z-10 bg-gray-50/50 dark:bg-white/[0.02] transition-colors duration-500">
+      <section className="relative md:min-h-screen flex flex-col justify-center py-16 md:py-32 px-6 z-10 bg-gray-50/50 dark:bg-white/[0.02] transition-colors duration-500">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -770,7 +770,7 @@ export default function Home() {
       </section>
 
       {/* --- 4. SECTIONS GRID (Символика) --- */}
-      <section className="relative min-h-screen flex flex-col justify-center py-32 px-6 z-10">
+      <section className="relative md:min-h-screen flex flex-col justify-center py-16 md:py-32 px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -814,7 +814,7 @@ export default function Home() {
       </section>
 
       {/* --- 5. TEAM CTA (Команда) --- */}
-      <section className="relative min-h-screen flex flex-col justify-center py-32 px-6 z-10">
+      <section className="relative md:min-h-screen flex flex-col justify-center py-16 md:py-32 px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -870,6 +870,18 @@ export default function Home() {
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fade-in { animation: fadeIn 1s ease-out; }
       `}} />
+
+      {/* --- SEO: ГУГЛ УШЫН ЖАСЫРЫН СӨЗЛЕР --- */}
+      <div style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+        <h1>Karakalpakstan Karakalpak Nukus</h1>
+        <h2>Қарақалпақстан Қарақалпақ Нөкис Жаңалықлар</h2>
+        <p>
+          Новости Каракалпакстан Каракалпак Нукус Суверенитет Конституция Декларация 
+          Аралское море Лувр Музей Савицкий Корабли Пустыня 
+          Declaration Aral Sea Louvre Savitsky Museum Ships Desert
+        </p>
+      </div>
+      
     </div>
   );
 }
