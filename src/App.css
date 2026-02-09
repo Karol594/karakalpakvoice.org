@@ -1,4 +1,4 @@
-```css
+css
 /* App.css - Минимал глобал стильлер */
 .App {
   min-height: 100vh;
@@ -123,4 +123,3 @@ html {
     display: none !important;
   }
 }
-```
