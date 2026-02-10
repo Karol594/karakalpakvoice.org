@@ -1,5 +1,5 @@
-css
 /* App.css - Минимал глобал стильлер */
+
 .App {
   min-height: 100vh;
   width: 100%;
@@ -37,89 +37,47 @@ html {
 }
 
 /* ================================================= */
-/* МОБИЛЬДІ ТЕЛЕФОНДА ЖАЗУЛАРДЫ ОҚЫЛАТЫН ҚЫЛУ */
+/* 🔥 МОБИЛЬДІ ТЕЛЕФОНДАҒЫ "ФРИДОМ" ЭФФЕКТІСІ */
 /* ================================================= */
 @media (max-width: 768px) {
   html {
-    font-size: 18px;
+    font-size: 18px; /* Базалық шрифт 16px емес, 18px болады */
   }
   
+  /* Мәтіндер автоматты түрде үлкейеді */
   p {
-    line-height: 1.6 !important;
-    font-size: 1.1rem !important;
+    line-height: 1.6 !important; 
+    font-size: 1.15rem !important; 
   }
   
-  h1 { 
-    font-size: 2.2rem !important; 
-  }
+  /* Тақырыптар ірі және айқын болады */
+  h1 { font-size: 2.4rem !important; line-height: 1.1 !important; }
+  h2 { font-size: 2rem !important; margin-bottom: 1rem !important; }
+  h3 { font-size: 1.6rem !important; }
   
-  h2 { 
-    font-size: 1.8rem !important; 
-  }
-  
-  h3 { 
-    font-size: 1.5rem !important; 
-  }
+  /* Тізімдер мен сілтемелер */
+  li, a { font-size: 1.1rem !important; }
 }
 
 /* ================================================= */
-/* ПРИНТЕРГЕ АРНАЛҒАН ЖАҢА ЕРЕЖЕЛЕР (ТҮЗЕТІЛГЕН) */
+/* ПРИНТЕРГЕ АРНАЛҒАН ЕРЕЖЕЛЕР */
 /* ================================================= */
 @media print {
-  
-  /* 1. БАРЛЫҒЫН ЖАСЫРАМЫЗ */
-  body * {
-    visibility: hidden;
-  }
-  
-  /* 2. ТЕК "printable-content" БЛОГЫН КӨРСЕТЕМІЗ */
-  #printable-content, #printable-content * {
-    visibility: visible;
-    opacity: 1 !important;
-  }
-  
-  /* 3. ОНЫ ҚАҒАЗДЫҢ ЕҢ БАСЫНА ОРНАЛАСТЫРАМЫЗ */
+  body * { visibility: hidden; }
+  #printable-content, #printable-content * { visibility: visible; opacity: 1 !important; }
   #printable-content {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    padding: 20px;
-    background-color: white !important;
-    color: black !important;
-    height: auto !important;
-    overflow: visible !important;
+    position: absolute; left: 0; top: 0; width: 100%;
+    margin: 0; padding: 20px; background-color: white !important;
+    color: black !important; height: auto !important; overflow: visible !important;
   }
-  
-  /* 4. ӘРІПТЕРДІҢ ТҮСІН МІНДЕТТІ ТҮРДЕ ҚАРА ҚЫЛАМЫЗ */
-  #printable-content p, 
-  #printable-content h1, 
-  #printable-content h2, 
-  #printable-content h3, 
-  #printable-content span, 
-  #printable-content li, 
+  #printable-content p, #printable-content h1, #printable-content h2, 
+  #printable-content h3, #printable-content span, #printable-content li, 
   #printable-content div {
-    color: black !important;
-    -webkit-text-fill-color: black !important;
-    text-shadow: none !important;
+    color: black !important; -webkit-text-fill-color: black !important; text-shadow: none !important;
   }
-  
-  /* 5. СУРЕТТІ ЫҚШАМДАУ */
   #printable-content img {
-    max-height: 400px !important;
-    object-fit: contain !important;
-    margin-bottom: 20px !important;
+    max-height: 400px !important; object-fit: contain !important; margin-bottom: 20px !important;
   }
-  
-  /* 6. КЕРЕК ЕМЕС БӨЛШЕКТЕРДІ ӨШІРЕМІЗ */
-  .no-print, button, nav, footer {
-    display: none !important;
-  }
-  
-  /* Фондық суреттерді алып тастау */
-  .absolute.inset-0 {
-    background: none !important;
-    display: none !important;
-  }
+  .no-print, button, nav, footer { display: none !important; }
+  .absolute.inset-0 { background: none !important; display: none !important; }
 }
