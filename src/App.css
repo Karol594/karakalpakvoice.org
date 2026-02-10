@@ -41,22 +41,19 @@ html {
 /* ================================================= */
 @media (max-width: 768px) {
   html {
-    font-size: 18px; /* Базалық шрифт 16px емес, 18px болады */
+    font-size: 20px;
   }
   
-  /* Мәтіндер автоматты түрде үлкейеді */
   p {
-    line-height: 1.6 !important; 
+    line-height: 1.7 !important; 
     font-size: 1.15rem !important; 
   }
   
-  /* Тақырыптар ірі және айқын болады */
-  h1 { font-size: 2.4rem !important; line-height: 1.1 !important; }
+  h1 { font-size: 2.5rem !important; line-height: 1.1 !important; }
   h2 { font-size: 2rem !important; margin-bottom: 1rem !important; }
-  h3 { font-size: 1.6rem !important; }
+  h3 { font-size: 1.7rem !important; }
   
-  /* Тізімдер мен сілтемелер */
-  li, a { font-size: 1.1rem !important; }
+  li, a { font-size: 1.15rem !important; }
 }
 
 /* ================================================= */
