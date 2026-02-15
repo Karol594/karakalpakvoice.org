@@ -1,55 +1,27 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
-  ArrowLeft, Calendar, User, ChevronLeft, ChevronRight, 
-  Download, X, Facebook, Send, Twitter, Instagram, Youtube, 
-  Link as LinkIcon, Maximize2, Check 
+  ArrowLeft, Calendar, Download, X, 
+  Maximize2, ChevronLeft, ChevronRight, ExternalLink 
 } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 
-// --- UI АУДАРМАЛАРЫ ---
-const uiTranslations = {
-  RU: {
-    back: "Назад",
-    date: "Дата",
-    author: "Автор",
-    share: "Свяжитесь с нами",
-    galleryHint: "Нажмите на фото для увеличения",
-    download: "Скачать",
-    copyLink: "Ссылка скопирована!"
-  },
-  KK: {
-    back: "Изге қайтыў",
-    date: "Сәне",
-    author: "Автор",
-    share: "Биз бенен байланысың",
-    galleryHint: "Сүўретти басып үлкейтиң",
-    download: "Жүклеп алыў",
-    copyLink: "Силтеме көширилди!"
-  },
-  EN: {
-    back: "Back",
-    date: "Date",
-    author: "Author",
-    share: "Connect with us",
-    galleryHint: "Click to expand",
-    download: "Download",
-    copyLink: "Link copied!"
-  },
-  PL: {
-    back: "Wróć",
-    date: "Data",
-    author: "Autor",
-    share: "Connect with us",
-    galleryHint: "Kliknij, aby powiększyć",
-    download: "Pobierz",
-    copyLink: "Link skopiowany!"
-  }
+const useTranslation = () => {
+  const [lang, setLang] = useState(localStorage.getItem('i18nextLng') || 'KK');
+  
+  useEffect(() => {
+    const handleLanguageChange = (e) => {
+      if (e.detail && e.detail.lang) {
+        setLang(e.detail.lang);
+      }
+    };
+    window.addEventListener('languageChange', handleLanguageChange);
+    return () => window.removeEventListener('languageChange', handleLanguageChange);
+  }, []);
+
+  return { i18n: { language: lang } };
 };
 
-// --- MD ФАЙЛДЫ ОҚУ (FRONTMATTER БӨЛУ) ---
 const parseMD = (text) => {
-  // Файлдың басындағы --- ... --- бөлігін аламыз
   const fmMatch = text.match(/^---\s*([\s\S]*?)\s*---/);
   const frontMatter = {};
   let body = text;
@@ -60,25 +32,38 @@ const parseMD = (text) => {
       const parts = line.split(':');
       if (parts.length >= 2) {
         const key = parts[0].trim();
-        let value = parts.slice(1).join(':').trim();
-        if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
-          value = value.slice(1, -1);
+        let value = parts.slice(1).join(':').trim().replace(/^["']|["']$/g, '');
+        if (value.startsWith('[') && value.endsWith(']')) {
+          frontMatter[key] = value.slice(1, -1).split(',').map(s => s.trim().replace(/^["']|["']$/g, ''));
+        } else {
+          frontMatter[key] = value;
         }
-        frontMatter[key] = value;
       }
     });
-    // Frontmatter-ді алып тастап, таза мәтінді аламыз
     body = text.replace(fmMatch[0], '').trim();
   }
   return { frontMatter, body };
 };
 
-// --- ЖҰЛДЫЗШАЛАРДЫ ҚАЛЫҢ (BOLD) ҚЫЛУ ---
-const renderTextWithBold = (text) => {
-  const parts = text.split(/(\*\*.*?\*\*)/g);
+const renderStyledText = (text) => {
+  const parts = text.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/g);
   return parts.map((part, index) => {
     if (part.startsWith('**') && part.endsWith('**')) {
-      return <strong key={index} className="font-bold text-gray-900 dark:text-white">{part.slice(2, -2)}</strong>;
+      return <strong key={index} className="font-bold text-black dark:text-white">{part.slice(2, -2)}</strong>;
+    }
+    const linkMatch = part.match(/\[(.*?)\]\((.*?)\)/);
+    if (linkMatch) {
+      return (
+        <a 
+          key={index} 
+          href={linkMatch[2]} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-blue-600 dark:text-blue-400 underline inline-flex items-center gap-1 hover:text-blue-800 transition-colors"
+        >
+          {linkMatch[1]} <ExternalLink size={14} />
+        </a>
+      );
     }
     return part;
   });
@@ -91,219 +76,199 @@ export default function NewsPost() {
   
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [copied, setCopied] = useState(false);
-  
-  // Галерея және Зум
-  const [galleryImages, setGalleryImages] = useState([]);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [gallery, setGallery] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [displayText, setDisplayText] = useState([]);
 
-  // Мәтін бөліктері (Таңдалған тілдегі)
-  const [displayedText, setDisplayedText] = useState([]);
-
-  // Тілді анықтау
-  const currentLang = i18n.language ? i18n.language.toUpperCase() : 'RU';
-  const langKey = currentLang === 'KAA' ? 'KK' : (['EN', 'PL', 'KK', 'RU'].includes(currentLang) ? currentLang : 'RU');
-  const ui = uiTranslations[langKey] || uiTranslations.RU;
+  const lang = (i18n.language || 'RU').toUpperCase();
+  const langKey = lang === 'KAA' ? 'KK' : lang;
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [slug]);
-
-  // Тіл ауысқан сайын (langKey) мақаланы қайта жүктейміз
-  useEffect(() => {
     loadArticle();
   }, [slug, langKey]);
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const downloadImage = (url) => {
-    if (!url) return;
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = url.substring(url.lastIndexOf('/') + 1);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const openModal = (index = 0) => {
-    setCurrentSlide(index);
-    setIsModalOpen(true);
-  };
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
 
   async function loadArticle() {
     try {
       setLoading(true);
-      
-      // 1. БАРЛЫҚ ПАПКАЛАРДАН ІЗДЕУ (Терең іздеу: /**/*.md)
       const modules = import.meta.glob('/src/content/news/**/*.md', { query: '?raw', import: 'default' });
       
-      let foundContent = null;
+      let rawContent = null;
       for (const path in modules) {
         if (path.includes(slug)) {
-          foundContent = await modules[path]();
+          rawContent = await modules[path]();
           break;
         }
       }
 
-      if (foundContent) {
-        const { frontMatter, body } = parseMD(foundContent);
-        setArticle({ ...frontMatter, fullBody: body });
+      if (rawContent) {
+        const { frontMatter, body } = parseMD(rawContent);
+        setArticle(frontMatter);
         
-        // 2. СУРЕТТЕРДІ ЖИНАУ
-        const contentImages = [];
-        const imgRegex = /!\[.*?\]\((.*?)\)/g;
-        let match;
-        while ((match = imgRegex.exec(body)) !== null) {
-          contentImages.push(match[1]);
-        }
-        const allImages = frontMatter.image ? [frontMatter.image, ...contentImages] : contentImages;
-        setGalleryImages([...new Set(allImages)]);
+        let imgs = frontMatter.gallery || (frontMatter.image ? [frontMatter.image] : []);
+        setGallery(imgs);
 
-        // 3. ТІЛ БОЙЫНША МӘТІНДІ БӨЛУ (ЕҢ МАҢЫЗДЫ ЖЕРІ)
-        
-        // Windows (\r\n) пен Linux (\n) айырмашылығын жою үшін нормализация жасаймыз
-        const normalizedBody = body.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+        // ДҰРЫС ТІЛ ПАРСИНГІ - emoji маркерлері бойынша
+        const ruMatch = body.match(/# 🇷🇺 RU\s*\n([\s\S]*?)(?=\n---|\n# 🇰🇿|\n# 🇬🇧|\n# 🇵🇱|$)/);
+        const kkMatch = body.match(/# kk KK\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇬🇧|\n# 🇵🇱|$)/);
+        const enMatch = body.match(/# 🇬🇧 EN\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇵🇱|$)/);
+        const plMatch = body.match(/# 🇵🇱 PL\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇬🇧|$)/);
 
-        // Regex арқылы бөлеміз: жаңа жол (\n) + кез келген бос орын (\s*) + үш сызық (---) + кез келген бос орын (\s*) + жаңа жол (\n)
-        const parts = normalizedBody.split(/\n\s*---\s*\n/);
+        let targetBody = '';
+        if (langKey === 'RU' && ruMatch) targetBody = ruMatch[1];
+        else if (langKey === 'KK' && kkMatch) targetBody = kkMatch[1];
+        else if (langKey === 'EN' && enMatch) targetBody = enMatch[1];
+        else if (langKey === 'PL' && plMatch) targetBody = plMatch[1];
+        else targetBody = ruMatch ? ruMatch[1] : body;
         
-        // Егер дұрыс бөлінбесе (мысалы файлда сызықтар жоқ болса), бәрін біріншіге салады
-        // Реті: 0=RU, 1=KK, 2=EN, 3=PL
-        
-        let targetContent = parts[0]; // Default RU
-
-        if (langKey === 'KK' && parts.length > 1) targetContent = parts[1];
-        else if (langKey === 'EN' && parts.length > 2) targetContent = parts[2];
-        else if (langKey === 'PL' && parts.length > 3) targetContent = parts[3];
-        else if (langKey === 'RU') targetContent = parts[0];
-
-        // Мәтін ішінен сурет кодтарын (![...](...)) алып тастаймыз, тек таза мәтін қалу үшін
-        const cleanText = targetContent.replace(/!\[.*?\]\((.*?)\)/g, '');
-        
-        // Параграфтарға бөлеміз
-        const paragraphs = cleanText.split('\n').filter(p => p.trim() !== '');
-        
-        setDisplayedText(paragraphs);
-
-      } else {
-        setArticle(null);
+        setDisplayText(targetBody.trim().split('\n').filter(p => p.trim() !== ''));
       }
     } catch (error) {
-      console.error(error);
+      console.error("Мақала жүклениўинде қәте жүз берди:", error);
     } finally {
       setLoading(false);
     }
   }
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center bg-black text-white">Loading...</div>;
-  if (!article) return <div className="min-h-screen flex items-center justify-center bg-black text-white">Article Not Found</div>;
+  const downloadImage = (url) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `karakalpak-voice-image-${Date.now()}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
-  const titleKey = `title_${langKey.toLowerCase()}`;
-  const displayTitle = article[titleKey] || article.title;
+  if (loading) return <div className="min-h-screen bg-black flex items-center justify-center text-white font-mono">ЖҮКЛЕНИП АТЫР...</div>;
+  if (!article) return <div className="min-h-screen bg-black flex items-center justify-center text-white">404 - МАҚАЛА ТАБЫЛМАДЫ</div>;
+
+  const currentTitle = article[`title_${langKey.toLowerCase()}`] || article.title;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#000212] text-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col">
-      
-      <div className="flex-grow">
-        {/* NAV HEADER */}
-        <div className="max-w-4xl mx-auto px-6 pt-24 pb-6">
-          <button onClick={() => navigate(-1)} className="inline-flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors mb-6 cursor-pointer">
-            <ArrowLeft size={20} /> <span>{ui.back}</span>
-          </button>
-          <h1 className="text-3xl md:text-5xl font-black leading-tight mb-6 text-gray-900 dark:text-white">
-            {displayTitle}
-          </h1>
-          <div className="flex items-center gap-6 text-sm text-gray-500 font-mono border-b border-gray-200 dark:border-gray-800 pb-6 mb-8">
-            <div className="flex items-center gap-2"><Calendar size={16} /> <span>{ui.date}: {article.date}</span></div>
-          </div>
+    <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <div className="max-w-4xl mx-auto px-6 pt-24 pb-12">
+        
+        <button 
+          onClick={() => navigate(-1)} 
+          className="flex items-center gap-2 text-gray-500 hover:text-blue-500 transition-colors mb-8 group"
+        >
+          <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> 
+          <span className="font-bold">Артқа қайтыў</span>
+        </button>
+        
+        <h1 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tight leading-tight">
+          {currentTitle}
+        </h1>
+        <div className="flex items-center gap-3 text-sm font-mono text-gray-500 border-b border-gray-800 pb-6 mb-12">
+          <Calendar size={16} /> <span>{article.date}</span>
+          <span className="px-2 py-0.5 bg-gray-800 rounded text-[10px] text-gray-400 uppercase">{langKey}</span>
         </div>
 
-        {/* MAIN IMAGE (ZOOMABLE) */}
-        {article.image && (
-          <div className="max-w-5xl mx-auto px-4 mb-12">
-            <div 
-              className="rounded-3xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-800 cursor-zoom-in group relative"
-              onClick={() => openModal(0)}
-            >
-              <img src={article.image} alt={displayTitle} className="w-full h-auto object-contain max-h-[600px] bg-gray-100 dark:bg-black transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <Maximize2 className="text-white drop-shadow-md" size={48} />
-              </div>
+        {gallery.length > 0 && (
+          <div className="relative aspect-video rounded-3xl overflow-hidden bg-black mb-16 group shadow-2xl border border-white/5">
+            <img 
+              src={gallery[currentIndex]} 
+              className="w-full h-full object-contain cursor-zoom-in transition-transform duration-700 group-hover:scale-[1.02]" 
+              alt="Gallery item"
+              onClick={() => setIsModalOpen(true)}
+            />
+            {gallery.length > 1 && (
+              <>
+                <button 
+                  onClick={() => setCurrentIndex((currentIndex - 1 + gallery.length) % gallery.length)} 
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/60 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-blue-600"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button 
+                  onClick={() => setCurrentIndex((currentIndex + 1) % gallery.length)} 
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/60 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-blue-600"
+                >
+                  <ChevronRight size={24} />
+                </button>
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                  {gallery.map((_, i) => (
+                    <div key={i} className={`h-1.5 rounded-full transition-all ${i === currentIndex ? 'w-8 bg-blue-500' : 'w-2 bg-white/30'}`} />
+                  ))}
+                </div>
+              </>
+            )}
+            <div className="absolute top-4 right-4 p-2 bg-black/40 backdrop-blur-sm rounded-lg text-white/50 pointer-events-none">
+              <Maximize2 size={20} />
             </div>
-            <p className="text-center text-sm text-gray-500 mt-2 italic">{ui.galleryHint}</p>
           </div>
         )}
 
-        {/* TEXT CONTENT (ТЕК ТАҢДАЛҒАН ТІЛДЕ) */}
-        <article className="max-w-3xl mx-auto px-6 text-lg leading-relaxed text-gray-800 dark:text-gray-300">
-          {displayedText.map((p, i) => {
-             // Тақырыптарды әдемілеу (#)
-             if (p.startsWith('# ')) return <h2 key={i} className="text-3xl font-bold mt-10 mb-4 text-gray-900 dark:text-white">{renderTextWithBold(p.replace('# ', ''))}</h2>;
-             if (p.startsWith('## ')) return <h3 key={i} className="text-2xl font-bold mt-8 mb-3 text-gray-900 dark:text-white">{renderTextWithBold(p.replace('## ', ''))}</h3>;
-             if (p.startsWith('### ')) return <h4 key={i} className="text-xl font-bold mt-6 mb-2 text-gray-900 dark:text-white">{renderTextWithBold(p.replace('### ', ''))}</h4>;
-             if (p.trim().startsWith('* ')) return <li key={i} className="ml-6 list-disc mb-2 marker:text-blue-500">{renderTextWithBold(p.replace('* ', ''))}</li>;
-             
-             return <p key={i} className="mb-6">{renderTextWithBold(p)}</p>;
+        <article className="max-w-none text-xl leading-relaxed font-light dark:text-gray-300">
+          {displayText.map((p, i) => {
+            if (p.startsWith('# ')) return <h2 key={i} className="text-3xl font-black mt-16 mb-8 border-l-4 border-blue-600 pl-4 text-black dark:text-white uppercase tracking-tight">{renderStyledText(p.replace('# ', ''))}</h2>;
+            if (p.startsWith('## ')) return <h3 key={i} className="text-2xl font-bold mt-12 mb-6 text-black dark:text-white">{renderStyledText(p.replace('## ', ''))}</h3>;
+            if (p.trim().startsWith('* ')) return <li key={i} className="ml-6 mb-4 list-disc marker:text-blue-500">{renderStyledText(p.replace('* ', ''))}</li>;
+
+            const showVideo = i === 4 && article.video_id;
+
+            return (
+              <React.Fragment key={i}>
+                <p className="mb-8">{renderStyledText(p)}</p>
+                {showVideo && (
+                  <div className="my-16 aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-white/10 group">
+                    <iframe 
+                      width="100%" 
+                      height="100%" 
+                      src={`https://www.youtube.com/embed/${article.video_id}?rel=0&modestbranding=1`} 
+                      title="YouTube video player" 
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                )}
+              </React.Fragment>
+            );
           })}
         </article>
-
-        {/* SHARE */}
-        <div className="max-w-3xl mx-auto px-6 mt-12 mb-24">
-          <div className="p-8 rounded-[40px] border text-center bg-gray-50 dark:bg-white/5 border-gray-200 dark:border-white/10">
-            <h3 className="text-2xl font-bold mb-8 italic text-gray-900 dark:text-white">{ui.share}</h3>
-            <div className="flex flex-wrap justify-center gap-6">
-              <a href="https://www.facebook.com/share/1FifdzG23b/" target="_blank" rel="noreferrer" className="p-4 bg-[#1877F2] text-white rounded-full hover:scale-110 transition shadow-lg"><Facebook size={24} /></a>
-              <a href="https://t.me/kkvoice_org" target="_blank" rel="noreferrer" className="p-4 bg-[#0088cc] text-white rounded-full hover:scale-110 transition shadow-lg"><Send size={24} /></a>
-              <a href="https://x.com/Karakalpak45997" target="_blank" rel="noreferrer" className="p-4 bg-black text-white rounded-full border border-white/20 hover:scale-110 transition shadow-lg"><Twitter size={24} /></a>
-              <a href="https://www.instagram.com/karakalpakvoice_org/" target="_blank" rel="noreferrer" className="p-4 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-full hover:scale-110 transition shadow-lg"><Instagram size={24} /></a>
-              <a href="https://youtube.com/@karakalpakvoice_org" target="_blank" rel="noreferrer" className="p-4 bg-[#FF0000] text-white rounded-full hover:scale-110 transition shadow-lg"><Youtube size={24} /></a>
-              
-              <button 
-                onClick={copyToClipboard} 
-                className={`p-4 rounded-full hover:scale-110 transition shadow-lg flex items-center justify-center gap-2 text-white ${copied ? 'bg-green-600' : 'bg-gray-700'}`}
-                title={copied ? ui.copyLink : ''}
-              >
-                {copied ? <Check size={24} /> : <LinkIcon size={24} />}
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
-      {/* --- MODAL (FULLSCREEN ZOOM) --- */}
-      {isModalOpen && galleryImages.length > 0 && (
-        <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm animate-fade-in">
-          <button onClick={() => setIsModalOpen(false)} className="absolute top-6 right-6 text-white hover:text-red-500 p-2 z-50 transition-colors">
-            <X size={40} />
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[999] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in duration-300">
+          <button 
+            onClick={() => setIsModalOpen(false)} 
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
+          >
+            <X size={48} />
           </button>
           
-          <img src={galleryImages[currentSlide]} alt="Fullscreen" className="max-w-full max-h-screen object-contain shadow-2xl" />
-
-          {/* Download Button inside Modal */}
+          <img 
+            src={gallery[currentIndex]} 
+            className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-lg animate-in zoom-in duration-300" 
+            alt="Zoomed" 
+          />
+          
           <button 
-            onClick={() => downloadImage(galleryImages[currentSlide])}
-            className="absolute top-6 left-6 text-white hover:text-green-500 p-2 z-50 flex items-center gap-2 bg-black/50 rounded-full px-4 py-2"
+            onClick={() => downloadImage(gallery[currentIndex])}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
           >
-            <Download size={24} /> <span className="text-sm font-bold">{ui.download}</span>
+            <Download size={24} /> <span>Жүклеп алыў</span>
           </button>
-
-          {galleryImages.length > 1 && (
+          
+          {gallery.length > 1 && (
             <>
-              <button onClick={prevSlide} className="absolute left-4 p-4 text-white hover:bg-white/10 rounded-full z-50"><ChevronLeft size={48} /></button>
-              <button onClick={nextSlide} className="absolute right-4 p-4 text-white hover:bg-white/10 rounded-full z-50"><ChevronRight size={48} /></button>
+              <button onClick={() => setCurrentIndex((currentIndex - 1 + gallery.length) % gallery.length)} className="absolute left-6 text-white/50 hover:text-white transition-colors"><ChevronLeft size={64} /></button>
+              <button onClick={() => setCurrentIndex((currentIndex + 1) % gallery.length)} className="absolute right-6 text-white/50 hover:text-white transition-colors"><ChevronRight size={64} /></button>
             </>
           )}
         </div>
       )}
 
+      <style>{`
+        .prose a { color: #3b82f6; text-decoration: underline; }
+        .animate-in { animation-duration: 300ms; animation-fill-mode: both; }
+        .fade-in { animation-name: fadeIn; }
+        .zoom-in { animation-name: zoomIn; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+      `}</style>
     </div>
   );
 }

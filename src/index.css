@@ -1,21 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  html {
+    /* Экранның қатып қалуын (freeze) болдырмау үшін */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    height: 100%;
+  }
+
   body {
-    @apply bg-matrix-bg text-matrix-text antialiased; /* Қап-қара фон */
+    @apply bg-matrix-bg text-matrix-text antialiased;
+    font-family: 'Inter', sans-serif;
+    /* Текст өлшемі: компьютерде 18px (1.125rem), қатар аралығы 1.65 */
+    font-size: 1.125rem;
+    line-height: 1.65;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100%;
+    /* Мобильді скроллды жақсарту */
+    -webkit-overflow-scrolling: touch;
   }
   
-  /* Барлық тақырыптар Matrix сияқты Serif шрифтімен болады */
+  /* Тақырыптар үшін Merriweather (Serif) шрифтін қолданамыз */
   h1, h2, h3, h4 {
-    @apply font-serif font-bold tracking-tight;
+    font-family: 'Merriweather', serif;
+    @apply font-bold tracking-tight text-white;
+  }
+
+  /* Тексттің мобильді нұсқада оқылуын жақсарту (Media Queries) */
+  @media (max-width: 768px) {
+    body {
+      font-size: 1rem; /* Телефонда 16px */
+      line-height: 1.6;
+    }
+    
+    /* Секциялар арасындағы "пахта атыздай" орынды жою */
+    section, .container, .py-20, .pt-24 {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
+    }
+
+    /* Тақырыптарды мобильді экранға шақтау */
+    h1 { font-size: 1.875rem !important; line-height: 1.3; }
+    h2 { font-size: 1.5rem !important; line-height: 1.3; }
   }
 }
 
-/* Скроллбар (жіңішке) */
+/* Скроллбар (жіңішке және әдемі) */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -23,5 +58,11 @@
   background: #080808;
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #amber-600; /* Скролл түсін сәл ашықтау қылдық */
+  border-radius: 10px;
+}
+
+/* Экранның қатып қалуын емдейтін қосымша класс */
+.min-h-screen {
+  overflow: visible !important;
 }

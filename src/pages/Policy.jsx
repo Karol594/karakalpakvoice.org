@@ -714,40 +714,6 @@ Aby się z nami skontaktować, prosimy korzystać z odpowiednich kanałów:
 
       </div>
 
-      {/* FOOTER (Consistent with NewsPost) */}
-      <footer className="relative py-12 border-t border-gray-800 bg-gray-950 text-white z-10 mt-12">
-        <div className="max-w-7xl mx-auto px-6 space-y-8 relative z-10">
-          <div className="flex justify-center mb-2">
-            <svg viewBox="0 0 450 100" xmlns="http://www.w3.org/2000/svg" className="h-16 md:h-20 w-auto fill-current text-amber-400">
-              <defs><style>{`@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');`}</style></defs>
-              <text x="50%" y="60" textAnchor="middle" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700, fontSize: "65px" }}>
-                Karakalpak-Voice
-              </text>
-            </svg>
-          </div>
-
-          <div className="text-center">
-            <p className="text-base md:text-lg font-light text-gray-300 max-w-3xl mx-auto italic">
-              "{currentContent.footerSlogan}"
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4">
-             <a href="https://www.facebook.com/share/1FifdzG23b/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center bg-[#1877F2] text-white hover:scale-110 transition"><Facebook size={18} /></a>
-             <a href="https://t.me/kkvoice_org" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center bg-[#0088cc] text-white hover:scale-110 transition"><Send size={18} /></a>
-             <a href="https://www.instagram.com/karakalpakvoice_org/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white hover:scale-110 transition"><Instagram size={18} /></a>
-             <a href="https://youtube.com/@karakalpakvoice_org" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FF0000] text-white hover:scale-110 transition"><Youtube size={18} /></a>
-             <a href="https://x.com/Karakalpak45997" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center bg-black border border-white/20 text-white hover:scale-110 transition"><Twitter size={18} /></a>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-xs md:text-sm text-gray-400">
-            <div className="flex items-center gap-2"><MapPin size={14} className="text-blue-400" /> {currentContent.footerLocation}</div>
-            <span className="hidden md:block">•</span>
-            <div>{currentContent.footerDigital}</div>
-          </div>
-        </div>
-      </footer>
-
     </div>
   );
 }

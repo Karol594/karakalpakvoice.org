@@ -28,52 +28,52 @@ export default function Declaration() {
   // PDF ФАЙЛДАР
   // ========================================
   const pdfLinks = {
-    RU: "/documents/declaration_ru.pdf",
     KK: "/documents/declaration_kk.pdf",
+    RU: "/documents/declaration_ru.pdf",
     EN: "/documents/declaration_en.pdf",
     PL: "/documents/declaration_pl.pdf"
   };
 
   const translations = {
     KK: { 
-      title: "«СУВЕРЕНИТЕТ ДЕКЛАРАЦИЯСЫ»", 
+      title: "Декларация", 
       subtitle: "Қарақалпақстан Республикасының Мәмлекетлик Суверенитети ҳаққында",
       fullTextTitle: "Декларацияның толық ресмий тексти",
       showText: "Текстти көрсетиў",
       hideText: "Жасырыў",
       downloadPDF: "PDF жүклеў",
       pdfLanguages: "4 тилдеги PDF нусқасы",
-      shareTitle: "Биз бенен байланысың"
+      shareTitle: "Бөлисиў"
     },
     RU: { 
-      title: "«ДЕКЛАРАЦИЯ СУВЕРЕНИТЕТА»", 
+      title: "Декларация", 
       subtitle: "О государственном суверенитете Республики Каракалпакстан",
       fullTextTitle: "Полный официальный текст Декларации",
       showText: "Показать текст",
       hideText: "Скрыть",
       downloadPDF: "Скачать PDF",
       pdfLanguages: "PDF версии на 4 языках",
-      shareTitle: "Свяжитесь с нами"
+      shareTitle: "Поделиться"
     },
     EN: { 
-      title: "«DECLARATION OF SOVEREIGNTY»", 
+      title: "Declaration", 
       subtitle: "On State Sovereignty of the Republic of Karakalpakstan",
       fullTextTitle: "Full Official Text of the Declaration",
       showText: "Show Text",
       hideText: "Hide",
       downloadPDF: "Download PDF",
       pdfLanguages: "PDF versions in 4 languages",
-      shareTitle: "Connect with us"
+      shareTitle: "Share"
     },
     PL: { 
-      title: "„DEKLARACJA SUWERENNOŚCI”", 
+      title: "Deklaracja", 
       subtitle: "O suwerenności państwowej Republiki Karakałpakstanu",
       fullTextTitle: "Pełny oficjalny tekst Deklaracji",
       showText: "Pokaż tekst",
       hideText: "Ukryj",
       downloadPDF: "Pobierz PDF",
       pdfLanguages: "Wersje PDF w 4 językach",
-      shareTitle: "Połącz się z nami"
+      shareTitle: "Udostępnij"
     }
   };
 
@@ -612,89 +612,6 @@ Nukusie, Republice Karakalpakstanu.`};
                     {lang === 'EN' && '📄 Official archival document - December 14, 1990'}
                     {lang === 'PL' && '📄 Oficjalny dokument archiwalny - 14 grudnia 1990'}
                   </p>
-                </div>
-                
-                {/* ======================================== */}
-                {/* NEW SOCIAL SHARE SECTION (ADDED HERE)    */}
-                {/* ======================================== */}
-                <div className="mt-12 text-center border-t border-gray-200 dark:border-gray-700 pt-8">
-                  <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white italic">
-                    {t.shareTitle}
-                  </h3>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    
-                    {/* Facebook */}
-                    <a 
-                        href="https://www.facebook.com/share/1FifdzG23b/" 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        style={{ backgroundColor: '#1877F2', color: 'white' }}
-                        className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
-                        title="Facebook"
-                    >
-                        <Facebook size={18} />
-                    </a>
-
-                    {/* Telegram */}
-                    <a 
-                        href="https://t.me/kkvoice_org" 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        style={{ backgroundColor: '#0088cc', color: 'white' }}
-                        className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
-                        title="Telegram"
-                    >
-                        <Send size={18} />
-                    </a>
-
-                    {/* Instagram */}
-                    <a 
-                        href="https://www.instagram.com/karakalpakvoice_org/" 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        style={{ background: 'linear-gradient(to top right, #f9ce34, #ee2a7b, #6228d7)', color: 'white' }}
-                        className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
-                        title="Instagram"
-                    >
-                        <Instagram size={18} />
-                    </a>
-
-                    {/* YouTube */}
-                    <a 
-                        href="https://youtube.com/@karakalpakvoice_org" 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        style={{ backgroundColor: '#FF0000', color: 'white' }}
-                        className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
-                        title="YouTube"
-                    >
-                        <Youtube size={18} />
-                    </a>
-
-                    {/* TikTok */}
-                    <a 
-                        href="https://www.tiktok.com/@karakalpakvoice" 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        style={{ backgroundColor: 'black', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
-                        className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
-                        title="TikTok"
-                    >
-                        <TikTokIcon size={18} />
-                    </a>
-
-                    {/* Twitter */}
-                    <a 
-                        href="https://x.com/Karakalpak45997" 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        style={{ backgroundColor: 'black', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
-                        className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
-                        title="Twitter"
-                    >
-                        <Twitter size={18} />
-                    </a>
-                  </div>
                 </div>
 
               </div>

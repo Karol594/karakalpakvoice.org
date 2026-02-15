@@ -350,67 +350,7 @@ Nasza flaga będzie powiewać razem z flagami innych niepodległych państw. Sza
           <h2 className="text-4xl md:text-6xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-green-500 to-indigo-600">
             {t.conclusion}
           </h2>
-        </div>
-
-        {/* ======================================== */}
-        {/* SHARE (ТАРҚАТЫЎ) - ТҮСТІ ИКОНКАЛАР + COPY LINK */}
-        {/* ======================================== */}
-        <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-10 text-center">
-            <h3 className="text-2xl font-bold mb-8 italic text-gray-900 dark:text-white">{t.shareTitle}</h3>
-            <div className="flex flex-wrap justify-center gap-6">
-              
-              {/* Facebook */}
-              <a href="https://www.facebook.com/share/1FifdzG23b/" target="_blank" rel="noreferrer" 
-                 style={{ backgroundColor: '#1877F2', color: 'white' }}
-                 className="p-4 rounded-full hover:scale-110 transition shadow-lg flex items-center justify-center" title="Facebook">
-                <Facebook size={24} />
-              </a>
-
-              {/* Telegram */}
-              <a href="https://t.me/kkvoice_org" target="_blank" rel="noreferrer" 
-                 style={{ backgroundColor: '#0088cc', color: 'white' }}
-                 className="p-4 rounded-full hover:scale-110 transition shadow-lg flex items-center justify-center" title="Telegram">
-                <Send size={24} />
-              </a>
-
-              {/* Instagram */}
-              <a href="https://www.instagram.com/karakalpakvoice_org/" target="_blank" rel="noreferrer" 
-                 style={{ background: 'linear-gradient(to top right, #f9ce34, #ee2a7b, #6228d7)', color: 'white' }}
-                 className="p-4 rounded-full hover:scale-110 transition shadow-lg flex items-center justify-center" title="Instagram">
-                <Instagram size={24} />
-              </a>
-
-              {/* YouTube */}
-              <a href="https://youtube.com/@karakalpakvoice_org" target="_blank" rel="noreferrer" 
-                 style={{ backgroundColor: '#FF0000', color: 'white' }}
-                 className="p-4 rounded-full hover:scale-110 transition shadow-lg flex items-center justify-center" title="YouTube">
-                <Youtube size={24} />
-              </a>
-
-              {/* TikTok */}
-              <a href="https://www.tiktok.com/@karakalpakvoice" target="_blank" rel="noreferrer" 
-                 style={{ backgroundColor: 'black', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
-                 className="p-4 rounded-full hover:scale-110 transition shadow-lg flex items-center justify-center" title="TikTok">
-                <TikTokIcon size={24} />
-              </a>
-
-              {/* Twitter (X) */}
-              <a href="https://x.com/Karakalpak45997" target="_blank" rel="noreferrer" 
-                 style={{ backgroundColor: 'black', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
-                 className="p-4 rounded-full hover:scale-110 transition shadow-lg flex items-center justify-center" title="Twitter">
-                <Twitter size={24} />
-              </a>
-
-              {/* Copy Link Button */}
-              <button 
-                onClick={copyToClipboard} 
-                className={`p-4 rounded-full hover:scale-110 transition shadow-lg flex items-center justify-center gap-2 text-white ${copied ? 'bg-green-600' : 'bg-gray-600'}`}
-                title={t.copyLink}
-              >
-                {copied ? <Check size={24} /> : <LinkIcon size={24} />}
-              </button>
-            </div>
-        </div>
+         </div>
 
       </div>
     </div>

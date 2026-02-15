@@ -230,19 +230,6 @@ const Manifesto = () => {
         </div>
       </div>
 
-      {/* ✅ SHARE (ТАРҚАТЫЎ) */}
-      <section className={`p-10 rounded-[40px] border text-center max-w-[900px] mx-auto mb-10 ${isDarkMode ? "bg-white/5 border-white/10" : "bg-gray-100 border-gray-200"}`}>
-        <h3 className="text-2xl font-bold mb-8 italic">{t.shareTitle}</h3>
-        <div className="flex flex-wrap justify-center gap-6">
-          <a href="https://www.facebook.com/share/1FifdzG23b/" target="_blank" rel="noreferrer" className="p-4 bg-[#1877F2] text-white rounded-full hover:scale-110 transition shadow-lg"><Facebook size={24} /></a>
-          <a href="https://t.me/kkvoice_org" target="_blank" rel="noreferrer" className="p-4 bg-[#0088cc] text-white rounded-full hover:scale-110 transition shadow-lg"><Send size={24} /></a>
-          <a href="https://x.com/Karakalpak45997" target="_blank" rel="noreferrer" className="p-4 bg-black text-white rounded-full border border-white/20 hover:scale-110 transition shadow-lg"><Twitter size={24} /></a>
-          <a href="https://www.instagram.com/karakalpakvoice_org/" target="_blank" rel="noreferrer" className="p-4 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-full hover:scale-110 transition shadow-lg"><Instagram size={24} /></a>
-          <a href="https://youtube.com/@karakalpakvoice_org" target="_blank" rel="noreferrer" className="p-4 bg-[#FF0000] text-white rounded-full hover:scale-110 transition shadow-lg"><Youtube size={24} /></a>
-          <button onClick={copyToClipboard} className="p-4 bg-gray-700 text-white rounded-full hover:scale-110 transition shadow-lg flex items-center gap-2 px-6"><LinkIcon size={20} /></button>
-        </div>
-      </section>
-
       {/* ✅ LIGHTBOX / MODAL (ФОТОНЫ ҮЛКЕЙТІП КӨРСЕТУ) */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 animate-fade-in" onClick={() => setIsModalOpen(false)}>

@@ -19,7 +19,8 @@ import Sport from './pages/Sport';
 import News from './pages/News';
 import NewsPost from './pages/NewsPost';
 import Contact from './pages/Contact';
-import NotFound from './pages/NotFound'; // ✅ 404 БЕТІ ҚОСЫЛДЫ
+import NotFound from './pages/NotFound';
+import EventDetail from './pages/EventDetail';
 
 // "Биз ҳаққында" бөлими
 import About from './pages/About'; 
@@ -47,6 +48,9 @@ import Flag from './pages/Flag';
 import Emblem from './pages/Emblem';
 import Anthem from './pages/Anthem';
 
+// ✅ ЭНЦИКЛОПЕДИЯ БЕТИ (ЖАҢА)
+import Encyclopedia from './pages/Encyclopedia';
+
 import './App.css';
 
 function App() {
@@ -62,7 +66,7 @@ function App() {
             {/* --- БАС МЕНЮ --- */}
             <Route path="/" element={<Home />} />
             
-            {/* ✅ QARAQALPAQSTAN ПОРТАЛЫ */}
+            {/* QARAQALPAQSTAN ПОРТАЛЫ */}
             <Route path="/qaraqalpaqstan" element={<Qaraqalpaqstan />} />
             <Route path="/karakalpakstan" element={<Qaraqalpaqstan />} />
             
@@ -107,7 +111,13 @@ function App() {
             <Route path="/emblem" element={<Emblem />} />
             <Route path="/anthem" element={<Anthem />} />
 
-            {/* ✅ 404 ҚАТЕ (Ең соңында тұруы керек) */}
+            {/* ✅ ЭНЦИКЛОПЕДИЯ БЕТЛЕРИ (ЖАҢА) */}
+            <Route path="/encyclopedia" element={<Encyclopedia />} />
+            <Route path="/encyclopedia/:activeTab" element={<Encyclopedia />} />
+            <Route path="/encyclopedia/:activeTab/:slug" element={<Encyclopedia />} />
+            <Route path="/events/:id" element={<EventDetail />} />
+
+            {/* 404 ҚАТЕ */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

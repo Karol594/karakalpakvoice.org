@@ -1,122 +1,47 @@
 # ═══════════════════════════════════════════════════════════
 # KARAKALPAK-VOICE NETLIFY КОНФИГУРАЦИЯСЫ
-# Максимал қорғаныс + Оптимизация
+# Максимал қорғаныс + EmailJS & Turnstile Рұқсаттары
 # ═══════════════════════════════════════════════════════════
 
 [build]
-  # Build командасы
   command = "npm install && npm run build"
-  
-  # Deploy қалтасы
   publish = "dist"
-  
-  # Node.js версиясы
+
   [build.environment]
     NODE_VERSION = "18"
     NPM_FLAGS = "--legacy-peer-deps"
 
-# ───────────────────────────────────────────────────────────
-# 🛡️ ҚАУІПСІЗДІК ҚАЛҚАНЫ (SECURITY HEADERS)
-# ───────────────────────────────────────────────────────────
-
 [[headers]]
   for = "/*"
   [headers.values]
-    # 🔒 Хакерлер сайтты iframe қылып ашпауы үшін
     X-Frame-Options = "DENY"
-    
-    # 🔒 XSS (Cross-Site Scripting) шабуылдарынан қорғау
     X-XSS-Protection = "1; mode=block"
-    
-    # 🔒 Файл түрлерін бұрмалаудан сақтау
     X-Content-Type-Options = "nosniff"
-    
-    # 🔒 Басқа сайтқа сілтеме кеткенде артық мағлұмат бермеу
     Referrer-Policy = "strict-origin-when-cross-origin"
-    
-    # 🔒 HTTPS-ті мәжбүрлеу (1 жылға)
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
     
-    # 🔒 Камера, микрофон, геолокация, төлем - БАРЛЫҒЫ ЖАБЫҚ
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=()"
-    
-    # 🔒 Content Security Policy (CSP) - ЕҢ КҮШТІ ҚОРҒАНЫС
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://api.anthropic.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    # 🔒 CSP: EmailJS (api.emailjs.com) және Cloudflare (challenges.cloudflare.com) рұқсат етілді
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://api.emailjs.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; base-uri 'self'; form-action 'self'"
 
-# ───────────────────────────────────────────────────────────
-# ⚡ КЭШИРОВАНИЕ (Жылдам жүктелу үшін)
-# ───────────────────────────────────────────────────────────
-
-# JavaScript, CSS файлдары
+# ⚡ КЭШИРОВАНИЕ
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Суреттер
 [[headers]]
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Видеолар
-[[headers]]
-  for = "/videos/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Шрифтлар
-[[headers]]
-  for = "/*.woff2"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# ───────────────────────────────────────────────────────────
-# 🔄 REDIRECTS (React Router үшін)
-# ───────────────────────────────────────────────────────────
-
-# Барлық URL-дерді index.html-ге бағыттау (SPA)
+# 🔄 REDIRECTS (React Router)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# ───────────────────────────────────────────────────────────
-# 🚫 ҚАУІПСІЗДІК: Қате беттер
-# ───────────────────────────────────────────────────────────
-
-# 404 қатесі үшін
 [[redirects]]
   from = "/404"
   to = "/index.html"
-  status = 404
-
-# ───────────────────────────────────────────────────────────
-# 🔐 ҚОСЫМША ҚОРҒАНЫС
-# ───────────────────────────────────────────────────────────
-
-# .git, .env, node_modules-ге тыйым салу
-[[headers]]
-  for = "/.git/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-
-[[headers]]
-  for = "/.env"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-
-[[redirects]]
-  from = "/.git/*"
-  to = "/404"
-  status = 404
-
-[[redirects]]
-  from = "/.env"
-  to = "/404"
-  status = 404
-
-[[redirects]]
-  from = "/node_modules/*"
-  to = "/404"
   status = 404

@@ -360,4 +360,4 @@ export const historyContent = {
     },
     teaser: "CZEKA NA WAS CIĄG DALSZY UKRYTYCH, TAJEMNICZYCH KART NASZEJ HISTORII..."
   }
-};
+}

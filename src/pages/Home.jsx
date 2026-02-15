@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import fonlogoGold from '../assets/fonlogo_gold.png'; 
+import fonlogoGold from '../assets/fonlogo_gold.png';
 import { Link, useNavigationType } from "react-router-dom";
 import {
   Award, Landmark, BookOpen, Flag, Music, Users, ArrowRight,
@@ -7,11 +7,11 @@ import {
   X, ZoomIn, ZoomOut, RotateCcw, Download
 } from "lucide-react";
 
-// --- ЖАҢА КОМПОНЕНТЛЕРДІ ИМПОРТТАУ ---
+// --- КОМПОНЕНТТЕР ---
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import ShareSection from '../components/ShareSection';
 import PageControls from '../components/PageControls';
+import Newsletter from '../components/Newsletter';
 
 // --- СИМВОЛИКА СҮРЕТТЕРІ ---
 import sovereigntyImg from '../assets/symbols/sovereignty.jpg';
@@ -84,7 +84,7 @@ export default function Home() {
     loadLatestNews();
   }, []);
 
-  // --- ЖАҢА "АҚЫЛДЫ ПРИНТЕР" ФУНКЦИЯСЫ ---
+  // --- "АҚЫЛДЫ ПРИНТЕР" ФУНКЦИЯСЫ (Қосалқы, бірақ ShareSection өшірілгендіктен, бұл жерде тікелей шақырылмайды, код сақталды) ---
   const handlePrint = () => {
     if (!selectedValue) return;
 
@@ -133,7 +133,7 @@ export default function Home() {
       `);
       printWindow.document.close();
     } else {
-      alert("Поп-ап терезесі блокталған. Принтерді ашу үшін рұқсат беріңіз.");
+      alert("Поп-ап айнасы блокланған. Принтерди ашыў ушын рухсат бериң..");
     }
   };
 
@@ -242,8 +242,6 @@ export default function Home() {
 
   const translations = {
     KK: {
-      shareTitle: "Биз бенен байланысың",
-      copyLink: "Силтемени көшириў",
       readMore: "Толық оқыў",
       back: "Артқа қайтыў",
       download: "Жүклеп алыў",
@@ -290,8 +288,6 @@ export default function Home() {
       }
     },
     RU: {
-      shareTitle: "Свяжитесь с нами",
-      copyLink: "Скопировать ссылку",
       readMore: "Читать полностью",
       back: "Вернуться назад",
       download: "Скачать изображение",
@@ -338,8 +334,6 @@ export default function Home() {
       }
     },
     EN: {
-      shareTitle: "Connect with us",
-      copyLink: "Copy Link",
       readMore: "Read More",
       back: "Go Back",
       download: "Download Image",
@@ -386,8 +380,6 @@ export default function Home() {
       }
     },
     PL: {
-      shareTitle: "Połącz się z nami",
-      copyLink: "Kopiuj link",
       readMore: "Czytaj więcej",
       back: "Wróć",
       download: "Pobierz obraz",
@@ -458,9 +450,10 @@ export default function Home() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-[120px] animate-pulse transition-colors duration-500" style={{animationDelay: '1s'}}></div>
       </div>
 
-      {/* --- 1. HERO SECTION (ТУЗЕТИЛГЕН) --- */}
-      {/* py-8 қойылды (мобилде қысқа), md:min-h-screen (компьютерде ұзын) */}
-      <section className="relative flex flex-col items-center justify-center px-4 pt-24 pb-8 md:min-h-screen md:pt-40 md:pb-32 z-10 text-lg md:text-xl">
+      <Navbar />
+
+      {/* --- 1. HERO SECTION --- */}
+      <section className="relative flex flex-col items-center justify-center px-4 pt-24 pb-8 md:min-h-screen md:pt-40 md:pb-32 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -481,7 +474,7 @@ export default function Home() {
               
               <div className="h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-transparent via-amber-500 to-transparent transition-all duration-700 mx-auto shadow-[0_0_15px_#f59e0b]"></div>
               
-              <p className="mt-6 max-w-4xl mx-auto text-amber-500/80 font-medium text-xl md:text-2xl leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2">
+              <p className="mt-6 max-w-4xl mx-auto text-amber-500/80 font-medium text-lg md:text-xl leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2">
                 {t.hero.portalDesc}
               </p>
             </Link>
@@ -497,7 +490,7 @@ export default function Home() {
               />
             </div>
 
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-light transition-colors duration-300 text-center">
+            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-light transition-colors duration-300 text-center">
               {t.hero.desc}
             </p>
 
@@ -506,7 +499,7 @@ export default function Home() {
                 to="/about"
                 className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-blue-500/50 dark:hover:shadow-blue-400/50 transition-all duration-300 hover:scale-105"
               >
-                <span className="relative z-10 flex items-center gap-2 text-lg">
+                <span className="relative z-10 flex items-center gap-2">
                   {t.hero.cta}
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -517,7 +510,7 @@ export default function Home() {
                 to="/news"
                 className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-blue-500/50 dark:hover:shadow-blue-400/50 transition-all duration-300 hover:scale-105"
               >
-                <span className="relative z-10 flex items-center gap-2 text-lg">
+                <span className="relative z-10 flex items-center gap-2">
                   {t.hero.ctaSecondary}
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-500 dark:to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -527,9 +520,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- MANIFESTO SECTION (ТУЗЕТИЛГЕН) --- */}
-      {/* py-8 (мобилде қысқа), text-lg (жазу ірі) */}
-      <section className="relative py-8 md:py-24 px-4 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-t border-b border-gray-100 dark:border-gray-800 text-lg md:text-xl">
+      {/* --- MANIFESTO SECTION --- */}
+      <section className="relative py-8 md:py-24 px-4 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-t border-b border-gray-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="order-2 md:order-1 space-y-8 animate-fade-in">
@@ -543,14 +535,14 @@ export default function Home() {
               <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
                 {t.manifesto.subtitle}
               </h3>
-              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed border-l-4 border-blue-500 pl-6">
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed border-l-4 border-blue-500 pl-6">
                 {t.manifesto.desc}
               </p>
               
               <div className="pt-4">
                 <Link 
                   to="/manifesto"
-                  className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-bold shadow-lg hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 group text-lg"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-bold shadow-lg hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 group"
                 >
                   {t.manifesto.button}
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -573,15 +565,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 2. VALUES SECTION (ТУЗЕТИЛГЕН) --- */}
-      {/* min-h-screen жойылды (мобилде), py-8 (қысқа аралық) */}
-      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10 text-lg md:text-xl">
+      {/* --- 2. VALUES SECTION --- */}
+      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <h2 className="text-4xl md:text-6xl font-black text-center mb-12 md:mb-20 tracking-tight">
+          {/* ТҮЗЕТІЛДІ: Ақ экранда қара түс (text-black), қараңғыда ақ түс (dark:text-white) */}
+          <h2 className="text-4xl md:text-6xl font-black text-center mb-12 md:mb-20 tracking-tight text-black dark:text-white">
             {t.values.title}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -606,7 +598,7 @@ export default function Home() {
                     <h3 className="text-3xl font-black text-white mb-4 drop-shadow-lg">
                       {item.title[lang]}
                     </h3>
-                    <p className="text-gray-200 text-xl mb-8 font-medium">
+                    <p className="text-gray-200 text-lg mb-8 font-medium">
                       {item.shortDesc[lang]}
                     </p>
                     <button className="px-6 py-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm text-white font-bold hover:bg-white hover:text-black transition-all">
@@ -627,12 +619,10 @@ export default function Home() {
           onScroll={handleModalScroll}
           className="fixed inset-0 z-[100] bg-white dark:bg-[#050505] overflow-y-auto animate-fade-in flex flex-col"
         >
-          {/* NAVBAR */}
           <div className="sticky top-0 z-[110] bg-white/90 dark:bg-[#050505]/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
              <Navbar />
           </div>
 
-          {/* PAGE CONTROLS */}
           <PageControls 
             onClose={closeValueModal}
             onBack={closeValueModal}
@@ -660,21 +650,20 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto px-4 md:px-16 mt-12 pb-20 text-lg md:text-xl">
-              <div className="prose dark:prose-invert max-w-none text-xl leading-relaxed whitespace-pre-line text-gray-800 dark:text-gray-200 break-words">
+            <div className="max-w-4xl mx-auto px-4 md:px-16 mt-12 pb-20">
+              {/* ТҮЗЕТІЛДІ: Модаль ішіндегі мәтін ақ экранда қара, қараңғыда ақ болады */}
+              <div className="prose dark:prose-invert max-w-none text-lg leading-relaxed whitespace-pre-line text-black dark:text-white break-words">
                 {selectedValue.fullContent[lang]}
               </div>
-
-              <ShareSection 
-                titleText={t.shareTitle}
-                copyTitle={t.copyLink}
-                printTitle={t.print}
-                onPrint={handlePrint}
-              />
+              
+              {/* ShareSection ӨШІРІЛДІ, орны бос. Newsletter орында */}
+              <div className="mt-12">
+                <Newsletter />
+              </div>
             </div>
 
             <div className="w-full">
-               <Footer />
+              <Footer />
             </div>
           </div>
 
@@ -700,20 +689,19 @@ export default function Home() {
         </div>
       )}
 
-      {/* --- 3. NEWS SECTION (ТУЗЕТИЛГЕН) --- */}
-      {/* min-h-screen жойылды, py-8 (қысқа) */}
-      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10 bg-gray-50/50 dark:bg-white/[0.02] transition-colors duration-500 text-lg md:text-xl">
+      {/* --- 3. NEWS SECTION --- */}
+      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10 bg-gray-50/50 dark:bg-white/[0.02] transition-colors duration-500">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="flex items-center justify-between mb-12 md:mb-20">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight">{t.news.title}</h2>
-            
+            {/* ТҮЗЕТІЛДІ: Ақ экранда қара түс (text-black), қараңғыда ақ түс (dark:text-white) */}
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-black dark:text-white">{t.news.title}</h2>
             <Link 
               to="/news" 
-              className="group flex items-center gap-2 px-6 py-2 rounded-full bg-blue-50 dark:bg-white/10 text-blue-600 dark:text-blue-400 font-bold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 transition-all shadow-md text-lg"
+              className="group flex items-center gap-2 px-6 py-2 rounded-full bg-blue-50 dark:bg-white/10 text-blue-600 dark:text-blue-400 font-bold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 transition-all shadow-md"
             >
               {t.news.viewAll} <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -743,21 +731,21 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-8 flex flex-col flex-grow">
-                    <div className="flex items-center gap-2 text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
-                      <Clock size={16} />
+                    <div className="flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+                      <Clock size={14} />
                       <time>{article.date}</time>
                     </div>
-                    <h3 className="text-2xl font-bold line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-3">
+                    <h3 className="text-xl font-bold line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-3 text-black dark:text-white">
                       {article.title[currentLangKey] || article.title.kaa}
                     </h3>
                     {(article.excerpt[currentLangKey] || article.excerpt.kaa) && (
-                      <p className="text-lg text-gray-600 dark:text-gray-400 line-clamp-2 transition-colors duration-300 mb-6">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 transition-colors duration-300 mb-6">
                         {article.excerpt[currentLangKey] || article.excerpt.kaa}
                       </p>
                     )}
                     
-                    <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center text-blue-600 dark:text-blue-400 font-bold group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors text-lg">
-                       {t.news.readMore} <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                    <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center text-blue-600 dark:text-blue-400 font-bold group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
+                       {t.news.readMore} <ArrowRight size={16} className="ml-2 group-hover:translate-x-2 transition-transform" />
                     </div>
                   </div>
                 </Link>
@@ -767,9 +755,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 4. SECTIONS GRID (Символика) (ТУЗЕТИЛГЕН) --- */}
-      {/* min-h-screen жойылды, py-8 (қысқа) */}
-      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10 text-lg md:text-xl">
+      {/* --- 4. SECTIONS GRID --- */}
+      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -778,7 +765,6 @@ export default function Home() {
           {t.sections.map((s, i) => {
             const Icon = s.icon;
             const bgImage = sectionImages[i]; 
-
             return (
               <Link 
                 to={s.path} 
@@ -794,10 +780,10 @@ export default function Home() {
                   <div className="mb-4 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-300">
                     <Icon size={32} />
                   </div>
-                  <h3 className="text-3xl font-black text-white mb-2 uppercase tracking-wider drop-shadow-lg group-hover:text-blue-300 transition-colors">
+                  <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-wider drop-shadow-lg group-hover:text-blue-300 transition-colors">
                     {s.title}
                   </h3>
-                  <p className="text-gray-200 text-lg font-medium opacity-90 group-hover:opacity-100 transition-opacity">
+                  <p className="text-gray-200 text-sm font-medium opacity-90 group-hover:opacity-100 transition-opacity">
                     {s.desc}
                   </p>
                   
@@ -811,9 +797,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 5. TEAM CTA (Команда) (ТУЗЕТИЛГЕН) --- */}
-      {/* min-h-screen жойылды, py-8 (қысқа) */}
-      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10 text-lg md:text-xl">
+      {/* --- 5. TEAM CTA --- */}
+      <section className="relative flex flex-col justify-center py-8 px-4 md:min-h-screen md:py-32 md:px-6 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.4] dark:opacity-[0.2]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         </div>
@@ -831,7 +816,7 @@ export default function Home() {
             <div className="relative z-10 p-16 md:p-24 text-center text-white space-y-8">
               <Users size={64} className="mx-auto opacity-90" />
               <h2 className="text-4xl md:text-5xl font-black">{t.team.title}</h2>
-              <p className="text-2xl text-blue-100 max-w-2xl mx-auto">{t.team.desc}</p>
+              <p className="text-xl text-blue-100 max-w-2xl mx-auto">{t.team.desc}</p>
               <button className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 dark:text-blue-500 rounded-full font-bold hover:scale-105 transition-transform shadow-xl">
                 {t.meet} <ArrowRight size={20} />
               </button>
@@ -840,7 +825,6 @@ export default function Home() {
         </div>
       </section>
           
-      {/* HANDWRITTEN LOGO */}
       <div className="flex justify-center mb-2 relative z-10">
         <svg viewBox="0 0 450 100" xmlns="http://www.w3.org/2000/svg" className="h-16 md:h-20 w-auto fill-current text-amber-500 dark:text-amber-400">
           <defs><style>{`@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');`}</style></defs>
@@ -856,11 +840,6 @@ export default function Home() {
         </p>
       </div>
 
-      <ShareSection 
-        titleText={t.shareTitle}
-        copyTitle={t.copyLink}
-      />
-
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes gradient { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
         .animate-gradient { background-size: 200% 200%; animation: gradient 8s ease infinite; }
@@ -868,7 +847,6 @@ export default function Home() {
         .animate-fade-in { animation: fadeIn 1s ease-out; }
       `}} />
 
-      {/* --- SEO: ГУГЛ УШЫН ЖАСЫРЫН СӨЗЛЕР --- */}
       <div style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
         <h1>Karakalpakstan Karakalpak Nukus</h1>
         <h2>Қарақалпақстан Қарақалпақ Нөкис Жаңалықлар</h2>
@@ -878,7 +856,6 @@ export default function Home() {
           Declaration Aral Sea Louvre Savitsky Museum Ships Desert
         </p>
       </div>
-      
     </div>
   );
 }
