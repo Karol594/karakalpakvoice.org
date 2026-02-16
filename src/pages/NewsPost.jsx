@@ -118,7 +118,7 @@ export default function NewsPost() {
 
         // ЖАҢА ФОРМАТ (emoji маркерлері)
         let ruMatch = body.match(/# 🇷🇺 RU\s*\n([\s\S]*?)(?=\n---|\n# 🇰🇿|\n# 🇬🇧|\n# 🇵🇱|$)/);
-        let kkMatch = body.match(/# kk KK\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇬🇧|\n# 🇵🇱|$)/);
+        let kkMatch = body.match(/# 🇰🇿 KK\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇬🇧|\n# 🇵🇱|$)/);
         let enMatch = body.match(/# 🇬🇧 EN\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇵🇱|$)/);
         let plMatch = body.match(/# 🇵🇱 PL\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇬🇧|$)/);
 
@@ -221,17 +221,18 @@ export default function NewsPost() {
           </div>
         )}
 
-        {/* ВИДЕО - Егер video_id болса */}
+        {/* ✅ ВИДЕО - GALLERY-ДЕН КЕЙІН, МАҚАЛА МӘТІНІНЕН БҰРЫН */}
         {article.video_id && (
-          <div className="my-16 aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-gray-200 dark:border-white/10 group">
+          <div className="my-16 aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-gray-200 dark:border-white/10">
             <iframe 
               width="100%" 
               height="100%" 
-              src={`https://www.youtube-nocookie.com/embed/${article.video_id}`}
+              src={`https://www.youtube-nocookie.com/embed/${article.video_id}?rel=0&modestbranding=1`}
               title="YouTube video player" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
               allowFullScreen
+              className="w-full h-full"
             ></iframe>
           </div>
         )}
