@@ -85,11 +85,11 @@ export default function NewsPost() {
   const langKey = lang === 'KAA' ? 'KK' : lang;
 
   const backText = {
-  RU: "Вернуться назад",
-  KK: "Артқа қайтыў", 
-  EN: "Go Back",
-  PL: "Wróć"
-};
+    RU: "Вернуться назад",
+    KK: "Артқа қайтыў", 
+    EN: "Go Back",
+    PL: "Wróć"
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -116,11 +116,25 @@ export default function NewsPost() {
         let imgs = frontMatter.gallery || (frontMatter.image ? [frontMatter.image] : []);
         setGallery(imgs);
 
-        // ДҰРЫС ТІЛ ПАРСИНГІ - emoji маркерлері бойынша
-        const ruMatch = body.match(/# 🇷🇺 RU\s*\n([\s\S]*?)(?=\n---|\n# 🇰🇿|\n# 🇬🇧|\n# 🇵🇱|$)/);
-        const kkMatch = body.match(/# kk KK\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇬🇧|\n# 🇵🇱|$)/);
-        const enMatch = body.match(/# 🇬🇧 EN\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇵🇱|$)/);
-        const plMatch = body.match(/# 🇵🇱 PL\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇬🇧|$)/);
+        // ЖАҢА ФОРМАТ (emoji маркерлері)
+        let ruMatch = body.match(/# 🇷🇺 RU\s*\n([\s\S]*?)(?=\n---|\n# 🇰🇿|\n# 🇬🇧|\n# 🇵🇱|$)/);
+        let kkMatch = body.match(/# kk KK\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇬🇧|\n# 🇵🇱|$)/);
+        let enMatch = body.match(/# 🇬🇧 EN\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇵🇱|$)/);
+        let plMatch = body.match(/# 🇵🇱 PL\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇬🇧|$)/);
+
+        // ЕСКІ ФОРМАТ (fallback - ескі мақалалар үшін)
+        if (!ruMatch) {
+          ruMatch = body.match(/Рус тилде:\s*\n([\s\S]*?)(?=\n_{3,}|\nКК тил|\nАнгл тил|\nПЛ тил|$)/);
+        }
+        if (!kkMatch) {
+          kkMatch = body.match(/КК тил(?:де)?:\s*\n([\s\S]*?)(?=\n_{3,}|\nРус тил|\nАнгл тил|\nПЛ тил|$)/);
+        }
+        if (!enMatch) {
+          enMatch = body.match(/Англ тилде:\s*\n([\s\S]*?)(?=\n_{3,}|\nРус тил|\nКК тил|\nПЛ тил|$)/);
+        }
+        if (!plMatch) {
+          plMatch = body.match(/ПЛ тилде:\s*\n([\s\S]*?)(?=\n_{3,}|\nРус тил|\nКК тил|\nАнгл тил|$)/);
+        }
 
         let targetBody = '';
         if (langKey === 'RU' && ruMatch) targetBody = ruMatch[1];
@@ -158,7 +172,7 @@ export default function NewsPost() {
         
         <button 
           onClick={() => navigate(-1)} 
-          className="flex items-center gap-2 text-gray-500 hover:text-blue-500 transition-colors mb-8 group"
+          className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors mb-8 group"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> 
           <span className="font-bold">{backText[langKey] || backText.RU}</span>
@@ -167,13 +181,13 @@ export default function NewsPost() {
         <h1 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tight leading-tight text-gray-900 dark:text-white">
           {currentTitle}
         </h1>
-        <div className="flex items-center gap-3 text-sm font-mono text-gray-500 border-b border-gray-800 pb-6 mb-12">
+        <div className="flex items-center gap-3 text-sm font-mono text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-800 pb-6 mb-12">
           <Calendar size={16} /> <span>{article.date}</span>
-          <span className="px-2 py-0.5 bg-gray-800 rounded text-[10px] text-gray-400 uppercase">{langKey}</span>
+          <span className="px-2 py-0.5 bg-gray-200 dark:bg-gray-800 rounded text-[10px] text-gray-700 dark:text-gray-400 uppercase">{langKey}</span>
         </div>
 
         {gallery.length > 0 && (
-          <div className="relative aspect-video rounded-3xl overflow-hidden bg-black mb-16 group shadow-2xl border border-white/5">
+          <div className="relative aspect-video rounded-3xl overflow-hidden bg-gray-200 dark:bg-black mb-16 group shadow-2xl border border-gray-200 dark:border-white/5">
             <img 
               src={gallery[currentIndex]} 
               className="w-full h-full object-contain cursor-zoom-in transition-transform duration-700 group-hover:scale-[1.02]" 
@@ -207,32 +221,28 @@ export default function NewsPost() {
           </div>
         )}
 
-        <article className="max-w-none text-xl leading-relaxed font-light dark:text-gray-300">
+        {/* ВИДЕО - Егер video_id болса */}
+        {article.video_id && (
+          <div className="my-16 aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-gray-200 dark:border-white/10 group">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src={`https://www.youtube.com/embed/${article.video_id}?rel=0&modestbranding=1`} 
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowFullScreen
+            ></iframe>
+          </div>
+        )}
+
+        <article className="max-w-none text-xl leading-relaxed font-light text-gray-800 dark:text-gray-300">
           {displayText.map((p, i) => {
-            if (p.startsWith('# ')) return <h2 key={i} className="text-3xl font-black mt-16 mb-8 border-l-4 border-blue-600 pl-4 text-black dark:text-white uppercase tracking-tight">{renderStyledText(p.replace('# ', ''))}</h2>;
-            if (p.startsWith('## ')) return <h3 key={i} className="text-2xl font-bold mt-12 mb-6 text-black dark:text-white">{renderStyledText(p.replace('## ', ''))}</h3>;
+            if (p.startsWith('# ')) return <h2 key={i} className="text-3xl font-black mt-16 mb-8 border-l-4 border-blue-600 pl-4 text-gray-900 dark:text-white uppercase tracking-tight">{renderStyledText(p.replace('# ', ''))}</h2>;
+            if (p.startsWith('## ')) return <h3 key={i} className="text-2xl font-bold mt-12 mb-6 text-gray-900 dark:text-white">{renderStyledText(p.replace('## ', ''))}</h3>;
             if (p.trim().startsWith('* ')) return <li key={i} className="ml-6 mb-4 list-disc marker:text-blue-500">{renderStyledText(p.replace('* ', ''))}</li>;
 
-            const showVideo = i === 4 && article.video_id;
-
-            return (
-              <React.Fragment key={i}>
-                <p className="mb-8">{renderStyledText(p)}</p>
-                {showVideo && (
-                  <div className="my-16 aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-white/10 group">
-                    <iframe 
-                      width="100%" 
-                      height="100%" 
-                      src={`https://www.youtube.com/embed/${article.video_id}?rel=0&modestbranding=1`} 
-                      title="YouTube video player" 
-                      frameBorder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                )}
-              </React.Fragment>
-            );
+            return <p key={i} className="mb-8">{renderStyledText(p)}</p>;
           })}
         </article>
       </div>

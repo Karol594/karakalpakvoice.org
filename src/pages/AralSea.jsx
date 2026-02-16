@@ -193,7 +193,8 @@ const AralSea = () => {
 
       section2_title: "Życie wbrew wszystkiemu",
       section2_text: "Aral odszedł, ale pozostawił po sobie unikalne krajobrazy. Solniska błyszczące w słońcu jak śnieg i cmentarzysko statków w Mujnaku to niemi świadkowie epoki. Ale natura bierze górę. Jezioro Sudocze to oaza odrodzona z popiołów. Tysiące różowych flamingów, pelikanów i innych ptaków wróciło tutaj, udowadniając, że życie jest silniejsze niż jakiekolwiek okoliczności.",
-      
+      videoBtn2: "Obejrzyj film o statkach",
+
       conclusion: "Karakalpakstan dzisiaj to nie smutek; to potęga natury i piękno, którego nie można zobaczyć nigdzie indziej. Przyjedź, aby zobaczyć „inną planetę”, nie opuszczając Ziemi.",
       footer_note: "Ciąg dalszy nastąpi, zostań z nami...",
       shareTitle: "Połącz się z nami:"
@@ -287,7 +288,7 @@ const AralSea = () => {
           />
 
           <div className="text-center mb-16">
-            <a href="https://youtu.be/cRG3OlDuli8?si=pZeAc6TCfxCG9XgV" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg transition transform hover:-translate-y-1">
+            <a href="https://youtu.be/bPynr7l109k?si=fTB9Avj3oSiUsDXv" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg transition transform hover:-translate-y-1">
               <PlayCircle size={28} />
               {t.videoBtn1}
             </a>

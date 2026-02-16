@@ -75,7 +75,7 @@ gallery: ["/images/news/2026/tajimuratov-1.jpg", "/images/news/2026/tajimuratov-
 
 ## Жасырын өлим жазасы: Зыянлы мийнет шәраяты ҳәм изоляция
 
-Колония администрациясы Д.Тажимуратовты тосаттан физикалық жақтан жоқ етиў (жасырын өлим жазасы) махсетинде ең қәўипли мийнет зонасына – известь майдалаў цехына мәжбүрий түрде өткерген. Бул жағдай төмендеги қағыйдабузарлықлар менен мүнәсибетленеди:
+Колония администрациясы Д.Тажимуратовты қаcттан физикалық жақтан жоқ етиў (жасырын өлим жазасы) махсетинде ең қәўипли мийнет зонасына – известь майдалаў цехына мәжбүрий түрде өткерген. Бул жағдай төмендеги қағыйдабузарлықлар менен мүнәсибетленеди:
 
 **Техникалық ҳәм экологиялық қәўипсизликтиң жоқлығы:** Майдалаў үскенеси қолдан исленген болып, ҳеш қандай техникалық қәўипсизлик сертификатына ийе емес. Инсанның дем алыў жолларын қорғайтуғын арнаўлы маскалар айына тек бир мәрте берилмекте. Бул тиккелей химиялық зәҳәрлениўге ҳәм дем алыў органларының кеселлениўине алып келеди.
 
@@ -89,7 +89,7 @@ gallery: ["/images/news/2026/tajimuratov-1.jpg", "/images/news/2026/tajimuratov-
 
 ## БИЗИҢ ҚАТТЫ ТАЛАПЛАРЫМЫЗ
 
-Биз, **«Karakalpak-Voice»** еркин мәлимлеме платформасы, Бирлескен Миллетлер Шөлкеми (БМШ/UN), Европа Қәўипсизлик ҳәм Бирге Ислесиў Шөлкеми (ЕҚЫШ/OSCE), Human Rights Watch, Amnesty International ҳәм демократиялық мәмлекетлердиң дипломатиялық корпусларына ресмий түрде мүрәжат етип, төмендегилерди талап етемиз:
+Биз, **«Karakalpak-Voice»** еркин мәлимлеме платформасы, Бирлескен Миллетлер Шөлкеми (БМШ/UN), Европа Қәўипсизлик ҳәм Бирге Ислесиў Шөлкеми (ЕҚБШ/OSCE), Human Rights Watch, Amnesty International ҳәм демократиялық мәмлекетлердиң дипломатиялық корпусларына ресмий түрде мүрәжат етип, төмендегилерди талап етемиз:
 
 * Дәўлетмурат Тажимуратовқа қарата қолланылып атырған барлық түрдеги физикалық ҳәм психологик қыйнаўлар дереў ҳәм бәрқулла тоқтатылсын!
 
@@ -107,15 +107,15 @@ gallery: ["/images/news/2026/tajimuratov-1.jpg", "/images/news/2026/tajimuratov-
 ---
 # 🇬🇧 EN
 
-# A HIGH-LEVEL THREAT TO THE LIFE OF DAULETMURAT TAJIMURATOV: AN OPEN APPEAL TO THE INTERNATIONAL COMMUNITY AND GLOBAL INSTITUTIONS
+# A HIGH-LEVEL THREAT TO THE LIFE OF DAULETMURAT TAZHIMURATOV: AN OPEN APPEAL TO THE INTERNATIONAL COMMUNITY AND GLOBAL INSTITUTIONS
 
-**NAVOI – TASHKENT – NUKUS.** The situation of Dauletmurat Tajimuratov — a national pride of the Karakalpak people, a prominent lawyer and human rights defender — in Penal Colony No. 11 (KIN‑11) of the Navoi region of the Republic of Uzbekistan has reached a critical and inhumane level. The official video statement released on January 22, 2026, by Tashkent-based attorney Sergey Mayorov, along with subsequent operational information, exposes systemic torture within Uzbekistan's penitentiary system and gross violations of international legal norms.
+**NAVOI – TASHKENT – NUKUS.** The situation of Dauletmurat Tazhimuratov — a national pride of the Karakalpak people, a prominent lawyer and human rights defender — in Penal Colony No. 11 (KIN‑11) of the Navoi region of the Republic of Uzbekistan has reached a critical and inhumane level. The official video statement released on January 22, 2026, by Tashkent-based attorney Sergey Mayorov, along with subsequent operational information, exposes systemic torture within Uzbekistan's penitentiary system and gross violations of international legal norms.
 
 ## Institutional Torture and Physical Abuse
 
 According to attorney Sergey Mayorov, who met with D. Tajimuratov on January 17, 2026, the political prisoner is subjected to continuous, deliberate physical and psychological terror.
 
-In particular, on November 20, 2025, during a "political education" session (known in prison slang as "X‑Factor"), the deputy head of the colony publicly humiliated Tajimuratov, labeling him an "enemy of the people." In response, defending his human dignity, Dauletmurat Tajimuratov protested by throwing his shoe. Severe punitive measures followed: he was shackled in the "swallow" position, forced to stand barefoot on a concrete floor, and had 20–30 buckets of icy water mixed with lime poured over him.
+In particular, on November 20, 2025, during a "political education" session (known in prison slang as "X‑Factor"), the deputy head of the colony publicly humiliated Tazhimuratov, labeling him an "enemy of the people." In response, defending his human dignity, Dauletmurat Tazhimuratov protested by throwing his shoe. Severe punitive measures followed: he was shackled in the "swallow" position, forced to stand barefoot on a concrete floor, and had 20–30 buckets of icy water mixed with lime poured over him.
 
 These actions are in direct violation of the [UN Convention against Torture and Other Cruel, Inhuman or Degrading Treatment or Punishment](https://www.ohchr.org/ru/instruments-mechanisms/instruments/convention-against-torture-and-other-cruel-inhuman-or-degrading) (CAT). possible harm to health
 
@@ -123,7 +123,7 @@ After that, he was placed in a punishment cell (SHIZO) for 15 days, where he was
 
 ## Hidden death penalty: harmful working conditions and isolation
 
-The administration of the colony forcibly transferred D. Tajimuratov to the most dangerous work area, the lime crushing plant, for the purpose of sudden physical destruction (hidden death penalty). This situation is related to the following violations:
+The administration of the colony forcibly transferred D. Tazhimuratov to the most dangerous work area, the lime crushing plant, for the purpose of sudden physical destruction (hidden death penalty). This situation is related to the following violations:
 
 **Lack of technical and environmental safety:** Lack of technical and environmental safety: Crushing equipment is hand-made and does not have a technical safety certificate. Special masks that protect the human respiratory tract are issued only once a month. This directly leads to chemical poisoning and respiratory diseases.
 
@@ -133,21 +133,21 @@ The administration of the colony forcibly transferred D. Tajimuratov to the most
 
 ## A new stage of repression: tightening of the regime
 
-As of February 7, 2026, Dauletmurat Tajimuratov was artificially recognized as a "systematic violator of the regime," and the procedure for transferring him to the strictest closed prison regime was initiated. This decision is another act of revenge on the part of the colony administration, aimed at concealing crimes, completely isolating the prisoner from lawyers and relatives, and accelerating his physical destruction.
+As of February 7, 2026, Dauletmurat Tazhimuratov was artificially recognized as a "systematic violator of the regime," and the procedure for transferring him to the strictest closed prison regime was initiated. This decision is another act of revenge on the part of the colony administration, aimed at concealing crimes, completely isolating the prisoner from lawyers and relatives, and accelerating his physical destruction.
 
 ## OUR STRICT REQUIREMENTS
 
 We, the independent information platform **"Karakalpak‑Voice"**, officially appeal to the United Nations (UN), the Organization for Security and Co-operation in Europe (OSCE), Human Rights Watch, Amnesty International and the diplomatic corps of democratic states, demanding the following:
 
-* Immediately and completely stop all forms of physical and psychological violence against Dauletmurat Tajimuratov.
+* Immediately and completely stop all forms of physical and psychological violence against Dauletmurat Tazhimuratov.
 
 * Launch an independent international investigation into the actions of the administration of the KIN‑11 colony of the Ministry of Internal Affairs of Uzbekistan and the perpetrators of inhumane crimes are subject to strict criminal liability!
 
-* Allow representatives of the International Committee of the Red Cross (ICRC) and an independent medical commission to enter the colony to examine Tajimuratov's health and provide him with qualified assistance.
+* Allow representatives of the International Committee of the Red Cross (ICRC) and an independent medical commission to enter the colony to examine Tazhimuratov's health and provide him with qualified assistance.
 
-* The Government of Uzbekistan should immediately implement the decision of the UN Working Group on Arbitrary Detention [(WGAD) No. 62/2024](https://www.ohchr.org/sites/default/files/documents/issues/detention-wg/opinions/session101/a-hrc-wgad-62-2024-uzbekistan-advance-edite.pdf) and immediately and unconditionally release political prisoner Dauletmurat Tajimuratov.
+* The Government of Uzbekistan should immediately implement the decision of the UN Working Group on Arbitrary Detention [(WGAD) No. 62/2024](https://www.ohchr.org/sites/default/files/documents/issues/detention-wg/opinions/session101/a-hrc-wgad-62-2024-uzbekistan-advance-edite.pdf) and immediately and unconditionally release political prisoner Dauletmurat Tazhimuratov.
 
-The international community and international human rights institutions cannot remain indifferent in the face of open terror. The life and fate of Dauletmurat Tajimuratov is not only the fate of one person, but also a real test of the effectiveness of international human rights norms and international conventions.
+The international community and international human rights institutions cannot remain indifferent in the face of open terror. The life and fate of Dauletmurat Tazgimuratov is not only the fate of one person, but also a real test of the effectiveness of international human rights norms and international conventions.
 
 **Editorial Board of "Karakalpak‑Voice"**  
 **February 2026**
@@ -157,13 +157,13 @@ The international community and international human rights institutions cannot r
 
 # POWAŻNE ZAGROŻENIE DLA ŻYCIA DAULETMURAT TAZHIMURATOVA: OTWARTY APEL DO SPOŁECZNOŚCI MIĘDZYNARODOWEJ I INSTYTUCJI GLOBALNYCH
 
-**NAWOI – TASZKENT – NUKUS.** Sytuacja Däuletmurata Tażimuratowa — narodowej dumy narodu karakałpackiego, znanego prawnika i obrońcy praw człowieka — w kolonii karnej nr 11 (KIN‑11) w obwodzie nawojskim Republiki Uzbekistanu osiągnęła poziom krytyczny i nieludzki. Oficjalne oświadczenie wideo adwokata z Taszkentu, Siergieja Majorowa, opublikowane 22 stycznia 2026 roku, a także uzyskane później informacje operacyjne ujawniają systemowe tortury w uzbeckim systemie penitencjarnym oraz rażące naruszenia międzynarodowych norm prawnych.
+**NAWOI – TASZKENT – NUKUS.** Sytuacja Dauletmurata Tazhimuratova — narodowej dumy narodu karakałpackiego, znanego prawnika i obrońcy praw człowieka — w kolonii karnej nr 11 (KIN‑11) w obwodzie nawojskim Republiki Uzbekistanu osiągnęła poziom krytyczny i nieludzki. Oficjalne oświadczenie wideo adwokata z Taszkentu, Siergieja Majorowa, opublikowane 22 stycznia 2026 roku, a także uzyskane później informacje operacyjne ujawniają systemowe tortury w uzbeckim systemie penitencjarnym oraz rażące naruszenia międzynarodowych norm prawnych.
 
 ## Instytucjonalne tortury i przemoc fizyczna
 
-Jak poinformował adwokat Siergiej Majorow, który spotkał się z D. Tażimuratowem 17 stycznia 2026 roku, wobec więźnia politycznego stosuje się ciągły, celowy fizyczny i psychiczny terror.
+Jak poinformował adwokat Siergiej Majorow, który spotkał się z D. Tazhimuratovem 17 stycznia 2026 roku, wobec więźnia politycznego stosuje się ciągły, celowy fizyczny i psychiczny terror.
 
-W szczególności 20 listopada 2025 roku podczas kolonijnego zebrania „politycznego uświadamiania" (w więziennym żargonie „X‑Factor") zastępca naczelnika kolonii publicznie upokorzył Tażimuratowa, nazywając go „wrogiem narodu". W odpowiedzi, broniąc swojej godności, Däuletmurat Tażimuratow zaprotestował, rzucając butem. Następnie zastosowano wobec niego brutalne środki karne: zakuto go w pozycji „jaskółki", zmuszono do stania boso na betonowej podłodze i oblano 20–30 wiadrami lodowatej wody zmieszanej z roztworem wapna.
+W szczególności 20 listopada 2025 roku podczas kolonijnego zebrania „politycznego uświadamiania" (w więziennym żargonie „X‑Factor") zastępca naczelnika kolonii publicznie upokorzył Tazhimuratova, nazywając go „wrogiem narodu". W odpowiedzi, broniąc swojej godności, Däuletmurat Tażimuratow zaprotestował, rzucając butem. Następnie zastosowano wobec niego brutalne środki karne: zakuto go w pozycji „jaskółki", zmuszono do stania boso na betonowej podłodze i oblano 20–30 wiadrami lodowatej wody zmieszanej z roztworem wapna.
 
 Działania te stanowią bezpośrednie naruszenie [Konwencji ONZ przeciwko torturom i innym okrutnym, nieludzkim lub poniżającym traktowaniu albo karaniu](https://www.ohchr.org/ru/instruments-mechanisms/instruments/convention-against-torture-and-other-cruel-inhuman-or-degrading) (CAT).
 
@@ -171,7 +171,7 @@ Następnie został umieszczony w karcerze (SHIZO) na 15 dni, gdzie przetrzymywan
 
 ## Ukryta kara śmierci: szkodliwe warunki pracy i izolacja
 
-Administracja Kolonii przymusowo przeniosła D. Tajimuratova do najbardziej niebezpiecznej strefy pracy - Czechu do mielenia wapna - w celu nagłego fizycznego zniszczenia (ukryta kara śmierci). Sytuacja ta jest związana z następującymi naruszeniami:
+Administracja Kolonii przymusowo przeniosła D. Tazhimuratova do najbardziej niebezpiecznej strefy pracy - Czechu do mielenia wapna - w celu nagłego fizycznego zniszczenia (ukryta kara śmierci). Sytuacja ta jest związana z następującymi naruszeniami:
 
 **Brak bezpieczeństwa technicznego i ekologicznego:** brak bezpieczeństwa technicznego i środowiskowego: sprzęt do kruszenia jest wykonany ręcznie i nie posiada certyfikatu bezpieczeństwa technicznego. Specjalne maski chroniące ludzkie drogi oddechowe są wydawane tylko raz w miesiącu. Prowadzi to bezpośrednio do zatrucia chemicznego i chorób układu oddechowego.
 
@@ -181,13 +181,13 @@ Administracja Kolonii przymusowo przeniosła D. Tajimuratova do najbardziej nieb
 
 ## Nowy etap represji: zaostrzenie reżimu
 
-Według danych z 7 lutego 2026 roku, Dәулетмурат Тажимуратов został sztucznie uznany za "systematycznego naruszającego reżim" i rozpoczęto procedurę przeniesienia go na najbardziej surowy zamknięty reżim więzienny. Decyzja ta jest kolejnym aktem zemsty ze strony administracji Kolonii, mającym na celu ukrycie zbrodni, całkowite odizolowanie więźnia od prawników i krewnych oraz przyspieszenie jego fizycznej eksterminacji.
+Według danych z 7 lutego 2026 roku, Dauletmurat Tazhimuratov został sztucznie uznany za "systematycznego naruszającego reżim" i rozpoczęto procedurę przeniesienia go na najbardziej surowy zamknięty reżim więzienny. Decyzja ta jest kolejnym aktem zemsty ze strony administracji Kolonii, mającym na celu ukrycie zbrodni, całkowite odizolowanie więźnia od prawników i krewnych oraz przyspieszenie jego fizycznej eksterminacji.
 
 ## NASZE KATEGORYCZNE ŻĄDANIA
 
 My, niezależna platforma informacyjna **«Karakalpak‑Voice»**, oficjalnie zwracamy się do Organizacji Narodów Zjednoczonych (ONZ), Organizacji Bezpieczeństwa i współpracy w Europie (OBWE), Human Rights Watch, Amnesty International oraz korpusu dyplomatycznego państw demokratycznych, domagając się z następującymi żądaniami:
 
-* Natychmiast i całkowicie zakończyć wszelkie formy fizycznych i psychicznych tortur wobec Dаuletmurata Tażimuratowa.
+* Natychmiast i całkowicie zakończyć wszelkie formy fizycznych i psychicznych tortur wobec Dauletmurata Tazhimuratova.
 
 * Rozpocznij niezależne międzynarodowe dochodzenie w sprawie działań administracji Kolonii kin-11 Ministerstwa Spraw Wewnętrznych Uzbekistanu i sprawców, którzy popełnili nieludzkie przestępstwa, podlegają ścisłej odpowiedzialności karnej.
 
