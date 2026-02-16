@@ -3,7 +3,7 @@ id: "allayar-dosnazarov"
 type: "person"
 era: "new_age"
 image: "/images/figures/allayar_dosnazarov3.jpg"
-date: "1896 — 1937"
+years: "1896 — 1937"
 tags: ["Партия", "Лидер", "Репрессия"]
 videoUrl: "https://youtu.be/M8FCCCPrbI4?si=M96udW2xbgHWJS-P"
 images: 
