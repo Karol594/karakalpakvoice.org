@@ -5,7 +5,7 @@ title_en: "A HIGH-LEVEL THREAT TO THE LIFE OF DAULETMURAT TAJIMURATOV: AN OPEN A
 title_pl: "POWAŻNE ZAGROŻENIE DLA ŻYCIA DAULETMURAT TAZHIMURATOVA: OTWARTY APEL"
 date: "2026-02-07"
 image: "/images/news/2026/tajimuratov-1.jpg"
-video_id: "7UAY52ePZXI"
+video_id: "NzmhL7UlLLI"
 gallery: ["/images/news/2026/tajimuratov-1.jpg", "/images/news/2026/tajimuratov-2.jpg", "/images/news/2026/tajimuratov-3.jpg", "/images/news/2026/tajimuratov-4.jpg", "/images/news/2026/tajimuratov-5.jpg"]
 ---
 
