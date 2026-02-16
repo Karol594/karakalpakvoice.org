@@ -34,7 +34,7 @@ const TikTokIcon = ({ size = 24 }) => (
 );
 
 const SubscribeModal = ({ isOpen, onClose, t, lang }) => {
-  // Барлық useState хуклары эң жоқарыда болыўы керек
+  // 1. БАРЛЫҚ ХУКТАРДЫ ЕҢ ЖОҒАРЫҒА ШЫҒАРАМЫЗ (if-ті алып тастадық)
   const [email, setEmail] = useState('');
   const [num1, setNum1] = useState(Math.floor(Math.random() * 10) + 1);
   const [num2, setNum2] = useState(Math.floor(Math.random() * 10) + 1);
@@ -42,11 +42,10 @@ const SubscribeModal = ({ isOpen, onClose, t, lang }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
-  // useEffect те хуклардың қатарына киреди
+  // Модаль ашылғанда капчаны жаңартыў
   useEffect(() => {
     if (isOpen) {
-      setNum1(Math.floor(Math.random() * 10) + 1);
-      setNum2(Math.floor(Math.random() * 10) + 1);
+      generateCaptcha();
       setSuccess(false);
       setEmail('');
       setCaptchaAnswer('');
@@ -61,18 +60,13 @@ const SubscribeModal = ({ isOpen, onClose, t, lang }) => {
     setError('');
   };
 
-  // МЫНА ЖЕРГЕ ҚОЙЫҢ: if шәрти барлық хуклардан кейин келиўи шәрт
-  if (!isOpen) return null;
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (parseInt(captchaAnswer) !== num1 + num2) {
-      const errMsg = lang === 'KK' ? 'Қәте жуўап!' : lang === 'RU' ? 'Неверно!' : 'Wrong!';
-      setError(errMsg);
+      setError(lang === 'KK' ? 'Қәте жуўап! Қайтадан көриң.' : 'Неверный ответ! Попробуйте снова.');
+      generateCaptcha();
       return;
     }
-    setSuccess(true);
-    setTimeout(() => { onClose(); setSuccess(false); }, 2000);
     
     // Егер дұрыс болса:
     setSuccess(true);
