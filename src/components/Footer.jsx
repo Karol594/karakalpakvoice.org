@@ -323,11 +323,11 @@ export default function Footer() {
               <div className="pt-6 border-t border-gray-800 mt-4">
                 <h4 className="text-[10px] text-gray-500 mb-4 uppercase tracking-widest font-bold">{content.shareTitle}</h4>
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <a href="https://facebook.com/share/1FifdzG23b/" className="p-2.5 rounded-full bg-[#1877F2] text-white hover:scale-110 transition"><Facebook size={18}/></a>
+                  <a href="https://facebook.com" className="p-2.5 rounded-full bg-[#1877F2] text-white hover:scale-110 transition"><Facebook size={18}/></a>
                   <a href="https://t.me/kkvoice_org" className="p-2.5 rounded-full bg-[#0088cc] text-white hover:scale-110 transition"><Send size={18}/></a>
-                  <a href="https://instagram.com/karakalpakvoice_org?igsh=Y2x3YTJjMHdnM2Js" className="p-2.5 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white hover:scale-110 transition"><Instagram size={18}/></a>
-                  <a href="https://youtube.com/@karakalpakvoice_org?si=mhoqzFT19SoNfdwn" className="p-2.5 rounded-full bg-[#FF0000] text-white hover:scale-110 transition"><Youtube size={18}/></a>
-                  <a href="https://x.com/Karakalpak45997" className="p-2.5 rounded-full bg-black border border-gray-700 text-white hover:scale-110 transition"><TikTokIcon size={18}/></a>
+                  <a href="https://instagram.com" className="p-2.5 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white hover:scale-110 transition"><Instagram size={18}/></a>
+                  <a href="https://youtube.com" className="p-2.5 rounded-full bg-[#FF0000] text-white hover:scale-110 transition"><Youtube size={18}/></a>
+                  <a href="https://tiktok.com" className="p-2.5 rounded-full bg-black border border-gray-700 text-white hover:scale-110 transition"><TikTokIcon size={18}/></a>
                   <button onClick={copyToClipboard} className={`p-2.5 rounded-full transition hover:scale-110 text-white ${copied ? 'bg-green-600' : 'bg-gray-700'}`}>
                     {copied ? <Check size={18}/> : <LinkIcon size={18}/>}
                   </button>

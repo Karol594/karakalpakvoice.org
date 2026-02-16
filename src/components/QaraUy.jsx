@@ -401,39 +401,6 @@ const QaraUy = () => {
 
         </div>
 
-        {/* --- SHARE (ТАРҚАТЫЎ) --- */}
-        <div className="p-6 md:p-12 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
-          <section className={`p-10 rounded-[40px] border text-center ${isDarkMode ? "bg-white/5 border-white/10" : "bg-white border-gray-200"}`}>
-            <h3 className="text-2xl font-bold mb-8 italic">{t.shareTitle}</h3>
-            <div className="flex flex-wrap justify-center gap-6">
-              
-              <a href="https://www.facebook.com/share/1FifdzG23b/" target="_blank" rel="noreferrer" className="p-4 bg-[#1877F2] text-white rounded-full hover:scale-110 transition shadow-lg" title="Facebook">
-                <Facebook size={24} />
-              </a>
-
-              <a href="https://t.me/kkvoice_org" target="_blank" rel="noreferrer" className="p-4 bg-[#0088cc] text-white rounded-full hover:scale-110 transition shadow-lg" title="Telegram">
-                <Send size={24} />
-              </a>
-
-              <a href="https://x.com/Karakalpak45997" target="_blank" rel="noreferrer" className="p-4 bg-black text-white rounded-full border border-white/20 hover:scale-110 transition shadow-lg" title="Twitter (X)">
-                <Twitter size={24} />
-              </a>
-
-              <a href="https://www.instagram.com/karakalpakvoice_org/" target="_blank" rel="noreferrer" className="p-4 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-full hover:scale-110 transition shadow-lg" title="Instagram">
-                <Instagram size={24} />
-              </a>
-
-              <a href="https://youtube.com/@karakalpakvoice_org" target="_blank" rel="noreferrer" className="p-4 bg-[#FF0000] text-white rounded-full hover:scale-110 transition shadow-lg" title="YouTube">
-                <Youtube size={24} />
-              </a>
-
-              <button onClick={copyToClipboard} className="p-4 bg-gray-700 text-white rounded-full hover:scale-110 transition shadow-lg flex items-center gap-2 px-6" title="Copy Link">
-                <LinkIcon size={20} />
-              </button>
-            </div>
-          </section>
-        </div>
-
       </div>
     </div>
   );

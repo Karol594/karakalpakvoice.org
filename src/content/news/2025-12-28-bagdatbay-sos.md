@@ -8,9 +8,12 @@ date: "2025-12-28"
 author: "Пресс-центр Правозащитный Альянс Узбекистана"
 image: "/images/bagdatbay-ismaylov-2025-01.jpg"
 tags: ["Human Rights", "Uzbekistan", "Karakalpakstan", "SOS"]
+gallery: ["/images/bagdatbay-ismaylov-2025-01.jpg", "/images/bagdatbay-ismaylov-2025-02.jpg", "/images/bagdatbay-ismaylov-2025-03.jpg", "/images/bagdatbay-ismaylov-2025-04.jpg", "/images/bagdatbay-ismaylov-2025-05.jpg", "/images/bagdatbay-ismaylov-2025-06.jpg", "/images/bagdatbay-ismaylov-2025-07.jpg", "/images/bagdatbay-ismaylov-2025-08.jpg", "/images/bagdatbay-ismaylov-2025-09.jpg", "/images/bagdatbay-ismaylov-2025-10.jpg"]
 ---
 
-УЗБЕКИСТАН: SOS!!! КАРАКАЛПАК БАГДАТБАЙ ИСМАЙЛОВ ПРОСИТ ПОМОЩИ ДЛЯ ВОССОЕДИНЕНИЯ С СЕМЬЁЙ, ЕГО ПАСПОРТ ЗАБРАЛИ В ЗАЛОГ, ХАЛК БАНК ТРЕБУЕТ ОПЛАТУ КРЕДИТА, ДОКУМЕНТАЦИЯ НА УЗБЕКСКОМ ЯЗЫКЕ (КАРАКАЛПАКИ НЕ ЗНАЮТ УЗБЕКСКИЙ ЯЗЫК). ПРАВОЗАЩИТНИЦА ЕЛЕНА УРЛАЕВА ВЫЕЗЖАЕТ В КАРАКАЛПАКСТАН.
+# 🇷🇺 RU
+
+# УЗБЕКИСТАН: SOS!!! КАРАКАЛПАК БАГДАТБАЙ ИСМАЙЛОВ ПРОСИТ ПОМОЩИ ДЛЯ ВОССОЕДИНЕНИЯ С СЕМЬЁЙ, ЕГО ПАСПОРТ ЗАБРАЛИ В ЗАЛОГ, ХАЛК БАНК ТРЕБУЕТ ОПЛАТУ КРЕДИТА, ДОКУМЕНТАЦИЯ НА УЗБЕКСКОМ ЯЗЫКЕ (КАРАКАЛПАКИ НЕ ЗНАЮТ УЗБЕКСКИЙ ЯЗЫК). ПРАВОЗАЩИТНИЦА ЕЛЕНА УРЛАЕВА ВЫЕЗЖАЕТ В КАРАКАЛПАКСТАН
 
 К правозащитнице Елене Урлаевой обратился за помощью и защитой Багдатбай Исмайлов житель Караузякского района Каракалпакстана, который сообщил, что уже 5 лет не может воссоединиться со своей семьёй проживающей в Казахстане, так как правоохранительные органы не выдают ему соответствующее разрешение и заграничный паспорт.
 
@@ -26,22 +29,12 @@ tags: ["Human Rights", "Uzbekistan", "Karakalpakstan", "SOS"]
 
 Конт телефон правозащитницы Елены Урлаевой +998946891764
 
-Пресс-центр организации Правозащитный Альянс Узбекистана». 14 декабря 2025 года Ташкент Узбекистан
-
-![Фото 1](/images/bagdatbay-ismaylov-2025-01.jpg)
-![Фото 2](/images/bagdatbay-ismaylov-2025-02.jpg)
-![Фото 3](/images/bagdatbay-ismaylov-2025-03.jpg)
-![Фото 4](/images/bagdatbay-ismaylov-2025-04.jpg)
-![Фото 5](/images/bagdatbay-ismaylov-2025-05.jpg)
-![Фото 6](/images/bagdatbay-ismaylov-2025-06.jpg)
-![Фото 7](/images/bagdatbay-ismaylov-2025-07.jpg)
-![Фото 8](/images/bagdatbay-ismaylov-2025-08.jpg)
-![Фото 9](/images/bagdatbay-ismaylov-2025-09.jpg)
-![Фото 10](/images/bagdatbay-ismaylov-2025-10.jpg)
+**Пресс-центр организации Правозащитный Альянс Узбекистана». 14 декабря 2025 года Ташкент Узбекистан**
 
 ---
+# kk KK
 
-ӨЗБЕКСТАН: SOS!!! ҚАРАҚАЛПАҚ БАГДАТБАЙ ИСМАЙЛОВ ШАҢАРАҒЫ МЕНЕН БИРИГИЎ УШЫН ЖӘРДЕМ СОРАЙДЫ, ПАСПОРТЫН ГИРЕЎГЕ АЛЫП ҚОЙҒАН, ХАЛЫҚ БАНКИ КРЕДИТТИ ТӨЛЕЎДИ ТАЛАП ЕТИП АТЫР, ҲҮЖЖЕТЛЕРИ ӨЗБЕК ТИЛИНДЕ (ҚАРАҚАЛПАҚЛАР ӨЗБЕК ТИЛИН БИЛМЕЙДИ). ҲУҚЫҚ ҚОРҒАЎШЫ ЕЛЕНА УРЛАЕВА ҚАРАҚАЛПАҚСТАНҒА БАРДЫ.
+# ӨЗБЕКСТАН: SOS!!! ҚАРАҚАЛПАҚ БАГДАТБАЙ ИСМАЙЛОВ ШАҢАРАҒЫ МЕНЕН БИРИГИЎ УШЫН ЖӘРДЕМ СОРАЙДЫ, ПАСПОРТЫН ГИРЕЎГЕ АЛЫП ҚОЙҒАН, ХАЛЫҚ БАНКИ КРЕДИТТИ ТӨЛЕЎДИ ТАЛАП ЕТИП АТЫР, ҲҮЖЖЕТЛЕРИ ӨЗБЕК ТИЛИНДЕ (ҚАРАҚАЛПАҚЛАР ӨЗБЕК ТИЛИН БИЛМЕЙДИ). ҲУҚЫҚ ҚОРҒАЎШЫ ЕЛЕНА УРЛАЕВА ҚАРАҚАЛПАҚСТАНҒА БАРДЫ
 
 Қарақалпақстанның Қараөзек районында жасаўшы Бағдатбай Исмайлов ҳуқық қорғаўшысы Елена Урлаеваға жәрдем ҳәм қорғаў сораў менен мүрәжат етип, 5 жылдан берли Қазақстанда жасап атырған шаңарағы менен бирлесе алмай атырғанын, ҳуқық қорғаў уйымлары оған тийисли рухсатнама ҳәм сырт ел паспортын бермей атырғанын билдирди.
 
@@ -57,11 +50,12 @@ tags: ["Human Rights", "Uzbekistan", "Karakalpakstan", "SOS"]
 
 Ҳуқық қорғаўшысы Елена Урлаева менен байланыс телефоны: +998946891764
 
-"Өзбекстан ҳуқық қорғаў альянсы" шөлкеминиң баспасөз орайы. 2025-жыл 14-декабрь, Ташкент Өзбекстан.
+**"Өзбекстан ҳуқық қорғаў альянсы" шөлкеминиң баспасөз орайы. 2025-жыл 14-декабрь, Ташкент Өзбекстан.**
 
 ---
+# 🇬🇧 EN
 
-UZBEKISTAN: SOS!!! KARAKALPAK BAGDATBAY ISMAILOV ASKS FOR HELP TO RECOVER WITH HIS FAMILY, HIS PASSPORT HAS BEEN TAKEN AS A Pledge, PEOPLE'S BANK REQUIRES PAYMENT FOR THE LOAN, DOCUMENTS IN UZBEK (KARAKALPAKS DO NOT KNOW THE UZBEK LANGUAGE). LAW DEFENDER ELENA URLAYEVA IS TRAVELING TO KARAKALPAKSTAN.
+# UZBEKISTAN: SOS!!! KARAKALPAK BAGDATBAY ISMAILOV ASKS FOR HELP TO RECOVER WITH HIS FAMILY, HIS PASSPORT HAS BEEN TAKEN AS A PLEDGE, PEOPLE'S BANK REQUIRES PAYMENT FOR THE LOAN, DOCUMENTS IN UZBEK (KARAKALPAKS DO NOT KNOW THE UZBEK LANGUAGE). LAW DEFENDER ELENA URLAYEVA IS TRAVELING TO KARAKALPAKSTAN
 
 Bagdatbay Ismailov, a resident of the Karauzyak district of Karakalpakstan, appealed to human rights activist Elena Urlaeva for help and protection, stating that he has been unable to reunite with his family living in Kazakhstan for 5 years, as law enforcement agencies have not issued him a corresponding permit and a foreign passport.
 
@@ -77,11 +71,12 @@ Contact phone of Bagdatbay Ismailov +998880968184 and photo of documents
 
 Contact phone of human rights defender Elena Urlayeva +998946891764
 
-Press Center of the "Law Enforcement Alliance of Uzbekistan" organization. December 14, 2025 Tashkent, Uzbekistan
+**Press Center of the "Law Enforcement Alliance of Uzbekistan" organization. December 14, 2025 Tashkent, Uzbekistan**
 
 ---
+# 🇵🇱 PL
 
-UZBEKISTAN: SOS!!! KARAKALPAK BAGDATBAY ISMAILOV PROSI O POMOC W PONOWNYM POŁĄCZENIU SIĘ Z RODZINĄ, JEGO PASZPORT ZOSTAŁ ODEBRANY JAKO ZABEZPIECZENIE, HULK BANK ŻĄDA SPŁATY POŻYCZKI, DOKUMENTACJI W UZBEKU (KARAKALPAKOWIE NIE ZNAJĄ UZBEKU). DZIAŁACZKA NA RZECZ PRAW CZŁOWIEKA ELENA URLAEVA JEDZIE DO KARAKALPAKSTANU.
+# UZBEKISTAN: SOS!!! KARAKALPAK BAGDATBAY ISMAILOV PROSI O POMOC W PONOWNYM POŁĄCZENIU SIĘ Z RODZINĄ, JEGO PASZPORT ZOSTAŁ ODEBRANY JAKO ZABEZPIECZENIE, HULK BANK ŻĄDA SPŁATY POŻYCZKI, DOKUMENTACJI W UZBEKU (KARAKALPAKOWIE NIE ZNAJĄ UZBEKU). DZIAŁACZKA NA RZECZ PRAW CZŁOWIEKA ELENA URLAEVA JEDZIE DO KARAKALPAKSTANU
 
 Mieszkaniec dystryktu Karauzyak w Karakalpakstanie zwrócił się o pomoc i ochronę do działaczki na rzecz praw człowieka Eleny Urlaevej Bagdatbay Ismailov, która stwierdziła, że od 5 lat nie może ponownie połączyć się z rodziną mieszkającą w Kazachstanie, gdyż organy ścigania nie wydały mu odpowiedniego zezwolenia i paszportu zagranicznego.
 
@@ -97,4 +92,4 @@ Numer telefonu kontaktowego Bagdatbay Ismailov +998880968184 i zdjęcia dokument
 
 Numer telefonu kontaktowego działaczki na rzecz praw człowieka Eleny Urlaevej +998946891764
 
-Centrum prasowe organizacji “Sojusz Praw Człowieka Uzbekistanu».14 grudnia 2025 Taszkent Uzbekistan
+**Centrum prasowe organizacji "Sojusz Praw Człowieka Uzbekistanu».14 grudnia 2025 Taszkent Uzbekistan**

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Share2, Send, Facebook, Link as LinkIcon, Twitter, Youtube, Instagram, Target, Users, MapPin } from 'lucide-react';
+import { Link as LinkIcon, Target } from 'lucide-react';
 
 const About = () => {
   const [lang, setLang] = useState("RU"); 
   const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("karakalpak-voice-theme") === "dark");
   
   useEffect(() => {
-    // Бет ашылғанда жоқарыға шығарыў
     window.scrollTo(0, 0);
 
     const handleLangChange = (e) => {
@@ -60,7 +59,8 @@ const About = () => {
         { title: "Тарийхты тиклеў ҳәм сақлаў", desc: "Бизиң бай тарийхымыз, «Суверенитет ҳаққында Декларация», Конституция, уллы тулғалар, мәдений мийрас — булардың барлығы санлы форматта сақланыўы ҳәм келешек урпаққа аман-есен жеткериўи биз ушын қәсийетли мандат." },
         { title: "Көпир болыў", desc: "Қарақалпақстанды Европа ҳәм дүнья жәмийетшилиги менен байланыстырыў — бизиң стратегиялық махсетимиз. Биз халықаралық уйымлар, журналистлер, экологлар, ҳуқық қорғаў институтлары менен байланыс орнатамыз." },
         { title: "Цензурасыз жаңалықлар тарқатыў", desc: "Биз тек тексерилген фактлерди жәриялаймыз. Жалған хабар, манипуляция, пропаганда менен гүресемиз." },
-        { title: "Тил, мәденият ҳәм мийрасты сақлаў", desc: "Қарақалпақ тили — халқымыздың жаны. Биз оны сақлаўға, раўажландырыға, мәртебесин көтериўге үлес қосамыз." }
+        { title: "Тил, мәденият ҳәм мийрасты сақлаў", desc: "Қарақалпақ тили — халқымыздың жаны. Биз оны сақлаўға, раўажландырыға, мәртебесин көтериўге үлес қосамыз." },
+        { title: "20-30 жыл ушын архив", desc: "Биз материалларды санлы форматта сақлаймыз, энциклопедия сыяқлы избе-излик жүргиземиз, информациялық қәўипсизлик, спам, хакер ҳүжимлеринен 100% қорғаймыз." }
       ],
 
       langTitle: "Не ушын 4 тилде?",
@@ -108,7 +108,8 @@ const About = () => {
         { title: "Восстановление и сохранение истории", desc: "Наша богатая история, Декларация о суверенитете, Конституция, выдающиеся личности, культурное наследие - все это хранится в цифровом формате и благополучно передается будущим поколениям, что является для нас священным мандатом." },
         { title: "Быть мостом", desc: "Связать Каракалпакстан с европейским и мировым сообществом - наша стратегическая цель. Мы налаживаем связи с международными организациями, журналистами, экологами и правоохранительными органами." },
         { title: "Распространение нецензурных новостей", desc: "Мы публикуем только проверенные факты. Мы будем бороться с ложной информацией, манипуляциями и пропагандой." },
-        { title: "Сохранение языка, культуры и наследия", desc: "Каракалпакский язык - душа нашего народа. Мы вносим свой вклад в его сохранение, развитие и повышение статуса." }
+        { title: "Сохранение языка, культуры и наследия", desc: "Каракалпакский язык - душа нашего народа. Мы вносим свой вклад в его сохранение, развитие и повышение статуса." },
+        { title: "Архив на 20-30 лет", desc: "Мы храним материалы в цифровом формате, работаем как энциклопедия с поиском, защищаем информацию на 100% от внешних атак, спама и хакеров." }
       ],
 
       langTitle: "Почему на 4 языках?",
@@ -156,7 +157,8 @@ const About = () => {
         { title: "Restoration and preservation of history", desc: "Our rich history, the Declaration of Sovereignty, the Constitution, great personalities, cultural heritage - all of this must be preserved in digital format and safely passed on to future generations - this is a sacred mandate for us." },
         { title: "To become a bridge", desc: "Connecting Karakalpakstan with the European and global community is our strategic goal. We are establishing connections with international organizations, journalists, environmentalists, and human rights institutions." },
         { title: "Distribution of uncensored news", desc: "We will only publish verified facts. We will fight against false information, manipulation, and propaganda." },
-        { title: "Preservation of language, culture, and heritage", desc: "The Karakalpak language is the soul of our people. We will contribute to its preservation, development, and enhancement." }
+        { title: "Preservation of language, culture, and heritage", desc: "The Karakalpak language is the soul of our people. We will contribute to its preservation, development, and enhancement." },
+        { title: "20-30 year archive", desc: "We store materials in digital format, work like an encyclopedia with search, protect information 100% from external attacks, spam and hackers." }
       ],
 
       langTitle: "Why in 4 languages?",
@@ -204,7 +206,8 @@ const About = () => {
         { title: "Przywracanie i zapisywanie historii", desc: "Nasza bogata historia, Deklaracja suwerenności, Konstytucja, wybitne osobistości, dziedzictwo kulturowe są przechowywane cyfrowo i bezpiecznie przekazywane przyszłym pokoleniom, co jest dla nas świętym mandatem." },
         { title: "Być mostem", desc: "Połączenie Karakalpakstanu ze społecznością Europejską i światową jest naszym strategicznym celem. Nawiązujemy kontakty z organizacjami międzynarodowymi, dziennikarzami, ekologami i organami ścigania." },
         { title: "Rozpowszechnianie niecenzuralnych wiadomości", desc: "Publikujemy tylko sprawdzone fakty. Będziemy walczyć z fałszywymi informacjami, manipulacjami i propagandą." },
-        { title: "Zachowanie języka, kultury i Dziedzictwa", desc: "Język Karakalpak jest duszą naszego narodu. Przyczyniamy się do jego zachowania, rozwoju i podniesienia statusu." }
+        { title: "Zachowanie języka, kultury i Dziedzictwa", desc: "Język Karakalpak jest duszą naszego narodu. Przyczyniamy się do jego zachowania, rozwoju i podniesienia statusu." },
+        { title: "Archiwum na 20-30 lat", desc: "Przechowujemy materiały w formacie cyfrowym, działamy jak encyklopedia z wyszukiwarką, chronimy informacje w 100% przed atakami zewnętrznymi, spamem i hakerami." }
       ],
 
       langTitle: "Dlaczego w 4 językach?",
@@ -265,13 +268,11 @@ const About = () => {
         .final-quote-text { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 800; font-style: italic; margin-bottom: 20px; }
       `}</style>
 
-      {/* ✅ INTRO & MISSION SECTION (БИЗ ТУУРАЛЫ) */}
       <div className="intro-section">
         <h1 className="hero-title">{t.introTitle}</h1>
         <div style={{fontSize: '1.4rem', fontWeight: 'bold', marginBottom: '20px', color: '#3b82f6', textAlign: 'center'}}>{t.greeting}</div>
         <p style={{fontSize: '1.25rem', lineHeight: '1.8', opacity: 0.9, marginBottom: '60px', textAlign: 'center'}}>{t.introText}</p>
 
-        {/* Reasons List */}
         <div className="mb-16">
           <h2 className="section-title">{t.reasonsTitle}</h2>
           <div className="list-box">
@@ -284,7 +285,6 @@ const About = () => {
           <p style={{fontSize: '1.3rem', marginTop: '30px', fontStyle: 'italic', textAlign: 'center', opacity: 0.8, color: '#3b82f6'}}>{t.newChapter}</p>
         </div>
 
-        {/* Goals Cards */}
         <div className="mb-16">
           <h2 className="section-title">{t.goalsTitle}</h2>
           <div className="cards-grid">
@@ -298,7 +298,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Languages */}
         <div className="mb-16">
           <h2 className="section-title">{t.langTitle}</h2>
           <p style={{fontSize: '1.2rem', marginBottom: '20px'}}>{t.langDesc}</p>
@@ -310,7 +309,6 @@ const About = () => {
           <p style={{textAlign: 'center', marginTop: '20px', fontWeight: 'bold', fontSize: '1.2rem', color: '#3b82f6'}}>{t.langFooter}</p>
         </div>
 
-        {/* Future */}
         <div className="mb-16">
           <h2 className="section-title">{t.futureTitle}</h2>
           <div className="list-box">
@@ -321,25 +319,11 @@ const About = () => {
           <p style={{marginTop: '20px', fontSize: '1.1rem', opacity: 0.9}}>{t.futureFooter}</p>
         </div>
 
-        {/* Final Quote */}
         <div className="final-quote-box">
           <div className="final-quote-text">{t.finalQuote}</div>
           <p style={{fontSize: '1.2rem', opacity: 0.9}}>{t.cta}</p>
         </div>
       </div>
-
-      {/* ✅ SHARE (ТАРҚАТЫЎ) - Комментарийсіз */}
-      <section className={`p-10 rounded-[40px] border text-center max-w-[900px] mx-auto mb-10 ${isDarkMode ? "bg-white/5 border-white/10" : "bg-gray-100 border-gray-200"}`}>
-        <h3 className="text-2xl font-bold mb-8 italic">{t.shareTitle}</h3>
-        <div className="flex flex-wrap justify-center gap-6">
-          <a href="https://www.facebook.com/share/1FifdzG23b/" target="_blank" rel="noreferrer" className="p-4 bg-[#1877F2] text-white rounded-full hover:scale-110 transition shadow-lg"><Facebook size={24} /></a>
-          <a href="https://t.me/kkvoice_org" target="_blank" rel="noreferrer" className="p-4 bg-[#0088cc] text-white rounded-full hover:scale-110 transition shadow-lg"><Send size={24} /></a>
-          <a href="https://x.com/Karakalpak45997" target="_blank" rel="noreferrer" className="p-4 bg-black text-white rounded-full border border-white/20 hover:scale-110 transition shadow-lg"><Twitter size={24} /></a>
-          <a href="https://www.instagram.com/karakalpakvoice_org/" target="_blank" rel="noreferrer" className="p-4 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-full hover:scale-110 transition shadow-lg"><Instagram size={24} /></a>
-          <a href="https://youtube.com/@karakalpakvoice_org" target="_blank" rel="noreferrer" className="p-4 bg-[#FF0000] text-white rounded-full hover:scale-110 transition shadow-lg"><Youtube size={24} /></a>
-          <button onClick={copyToClipboard} className="p-4 bg-gray-700 text-white rounded-full hover:scale-110 transition shadow-lg flex items-center gap-2 px-6"><LinkIcon size={20} /></button>
-        </div>
-      </section>
 
     </div>
   );

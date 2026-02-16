@@ -84,6 +84,13 @@ export default function NewsPost() {
   const lang = (i18n.language || 'RU').toUpperCase();
   const langKey = lang === 'KAA' ? 'KK' : lang;
 
+  const backText = {
+  RU: "Вернуться назад",
+  KK: "Артқа қайтыў", 
+  EN: "Go Back",
+  PL: "Wróć"
+};
+
   useEffect(() => {
     window.scrollTo(0, 0);
     loadArticle();
@@ -154,10 +161,10 @@ export default function NewsPost() {
           className="flex items-center gap-2 text-gray-500 hover:text-blue-500 transition-colors mb-8 group"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> 
-          <span className="font-bold">Артқа қайтыў</span>
+          <span className="font-bold">{backText[langKey] || backText.RU}</span>
         </button>
         
-        <h1 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tight leading-tight">
+        <h1 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tight leading-tight text-gray-900 dark:text-white">
           {currentTitle}
         </h1>
         <div className="flex items-center gap-3 text-sm font-mono text-gray-500 border-b border-gray-800 pb-6 mb-12">

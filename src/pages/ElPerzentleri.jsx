@@ -305,9 +305,10 @@ export default function ElPerzentleri() {
               </div>
               
               {/* МЫНА ЖЕРДЕГІ АРТЫҚ ӘЛЕУМЕТТІК ЖЕЛІЛЕР ӨШІРІЛДІ (Дубликат еді) */}
-              <Footer />
             </div>
 
+             <Footer />
+             
             {isLightboxOpen && (
               <div className="fixed inset-0 z-[200] bg-black/95 flex flex-col items-center justify-center select-none animate-fade-in">
                 <div className="absolute top-0 left-0 right-0 p-4 flex items-center justify-between bg-black/40 backdrop-blur-md z-[210]">

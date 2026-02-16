@@ -11,7 +11,6 @@ import {
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageControls from '../components/PageControls';
-import Newsletter from '../components/Newsletter';
 
 // --- СИМВОЛИКА СҮРЕТТЕРІ ---
 import sovereigntyImg from '../assets/symbols/sovereignty.jpg';
@@ -658,7 +657,6 @@ export default function Home() {
               
               {/* ShareSection ӨШІРІЛДІ, орны бос. Newsletter орында */}
               <div className="mt-12">
-                <Newsletter />
               </div>
             </div>
 

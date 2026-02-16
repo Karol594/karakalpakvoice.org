@@ -2,11 +2,11 @@
 title: "ДАУЛЕТМУРАТ ТАЖИМУРАТОВ В СЕРЬЁЗНОЙ ОПАСНОСТИ: ОТКРЫТОЕ ОБРАЩЕНИЕ"
 title_kk: "ДӘЎЛЕТМУРАТ ТАЖИМУРАТОВТЫҢ ӨМИРИНЕ ЖОҚАРЫ ДӘРЕЖЕДЕГИ ҚӘЎИП: АШЫҚ МҮРӘЖАТ"
 title_en: "A HIGH-LEVEL THREAT TO THE LIFE OF DAULETMURAT TAJIMURATOV: AN OPEN APPEAL"
-title_pl: "POWAŻNE ZAGROŻENIE DLA ŻYCIA DÄULETMURATA TAŻIMURATOWA: OTWARTY APEL"
+title_pl: "POWAŻNE ZAGROŻENIE DLA ŻYCIA DAULETMURAT TAZHIMURATOVA: OTWARTY APEL"
 date: "2026-02-07"
-image: "/src/assets/news/2026/tajimuratov-1.jpg"
+image: "/images/news/2026/tajimuratov-1.jpg"
 video_id: "7UAY52ePZXI"
-gallery: ["/src/assets/news/2026/tajimuratov-1.jpg", "/src/assets/news/2026/tajimuratov-2.jpg", "/src/assets/news/2026/tajimuratov-3.jpg", "/src/assets/news/2026/tajimuratov-4.jpg", "/src/assets/news/2026/tajimuratov-5.jpg"]
+gallery: ["/images/news/2026/tajimuratov-1.jpg", "/images/news/2026/tajimuratov-2.jpg", "/images/news/2026/tajimuratov-3.jpg", "/images/news/2026/tajimuratov-4.jpg", "/images/news/2026/tajimuratov-5.jpg"]
 ---
 
 # 🇷🇺 RU
@@ -155,7 +155,7 @@ The international community and international human rights institutions cannot r
 ---
 # 🇵🇱 PL
 
-# POWAŻNE ZAGROŻENIE DLA ŻYCIA DÄULETMURATA TAŻIMURATOWA: OTWARTY APEL DO SPOŁECZNOŚCI MIĘDZYNARODOWEJ I INSTYTUCJI GLOBALNYCH
+# POWAŻNE ZAGROŻENIE DLA ŻYCIA DAULETMURAT TAZHIMURATOVA: OTWARTY APEL DO SPOŁECZNOŚCI MIĘDZYNARODOWEJ I INSTYTUCJI GLOBALNYCH
 
 **NAWOI – TASZKENT – NUKUS.** Sytuacja Däuletmurata Tażimuratowa — narodowej dumy narodu karakałpackiego, znanego prawnika i obrońcy praw człowieka — w kolonii karnej nr 11 (KIN‑11) w obwodzie nawojskim Republiki Uzbekistanu osiągnęła poziom krytyczny i nieludzki. Oficjalne oświadczenie wideo adwokata z Taszkentu, Siergieja Majorowa, opublikowane 22 stycznia 2026 roku, a także uzyskane później informacje operacyjne ujawniają systemowe tortury w uzbeckim systemie penitencjarnym oraz rażące naruszenia międzynarodowych norm prawnych.
 

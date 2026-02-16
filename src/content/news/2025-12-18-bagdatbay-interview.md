@@ -7,9 +7,12 @@ title_ru: "УЗБЕКИСТАН: ТЕЗИСНО ОБ ИНТЕРВЬЮ БАГДА
 title_kk: "БАҒДАТБАЙ ИСМАЙЛОВТЫҢ ҒӘРЕЗСИЗ ӨЗБЕКСТАНДА ҚАРАҚАЛПАҚЛАР КӘМБАҒАЛЛЫҚТА ЖАСАП АТЫРҒАНЛЫҒЫ ҲАҚҚЫНДАҒЫ ИНТЕРВЮСИ ТУЎРАЛЫ ДИЗИМЛЕМЕ"
 title_en: "UZBEKISTAN: THESES ON THE INTERVIEW OF BAGDATBAY ISMAILOV"
 title_pl: "UZBEKISTAN: TEZY Z WYWIADU Z BAGDATBAYEM ISMAILOVEM"
+gallery: ["/images/bagdatbay-interview-1.jpg", "/images/bagdatbay-interview-2.jpg", "/images/bagdatbay-interview-3.jpg", "/images/bagdatbay-interview-4.jpg", "/images/bagdatbay-interview-5.jpg"]
 ---
 
-**УЗБЕКИСТАН: ТЕЗИСНО ОБ ИНТЕРВЬЮ БАГДАТБАЯ ИСМАЙЛОВА О ТОМ КАК В НЕЗАВИСИМОМ УЗБЕКИСТАНЕ КАРАКАЛПАКИ ЖИВУТ В БЕДНОСТИ, КАК СОТРУДНИКИ СГБ РУ ИСПОЛЬЗУЮТ СВОИ ПОЛНОМОЧИЯ ДЛЯ ПРЕСЛЕДОВАНИЯ НЕВИНОВНЫХ ЛЮДЕЙ.**
+# 🇷🇺 RU
+
+# УЗБЕКИСТАН: ТЕЗИСНО ОБ ИНТЕРВЬЮ БАГДАТБАЯ ИСМАЙЛОВА О ТОМ КАК В НЕЗАВИСИМОМ УЗБЕКИСТАНЕ КАРАКАЛПАКИ ЖИВУТ В БЕДНОСТИ, КАК СОТРУДНИКИ СГБ РУ ИСПОЛЬЗУЮТ СВОИ ПОЛНОМОЧИЯ ДЛЯ ПРЕСЛЕДОВАНИЯ НЕВИНОВНЫХ ЛЮДЕЙ
 
 Правозащитница Елена Урлаева выехала в Каракалпакстан для помощи и защиты Багдатбая Исмайлова жителя Караузякского района, которому 5 лет правоохранительные органы не выдают соответствующее разрешение и заграничный паспорт для воссоединения со своей семьёй проживающей в Казахстане.
 
@@ -69,17 +72,12 @@ title_pl: "UZBEKISTAN: TEZY Z WYWIADU Z BAGDATBAYEM ISMAILOVEM"
 
 Конт телефон правозащитницы Елены Урлаевой +998946891764
 
-**Пресс-центр организации “Правозащитный Альянс Узбекистана». 18 декабря 2025 года Ташкент Узбекистан**
-
-![Фото 1](/images/bagdatbay-interview-1.jpg)
-![Фото 2](/images/bagdatbay-interview-2.jpg)
-![Фото 3](/images/bagdatbay-interview-3.jpg)
-![Фото 4](/images/bagdatbay-interview-4.jpg)
-![Фото 5](/images/bagdatbay-interview-5.jpg)
+**Пресс-центр организации "Правозащитный Альянс Узбекистана». 18 декабря 2025 года Ташкент Узбекистан**
 
 ---
+# kk KK
 
-**БАҒДАТБАЙ ИСМАЙЛОВТЫҢ ҒӘРЕЗСИЗ ӨЗБЕКСТАНДА ҚАРАҚАЛПАҚЛАР КӘМБАҒАЛЛЫҚТА ЖАСАП АТЫРҒАНЛЫҒЫ ҲАҚҚЫНДАҒЫ ИНТЕРВЮСИ ТУЎРАЛЫ ДИЗИМЛЕМЕ. Өзбекстан Республикасы МҚХ хызметкерлери өз ўәкилликлеринен айыпсыз адамларды қуўдалаў ушын пайдаланып атырғаны ҳаққында.**
+# БАҒДАТБАЙ ИСМАЙЛОВТЫҢ ҒӘРЕЗСИЗ ӨЗБЕКСТАНДА ҚАРАҚАЛПАҚЛАР КӘМБАҒАЛЛЫҚТА ЖАСАП АТЫРҒАНЛЫҒЫ ҲАҚҚЫНДАҒЫ ИНТЕРВЮСИ ТУЎРАЛЫ ДИЗИМЛЕМЕ. Өзбекстан Республикасы МҚХ хызметкерлери өз ўәкилликлеринен айыпсыз адамларды қуўдалаў ушын пайдаланып атырғаны ҳаққында
 
 Ҳуқық қорғаўшы Елена Урлаева Қараөзек районында жасайтуғын, Қазақстанда жасап атырған шаңарағына қосылыў ушын ҳуқық қорғаў уйымлары тәрепинен 5 жылдан берли тийисли рухсатнама ҳәм сырт елге шығыў паспорты берилмей атырған Бағдатбай Исмайловқа жәрдем бериў ҳәм оны қорғаў ушын Қарақалпақстанға жол алды.
 
@@ -141,15 +139,10 @@ title_pl: "UZBEKISTAN: TEZY Z WYWIADU Z BAGDATBAYEM ISMAILOVEM"
 
 **"Өзбекстан ҳуқық қорғаў альянсы" шөлкеминиң баспасөз орайы. 2025-жыл 18-декабрь Ташкент, Өзбекстан.**
 
-![Фото 1](/images/bagdatbay-interview-1.jpg)
-![Фото 2](/images/bagdatbay-interview-2.jpg)
-![Фото 3](/images/bagdatbay-interview-3.jpg)
-![Фото 4](/images/bagdatbay-interview-4.jpg)
-![Фото 5](/images/bagdatbay-interview-5.jpg)
-
 ---
+# 🇬🇧 EN
 
-**UZBEKISTAN: THESES ON THE INTERVIEW OF BAGDATBAY ISMAILOV ABOUT HOW KARAKALPAKS LIVE IN POVERTY IN INDEPENDENT UZBEKISTAN, HOW OFFICERS OF THE SSS RU USE THEIR POWERS TO PERSECUTE INNOCENT PEOPLE.**
+# UZBEKISTAN: THESES ON THE INTERVIEW OF BAGDATBAY ISMAILOV ABOUT HOW KARAKALPAKS LIVE IN POVERTY IN INDEPENDENT UZBEKISTAN, HOW OFFICERS OF THE SSS RU USE THEIR POWERS TO PERSECUTE INNOCENT PEOPLE
 
 Human rights activist Elena Urlaeva traveled to Karakalpakstan to help and protect Bagdatbay Ismailov, a resident of the Karauzyak district, to whom law enforcement agencies have not issued the appropriate permission and a foreign passport for 5 years to reunite with his family living in Kazakhstan.
 
@@ -211,15 +204,10 @@ Contact phone of human rights defender Elena Urlayeva +998946891764
 
 **Press Center of the "Human Rights Alliance of Uzbekistan" organization. December 18, 2025 Tashkent Uzbekistan**
 
-![Фото 1](/images/bagdatbay-interview-1.jpg)
-![Фото 2](/images/bagdatbay-interview-2.jpg)
-![Фото 3](/images/bagdatbay-interview-3.jpg)
-![Фото 4](/images/bagdatbay-interview-4.jpg)
-![Фото 5](/images/bagdatbay-interview-5.jpg)
-
 ---
+# 🇵🇱 PL
 
-**UZBEKISTAN: TEZY Z WYWIADU Z BAGDATBAYEM ISMAILOVEM O TYM, JAK W NIEPODLEGŁYM UZBEKISTANIE KARAKAŁPACY ŻYJĄ W BIEDZIE, JAK FUNKCJONARIUSZE SGB RU WYKORZYSTUJĄ SWOJE UPRAWNIENIA DO PRZEŚLADOWANIA NIEWINNYCH LUDZI.**
+# UZBEKISTAN: TEZY Z WYWIADU Z BAGDATBAYEM ISMAILOVEM O TYM, JAK W NIEPODLEGŁYM UZBEKISTANIE KARAKAŁPACY ŻYJĄ W BIEDZIE, JAK FUNKCJONARIUSZE SGB RU WYKORZYSTUJĄ SWOJE UPRAWNIENIA DO PRZEŚLADOWANIA NIEWINNYCH LUDZI
 
 Obrończyni praw człowieka Elena Urlaeva udała się do Karakałpakstanu w celu pomocy i obrony Bagdatbaya Ismailova, mieszkańca dystryktu Karauzyak, któremu od 5 lat organy ścigania nie wydają odpowiedniego zezwolenia i paszportu zagranicznego na połączenie się z rodziną mieszkającą w Kazachstanie.
 
@@ -271,7 +259,7 @@ Odpowiadałem i mówiłem funkcjonariuszom: «Chciałem znaleźć sprawiedliwoś
 
 Po moich tak ostrych «zeznaniach» sprawa karna zniknęła i przez dwa lata nikt mnie nie niepokoi z powodu takich oskarżeń.
 
-W marcu 2025 roku z pomocą Eleny Urlaevej organy wydały mi nowy paszport – kartę, dlatego wezwałem Elenę Urlaevą do Karakałpakstanu, żeby pomogła mi uzyskać paszport zagraniczny i opuszczę to państwo, gdzie Karakałpaków męczą grzywnami, zobowiązują do brania kredytów, prześladują”.
+W marcu 2025 roku z pomocą Eleny Urlaevej organy wydały mi nowy paszport – kartę, dlatego wezwałem Elenę Urlaevą do Karakałpakstanu, żeby pomogła mi uzyskać paszport zagraniczny i opuszczę to państwo, gdzie Karakałpaków męczą grzywnami, zobowiązują do brania kredytów, prześladują".
 
 Elena Urlaeva przygotowała oświadczenia i skargi w obronie Bagdatbaya Ismailova do instancji krajowych Karakałpakstanu i Uzbekistanu z żądaniem udzielenia pilnej pomocy medycznej, z żądaniem przeprowadzenia ekspertyzy sądowo-lekarskiej odnośnie zadanych wcześniej uszkodzeń ciała, z żądaniem wydania paszportu zagranicznego. W MSW RK przyjęto już takie oświadczenia. Zdjęcie.
 
@@ -279,10 +267,4 @@ Telefon kontaktowy Bagdatbaya Ismailova +998880968184 i zdjęcia dokumentów
 
 Telefon kontaktowy obrończyni praw człowieka Eleny Urlaevej +998946891764
 
-**Centrum prasowe organizacji „Sojusz Praw Człowieka Uzbekistanu”. 18 grudnia 2025 roku Taszkent Uzbekistan**
-
-![Фото 1](/images/bagdatbay-interview-1.jpg)
-![Фото 2](/images/bagdatbay-interview-2.jpg)
-![Фото 3](/images/bagdatbay-interview-3.jpg)
-![Фото 4](/images/bagdatbay-interview-4.jpg)
-![Фото 5](/images/bagdatbay-interview-5.jpg)
+**Centrum prasowe organizacji „Sojusz Praw Człowieka Uzbekistanu". 18 grudnia 2025 roku Taszkent Uzbekistan**
