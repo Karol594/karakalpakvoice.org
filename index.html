@@ -4,8 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- 
+      CSP (Content Security Policy) - Бул сиздин браузердеги "Blocked" каталарын оңдойт.
+      Бул жерде YouTube, Google, Netlify жана сүрөттөргө уруксат берилген.
+    -->
+    <meta 
+      http-equiv="Content-Security-Policy" 
+      content="
+        default-src 'self'; 
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://identity.netlify.com https://unpkg.com; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+        font-src 'self' https://fonts.gstatic.com data:; 
+        img-src 'self' data: https://www.google-analytics.com https://karakalpakvoice.org; 
+        connect-src 'self' https://www.google-analytics.com https://identity.netlify.com https://*.googleapis.com; 
+        frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://identity.netlify.com;
+      "
+    />
+
     <meta name="google-site-verification" content="RcvvJ02cn4zFfhxCuRQMC--e-hpGsiVpHgsWvt2YFSM" />
 
+    <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,19 +36,19 @@
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
 
-    <title>Karakalpak Voice | Qaraqalpaqstan | Қарақалпақстан | Каракалпакстан | Independent Media</title>
+    <title>Karakalpak Voice | Qaraqalpaqstan | Independent Media</title>
     
     <meta name="description" content="Official media platform of Karakalpakstan. News, Sovereignty, History. Қарақалпақстан жаңалықлары, тарийхы. Новости Каракалпакстана, суверенитет, Нукус, Арал." />
     
     <meta name="keywords" content="Karakalpakstan, Karakalpak, Nukus, Sovereignty, Constitution, Declaration, Aral Sea, Louvre, Savitsky Museum, Ships, Desert, Қарақалпақстан, Қарақалпақ, Нөкис, Жаңалықлар, Суверенитет, Конституция, Декларация, Арал теңизи, Савицкий музейи, Каракалпакстан, Каракалпак, Нукус, Новости, Аральское море, Музей Савицкого, Пустыня, Корабли, Human Rights, Central Asia" />
     
     <meta name="author" content="Karakalpak Voice Editorial Team" />
-    
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
 
     <link rel="canonical" href="https://karakalpakvoice.org/" />
 
+    <!-- Open Graph (Facebook/LinkedIn) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://karakalpakvoice.org/" />
     <meta property="og:title" content="Karakalpak Voice | Каракалпакстан | Qaraqalpaqstan" />
@@ -41,11 +59,13 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
 
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Karakalpak Voice | Каракалпакстан | Qaraqalpaqstan" />
     <meta name="twitter:description" content="Independent media platform dedicated to the Karakalpak people. Новости, история и культура." />
     <meta name="twitter:image" content="https://karakalpakvoice.org/og-image.png" />
 
+    <!-- JSON-LD Schema (SEO) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -71,13 +91,16 @@
     }
     </script>
 
+    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <div id="root"></div>
     
+    <!-- Vite Entry Point -->
     <script type="module" src="/src/main.jsx"></script>
 
+    <!-- Netlify Identity Redirect Logic -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
