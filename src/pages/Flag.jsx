@@ -267,7 +267,7 @@ Nasza flaga będzie powiewać razem z flagami innych niepodległych państw. Sza
           <div className="inline-block p-4 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
             <Flag className="w-16 h-16 text-blue-600 dark:text-blue-400" />
           </div>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight text-gray-900 dark:text-white">
             {t.title}
           </h1>
         </div>

@@ -282,7 +282,7 @@ export default function Team() {
           <h1 className="text-4xl md:text-6xl font-black text-white mb-4 drop-shadow-2xl uppercase tracking-wider">
             {t.heroTitle}
           </h1>
-          <p className="text-lg md:text-2xl text-gray-200 font-light max-w-2xl mx-auto">
+          <p className="text-lg md:text-2xl text-white font-light max-w-2xl mx-auto drop-shadow-lg">
             {t.heroDesc}
           </p>
         </div>
@@ -297,10 +297,10 @@ export default function Team() {
             {t.aboutTitle}
           </h2>
           <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
-            <p>{t.aboutText1}</p>
-            <p>{t.aboutText2}</p>
-            <p>{t.aboutText3}</p>
-            <p>{t.aboutText4}</p>
+            <p className="text-gray-700 dark:text-gray-300">{t.aboutText1}</p>
+            <p className="text-gray-700 dark:text-gray-300">{t.aboutText2}</p>
+            <p className="text-gray-700 dark:text-gray-300">{t.aboutText3}</p>
+            <p className="text-gray-700 dark:text-gray-300">{t.aboutText4}</p>
           </div>
         </div>
 
@@ -311,7 +311,7 @@ export default function Team() {
           <div className="bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 p-8 rounded-[2rem] shadow-lg border border-blue-100 dark:border-gray-700 hover:-translate-y-1 transition-transform">
             <div className="flex items-center gap-3 mb-6">
               <Target className="text-blue-600 dark:text-blue-400" size={32} />
-              <h3 className="text-xl font-bold uppercase">{t.goalsTitle}</h3>
+              <h3 className="text-xl font-bold uppercase text-gray-900 dark:text-white">{t.goalsTitle}</h3>
             </div>
             <ul className="space-y-4">
               {t.goals.map((goal, i) => (
@@ -327,7 +327,7 @@ export default function Team() {
           <div className="bg-gradient-to-br from-purple-50 to-white dark:from-gray-900 dark:to-gray-800 p-8 rounded-[2rem] shadow-lg border border-purple-100 dark:border-gray-700 hover:-translate-y-1 transition-transform">
             <div className="flex items-center gap-3 mb-6">
               <Shield className="text-purple-600 dark:text-purple-400" size={32} />
-              <h3 className="text-xl font-bold uppercase">{t.missionTitle}</h3>
+              <h3 className="text-xl font-bold uppercase text-gray-900 dark:text-white">{t.goalsTitle}</h3>
             </div>
             <ul className="space-y-4">
               {t.mission.map((item, i) => (
@@ -345,7 +345,7 @@ export default function Team() {
         <div className="bg-gradient-to-br from-amber-50 to-white dark:from-gray-900 dark:to-gray-800 p-8 md:p-12 rounded-[2rem] shadow-lg border border-amber-100 dark:border-gray-700 mb-12">
            <div className="flex items-center gap-3 mb-8 justify-center">
               <Globe className="text-amber-600 dark:text-amber-400" size={40} />
-              <h3 className="text-3xl font-black uppercase text-center">{t.principlesTitle}</h3>
+              <h3 className="text-3xl font-black uppercase text-center text-gray-900 dark:text-white">{t.principlesTitle}</h3>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {t.principles.map((item, i) => (

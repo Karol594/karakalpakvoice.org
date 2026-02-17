@@ -100,7 +100,7 @@ const EventDetail = () => {
           <div className="text-gray-500 dark:text-gray-400 font-mono mb-4 text-lg">
             {article.date}
           </div>
-          <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight text-gray-900 dark:text-white">
             {article.title[lang]}
           </h1>
           <p className="text-xl text-amber-600 dark:text-amber-500 font-medium italic border-l-4 border-amber-500 pl-6 py-2">

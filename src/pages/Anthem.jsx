@@ -465,32 +465,32 @@ Potomkowie wymawiają w głębi swoich serc.`
 
         <div className="text-center mb-16">
           <Volume2 className="w-20 h-20 mx-auto mb-6 text-purple-600 dark:text-purple-400 animate-pulse" />
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
             {t.title}
           </h1>
         </div>
 
         <section className="mb-16 bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3 text-gray-900 dark:text-white">
             <BookOpen className="w-8 h-8 text-purple-600" />
             {t.section1.title}
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-5 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
               <h3 className="font-bold text-purple-700 dark:text-purple-400 mb-2">{t.section1.status}</h3>
-              <p>{t.section1.statusDesc}</p>
+              <p className="text-gray-700 dark:text-gray-300">{t.section1.statusDesc}</p>
             </div>
             <div className="p-5 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
               <h3 className="font-bold text-purple-700 dark:text-purple-400 mb-2">{t.section1.legal}</h3>
-              <p>{t.section1.legalDesc}</p>
+              <p className="text-gray-700 dark:text-gray-300">{t.section1.legalDesc}</p>
             </div>
             <div className="p-5 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
               <h3 className="font-bold text-purple-700 dark:text-purple-400 mb-2">{t.section1.date}</h3>
-              <p>{t.section1.dateDesc}</p>
+              <p className="text-gray-700 dark:text-gray-300">{t.section1.dateDesc}</p>
             </div>
             <div className="p-5 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
               <h3 className="font-bold text-purple-700 dark:text-purple-400 mb-2">{t.section1.organ}</h3>
-              <p>{t.section1.organDesc}</p>
+              <p className="text-gray-700 dark:text-gray-300">{t.section1.organDesc}</p>
             </div>
           </div>
         </section>
@@ -519,34 +519,34 @@ Potomkowie wymawiają w głębi swoich serc.`
         </section>
 
         <section className="mb-16 bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold mb-6">{t.section3.title}</h2>
-          <p className="text-lg mb-6">{t.section3.intro}</p>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">{t.section3.title}</h2>
+          <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">{t.section3.intro}</p>
           <ul className="space-y-3">
             {t.section3.values.map((value, i) => (
               <li key={i} className="flex items-start gap-3 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                 <span className="text-purple-600 dark:text-purple-400 font-bold text-lg">•</span>
-                <span>{value}</span>
+                <span className="text-gray-700 dark:text-gray-300">{value}</span>
               </li>
             ))}
           </ul>
         </section>
 
         <section className="mb-16 bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold mb-6">{t.section4.title}</h2>
-          <p className="text-lg mb-8">{t.section4.intro}</p>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">{t.section4.title}</h2>
+          <p className="text-lg mb-8 text-gray-700 dark:text-gray-300">{t.section4.intro}</p>
           <div className="grid md:grid-cols-2 gap-6">
             {t.section4.functions.map((func, i) => (
               <div key={i} className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
                 <h3 className="text-xl font-bold text-purple-700 dark:text-purple-400 mb-3">{func.title}</h3>
-                <p>{func.desc}</p>
+                <p className="text-gray-700 dark:text-gray-300">{func.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section className="mb-16 bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold mb-6">{t.section5.title}</h2>
-          <p className="text-lg mb-6">{t.section5.intro}</p>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">{t.section5.title}</h2>
+          <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">{t.section5.intro}</p>
           <div className="grid md:grid-cols-2 gap-4">
             {t.section5.uses.map((use, i) => (
               <div key={i} className="flex items-center gap-3 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
@@ -560,7 +560,7 @@ Potomkowie wymawiają w głębi swoich serc.`
         </section>
 
         <section className="mb-16 bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold mb-8">{t.section6.title}</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">{t.section6.title}</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {t.section6.icons.map((item, i) => {
               const IconComponent = item.icon;
@@ -587,7 +587,7 @@ Potomkowie wymawiają w głębi swoich serc.`
         </section>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold mb-6">{t.summary.title}</h2>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">{t.summary.title}</h2>
           <div className="space-y-4">
             <div className="p-5 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
               <h3 className="font-bold text-purple-700 dark:text-purple-400 mb-2">{t.summary.name}</h3>

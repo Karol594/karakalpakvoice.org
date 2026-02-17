@@ -13,8 +13,6 @@ gallery: ["/images/news/2026/tajimuratov-1.jpg", "/images/news/2026/tajimuratov-
 
 # ДАУЛЕТМУРАТ ТАЖИМУРАТОВ В СЕРЬЁЗНОЙ ОПАСНОСТИ: ОТКРЫТОЕ ОБРАЩЕНИЕ К МИРОВОЙ ОБЩЕСТВЕННОСТИ И МЕЖДУНАРОДНЫМ ИНСТИТУТАМ
 
-https://www.youtube.com/watch?v=NzmhL7UlLLI
-
 **НАВОИ – ТАШКЕНТ – НУКУС.** Ситуация вокруг Дәулетмурата Тажимуратова — национальной гордости каракалпакского народа, известного юриста и правозащитника — в исправительной колонии №11 (КИН‑11) Навоийской области Республики Узбекистан достигла критически опасного и бесчеловечного уровня. Официальное видеозаявление ташкентского адвоката Сергея Майорова от 22 января 2026 года, а также полученные оперативные сведения раскрывают систематические пытки в пенитенциарной системе Узбекистана и грубые нарушения международных правовых норм.
 
 ## Институциональные пытки и физическое насилие
@@ -62,8 +60,6 @@ https://www.youtube.com/watch?v=NzmhL7UlLLI
 # kk KK
 
 # ДӘЎЛЕТМУРАТ ТАЖИМУРАТОВТЫҢ ӨМИРИНЕ ЖОҚАРЫ ДӘРЕЖЕДЕГИ ҚӘЎИП: ДҮНЬЯ ЖӘМИЙЕТШИЛИГИНЕ ҲӘМ ХАЛЫҚАРАЛЫҚ ИНСТИТУТЛАРҒА АШЫҚ МҮРӘЖАТ
-
-https://www.youtube.com/watch?v=NzmhL7UlLLI
 
 **НАЎАЙЫ – ТАШКЕНТ – НӨКИС.** Қарақалпақстан халқының миллий мақтанышы, белгили юрист ҳәм инсан ҳуқықлары қорғаўшысы Дәўлетмурат Тажимуратовтың Өзбекстан Республикасы Наўайы ўәлаятында жайласқан 11-санлы Жазаны орынлаў колониясындағы (КИН-11) жағдайы критикалық ҳәм адам төзгисиз дәрежеге жетти. Ташкентли адвокат Сергей Майоровтың 2026-жыл 22-январьдағы жәриялаған ресмий видеомүрәжаты ҳәм оның изинен алынған оператив мағлыўматлар, Өзбекстан пенитенциар системасындағы системалы қыйнаўлар ҳәм халықаралық ҳуқық нормаларының қопал түрде бузылыўын әшкара етпекте.
 
@@ -113,8 +109,6 @@ https://www.youtube.com/watch?v=NzmhL7UlLLI
 
 # A HIGH-LEVEL THREAT TO THE LIFE OF DAULETMURAT TAZHIMURATOV: AN OPEN APPEAL TO THE INTERNATIONAL COMMUNITY AND GLOBAL INSTITUTIONS
 
-https://www.youtube.com/watch?v=NzmhL7UlLLI
-
 **NAVOI – TASHKENT – NUKUS.** The situation of Dauletmurat Tazhimuratov — a national pride of the Karakalpak people, a prominent lawyer and human rights defender — in Penal Colony No. 11 (KIN‑11) of the Navoi region of the Republic of Uzbekistan has reached a critical and inhumane level. The official video statement released on January 22, 2026, by Tashkent-based attorney Sergey Mayorov, along with subsequent operational information, exposes systemic torture within Uzbekistan's penitentiary system and gross violations of international legal norms.
 
 ## Institutional Torture and Physical Abuse
@@ -162,8 +156,6 @@ The international community and international human rights institutions cannot r
 # 🇵🇱 PL
 
 # POWAŻNE ZAGROŻENIE DLA ŻYCIA DAULETMURAT TAZHIMURATOVA: OTWARTY APEL DO SPOŁECZNOŚCI MIĘDZYNARODOWEJ I INSTYTUCJI GLOBALNYCH
-
-https://www.youtube.com/watch?v=NzmhL7UlLLI
 
 **NAWOI – TASZKENT – NUKUS.** Sytuacja Dauletmurata Tazhimuratova — narodowej dumy narodu karakałpackiego, znanego prawnika i obrońcy praw człowieka — w kolonii karnej nr 11 (KIN‑11) w obwodzie nawojskim Republiki Uzbekistanu osiągnęła poziom krytyczny i nieludzki. Oficjalne oświadczenie wideo adwokata z Taszkentu, Siergieja Majorowa, opublikowane 22 stycznia 2026 roku, a także uzyskane później informacje operacyjne ujawniają systemowe tortury w uzbeckim systemie penitencjarnym oraz rażące naruszenia międzynarodowych norm prawnych.
 

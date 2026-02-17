@@ -117,10 +117,10 @@ export default function NewsPost() {
         setGallery(imgs);
 
         // ЖАҢА ФОРМАТ (emoji маркерлері)
-        let ruMatch = body.match(/# 🇷🇺 RU\s*\n([\s\S]*?)(?=\n---|\n# 🇰🇿|\n# 🇬🇧|\n# 🇵🇱|$)/);
-        let kkMatch = body.match(/# 🇰🇿 KK\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇬🇧|\n# 🇵🇱|$)/);
-        let enMatch = body.match(/# 🇬🇧 EN\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇵🇱|$)/);
-        let plMatch = body.match(/# 🇵🇱 PL\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# 🇬🇧|$)/);
+        let ruMatch = body.match(/# 🇷🇺 RU\s*\n([\s\S]*?)(?=\n---|\n# kk|\n# 🇬🇧|\n# 🇵🇱|$)/);
+        let kkMatch = body.match(/# kk KK\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇬🇧|\n# 🇵🇱|$)/);
+        let enMatch = body.match(/# 🇬🇧 EN\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# kk|\n# 🇵🇱|$)/);
+        let plMatch = body.match(/# 🇵🇱 PL\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# kk|\n# 🇬🇧|$)/);
 
         // ЕСКІ ФОРМАТ (fallback - ескі мақалалар үшін)
         if (!ruMatch) {

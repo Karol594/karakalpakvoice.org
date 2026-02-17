@@ -134,7 +134,7 @@ export default function Constitution() {
             <span className="font-medium">{t.title}</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">{t.subtitle}</h1>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gray-900 dark:text-white">{t.subtitle}</h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400">{t.hero}</p>
         </div>
       </section>
@@ -166,7 +166,7 @@ export default function Constitution() {
                   <div className="w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6">
                     <Icon className="text-blue-600 dark:text-blue-400" size={28} />
                   </div>
-                  <h3 className="text-xl font-bold mb-3">{s.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{s.title}</h3>
                   <p className="text-gray-600 dark:text-gray-400">{s.desc}</p>
                 </div>
               );
@@ -177,7 +177,7 @@ export default function Constitution() {
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900/40 mb-6">
               <FileText className="text-blue-600 dark:text-blue-400" size={36} />
             </div>
-            <h2 className="text-3xl font-bold mb-4">{t.comingSoon}</h2>
+            <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">{t.comingSoon}</h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">{t.intro[3]}</p>
           </div>
 

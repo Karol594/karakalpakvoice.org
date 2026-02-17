@@ -209,6 +209,7 @@ The people of Karakalpakstan highly value international legal norms, good‑neig
           </div>
         </div>
       ),
+      infoQuote: "Uwaga społeczności międzynarodowej znacząco przyczynia się do wzmocnienia kultury prawnej.",
       footer: "Obywatele i mieszkańcy są zobowiązani do poszanowania godła narodowego.",
       img1: "Zdjęcie 1: Oryginał", img2: "Zdjęcie 2: Fake",
       shareTitle: "Połącz się z nami", copyLink: "Kopiuj link", copied: "Skopiowano!"
@@ -225,7 +226,7 @@ The people of Karakalpakstan highly value international legal norms, good‑neig
           <div className="inline-block p-4 bg-amber-100 dark:bg-amber-900/30 rounded-full mb-6">
             <ShieldCheck className="w-16 h-16 text-amber-600 dark:text-amber-400" />
           </div>
-          <h1 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight">{t.title}</h1>
+          <h1 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight text-gray-900 dark:text-white">{t.title}</h1>
           <p className="text-xl font-bold text-amber-600 tracking-widest uppercase">{t.subtitle}</p>
         </div>
 
@@ -247,7 +248,7 @@ The people of Karakalpakstan highly value international legal norms, good‑neig
           <div className="py-10 border-t border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-3 mb-8">
               <Scale className="text-amber-600 w-8 h-8" />
-              <h2 className="text-2xl font-black uppercase tracking-tight">
+              <h2 className="text-2xl font-black uppercase tracking-tight text-gray-900 dark:text-white">
                 {lang === 'EN' ? "Historical and Legal Interpretation" : 
                  lang === 'RU' ? "Историко-правовое толкование" : 
                  lang === 'PL' ? "Interpretacja historyczno-prawna" : 
