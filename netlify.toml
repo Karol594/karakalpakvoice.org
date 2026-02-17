@@ -1,6 +1,6 @@
 # ═══════════════════════════════════════════════════════════
 # KARAKALPAK-VOICE NETLIFY КОНФИГУРАЦИЯСЫ
-# ✅ Фото + Видео + Netlify Identity + EmailJS + Turnstile
+# 🏆 A+ SSL + Фото + Видео + Netlify Identity + EmailJS + Turnstile
 # ═══════════════════════════════════════════════════════════
 
 [build]
@@ -14,14 +14,22 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    # 🏆 A+ ушын: HSTS максимал мәнис пенен (2 жыл)
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+    # 🔒 Қәўипсизлик заголовкалары
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+
+    # 🏆 A+ ушынн: Cross-Origin заголовкалары
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    Cross-Origin-Resource-Policy = "cross-origin"
 
     # ✅ Барлығы ашылады: Фото + YouTube + Netlify Identity + EmailJS + Cloudflare
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com https://identity.netlify.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://www.google-analytics.com https://api.emailjs.com https://challenges.cloudflare.com https://identity.netlify.com https://*.googleapis.com https://www.youtube.com https://www.youtube-nocookie.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://challenges.cloudflare.com https://identity.netlify.com; media-src 'self' https://www.youtube.com https://www.youtube-nocookie.com blob:; base-uri 'self'; form-action 'self' https://identity.netlify.com"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com https://identity.netlify.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://www.google-analytics.com https://api.emailjs.com https://challenges.cloudflare.com https://identity.netlify.com https://*.googleapis.com https://www.youtube.com https://www.youtube-nocookie.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://challenges.cloudflare.com https://identity.netlify.com; media-src 'self' https://www.youtube.com https://www.youtube-nocookie.com blob:; base-uri 'self'; form-action 'self' https://identity.netlify.com; upgrade-insecure-requests"
 
 # ⚡ КЭШИРОВАНИЕ
 [[headers]]
