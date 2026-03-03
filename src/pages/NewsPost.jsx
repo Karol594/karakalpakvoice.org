@@ -5,6 +5,7 @@ import {
   Maximize2, ChevronLeft, ChevronRight, ExternalLink 
 } from 'lucide-react';
 
+// Тилди баслаўшы функция
 const useTranslation = () => {
   const [lang, setLang] = useState(localStorage.getItem('i18nextLng') || 'KK');
   
@@ -21,6 +22,7 @@ const useTranslation = () => {
   return { i18n: { language: lang } };
 };
 
+// MD файлын оқыў ҳәм ажыратыў функциясы
 const parseMD = (text) => {
   const fmMatch = text.match(/^---\s*([\s\S]*?)\s*---/);
   const frontMatter = {};
@@ -45,12 +47,33 @@ const parseMD = (text) => {
   return { frontMatter, body };
 };
 
+// Текстти дизайнлаў (Қалың текст, Видео ҳәм Силтемелер)
 const renderStyledText = (text) => {
-  const parts = text.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/g);
+  // Видео, силтеме ҳәм қалың текстти ажыратып алыў ушын
+  const parts = text.split(/(\*\*.*?\*\*|\[VIDEO_EMBED:\s*.*?\]|\[.*?\]\(.*?\))/g);
+  
   return parts.map((part, index) => {
+    if (!part) return null;
+
+    // Қалың текст ушын
     if (part.startsWith('**') && part.endsWith('**')) {
       return <strong key={index} className="font-bold text-black dark:text-white">{part.slice(2, -2)}</strong>;
     }
+
+    // ЖАҢА ФУНКЦИЯ: Локал видеоларды оқыў ушын
+    const videoMatch = part.match(/\[VIDEO_EMBED:\s*(.*?)\]/);
+    if (videoMatch) {
+      return (
+        <div key={index} className="my-8 aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-gray-200 dark:border-white/10">
+          <video controls preload="metadata" className="w-full h-full object-cover">
+            <source src={videoMatch[1].trim()} type="video/mp4" />
+            Сиздиң браузериңиз видео форматын қоллап-қуўатламайды.
+          </video>
+        </div>
+      );
+    }
+
+    // Силтемелер (Links) ушын
     const linkMatch = part.match(/\[(.*?)\]\((.*?)\)/);
     if (linkMatch) {
       return (
@@ -65,7 +88,7 @@ const renderStyledText = (text) => {
         </a>
       );
     }
-    return part;
+    return <span key={index}>{part}</span>;
   });
 };
 
@@ -116,25 +139,17 @@ export default function NewsPost() {
         let imgs = frontMatter.gallery || (frontMatter.image ? [frontMatter.image] : []);
         setGallery(imgs);
 
-        // ЖАҢА ФОРМАТ (emoji маркерлері)
-        let ruMatch = body.match(/# 🇷🇺 RU\s*\n([\s\S]*?)(?=\n---|\n# kk|\n# 🇬🇧|\n# 🇵🇱|$)/);
-        let kkMatch = body.match(/# kk KK\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇬🇧|\n# 🇵🇱|$)/);
-        let enMatch = body.match(/# 🇬🇧 EN\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# kk|\n# 🇵🇱|$)/);
-        let plMatch = body.match(/# 🇵🇱 PL\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# kk|\n# 🇬🇧|$)/);
+        // ЖАҢА ФОРМАТ (Байрақлар менен яки әпиўайы ҳәриплер менен)
+        let ruMatch = body.match(/# 🇷🇺 RU\s*\n([\s\S]*?)(?=\n---|\n# 🇰🇿|\n# kk|\n# 🇬🇧|\n# 🇵🇱|$)/);
+        let kkMatch = body.match(/# (?:🇰🇿|kk) KK\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇬🇧|\n# 🇵🇱|$)/);
+        let enMatch = body.match(/# 🇬🇧 EN\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# kk|\n# 🇵🇱|$)/);
+        let plMatch = body.match(/# 🇵🇱 PL\s*\n([\s\S]*?)(?=\n---|\n# 🇷🇺|\n# 🇰🇿|\n# kk|\n# 🇬🇧|$)/);
 
-        // ЕСКІ ФОРМАТ (fallback - ескі мақалалар үшін)
-        if (!ruMatch) {
-          ruMatch = body.match(/Рус тилде:\s*\n([\s\S]*?)(?=\n_{3,}|\nКК тил|\nАнгл тил|\nПЛ тил|$)/);
-        }
-        if (!kkMatch) {
-          kkMatch = body.match(/КК тил(?:де)?:\s*\n([\s\S]*?)(?=\n_{3,}|\nРус тил|\nАнгл тил|\nПЛ тил|$)/);
-        }
-        if (!enMatch) {
-          enMatch = body.match(/Англ тилде:\s*\n([\s\S]*?)(?=\n_{3,}|\nРус тил|\nКК тил|\nПЛ тил|$)/);
-        }
-        if (!plMatch) {
-          plMatch = body.match(/ПЛ тилде:\s*\n([\s\S]*?)(?=\n_{3,}|\nРус тил|\nКК тил|\nАнгл тил|$)/);
-        }
+        // ЕСКИ ФОРМАТ (Алдыңғы мақалалар бузылмаўы ушын)
+        if (!ruMatch) ruMatch = body.match(/Рус тилде:\s*\n([\s\S]*?)(?=\n_{3,}|\nКК тил|\nАнгл тил|\nПЛ тил|$)/);
+        if (!kkMatch) kkMatch = body.match(/КК тил(?:де)?:\s*\n([\s\S]*?)(?=\n_{3,}|\nРус тил|\nАнгл тил|\nПЛ тил|$)/);
+        if (!enMatch) enMatch = body.match(/Англ тилде:\s*\n([\s\S]*?)(?=\n_{3,}|\nРус тил|\nКК тил|\nПЛ тил|$)/);
+        if (!plMatch) plMatch = body.match(/ПЛ тилде:\s*\n([\s\S]*?)(?=\n_{3,}|\nРус тил|\nКК тил|\nАнгл тил|$)/);
 
         let targetBody = '';
         if (langKey === 'RU' && ruMatch) targetBody = ruMatch[1];
@@ -186,12 +201,13 @@ export default function NewsPost() {
           <span className="px-2 py-0.5 bg-gray-200 dark:bg-gray-800 rounded text-[10px] text-gray-700 dark:text-gray-400 uppercase">{langKey}</span>
         </div>
 
+        {/* ГАЛЕРЕЯ / СЛАЙДЕР БӨЛИМИ */}
         {gallery.length > 0 && (
           <div className="relative aspect-video rounded-3xl overflow-hidden bg-gray-200 dark:bg-black mb-16 group shadow-2xl border border-gray-200 dark:border-white/5">
             <img 
               src={gallery[currentIndex]} 
               className="w-full h-full object-contain cursor-zoom-in transition-transform duration-700 group-hover:scale-[1.02]" 
-              alt="Gallery item"
+              alt="Сүўрет галереясы"
               onClick={() => setIsModalOpen(true)}
             />
             {gallery.length > 1 && (
@@ -221,7 +237,7 @@ export default function NewsPost() {
           </div>
         )}
 
-        {/* ✅ ВИДЕО - GALLERY-ДЕН КЕЙІН, МАҚАЛА МӘТІНІНЕН БҰРЫН */}
+        {/* YOUTUBE ВИДЕОСЫ УШЫН (Ески мақалаларда ислеўи ушын) */}
         {article.video_id && (
           <div className="my-16 aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-gray-200 dark:border-white/10">
             <iframe 
@@ -237,6 +253,7 @@ export default function NewsPost() {
           </div>
         )}
 
+        {/* МАҚАЛА ТЕКСТИН ОҚЫЎ */}
         <article className="max-w-none text-xl leading-relaxed font-light text-gray-800 dark:text-gray-300">
           {displayText.map((p, i) => {
             if (p.startsWith('# ')) return <h2 key={i} className="text-3xl font-black mt-16 mb-8 border-l-4 border-blue-600 pl-4 text-gray-900 dark:text-white uppercase tracking-tight">{renderStyledText(p.replace('# ', ''))}</h2>;
@@ -246,8 +263,63 @@ export default function NewsPost() {
             return <p key={i} className="mb-8">{renderStyledText(p)}</p>;
           })}
         </article>
+
+        {/* PDF ЖҮКЛЕП АЛЫЎ БӨЛИМИ */}
+        {(article.pdf_kk || article.pdf_ru || article.pdf_en || article.pdf_pl) && (
+          <div className="mt-16 p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl border-2 border-blue-200 dark:border-blue-800 shadow-xl">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                <Download size={24} className="text-white" />
+              </div>
+              <h3 className="text-2xl font-black text-gray-900 dark:text-white">
+                {langKey === 'KK' && '4 тилдеги ресмий нусқа'}
+                {langKey === 'RU' && 'Официальная версия на 4 языках'}
+                {langKey === 'EN' && 'Official version in 4 languages'}
+                {langKey === 'PL' && 'Oficjalna wersja w 4 językach'}
+              </h3>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {article.pdf_kk && (
+              <a href={article.pdf_kk} target="_blank" rel="noopener noreferrer" 
+                 className="flex items-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold transition-transform active:scale-95">
+                <Download size={20} /> Қарақалпақша (PDF)
+              </a>
+            )}
+              
+              {article.pdf_ru && (
+              <a href={article.pdf_ru} target="_blank" rel="noopener noreferrer" 
+                 className="flex items-center gap-2 px-5 py-3 bg-gray-700 hover:bg-gray-800 text-white rounded-xl font-bold transition-transform active:scale-95">
+                <Download size={20} /> Русский (PDF)
+              </a>
+            )}
+              
+              {article.pdf_en && (
+              <a href={article.pdf_en} target="_blank" rel="noopener noreferrer" 
+                 className="flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-transform active:scale-95">
+                <Download size={20} /> English (PDF)
+              </a>
+            )}
+              
+              {article.pdf_pl && (
+              <a href={article.pdf_pl} target="_blank" rel="noopener noreferrer" 
+                 className="flex items-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-transform active:scale-95">
+                <Download size={20} /> Polska (PDF)
+              </a>
+            )}
+            </div>
+            
+            <p className="mt-6 text-sm text-gray-600 dark:text-gray-400 text-center italic">
+              {langKey === 'KK' && 'PDF файлын ашып оқыў, көшириў ҳәм принтерге шығарыў мүмкин'}
+              {langKey === 'RU' && 'PDF можно открыть для чтения, копирования и печати'}
+              {langKey === 'EN' && 'PDF can be opened, read, copied and printed'}
+              {langKey === 'PL' && 'Plik PDF można otworzyć, przeczytać, skopiować i wydrukować'}
+            </p>
+          </div>
+        )}
       </div>
 
+      {/* ФОТОЛАРДЫ ТОЛЫҚ ЭКРАНДА АШЫЎ (MODAL) */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[999] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in duration-300">
           <button 
@@ -260,7 +332,7 @@ export default function NewsPost() {
           <img 
             src={gallery[currentIndex]} 
             className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-lg animate-in zoom-in duration-300" 
-            alt="Zoomed" 
+            alt="Үлкейтилген сүўрет" 
           />
           
           <button 

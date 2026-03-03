@@ -47,9 +47,13 @@ import Constitution from './pages/Constitution';
 import Flag from './pages/Flag';
 import Emblem from './pages/Emblem';
 import Anthem from './pages/Anthem';
+import SymbolicDetail from './pages/SymbolicDetail';
 
-// ✅ ЭНЦИКЛОПЕДИЯ БЕТИ (ЖАҢА)
+// ЭНЦИКЛОПЕДИЯ БЕТИ
 import Encyclopedia from './pages/Encyclopedia';
+
+// ✅ АРНАЎЛЫ МАҚАЛА (Лонгрид)
+import ElenaArticle from './pages/ElenaArticle';
 
 import './App.css';
 
@@ -100,18 +104,22 @@ function App() {
             <Route path="/museums" element={<Museums />} />
             <Route path="/famous-people" element={<ElPerzentleri />} />
             
-            {/* Жаңалықлар иши */}
+            {/* ✅ АРНАЎЛЫ МАҚАЛА ЖОЛЫ (.md файлды басып өтиў ушын жоқарыда турыўы шәрт) */}
+            <Route path="/news/2025/2025-12-28-sos-karakalpakstan" element={<ElenaArticle />} />
+
+            {/* Жаңалықлар иши (Стандартлы .md файллар ушын) */}
             <Route path="/news/:year/:slug" element={<NewsPost />} />
 
-            {/* Рәмийзлер (Символика) */}
+            {/* Рәмизлер (Символика) */}
             <Route path="/sovereignty" element={<Sovereignty />} />
             <Route path="/declaration" element={<Declaration />} />
             <Route path="/constitution" element={<Constitution />} />
             <Route path="/flag" element={<Flag />} />
+            <Route path="/symbols/:slug" element={<SymbolicDetail />} />
             <Route path="/emblem" element={<Emblem />} />
             <Route path="/anthem" element={<Anthem />} />
 
-            {/* ✅ ЭНЦИКЛОПЕДИЯ БЕТЛЕРИ (ЖАҢА) */}
+            {/* ЭНЦИКЛОПЕДИЯ БЕТЛЕРИ */}
             <Route path="/encyclopedia" element={<Encyclopedia />} />
             <Route path="/encyclopedia/:activeTab" element={<Encyclopedia />} />
             <Route path="/encyclopedia/:activeTab/:slug" element={<Encyclopedia />} />

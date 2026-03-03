@@ -1238,7 +1238,7 @@ export default function Sovereignty() {
           <ShieldAlert size={14} /> <span>{t.statusBadge}</span>
         </div>
         <h1 className={`text-5xl md:text-7xl font-bold tracking-tight mb-8 ${isDarkMode ? "text-white" : "text-gray-900"}`}>{t.title}</h1>
-        <p className="text-xl md:text-2xl text-gray-400 font-medium mb-12 italic">{t.subtitle}</p>
+        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium mb-12 italic">{t.subtitle}</p>
         
         {/* Intro Box */}
         <div className={`p-8 rounded-3xl border text-left leading-relaxed mb-12 shadow-2xl ${isDarkMode ? "bg-white/[0.03] border-white/10 text-gray-300" : "bg-gray-50 border-gray-200 text-gray-700"}`}>
@@ -1252,7 +1252,7 @@ export default function Sovereignty() {
             {t.proofsList.map((item, i) => (
               <div key={i} className="flex items-start gap-3 text-lg opacity-80">
                 <CheckCircle size={20} className="text-purple-500 mt-1 shrink-0" />
-                <span>{item}</span>
+                <span className="text-gray-700 dark:text-gray-300">{item}</span>
               </div>
             ))}
           </div>
@@ -1270,11 +1270,11 @@ export default function Sovereignty() {
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg text-white ${section.isWarning ? "bg-red-600" : "bg-gradient-to-br from-purple-600 to-blue-600"}`}>
                   <section.icon size={28} />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold">{section.title}</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">{section.title}</h2>
               </div>
 
               {/* Мәтин */}
-              <div className="text-lg leading-relaxed whitespace-pre-line opacity-80">
+              <div className="text-lg leading-relaxed whitespace-pre-line text-gray-700 dark:text-gray-300">
                 {section.content}
               </div>
 
