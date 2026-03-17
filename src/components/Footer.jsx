@@ -302,7 +302,7 @@ export default function Footer() {
 
   const content = t[langKey] || t.RU;
   const copyToClipboard = () => {
-    navigator.clipboard.writeText('https://karakalpakvoice.org/');
+    navigator.clipboard.writeText(window.location.href);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
