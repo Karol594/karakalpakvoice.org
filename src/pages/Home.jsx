@@ -721,7 +721,7 @@ export default function Home() {
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900">
                     <img 
-  src={article.image || "/logo2.png"} 
+  src={article.image || "/logo2.jpg"} 
   alt={article.title[currentLangKey]} 
   loading="lazy"
   className="w-full h-full object-cover object-[center_20%] group-hover:scale-110 transition-transform duration-700"

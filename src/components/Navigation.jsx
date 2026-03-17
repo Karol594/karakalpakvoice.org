@@ -449,7 +449,7 @@ ocation.pathname === l.to ? "bg-purple-600 text-white" : "text-gray-800 dark:tex
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full shadow-2xl hover:scale-110 transition-all"
-          aria-label="Жоқары көтерілү"
+          aria-label="Жоқары көтерилиу"
         >
           <ArrowUp size={24} />
         </button>

@@ -212,7 +212,7 @@ export default function Navbar() {
                 </button>
               )}
               <Link to="/" className="flex items-center gap-2 group">
-                <img src="/images/logo2.png" alt="KV" className="h-10 w-10 md:h-24 md:w-24 object-contain transition-transform group-hover:scale-110" />
+                <img src="/images/logo2.jpg" alt="KV" className="h-10 w-10 md:h-24 md:w-24 object-contain transition-transform group-hover:scale-110" />
                 
                 {/* МОБИЛЬДІК ЖӘНЕ ДЕСКТОП ЛОГОТИП ЖАЗУЫ */}
                 <div className="flex flex-col md:flex-row items-start md:items-center leading-none">
