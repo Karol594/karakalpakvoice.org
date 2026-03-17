@@ -1,7 +1,8 @@
 import { Link, useNavigate, useNavigationType } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Clock, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import NewsCard from '../components/NewsCard';
 
 export default function News() {
   const [articles, setArticles] = useState([]);
@@ -21,22 +22,69 @@ export default function News() {
   }, [langKey, navType]);
 
   const parseFrontMatter = (text) => {
-    if (!text) return { title: "No Title", date: "2025-01-01" };
+    if (!text) return {};
     const data = {};
     const match = text.match(/^---\s*([\s\S]*?)\s*---/);
-    if (match) {
-      match[1].split('\n').forEach(line => {
-        const parts = line.split(':');
-        if (parts.length >= 2) {
-          const key = parts[0].trim();
-          let value = parts.slice(1).join(':').trim();
-          if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
-            value = value.slice(1, -1);
-          }
-          data[key] = value;
+    if (!match) return data;
+
+    const lines = match[1].split('\n');
+    let currentKey = null;
+    let nestedObj = null;
+
+    lines.forEach(line => {
+      // Кірістірілген жол: 2+ бос орын + кілт + : + мән
+      // Мән ішінде : болса да дұрыс оқиды
+      const nestedMatch = line.match(/^(\s{2,})(\w+):\s*(.*)/);
+      // Жоғарғы деңгей жол: кілт + : + мән (бос орынсыз басталады)
+      const topMatch = line.match(/^(\w[\w-]*):\s*(.*)/);
+
+      if (nestedMatch && currentKey && nestedObj !== null) {
+        const subKey = nestedMatch[2].trim();
+        let subVal = nestedMatch[3].trim().replace(/^["']|["']$/g, '');
+        nestedObj[subKey] = subVal;
+        data[currentKey] = { ...nestedObj };
+
+      } else if (topMatch && !nestedMatch) {
+        currentKey = topMatch[1].trim();
+        let value = topMatch[2].trim();
+
+        if (value === '' || value === '{}') {
+          // Кірістірілген объект басталуы
+          nestedObj = {};
+          data[currentKey] = nestedObj;
+
+        } else if (value.startsWith('[') && value.endsWith(']')) {
+          // Жай массив: ["a", "b"]
+          data[currentKey] = value
+            .slice(1, -1)
+            .split(',')
+            .map(s => s.trim().replace(/^["']|["']$/g, ''))
+            .filter(Boolean);
+          nestedObj = null;
+
+        } else if (value.startsWith('-')) {
+          // YAML тізімі — бірінші элемент
+          nestedObj = null;
+          if (!Array.isArray(data[currentKey])) data[currentKey] = [];
+          const item = value.replace(/^-\s*/, '').replace(/^["']|["']$/g, '');
+          if (item) data[currentKey].push(item);
+
+        } else {
+          // Жай мән
+          data[currentKey] = value.replace(/^["']|["']$/g, '');
+          nestedObj = null;
         }
-      });
-    }
+
+      } else if (line.match(/^\s*-\s+/) && currentKey) {
+        // YAML тізімінің жалғасы (images, tags массивтері)
+        const item = line.replace(/^\s*-\s+/, '').replace(/^["']|["']$/g, '').trim();
+        if (item) {
+          if (!Array.isArray(data[currentKey])) data[currentKey] = [];
+          data[currentKey].push(item);
+        }
+      }
+    });
+
     return data;
   };
 
@@ -48,27 +96,39 @@ export default function News() {
         try {
           const content = await loader();
           const data = parseFrontMatter(content);
-          
+
           const parts = path.split('/');
           const filename = parts[parts.length - 1].replace('.md', '');
-          const folderName = parts[parts.length - 2]; 
+          const folderName = parts[parts.length - 2];
 
           let year = '2025';
           if (data.date) {
             year = data.date.split('-')[0];
           } else if (/^\d{4}$/.test(folderName)) {
-             year = folderName;
+            year = folderName;
           }
 
-          const localizedTitle = data[`title_${langKey}`] || data.title || "No Title";
-          const localizedExcerpt = data[`desc_${langKey}`] || data[`excerpt_${langKey}`] || data.excerpt || ""; 
+          // Тилге байланыслы title & excerpt (ДҮЗЕТИЛГЕН НУСҚА)
+          const getLocalized = (field) => {
+            // 1. Алды менен titles ямаса excerpts сияқлы нускауларды тексеремиз
+            const pluralField = field === 'title' ? 'titles' : field === 'excerpt' ? 'excerpts' : field;
+            const nestedObj = data[pluralField] || data[field];
+            
+            if (nestedObj && typeof nestedObj === 'object') {
+              return nestedObj[langKey] || nestedObj['ru'] || nestedObj['kk'] || '';
+            }
+            
+            // 2. Егер нысан болмаса, title_ru, title_kk сияқты "flat" форматты тексереміз
+            return data[`${field}_${langKey}`] || data[`${field}_ru`] || data[field] || '';
+          };
 
-          return { 
-            slug: filename, 
-            year, 
+          return {
+            slug: filename,
+            year,
             ...data,
-            title: localizedTitle, 
-            excerpt: localizedExcerpt
+            title: getLocalized('title'),
+            excerpt: getLocalized('excerpt'),
+            category: getLocalized('tags') || getLocalized('category'),
           };
         } catch (err) {
           console.error("Error parsing MD:", err);
@@ -88,12 +148,27 @@ export default function News() {
     }
   }
 
+  const PAGE_TITLES = {
+    kk: 'Соңғы Жаңалықлар',
+    en: 'Latest News',
+    pl: 'Najnowsze Wiadomości',
+    ru: 'Последние Новости',
+  };
+
+  const EMPTY_TEXT = {
+    kk: 'Жаңалықлар табылмады.',
+    en: 'No articles found.',
+    pl: 'Nie znaleziono artykułów.',
+    ru: 'Новости не найдены.',
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-4 pt-32 pb-24 min-h-screen text-gray-900 dark:text-white transition-colors duration-300">
-      
+
+      {/* ── Тақырып ── */}
       <div className="flex flex-col items-center text-center mb-16 relative">
-        <button 
-          onClick={() => navigate(-1)} 
+        <button
+          onClick={() => navigate(-1)}
           className="absolute left-0 top-2 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500 dark:text-gray-400 hidden md:block"
           title="Back"
         >
@@ -101,67 +176,41 @@ export default function News() {
         </button>
 
         <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter uppercase text-gray-200 dark:text-white">
-          {langKey === 'kk' ? 'Соңғы Жаңалықлар' : 
-           langKey === 'en' ? 'Latest News' : 
-           langKey === 'pl' ? 'Najnowsze Wiadomości' : 'Последние Новости'}
+          {PAGE_TITLES[langKey] || PAGE_TITLES.ru}
         </h1>
-        <div className="h-1 w-24 bg-blue-600 rounded-full"></div>
+        <div className="h-1 w-24 bg-blue-600 rounded-full" />
       </div>
 
-      {loading ? (
-        <div className="text-center text-gray-500 dark:text-gray-400 animate-pulse mt-20">Loading...</div>
-      ) : articles.length === 0 ? (
-        <div className="text-center text-gray-500 dark:text-gray-400 flex flex-col items-center mt-20">
-             <p className="text-xl mb-2">😔</p>
-             <p>{langKey === 'kk' ? 'Жаңалықлар табылмады.' : 'Новости не найдены.'}</p>
+      {/* ── Жүктеліп атыр ── */}
+      {loading && (
+        <div className="text-center text-gray-500 dark:text-gray-400 animate-pulse mt-20">
+          Loading...
         </div>
-      ) : (
-        <div className="grid gap-10">
+      )}
+
+      {/* ── Бос ── */}
+      {!loading && articles.length === 0 && (
+        <div className="text-center text-gray-500 dark:text-gray-400 flex flex-col items-center mt-20">
+          <p className="text-xl mb-2">😔</p>
+          <p>{EMPTY_TEXT[langKey] || EMPTY_TEXT.ru}</p>
+        </div>
+      )}
+
+      {/* ── Карточкалар ── */}
+      {!loading && articles.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map(article => (
-            <Link 
-              key={article.slug} 
-              to={`/news/${article.year}/${article.slug}`} 
-              className="group grid md:grid-cols-[300px_1fr] gap-6 items-start bg-white dark:bg-gray-900 rounded-3xl p-4 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-800"
-            >
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 relative">
-                <img 
-                  src={article.image || '/logo2.png'} 
-                  alt={article.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                />
-                <div className="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                  {article.year}
-                </div>
-              </div>
-
-              <div className="py-2 pr-4">
-                <div className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 mb-3 font-mono">
-                  <Clock size={16} />
-                  <time>{article.date}</time>
-                  {article.author && (
-                    <>
-                      <span>•</span>
-                      <span className="text-blue-500">{article.author}</span>
-                    </>
-                  )}
-                </div>
-
-                <h2 className="text-2xl font-bold mb-3 leading-tight text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {article.title}
-                </h2>
-
-                <div className="text-gray-600 dark:text-gray-400 line-clamp-3 mb-4 text-sm leading-relaxed">
-                   {article.excerpt}
-                </div>
-                
-                <span className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-wide group-hover:translate-x-2 transition-transform">
-                  {langKey === 'kk' ? 'Оқыў' : langKey === 'en' ? 'Read' : langKey === 'pl' ? 'Czytaj' : 'Читать'} →
-                </span>
-              </div>
-            </Link>
+            <NewsCard
+              key={article.slug}
+              item={{
+                ...article,
+                slug: `${article.year}/${article.slug}`,
+              }}
+            />
           ))}
         </div>
       )}
+
     </div>
   );
 }

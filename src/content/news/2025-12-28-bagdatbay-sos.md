@@ -4,6 +4,26 @@ title_ru: "УЗБЕКИСТАН: SOS!!! КАРАКАЛПАК БАГДАТБАЙ 
 title_kk: "ӨЗБЕКСТАН: SOS!!! ҚАРАҚАЛПАҚ БАГДАТБАЙ ИСМАЙЛОВ ЖӘРДЕМ СОРАЙДЫ"
 title_en: "UZBEKISTAN: SOS!!! KARAKALPAK BAGDATBAY ISMAILOV ASKS FOR HELP"
 title_pl: "UZBEKISTAN: SOS!!! KARAKALPAK BAGDATBAY ISMAILOV PROSI O POMOC"
+
+# Бас бет (Home.jsx) пен News.jsx-тегі "flat" логика үшін:
+excerpt_ru: "Каракалпак Багдатбай Исмайлов 5 лет не может воссоединиться с семьёй из-за проблем с паспортом и мошеннических кредитов. Правозащитница Елена Урлаева выезжает в регион для его защиты."
+excerpt_kk: "Қарақалпақстанлы Бағдатбай Исмайлов паспорт мәселесі мен банктегі түсініксіз кредиттер себепті 5 жылдан бері отбасымен көрісе алмай жүр. Елена Урлаева оны қорғау үшін жолға шықты."
+excerpt_en: "Karakalpak Bagdatbay Ismailov has been unable to reunite with his family for 5 years due to passport issues and fraudulent bank loans. Activist Elena Urlaeva is heading to the region to help."
+excerpt_pl: "Karakałpak Bagdatbay Ismailov od 5 lat nie może połączyć się z rodziną z powodu problemów z paszportem i oszustw bankowych. Działaczka Elena Urlaeva udaje się do regionu, aby mu pomóc."
+
+# Мультитілдік жүйе үшін (Titles & Excerpts):
+titles:
+  ru: "УЗБЕКИСТАН: SOS!!! КАРАКАЛПАК БАГДАТБАЙ ИСМАЙЛОВ ПРОСИТ ПОМОЩИ"
+  kk: "ӨЗБЕКСТАН: SOS!!! ҚАРАҚАЛПАҚ БАГДАТБАЙ ИСМАЙЛОВ ЖӘРДЕМ СОРАЙДЫ"
+  en: "UZBEKISTAN: SOS!!! KARAKALPAK BAGDATBAY ISMAILOV ASKS FOR HELP"
+  pl: "UZBEKISTAN: SOS!!! KARAKALPAK BAGDATBAY ISMAILOV PROSI O POMOC"
+
+excerpts:
+  ru: "Каракалпак Багдатбай Исмайлов 5 лет не может воссоединиться с семьёй из-за проблем с паспортом и мошеннических кредитов. Правозащитница Елена Урлаева выезжает в регион для его защиты."
+  kk: "Қарақалпақстанлы Бағдатбай Исмайлов паспорт мәселесі мен банктегі түсініксіз кредиттер себепті 5 жылдан бері отбасымен көрісе алмай жүр. Елена Урлаева оны қорғау үшін жолға шықты."
+  en: "Karakalpak Bagdatbay Ismailov has been unable to reunite with his family for 5 years due to passport issues and fraudulent bank loans. Activist Elena Urlaeva is heading to the region to help."
+  pl: "Karakałpak Bagdatbay Ismailov od 5 lat nie może połączyć się z rodziną z powodu problemów z paszportem i oszustw bankowych. Działaczka Elena Urlaeva udaje się do regionu, aby mu pomóc."
+
 date: "2025-12-28"
 author: "Пресс-центр Правозащитный Альянс Узбекистана"
 image: "/images/bagdatbay-ismaylov-2025-01.jpg"

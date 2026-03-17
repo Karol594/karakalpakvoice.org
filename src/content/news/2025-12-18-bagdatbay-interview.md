@@ -1,12 +1,32 @@
 ---
 title: "УЗБЕКИСТАН: ТЕЗИСНО ОБ ИНТЕРВЬЮ БАГДАТБАЯ ИСМАЙЛОВА"
+title_ru: "УЗБЕКИСТАН: ТЕЗИСНО ОБ ИНТЕРВЬЮ БАГДАТБАЯ ИСМАЙЛОВА"
+title_kk: "БАҒДАТБАЙ ИСМАЙЛОВТЫҢ ҚАРАҚАЛПАҚЛАР КӘМБАҒАЛЛЫҚТА ЖАСАП АТЫРҒАНЛЫҒЫ ҲАҚҚЫНДАҒЫ ИНТЕРВЮСЫ"
+title_en: "UZBEKISTAN: THESES ON THE INTERVIEW OF BAGDATBAY ISMAILOV"
+title_pl: "UZBEKISTAN: TEZY Z WYWIADU Z BAGDATBAYEM ISMAILOVEM"
+
+# БАС БЕТ (Home.jsx) пен News.jsx-тегі "flat" логика үшін:
+excerpt_ru: "Основные тезисы интервью Багдатбая Исмайлова о социально-экономической ситуации в Каракалпакстане, проблемах бедности и системных трудностях, с которыми сталкивается местное население."
+excerpt_kk: "Бағдатбай Исмайловтың Қарақалпақстандағы социаллық-экономикалық жағдай, халықтың турмыс дәрежеси ҳәм системалы машқалалар ҳаққындағы интервьюсынан тийкарғы тезислер."
+excerpt_en: "The main points of Bagdatbay Ismailov's interview regarding the socio-economic situation in Karakalpakstan, poverty issues, and systemic difficulties faced by the local population."
+excerpt_pl: "Główne tezy wywiadu z Bagdatbayem Ismailovem na temat sytuacji społeczno-gospodarczej w Karakałpakstanie, problemów ubóstwa i trudności systemowych lokalnej ludności."
+
+# Мультитілдік жүйе үшін (Titles & Excerpts):
+titles:
+  ru: "УЗБЕКИСТАН: ТЕЗИСНО ОБ ИНТЕРВЬЮ БАГДАТБАЯ ИСМАЙЛОВА"
+  kk: "БАҒДАТБАЙ ИСМАЙЛОВТЫҢ ҚАРАҚАЛПАҚЛАР КӘМБАҒАЛЛЫҚТА ЖАСАП АТЫРҒАНЛЫҒЫ ҲАҚҚЫНДАҒЫ ИНТЕРВЮСЫ"
+  en: "UZBEKISTAN: THESES ON THE INTERVIEW OF BAGDATBAY ISMAILOV"
+  pl: "UZBEKISTAN: TEZY Z WYWIADU Z BAGDATBAYEM ISMAILOVEM"
+
+excerpts:
+  ru: "Основные тезисы интервью Багдатбая Исмайлова о социально-экономической ситуации в Каракалпакстане, проблемах бедности и системных трудностях, с которыми сталкивается местное население."
+  kk: "Бағдатбай Исмайловтың Қарақалпақстандағы социаллық-экономикалық жағдай, халықтың турмыс дәрежеси ҳәм системалы машқалалар ҳаққындағы интервьюсынан тийкарғы тезислер."
+  en: "The main points of Bagdatbay Ismailov's interview regarding the socio-economic situation in Karakalpakstan, poverty issues, and systemic difficulties faced by the local population."
+  pl: "Główne tezy wywiadu z Bagdatbayem Ismailovem na temat sytuacji społeczno-gospodarczej w Karakałpakstanie, problemów ubóstwa i trudności systemowych lokalnej ludności."
+
 date: "2025-12-18"
 author: "Пресс-центр Правозащитный Альянс Узбекистана"
 image: "/images/bagdatbay-interview-main.jpg"
-title_ru: "УЗБЕКИСТАН: ТЕЗИСНО ОБ ИНТЕРВЬЮ БАГДАТБАЯ ИСМАЙЛОВА"
-title_kk: "БАҒДАТБАЙ ИСМАЙЛОВТЫҢ ҒӘРЕЗСИЗ ӨЗБЕКСТАНДА ҚАРАҚАЛПАҚЛАР КӘМБАҒАЛЛЫҚТА ЖАСАП АТЫРҒАНЛЫҒЫ ҲАҚҚЫНДАҒЫ ИНТЕРВЮСИ ТУЎРАЛЫ ДИЗИМЛЕМЕ"
-title_en: "UZBEKISTAN: THESES ON THE INTERVIEW OF BAGDATBAY ISMAILOV"
-title_pl: "UZBEKISTAN: TEZY Z WYWIADU Z BAGDATBAYEM ISMAILOVEM"
 gallery: ["/images/bagdatbay-interview-1.jpg", "/images/bagdatbay-interview-2.jpg", "/images/bagdatbay-interview-3.jpg", "/images/bagdatbay-interview-4.jpg", "/images/bagdatbay-interview-5.jpg"]
 ---
 

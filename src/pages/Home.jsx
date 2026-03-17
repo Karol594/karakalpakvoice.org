@@ -168,16 +168,16 @@ export default function Home() {
             date: data.date || '',
             image: data.image || null,
             title: {
-              kaa: data.title_kk || data.title || 'Атаў жоқ',
-              ru: data.title_ru || data.title || 'Без названия',
-              en: data.title_en || data.title || 'No title',
-              pl: data.title_pl || data.title || 'Bez tytułu'
+              kaa: data.title_kk || data.titles_kk || data.title || 'Атаў жоқ',
+              ru: data.title_ru || data.titles_ru || data.title || 'Без названия',
+              en: data.title_en || data.titles_en || data.title || 'No title',
+              pl: data.title_pl || data.titles_pl || data.title || 'Bez tytułu'
             },
             excerpt: {
-              kaa: data.excerpt || '',
-              ru: data.excerpt_ru || data.excerpt || '',
-              en: data.excerpt_en || data.excerpt || '',
-              pl: data.excerpt_pl || data.excerpt || ''
+              kaa: data.excerpt_kk || data.excerpts_kk || data.excerpt || '',
+              ru: data.excerpt_ru || data.excerpts_ru || data.excerpt || '',
+              en: data.excerpt_en || data.excerpts_en || data.excerpt || '',
+              pl: data.excerpt_pl || data.excerpts_pl || data.excerpt || ''
             }
           };
         } catch (err) {
@@ -721,11 +721,10 @@ export default function Home() {
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900">
                     <img 
-                      src={article.image || "/logo2.png"} 
-                      alt={article.title[currentLangKey]} 
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+  src={article.image || "/logo2.png"} 
+  alt={article.title[currentLangKey]} 
+  loading="lazy"
+  className="w-full h-full object-cover object-[center_20%] group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
                   <div className="p-8 flex flex-col flex-grow">

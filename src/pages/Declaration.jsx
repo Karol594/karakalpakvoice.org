@@ -250,12 +250,8 @@ export default function Declaration() {
 Каракалпакстан, не смотря на их политические взгляды, веру исповедания и другие 
 отличия, обеспечивает всех равными правами и свободами. 
 
-4. Определяется верховенство законов и Конституции на территории Республики 
-Каракалпакстан.  
-Если со стороны правительств СССР и Узбекской ССР нарушаются права граждан 
-Республики Каракалпакстан, то на основании существующих соглашений и законов 
-СССР и УзССР, Республика Каракалпакстан вправе приостановить все принятые 
-межгосударственные соглашения и договора и предъявить им ноту протеста. 
+4. На территории Каракалпакстана по вопросам, отнесённым к его собственной компетенции, устанавливается верховенство Конституции и законов Республики Каракалпакстан.
+Если органы власти СССР или Узбекской ССР выходят за пределы своих полномочий и нарушают права Республики Каракалпакстан, Республика имеет право приостанавливать действие законов СССР и Узбекской ССР, а также иных актов и договоров их органов, и выражать им своё возражение. 
 
 5. Республика Каракалпакстан осуществляет защиту Конституционных Прав своих 
 граждан, защиту их свобод, защиту их права на труд, защиту их собственности и 
@@ -357,12 +353,8 @@ The State provides all its citizens residing in the territory of the Republic of
 with equal rights and freedoms, regardless of their political views, religious beliefs and other 
 differences. 
 
-4. The supremacy of laws and the Constitution in the territory of the Republic of 
-Karakalpakstan is determined. If the rights of citizens of the Republic of Karakalpakstan are 
-violated by the governments of the USSR and the Uzbek SSR, then on the basis of existing 
-agreements and laws of the USSR and the Uzbek SSR, the Republic of Karakalpakstan has 
-the right to suspend all interstate agreements and agreements and submit a note of protest to 
-them. 
+4. On the territory of Karakalpakstan, in matters falling within its own competence, the supremacy of the Constitution and laws of the Republic of Karakalpakstan is established.
+If the authorities of the USSR or the Uzbek SSR exceed their powers and violate the rights of the Republic of Karakalpakstan, the Republic has the right to suspend the application of the laws of the USSR and the Uzbek SSR, as well as other acts and agreements of their bodies, and to express its objection to them. 
 
 5. The Republic of Karakalpakstan shall protect the Constitutional Rights of its citizens, the 
 protection of their freedoms and protect their the right to work, protection of their property 
@@ -457,10 +449,8 @@ umacnia przyjaźń narodów.
 Państwo zapewnia wszystkim obywatelom równe prawa i wolności, niezależnie od poglądów 
 politycznych, wyznania czy innych różnic. 
 
-4. Na terytorium Republiki Karakalpakstanu obowiązuje nadrzędność Konstytucji i ustaw. 
-Jeśli prawa obywateli Republiki Karakalpakstanu są naruszane przez rządy ZSRR lub 
-Uzbeckiej SRR, Republika ma prawo zawiesić wszystkie umowy międzypaństwowe i 
-przedstawić im notę protestacyjną. 
+4. Na terytorium Karakałpakstanu, w sprawach należących do jego własnej kompetencji, ustanawia się nadrzędność Konstytucji i ustaw Republiki Karakałpakstanu.
+Jeżeli organy władzy ZSRR lub Uzbeckiej SRR przekraczają swoje uprawnienia i naruszają prawa Republiki Karakałpakstanu, Republika ma prawo zawiesić stosowanie ustaw ZSRR i Uzbeckiej SRR, a także innych aktów i umów tych organów oraz wyrazić im swój sprzeciw.
 
 5. Republika Karakalpakstanu chroni konstytucyjne prawa swoich obywateli, ich wolności, 
 prawo do pracy, własności, organizuje życie społeczne, prowadzi rozwój 

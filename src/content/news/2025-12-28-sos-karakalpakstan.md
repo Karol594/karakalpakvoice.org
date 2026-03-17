@@ -4,6 +4,26 @@ title_ru: "Уничтожение каракалпакского народа н
 title_kk: "Қарақалпақ халқын жоқ қылыў — «Қарақалпақстан Республикасының мәмлекетлик суверенитети ҳаққындағы Декларация» ҳүжжети қабыл етилгеннен кейин басланды." 
 title_en: "The destruction of the Karakalpak people began after the adoption of the document — «Тhe Declaration of State Sovereignty of the Republic of Karakalpakstan»" 
 title_pl: "Zniszczenie narodu Karakalpak rozpoczęło się po przyjęciu dokumentu - „Deklaracji o suwerenności państwowej Republiki Karakalpakstanu”" 
+
+# БАС БЕТ (Home.jsx) пен News.jsx-тегі "flat" логика үшін:
+excerpt_ru: "Правозащитники заявляют о систематическом давлении на каракалпакский народ, которое усилилось после принятия Декларации о суверенитете. Анализ текущей ситуации в регионе."
+excerpt_kk: "Қарақалпақ халқына қарсы басымлықтар Декларация қабыл етилгеннен кейин күшейгенлиги айтылмақта. Региондағы ҳәзирги жағдай бойынша ҳуқық қорғаўшылардың пикири."
+excerpt_en: "Human rights activists claim systematic pressure on the Karakalpak people intensified after the adoption of the Declaration of Sovereignty. Analysis of the current situation."
+excerpt_pl: "Obrońcy praw człowieka twierdzą, że systematyczna presja na naród Karakałpaków nasiliła się po przyjęciu Deklaracji Suwerenności. Analiza sytuacji."
+
+# Мультитілдік жүйе үшін (Titles & Excerpts):
+titles:
+  ru: "Уничтожение каракалпакского народа началось после принятия документа — «Декларации о государственном суверенитете Республики Каракалпакстан»." 
+  kk: "Қарақалпақ халқын жоқ қылыў — «Қарақалпақстан Республикасының мәмлекетлик суверенитети ҳаққындағы Декларация» ҳүжжети қабыл етилгеннен кейин басланды." 
+  en: "The destruction of the Karakalpak people began after the adoption of the document — «Тhe Declaration of State Sovereignty of the Republic of Karakalpakstan»" 
+  pl: "Zniszczenie narodu Karakalpak rozpoczęło się po przyjęciu dokumentu - „Deklaracji o suwerenności państwowej Republiki Karakalpakstanu”" 
+
+excerpts:
+  ru: "Правозащитники заявляют о систематическом давлении на каракалпакский народ, которое усилилось после принятия Декларации о суверенитете. Анализ текущей ситуации в регионе."
+  kk: "Қарақалпақ халқына қарсы басымлықтар Декларация қабыл етилгеннен кейин күшейгенлиги айтылмақта. Региондағы ҳәзирги жағдай бойынша ҳуқық қорғаўшылардың пикири."
+  en: "Human rights activists claim systematic pressure on the Karakalpak people intensified after the adoption of the Declaration of Sovereignty. Analysis of the current situation."
+  pl: "Obrońcy praw człowieka twierdzą, że systematyczna presja na naród Karakałpaków nasiliła się po przyjęciu Deklaracji Suwerenności. Analiza sytuacji."
+
 date: "2025-12-28" 
 author: "Пресс-центр Правозащитный Альянс Узбекистана" 
 image: "/images/elena01.jpg" 

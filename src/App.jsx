@@ -109,6 +109,7 @@ function App() {
 
             {/* Жаңалықлар иши (Стандартлы .md файллар ушын) */}
             <Route path="/news/:year/:slug" element={<NewsPost />} />
+            <Route path="/persons/:slug" element={<ElPerzentleri />} />
 
             {/* Рәмизлер (Символика) */}
             <Route path="/sovereignty" element={<Sovereignty />} />

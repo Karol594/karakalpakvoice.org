@@ -1,12 +1,43 @@
 ---
-title: "ДАУЛЕТМУРАТ ТАЖИМУРАТОВ В СЕРЬЁЗНОЙ ОПАСНОСТИ: ОТКРЫТОЕ ОБРАЩЕНИЕ"
-title_kk: "ДӘЎЛЕТМУРАТ ТАЖИМУРАТОВТЫҢ ӨМИРИНЕ ЖОҚАРЫ ДӘРЕЖЕДЕГИ ҚӘЎИП: АШЫҚ МҮРӘЖАТ"
-title_en: "A HIGH-LEVEL THREAT TO THE LIFE OF DAULETMURAT TAJIMURATOV: AN OPEN APPEAL"
-title_pl: "POWAŻNE ZAGROŻENIE DLA ŻYCIA DAULETMURAT TAZHIMURATOVA: OTWARTY APEL"
+id: "tajimuratov-danger-2026"
 date: "2026-02-07"
 image: "/images/news/2026/tajimuratov-1.jpg"
 video_id: "NzmhL7UlLLI"
-gallery: ["/images/news/2026/tajimuratov-1.jpg", "/images/news/2026/tajimuratov-2.jpg", "/images/news/2026/tajimuratov-3.jpg", "/images/news/2026/tajimuratov-4.jpg", "/images/news/2026/tajimuratov-5.jpg"]
+exclusive: true
+category: "Ҳуқықый талқылаў"
+
+# 1. БАС БЕТ (Home.jsx) пен News.jsx үшін "flat" формат:
+title_ru: "ДАУЛЕТМУРАТ ТАЖИМУРАТОВ В СЕРЬЁЗНОЙ ОПАСНОСТИ: ОТКРЫТОЕ ОБРАЩЕНИЕ"
+title_kk: "ДӘЎЛЕТМУРАТ ТАЖИМУРАТОВТЫҢ ӨМИРИНЕ ЖОҚАРЫ ДӘРЕЖЕДЕГИ ҚӘЎИП: АШЫҚ МҮРӘЖАТ"
+title_en: "A HIGH-LEVEL THREAT TO THE LIFE OF DAULETMURAT TAJIMURATOV: AN OPEN APPEAL"
+title_pl: "POWAŻNE ZAGROŻENIE DLA ŻYCIA DAULETMURAT TAZHIMURATOVA: OTWARTY APEL"
+
+excerpt_ru: "Ситуация вокруг Дәулетмурата Тажимуратова в колонии Навои достигла критического уровня. Сообщается о систематических пытках и угрозе жизни правозащитника."
+excerpt_kk: "Наўайы колониясындағы Дәўлетмурат Тажимуратовтың жағдайы критикалық шекке жетти. Ҳуқық қорғаўшыға қарата системалы қыйнаўлар ҳәм өмирине қәўип ҳаққында хабарланбақта."
+excerpt_en: "The situation surrounding Dauletmurat Tajimuratov in the Navoi prison has reached a critical level. Reports indicate systematic torture and a direct threat to the activist's life."
+excerpt_pl: "Sytuacja wokół Dauletmurata Tazhimuratova w kolonii w Nawoi osiągnęła poziom krytyczny. Doniesienia wskazują na systematyczne tortury i zagrożenie życia aktywisty."
+
+# 2. МУЛЬТИТІЛДІК ЖҮЙЕ (titles және excerpts) үшін:
+titles:
+  ru: "ДАУЛЕТМУРАТ ТАЖИМУРАТОВ В СЕРЬЁЗНОЙ ОПАСНОСТИ: ОТКРЫТОЕ ОБРАЩЕНИЕ"
+  kk: "ДӘЎЛЕТМУРАТ ТАЖИМУРАТОВТЫҢ ӨМИРИНЕ ЖОҚАРЫ ДӘРЕЖЕДЕГИ ҚӘЎИП: АШЫҚ МҮРӘЖАТ"
+  en: "A HIGH-LEVEL THREAT TO THE LIFE OF DAULETMURAT TAJIMURATOV: AN OPEN APPEAL"
+  pl: "POWAŻNE ZAGROŻENIE DLA ŻYCIA DAULETMURAT TAZHIMURATOVA: OTWARTY APEL"
+
+excerpts:
+  ru: "Ситуация вокруг Дәулетмурата Тажимуратова в колонии Навои достигла критического уровня. Сообщается о систематических пытках и угрозе жизни правозащитника."
+  kk: "Наўайы колониясындағы Дәўлетмурат Тажимуратовтың жағдайы критикалық шекке жетти. Ҳуқық қорғаўшыға қарата системалы қыйнаўлар ҳәм өмирине қәўип ҳаққында хабарланбақта."
+  en: "The situation surrounding Dauletmurat Tajimuratov in the Navoi prison has reached a critical level. Reports indicate systematic torture and a direct threat to the activist's life."
+  pl: "Sytuacja wokół Dauletmurata Tazhimuratova w kolonii w Nawoi osiągnęła poziom krytyczny. Doniesienia wskazują na systematyczne tortury i zagrożenie życia aktywisty."
+
+gallery: 
+  - "/images/news/2026/tajimuratov-1.jpg"
+  - "/images/news/2026/tajimuratov-2.jpg"
+  - "/images/news/2026/tajimuratov-3.jpg"
+  - "/images/news/2026/tajimuratov-4.jpg"
+  - "/images/news/2026/tajimuratov-5.jpg"
+
+tags: ["Тажимуратов", "Қыйнаўлар", "Инсан ҳуқықлары", "ООН", "Өзбекстан"]
 ---
 
 # 🇷🇺 RU

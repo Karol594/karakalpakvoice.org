@@ -6,7 +6,6 @@
 
 @layer base {
   html {
-    /* Экранның қатып қалуын (freeze) болдырмау үшін */
     scroll-behavior: smooth;
     overflow-x: hidden;
     height: 100%;
@@ -15,42 +14,62 @@
   body {
     @apply bg-matrix-bg text-matrix-text antialiased;
     font-family: 'Inter', sans-serif;
-    /* Текст өлшемі: компьютерде 18px (1.125rem), қатар аралығы 1.65 */
     font-size: 1.125rem;
     line-height: 1.65;
     overflow-x: hidden;
     width: 100%;
     min-height: 100%;
-    /* Мобильді скроллды жақсарту */
     -webkit-overflow-scrolling: touch;
   }
-  
-  /* Тақырыптар үшін Merriweather (Serif) шрифтін қолданамыз */
+
+  /* Тақырыптар — Merriweather */
   h1, h2, h3, h4 {
     font-family: 'Merriweather', serif;
     @apply font-bold tracking-tight text-white;
   }
 
-  /* Тексттің мобильді нұсқада оқылуын жақсарту (Media Queries) */
+  /* ── Глобал сілтеме стилі ──
+     Мақала ішіндегі [Полат Шәмшетов] сияқты
+     барлық <a> тегтері — КӨК түсте болады.
+     Арнайы класс берілген жерлер (nav, button) өзгермейді. */
+  a {
+    color: #3b82f6; /* blue-500 */
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    color: #2563eb; /* blue-600 */
+  }
+
+  /* Навигация, батырма, карточка сілтемелері —
+     өз түстерін сақтайды (Tailwind класстары басымдық алады) */
+  a.no-underline,
+  nav a,
+  button a,
+  .nav-link,
+  .card-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Мобильді */
   @media (max-width: 768px) {
     body {
-      font-size: 1rem; /* Телефонда 16px */
+      font-size: 1rem;
       line-height: 1.6;
     }
-    
-    /* Секциялар арасындағы "пахта атыздай" орынды жою */
+
     section, .container, .py-20, .pt-24 {
       padding-top: 2rem !important;
       padding-bottom: 2rem !important;
     }
 
-    /* Тақырыптарды мобильді экранға шақтау */
     h1 { font-size: 1.875rem !important; line-height: 1.3; }
     h2 { font-size: 1.5rem !important; line-height: 1.3; }
   }
 }
 
-/* Скроллбар (жіңішке және әдемі) */
+/* ── Скроллбар ── */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -58,11 +77,11 @@
   background: #080808;
 }
 ::-webkit-scrollbar-thumb {
-  background: #amber-600; /* Скролл түсін сәл ашықтау қылдық */
+  background: #d97706; /* amber-600 */
   border-radius: 10px;
 }
 
-/* Экранның қатып қалуын емдейтін қосымша класс */
+/* Экранның қатып қалуын болдырмау */
 .min-h-screen {
   overflow: visible !important;
 }
