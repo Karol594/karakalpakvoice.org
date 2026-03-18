@@ -2,6 +2,7 @@
 id: "16th-republic-shamshetov"
 date: "2026-03-14"
 image: "/images/figures/dauletbay-sh-semiya.jpg"
+odysee_url: "https://odysee.com/$/embed/@KarakalpakVoice:2/ПОНОМАРЕВ-КК-СУВЕРЕН:9"
 title_ru: "16-я республика СССР: правовой прецедент Каракалпакстана"
 title_kk: "СССР-дың 16-республикасы: Қарақалпақстан суверенитетиниң ҳуқықый прецеденти"
 title_en: "The 16th Republic of the USSR: Karakalpakstan's Legal Precedent"
