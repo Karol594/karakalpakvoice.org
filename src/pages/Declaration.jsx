@@ -363,16 +363,16 @@ function ArticleSection({ sec, c, isMobile }) {
   return (
     <div style={{ marginBottom: isMobile ? "32px" : "44px" }}>
       {/* Бөлим тақырыбы */}
-      <h3 style={{ fontSize: isMobile ? "17px" : "20px", fontWeight:700, color: c.sectionH, fontFamily:CIN, letterSpacing:"0.02em", marginBottom:"12px", lineHeight:1.3 }}>
+      <h3 style={{ fontSize: isMobile ? "19px" : "22px", fontWeight:700, color: c.sectionH, fontFamily:CIN, letterSpacing:"0.02em", marginBottom:"12px", lineHeight:1.3 }}>
         {sec.heading}
       </h3>
       {/* Негизги текст */}
-      <p style={{ fontSize: isMobile ? "15px" : "16px", lineHeight:1.88, color: c.sectionT, fontFamily:PLF, marginBottom:"12px" }}>
+      <p style={{ fontSize: isMobile ? "17px" : "18px", lineHeight:1.88, color: c.sectionT, fontFamily:PLF, marginBottom:"12px" }}>
         {sec.body}
       </p>
       {/* Ескертпе */}
       {sec.note && (
-        <p style={{ fontSize: isMobile ? "14px" : "15px", lineHeight:1.82, color: c.noteTxt, fontFamily:PLF, fontStyle:"italic", marginBottom:"14px", paddingLeft:"16px", borderLeft:`2px solid ${c.artBdr}` }}>
+        <p style={{ fontSize: isMobile ? "16px" : "17px", lineHeight:1.82, color: c.noteTxt, fontFamily:PLF, fontStyle:"italic", marginBottom:"14px", paddingLeft:"16px", borderLeft:`2px solid ${c.artBdr}` }}>
           {sec.note}
         </p>
       )}
@@ -398,7 +398,7 @@ function ArticleBlock({ num, text, c, isMobile }) {
   return (
     <div style={{ borderLeft:`3px solid ${c.artBdr}`, paddingLeft:"18px", marginBottom:"22px" }}>
       <span style={{ display:"inline-flex", alignItems:"center", justifyContent:"center", height:"26px", fontSize:"18px", fontWeight:700, color: c.artNum, fontFamily:CIN, marginBottom:"8px", float:"left", marginRight:"10px" }}>{num}</span>
-      <p style={{ margin:0, fontSize: isMobile ? "14px" : "15px", lineHeight:1.88, color: c.artTxt, fontFamily:PLF, overflow:"hidden" }}>{text}</p>
+      <p style={{ margin:0, fontSize: isMobile ? "16px" : "17px", lineHeight:1.88, color: c.artTxt, fontFamily:PLF, overflow:"hidden" }}>{text}</p>
     </div>
   );
 }
@@ -655,7 +655,7 @@ Nukus, 14 grudnia 1990. No 82/XII`,
             <div style={{ display:"inline-block", padding:"5px 14px", borderRadius:"999px", background: c.goldBg, border:`1px solid ${c.goldBrd}`, color: c.gold, fontSize:"10px", fontWeight:700, letterSpacing:"0.13em", textTransform:"uppercase", marginBottom:"12px", fontFamily:CIN }}>
               Оригинал ҳүжжет
             </div>
-            <p style={{ fontSize: isMobile ? "13px" : "15px", color: c.muted, fontWeight:500, lineHeight:1.65, marginBottom:"6px" }}>{t.photoCapt}</p>
+            <p style={{ fontSize: isMobile ? "15px" : "17px", color: c.muted, fontWeight:500, lineHeight:1.65, marginBottom:"6px" }}>{t.photoCapt}</p>
             <p style={{ fontSize:"13px", color: c.sub, marginBottom:"4px", fontFamily:CIN }}>{t.photoSub}</p>
             <p style={{ fontSize:"12px", color: c.sub, fontFamily:CIN }}>{t.session}</p>
           </div>
@@ -685,7 +685,7 @@ Nukus, 14 grudnia 1990. No 82/XII`,
                 margin:0,
                 whiteSpace:"pre-wrap",
                 fontFamily: PLF,
-                fontSize: isMobile ? "13px" : "14.5px",
+                fontSize: isMobile ? "15px" : "16px",
                 lineHeight:1.85,
                 color: c.artTxt,
                 letterSpacing:"0.01em",
@@ -707,7 +707,7 @@ Nukus, 14 grudnia 1990. No 82/XII`,
           </h2>
 
           {/* Кириспе */}
-          <p style={{ fontSize: isMobile ? "14px" : "16px", lineHeight:1.88, color: c.muted, fontFamily:PLF, marginBottom:"16px" }}>
+          <p style={{ fontSize: isMobile ? "16px" : "18px", lineHeight:1.88, color: c.muted, fontFamily:PLF, marginBottom:"16px" }}>
             {article.intro}
           </p>
 
@@ -718,7 +718,7 @@ Nukus, 14 grudnia 1990. No 82/XII`,
           </a>
 
           {/* Жуўап */}
-          <p style={{ fontSize: isMobile ? "14px" : "16px", lineHeight:1.88, color: c.sectionT, fontFamily:PLF, marginBottom:"36px", fontStyle:"italic" }}>
+          <p style={{ fontSize: isMobile ? "16px" : "18px", lineHeight:1.88, color: c.sectionT, fontFamily:PLF, marginBottom:"36px", fontStyle:"italic" }}>
             {article.answer}
           </p>
 
@@ -731,7 +731,7 @@ Nukus, 14 grudnia 1990. No 82/XII`,
 
           {/* Жуўмақ */}
           <div style={{ borderTop:`1px solid ${c.border}`, paddingTop:"24px", marginTop:"8px" }}>
-            <p style={{ fontSize: isMobile ? "14px" : "15px", lineHeight:1.88, color: c.muted, fontFamily:PLF, marginBottom:"16px" }}>
+            <p style={{ fontSize: isMobile ? "16px" : "18px", lineHeight:1.88, color: c.muted, fontFamily:PLF, marginBottom:"16px" }}>
               {article.closing}
             </p>
             <div style={{ padding:"14px 18px", borderRadius:"10px", background: c.goldBg, border:`1px solid ${c.goldBrd}` }}>
@@ -770,7 +770,7 @@ Nukus, 14 grudnia 1990. No 82/XII`,
             </div>
 
             {/* Кириспе */}
-            <p style={{ fontSize: isMobile ? "14px" : "16px", lineHeight:1.88, color: c.preambTxt, fontFamily:PLF, fontStyle:"italic", borderBottom:`1px solid ${c.border}`, paddingBottom:"24px", marginBottom:"28px" }}>
+            <p style={{ fontSize: isMobile ? "16px" : "18px", lineHeight:1.88, color: c.preambTxt, fontFamily:PLF, fontStyle:"italic", borderBottom:`1px solid ${c.border}`, paddingBottom:"24px", marginBottom:"28px" }}>
               {art.preamble}
             </p>
 

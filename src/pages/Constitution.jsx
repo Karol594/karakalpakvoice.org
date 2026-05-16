@@ -385,7 +385,7 @@ function PdfBook({ year, path, title, lang, isDanger, theme }) {
   const [hover, setHover] = useState(false);
 
   // Суурет мәнзилин импортлаў ямаса тиккелей жолын көрсетиў
-  const coverImage = "/src/assets/symbols/constitution.jpg";
+  const coverImage = "/images/constitution.jpg";
 
   return (
     <div
