@@ -250,19 +250,19 @@ const T = {
 ───────────────────────────────────────────────────────────── */
 const PDF_DATA = {
   2019: {
-    KK: "/documents/constitution/2019/── kk/constitution_2019_kk.pdf",
-    RU: "/documents/constitution/2019/── ru/constitution_ru_2019.pdf",
-    EN: "/documents/constitution/2019/── en/constitution_en_2019.pdf",
-    PL: "/documents/constitution/2019/── pl/constitution_pl_2019.pdf",
+KK: "/documents/constitution/2020/── kk/constitution_2020_kk.pdf",
+RU: "/documents/constitution/2020/── ru/constitution_2020_ru.pdf",
+EN: "/documents/constitution/2020/── en/constitution_2019_en.pdf",
+PL: "/documents/constitution/2020/── pl/constitution_2020_pl.pdf",
   },
   2021: {
-    KK: "/documents/constitution/2021/──kk/constitution_2021_kk.pdf",
-    RU: "/documents/constitution/2021/——ru/constitution_2021_ru.pdf",
-    EN: "/documents/constitution/2021/——en/constitution_2021_en.pdf",
-    PL: "/documents/constitution/2021/——pl/constitution_2021_pl.pdf",
+KK: "/documents/constitution/2026/──kk/constitution_2026_kk.pdf",
+RU: "/documents/constitution/2026/——ru/constitution_2026_ru.pdf",
+EN: "/documents/constitution/2026/——en/constitution_2026_en.pdf",
+PL: "/documents/constitution/2026/——pl/constitution_2026_pl.pdf",
   },
   ARCHIVE: {
-    1934: "/documents/constitution/2020/── ru/Кaraкalpaкstan__Konst_1934.pdf",
+    1934: "/documents/constitution/2020/── ru/Karaкalpaкstan__Konst_1934.pdf",
     1937: "/documents/constitution/2020/── ru/Karakalpaksan_Konst_1937.pdf",
     1978: "/documents/constitution/2020/── ru/Karakalpakstan__Konst_1978.pdf",
   }
