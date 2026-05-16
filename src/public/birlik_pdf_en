@@ -1,0 +1,603 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+BIRLIK People's Movement — Official Statement (ENGLISH)
+Professional PDF Generator
+Run: python3 birlik_pdf_en.py
+Output: Birlik_Official_Statement_EN_2024.pdf
+"""
+
+import os
+from reportlab.lib.pagesizes import A4
+from reportlab.lib import colors
+from reportlab.lib.units import mm, cm
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY, TA_RIGHT
+from reportlab.platypus import (
+    SimpleDocTemplate, Paragraph, Spacer, HRFlowable,
+    Table, TableStyle, PageBreak, KeepTogether
+)
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfgen import canvas
+from reportlab.platypus.flowables import Flowable
+
+# ─── FONT REGISTRATION ────────────────────────────────────────────────────────
+# Adjust FONT_DIR if running on Windows or macOS:
+#   Windows: C:/Windows/Fonts  (use DejaVu if installed, or Arial)
+#   macOS:   /Library/Fonts
+FONT_DIR = "/usr/share/fonts/truetype/dejavu"
+pdfmetrics.registerFont(TTFont("DejaVuSerif",        f"{FONT_DIR}/DejaVuSerif.ttf"))
+pdfmetrics.registerFont(TTFont("DejaVuSerif-Bold",   f"{FONT_DIR}/DejaVuSerif-Bold.ttf"))
+pdfmetrics.registerFont(TTFont("DejaVuSerif-Italic", f"{FONT_DIR}/DejaVuSerif-Italic.ttf"))
+pdfmetrics.registerFont(TTFont("DejaVuSans",         f"{FONT_DIR}/DejaVuSans.ttf"))
+pdfmetrics.registerFont(TTFont("DejaVuSans-Bold",    f"{FONT_DIR}/DejaVuSans-Bold.ttf"))
+
+# ─── COLOR PALETTE ────────────────────────────────────────────────────────────
+C_NAVY      = colors.HexColor("#0D1B2A")
+C_RED       = colors.HexColor("#C0392B")
+C_GOLD      = colors.HexColor("#D4A017")
+C_LIGHTGRAY = colors.HexColor("#F4F4F4")
+C_DARKGRAY  = colors.HexColor("#4A4A4A")
+C_MID       = colors.HexColor("#1A3A5C")
+C_WHITE     = colors.white
+
+PAGE_W, PAGE_H = A4
+MARGIN_L  = 2.5 * cm
+MARGIN_R  = 2.5 * cm
+MARGIN_T  = 2.0 * cm
+MARGIN_B  = 2.5 * cm
+CONTENT_W = PAGE_W - MARGIN_L - MARGIN_R
+
+# ─── STYLES ───────────────────────────────────────────────────────────────────
+def make_styles():
+    s = {}
+
+    s["section_num"] = ParagraphStyle(
+        "section_num",
+        fontName="DejaVuSans-Bold",
+        fontSize=8,
+        textColor=C_RED,
+        leading=12,
+        spaceBefore=18,
+        spaceAfter=2,
+    )
+    s["section_heading"] = ParagraphStyle(
+        "section_heading",
+        fontName="DejaVuSerif-Bold",
+        fontSize=13,
+        textColor=C_MID,
+        leading=18,
+        spaceAfter=6,
+    )
+    s["sub_heading"] = ParagraphStyle(
+        "sub_heading",
+        fontName="DejaVuSans-Bold",
+        fontSize=10,
+        textColor=C_NAVY,
+        leading=14,
+        spaceBefore=10,
+        spaceAfter=3,
+    )
+    s["body"] = ParagraphStyle(
+        "body",
+        fontName="DejaVuSerif",
+        fontSize=10,
+        textColor=C_DARKGRAY,
+        leading=16,
+        alignment=TA_JUSTIFY,
+        spaceAfter=8,
+    )
+    s["body_bold"] = ParagraphStyle(
+        "body_bold",
+        fontName="DejaVuSerif-Bold",
+        fontSize=10,
+        textColor=C_DARKGRAY,
+        leading=16,
+        alignment=TA_JUSTIFY,
+        spaceAfter=4,
+    )
+    s["intro_box"] = ParagraphStyle(
+        "intro_box",
+        fontName="DejaVuSerif-Italic",
+        fontSize=10,
+        textColor=C_NAVY,
+        leading=16,
+        alignment=TA_JUSTIFY,
+    )
+    s["closing"] = ParagraphStyle(
+        "closing",
+        fontName="DejaVuSerif-Italic",
+        fontSize=10,
+        textColor=C_DARKGRAY,
+        alignment=TA_CENTER,
+        leading=16,
+    )
+    return s
+
+
+# ─── COVER PAGE ───────────────────────────────────────────────────────────────
+def draw_cover(c: canvas.Canvas, doc):
+    w, h = A4
+
+    # Navy background
+    c.setFillColor(C_NAVY)
+    c.rect(0, 0, w, h, fill=1, stroke=0)
+
+    # Red stripe top
+    c.setFillColor(C_RED)
+    c.rect(0, h - 12*mm, w, 12*mm, fill=1, stroke=0)
+    c.setFillColor(C_GOLD)
+    c.rect(0, h - 12*mm - 2*mm, w, 2*mm, fill=1, stroke=0)
+
+    # Red stripe bottom
+    c.setFillColor(C_RED)
+    c.rect(0, 0, w, 10*mm, fill=1, stroke=0)
+    c.setFillColor(C_GOLD)
+    c.rect(0, 10*mm, w, 1.5*mm, fill=1, stroke=0)
+
+    # Left vertical bar
+    c.setFillColor(C_RED)
+    c.rect(0, 10*mm + 1.5*mm, 6*mm, h - 22*mm - 1.5*mm, fill=1, stroke=0)
+
+    # ── Organization name ──────────────────────────────────────────────
+    c.setFont("DejaVuSans-Bold", 10)
+    c.setFillColor(C_GOLD)
+    c.drawCentredString(w/2, h - 8*mm,
+        "PEOPLE'S MOVEMENT  \"BIRLIK\"  |  НАРОДНОЕ ДВИЖЕНИЕ  «БИРЛИК»")
+
+    # ── Document label ─────────────────────────────────────────────────
+    c.setFont("DejaVuSans-Bold", 7.5)
+    c.setFillColor(C_RED)
+    c.drawCentredString(w/2, h - 26*mm,
+        "◆  OFFICIAL STATEMENT  ◆  ОФИЦИАЛЬНОЕ ЗАЯВЛЕНИЕ  ◆")
+
+    # ── Gold divider ────────────────────────────────────────────────────
+    c.setStrokeColor(C_GOLD)
+    c.setLineWidth(0.8)
+    c.line(20*mm, h - 30*mm, w - 20*mm, h - 30*mm)
+
+    # ── Main title ─────────────────────────────────────────────────────
+    title_lines = [
+        "ON HUMAN RIGHTS VIOLATIONS,",
+        "POLITICAL REPRESSION,",
+        "AND ACTS OF GENOCIDE",
+    ]
+    c.setFont("DejaVuSerif-Bold", 20)
+    c.setFillColor(C_WHITE)
+    y = h - 50*mm
+    for line in title_lines:
+        c.drawCentredString(w/2, y, line)
+        y -= 26
+
+    # ── Subtitle ────────────────────────────────────────────────────────
+    c.setFont("DejaVuSerif", 12)
+    c.setFillColor(colors.HexColor("#CCCCCC"))
+    y -= 10
+    c.drawCentredString(w/2, y, "in the Republic of Karakalpakstan")
+    y -= 18
+    c.setFont("DejaVuSerif-Italic", 10)
+    c.setFillColor(colors.HexColor("#AAAAAA"))
+    c.drawCentredString(w/2, y,
+        "Республика Каракалпакстан — Зафиксированные нарушения прав человека")
+
+    # ── Gold divider ────────────────────────────────────────────────────
+    y -= 14
+    c.setStrokeColor(C_GOLD)
+    c.setLineWidth(0.6)
+    c.line(30*mm, y, w - 30*mm, y)
+
+    # ── Summary box ─────────────────────────────────────────────────────
+    box_top    = y - 6
+    box_height = 62
+    box_x      = 20*mm
+    box_w      = w - 40*mm
+    c.setStrokeColor(C_GOLD)
+    c.setLineWidth(0.5)
+    c.setFillColor(colors.HexColor("#0A2540"))
+    c.roundRect(box_x, box_top - box_height, box_w, box_height, 3*mm, fill=1, stroke=1)
+
+    summary_items = [
+        "▶  32 years of systematic human rights violations",
+        "▶  July 2022: Armed suppression of peaceful civilian protests",
+        "▶  Political prisoners, torture, and cultural genocide",
+        "▶  Demographic and medical pressure on the Karakalpak people",
+    ]
+    c.setFont("DejaVuSans", 8.5)
+    c.setFillColor(colors.HexColor("#DDDDDD"))
+    iy = box_top - 14
+    for item in summary_items:
+        c.drawString(box_x + 8*mm, iy, item)
+        iy -= 13
+
+    # ── Demands summary ─────────────────────────────────────────────────
+    y2 = box_top - box_height - 16
+    c.setFont("DejaVuSans-Bold", 7.5)
+    c.setFillColor(C_RED)
+    c.drawCentredString(w/2, y2, "KEY DEMANDS")
+    demands = [
+        "Immediate access of independent international missions to Karakalpakstan",
+        "Release of all political prisoners, including D. Tazhimuratov",
+        "Accountability for perpetrators before the International Criminal Court",
+        "Restoration of the Karakalpak people's right to self-determination",
+    ]
+    c.setFont("DejaVuSerif", 8)
+    c.setFillColor(C_WHITE)
+    y2 -= 12
+    for d in demands:
+        c.drawCentredString(w/2, y2, f"→  {d}")
+        y2 -= 11
+
+    # ── Date footer ─────────────────────────────────────────────────────
+    c.setFont("DejaVuSans", 8)
+    c.setFillColor(C_GOLD)
+    c.drawCentredString(w/2, 5*mm + 1, "2024")
+
+
+# ─── BODY PAGE HEADER / FOOTER ────────────────────────────────────────────────
+def draw_body_page(c: canvas.Canvas, doc):
+    w, h = A4
+
+    # Top header
+    c.setFillColor(C_NAVY)
+    c.rect(0, h - 14*mm, w, 14*mm, fill=1, stroke=0)
+    c.setFillColor(C_RED)
+    c.rect(0, h - 14*mm - 1.5*mm, w, 1.5*mm, fill=1, stroke=0)
+
+    c.setFont("DejaVuSans-Bold", 7.5)
+    c.setFillColor(C_GOLD)
+    c.drawString(MARGIN_L, h - 9*mm, "PEOPLE'S MOVEMENT \"BIRLIK\"")
+    c.setFont("DejaVuSans", 7)
+    c.setFillColor(colors.HexColor("#AAAAAA"))
+    c.drawRightString(w - MARGIN_R, h - 9*mm,
+        "Official Statement on Human Rights in Karakalpakstan")
+
+    # Bottom footer
+    c.setFillColor(C_NAVY)
+    c.rect(0, 0, w, 12*mm, fill=1, stroke=0)
+    c.setFillColor(C_RED)
+    c.rect(0, 12*mm, w, 1*mm, fill=1, stroke=0)
+
+    c.setFont("DejaVuSans", 7)
+    c.setFillColor(colors.HexColor("#AAAAAA"))
+    c.drawString(MARGIN_L, 4.5*mm,
+        "People's Movement \"Birlik\" | Народное Движение «Бирлик»")
+    c.setFillColor(C_GOLD)
+    c.setFont("DejaVuSans-Bold", 8)
+    c.drawRightString(w - MARGIN_R, 4.5*mm, f"Page {doc.page}")
+
+
+# ─── CONTENT BUILDER ─────────────────────────────────────────────────────────
+def build_story(styles):
+    story = []
+
+    def rule(color=C_RED, thickness=1, space_before=0, space_after=8):
+        story.append(Spacer(1, space_before))
+        story.append(HRFlowable(
+            width="100%", thickness=thickness,
+            color=color, spaceAfter=space_after
+        ))
+
+    def section_header(number, title):
+        story.append(Spacer(1, 6))
+        story.append(KeepTogether([
+            Paragraph(f"SECTION {number}", styles["section_num"]),
+            Paragraph(title, styles["section_heading"]),
+            HRFlowable(width="100%", thickness=0.6, color=C_RED, spaceAfter=6),
+        ]))
+
+    def sub(text):
+        story.append(Paragraph(text, styles["sub_heading"]))
+
+    def body(text):
+        story.append(Paragraph(text, styles["body"]))
+
+    # ── INTRODUCTION ──────────────────────────────────────────────────────────
+    intro_data = [[
+        Paragraph(
+            "This report has been prepared by the People's Movement \"Birlik\" with the "
+            "purpose of informing the international community about the systematic oppression, "
+            "economic blockade, and crimes against humanity carried out in the Republic of "
+            "Karakalpakstan over the past 32 years.",
+            styles["intro_box"]
+        )
+    ]]
+    intro_table = Table(intro_data, colWidths=[CONTENT_W])
+    intro_table.setStyle(TableStyle([
+        ("BACKGROUND",   (0, 0), (-1, -1), colors.HexColor("#EAF0F8")),
+        ("LEFTPADDING",  (0, 0), (-1, -1), 14),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 14),
+        ("TOPPADDING",   (0, 0), (-1, -1), 12),
+        ("BOTTOMPADDING",(0, 0), (-1, -1), 12),
+        ("LINEAFTER",    (0, 0), (0, -1), 3, C_MID),
+        ("GRID",         (0, 0), (-1, -1), 0, colors.transparent),
+    ]))
+    story.append(Paragraph("INTRODUCTION", styles["section_num"]))
+    story.append(intro_table)
+    story.append(Spacer(1, 10))
+
+    # ── SECTION 1 ─────────────────────────────────────────────────────────────
+    section_header("1", "ABROGATION OF STATE SOVEREIGNTY AND POLITICAL PERSECUTION")
+
+    sub("1.1. The Institution of the Presidency:")
+    body(
+        "In the early 1990s, the Republic of Karakalpakstan attained state sovereignty, "
+        "leading to the election of its inaugural President, <b>Dauletbay Shamshetov.</b>. "
+        "However, after a period of eight months, this office was unconstitutionally "
+        "abolished by the central authorities of the Republic of Uzbekistan."
+    )
+
+    sub("1.2. The Fate of Dauletbay Shamshetov:")
+    body(
+        "Due to his activities in safeguarding the national interests of the Republic, he "
+        "was subjected to political persecution and deceased in <b>1998</b> under "
+        "unidentified circumstances."
+    )
+
+    sub("1.3. The 20-Year Agreement (1993–2013)")
+    body(
+        "The duration of the interstate treaty concerning the unification with Uzbekistan "
+        "(1993–2013) was characterized by the systematic dismantling of the foundations "
+        "of Karakalpakstan's statehood."
+    )
+
+    # ── SECTION 2 ─────────────────────────────────────────────────────────────
+    section_header("2", "ECONOMIC AND ECOLOGICAL PRESSURE")
+
+    sub("2.1. Elimination of the Technical Infrastructure:")
+    body(
+        "Beginning in <b>1992</b>, the unlawful removal of agricultural and "
+        "road-construction machinery (including tractors and combine harvesters) from all "
+        "<b>16 districts</b> of the Republic of Karakalpakstan to the territory of the "
+        "Republic of Uzbekistan was documented."
+    )
+
+    sub("2.2. Mass Unemployment:")
+    body(
+        "The confiscation of operational machinery resulted in the stagnation of the "
+        "agricultural sector, depriving a significant portion of the population of its "
+        "primary sources of income."
+    )
+
+    sub("2.3. Water Blockade and Food Security Crisis:")
+    body(
+        "The artificial restriction of water flow in the upper reaches of the Amu Darya "
+        "River and the resulting shortage of water resources triggered a prolonged food "
+        "security crisis in the region, which became a catalyst for large-scale illegal "
+        "migration of the population."
+    )
+
+    # ── SECTION 3 ─────────────────────────────────────────────────────────────
+    section_header("3", "DEMOGRAPHIC AND MEDICAL GENOCIDE")
+
+    sub("3.1. Demographic Inequality:")
+    body(
+        "Over the past 32 years, while the population of the Republic of Uzbekistan has "
+        "increased by approximately <b>12 million people</b>, the population of "
+        "Karakalpakstan has demonstrated negligible growth, remaining stagnant at "
+        "approximately <b>2 million inhabitants</b>."
+    )
+
+    sub("3.2. Forced Sterilization:")
+    body(
+        "Documentation indicates the systematic implementation of intra-uterine device "
+        "(IUD) insertions without informed consent, alongside the surgical restriction of "
+        "reproductive functions. Furthermore, covert campaigns involving involuntary "
+        "intervention in male reproductive health have been conducted."
+    )
+
+    sub("3.3. Medical Experimentation:")
+    body(
+        "Amidst the tuberculosis epidemic, patients were subjected to clinical "
+        "experimentation involving pharmaceutical agents of unidentified origin, resulting "
+        "in a precipitous increase in mortality rates."
+    )
+
+    # ── SECTION 4 ─────────────────────────────────────────────────────────────
+    section_header("4", "CULTURAL GENOCIDE AND THE POLICY OF \"UZBEKIZATION\"")
+
+    sub("4.1. Linguistic Discrimination:")
+    body(
+        "The marginalization of the Karakalpak language within the state apparatus, "
+        "alongside the comprehensive transition of the educational system and official "
+        "administrative documentation to the Uzbek language."
+    )
+
+    sub("4.2. National Identification:")
+    body(
+        "The imposition of restrictions on the observance of national customs, the "
+        "performance of funeral rites, and the conduct of traditional communal assemblies."
+    )
+
+    # ── SECTION 5 ─────────────────────────────────────────────────────────────
+    section_header("5", "THE EVENTS OF JULY 2022")
+
+    sub("5.1. Causation of Protests:")
+    body(
+        "The attempted deprivation of the Republic of Karakalpakstan's constitutional "
+        "sovereign status through the adoption of amendments to the Constitution of the "
+        "Republic of Uzbekistan without regard for the will of the Karakalpak people."
+    )
+
+    sub("5.2. Armed Suppression:")
+    body(
+        "Military-grade weaponry was deployed against the civilian population. This "
+        "resulted in <b>hundreds of fatalities</b>, while thousands of citizens were "
+        "detained and subjected to torture and other forms of cruel, inhuman, or "
+        "degrading treatment."
+    )
+
+    # ── SECTION 6 ─────────────────────────────────────────────────────────────
+    section_header("6", "POLITICAL PRISONERS AND DOCUMENTED CASES OF TORTURE")
+
+    prisoners = [
+        (
+            "Daulatmurat Tazhimuratov:",
+            "A public leader, lawyer, and journalist. His detention is regarded exclusively "
+            "as an act of politically motivated persecution."
+        ),
+        (
+            "Bagdatbay Ismailov:",
+            "Credible reports have documented threats of physical violence against him and "
+            "members of his family by representatives of the security services. As a result "
+            "of the unlawful confiscation of his identity documents (passport), he has been "
+            "deprived of the possibility of family reunification for the past <b>eight years</b>."
+        ),
+        (
+            "Torture in Khojely:",
+            "Documented evidence confirms abuses of authority by law enforcement officers, "
+            "including the use of special devices (electroshock weapons and rubber batons), "
+            "the infliction of bodily harm, and acts violating personal dignity and sexual "
+            "integrity."
+        ),
+    ]
+
+    for name, desc in prisoners:
+        pdata = [[
+            Paragraph(f"<b>{name}</b>", ParagraphStyle(
+                "pname",
+                parent=styles["body_bold"],
+                textColor=C_RED,
+                fontSize=10,
+                spaceAfter=4,
+            )),
+        ], [
+            Paragraph(desc, styles["body"]),
+        ]]
+        pt = Table(pdata, colWidths=[CONTENT_W])
+        pt.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, 0), colors.HexColor("#0D1B2A")),
+            ("BACKGROUND",    (0, 1), (-1, 1), colors.HexColor("#F8F0F0")),
+            ("LEFTPADDING",   (0, 0), (-1, -1), 12),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 12),
+            ("TOPPADDING",    (0, 0), (-1, -1), 8),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+            ("LINEBELOW",     (0, -1), (-1, -1), 0.5, C_RED),
+            ("GRID",          (0, 0), (-1, -1), 0, colors.transparent),
+        ]))
+        story.append(KeepTogether([pt, Spacer(1, 6)]))
+
+    # ── DEMANDS ───────────────────────────────────────────────────────────────
+    story.append(Spacer(1, 8))
+    story.append(KeepTogether([
+        Paragraph("OUR DEMANDS", styles["section_num"]),
+        Paragraph("Demands of the People's Movement \"Birlik\"", styles["section_heading"]),
+        HRFlowable(width="100%", thickness=1.5, color=C_RED, spaceAfter=8),
+    ]))
+
+    demands_list = [
+        ("01",
+         "Ensure the immediate and unhindered access of independent international "
+         "missions and investigators to the territory of Karakalpakstan."),
+        ("02",
+         "Initiate legal proceedings and hold accountable all individuals complicit in "
+         "acts of genocide and mass casualties before the International Criminal Court."),
+        ("03",
+         "Effectuate the immediate and unconditional release of all political prisoners, "
+         "including Dauletmurat Tazhimuratov."),
+        ("04",
+         "Restore and uphold the fundamental right of the people of Karakalpakstan to "
+         "self-determination in accordance with international law."),
+    ]
+
+    for num, text in demands_list:
+        row_data = [[
+            Paragraph(f"<b>{num}</b>", ParagraphStyle(
+                "dnum", fontName="DejaVuSans-Bold", fontSize=13,
+                textColor=C_WHITE, alignment=TA_CENTER, leading=20,
+            )),
+            Paragraph(text, styles["body"]),
+        ]]
+        dt = Table(row_data, colWidths=[14*mm, CONTENT_W - 14*mm])
+        dt.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (0, -1), C_RED),
+            ("BACKGROUND",    (1, 0), (1, -1), colors.HexColor("#FDF5F5")),
+            ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+            ("LEFTPADDING",   (0, 0), (-1, -1), 8),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 10),
+            ("TOPPADDING",    (0, 0), (-1, -1), 8),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+            ("LINEBELOW",     (0, 0), (-1, -1), 0.5, colors.HexColor("#DDDDDD")),
+        ]))
+        story.append(KeepTogether([dt, Spacer(1, 4)]))
+
+    # ── CLOSING ───────────────────────────────────────────────────────────────
+    story.append(Spacer(1, 16))
+    rule(C_GOLD, 0.5, space_before=0, space_after=10)
+    story.append(Paragraph(
+        "The People's Movement \"Birlik\" hereby declares its readiness to provide "
+        "comprehensive photographic and video documentation substantiating allegations "
+        "of crimes against humanity.",
+        styles["closing"]
+    ))
+    story.append(Spacer(1, 10))
+
+    # Signature block
+    sig_data = [[
+        Paragraph(
+            "<b>People's Movement \"BIRLIK\"</b><br/>Народное Движение «БИРЛИК»",
+            ParagraphStyle("sig", fontName="DejaVuSans-Bold", fontSize=9,
+                           textColor=C_NAVY, leading=14)
+        ),
+        Paragraph(
+            "2024",
+            ParagraphStyle("sigr", fontName="DejaVuSans", fontSize=9,
+                           textColor=C_DARKGRAY, leading=14, alignment=TA_RIGHT)
+        ),
+    ]]
+    sig_t = Table(sig_data, colWidths=[CONTENT_W/2, CONTENT_W/2])
+    sig_t.setStyle(TableStyle([
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("GRID",          (0, 0), (-1, -1), 0, colors.transparent),
+        ("TOPPADDING",    (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    story.append(sig_t)
+    rule(C_GOLD, 0.5, space_before=10, space_after=0)
+
+    return story
+
+
+# ─── MAIN ─────────────────────────────────────────────────────────────────────
+def main():
+    # Change OUTPUT path if needed for your system:
+    OUTPUT = "/mnt/user-data/outputs/Birlik_Official_Statement_EN_2024.pdf"
+    # For VS Code local run, use e.g.:
+    # OUTPUT = "Birlik_Official_Statement_EN_2024.pdf"
+
+    os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
+
+    styles = make_styles()
+
+    doc = SimpleDocTemplate(
+        OUTPUT,
+        pagesize=A4,
+        leftMargin=MARGIN_L,
+        rightMargin=MARGIN_R,
+        topMargin=MARGIN_T + 14*mm,
+        bottomMargin=MARGIN_B + 12*mm,
+        title="Official Statement — People's Movement \"Birlik\"",
+        author="People's Movement \"Birlik\" | Народное Движение «Бирлик»",
+        subject="Human Rights Violations in the Republic of Karakalpakstan",
+        keywords="Karakalpakstan, human rights, genocide, BIRLIK",
+    )
+
+    story = build_story(styles)
+
+    page_counter = [0]
+
+    def on_page(c, doc):
+        page_counter[0] += 1
+        if page_counter[0] == 1:
+            draw_cover(c, doc)
+        else:
+            draw_body_page(c, doc)
+
+    story.insert(0, PageBreak())  # Page 1 = cover, Page 2+ = content
+
+    doc.build(story, onFirstPage=on_page, onLaterPages=on_page)
+    print(f"✅  PDF created: {OUTPUT}")
+
+
+if __name__ == "__main__":
+    main()

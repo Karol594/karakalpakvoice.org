@@ -21,6 +21,8 @@ import NewsPost from './pages/NewsPost';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import EventDetail from './pages/EventDetail';
+import ConstitutionAnalysis2019 from "./pages/ConstitutionAnalysis2019";
+import ConstitutionAnalysis2021 from "./pages/ConstitutionAnalysis2021";
 
 // "Биз ҳаққында" бөлими
 import About from './pages/About'; 
@@ -110,11 +112,14 @@ function App() {
             {/* Жаңалықлар иши (Стандартлы .md файллар ушын) */}
             <Route path="/news/:year/:slug" element={<NewsPost />} />
             <Route path="/persons/:slug" element={<ElPerzentleri />} />
+            <Route path="/documents/history/:slug" element={<NewsPost />} />
 
             {/* Рәмизлер (Символика) */}
             <Route path="/sovereignty" element={<Sovereignty />} />
             <Route path="/declaration" element={<Declaration />} />
             <Route path="/constitution" element={<Constitution />} />
+            <Route path="/constitution-analysis-2019" element={<ConstitutionAnalysis2019 />} />
+            <Route path="/constitution-analysis-2021" element={<ConstitutionAnalysis2021 />} />
             <Route path="/flag" element={<Flag />} />
             <Route path="/symbols/:slug" element={<SymbolicDetail />} />
             <Route path="/emblem" element={<Emblem />} />
