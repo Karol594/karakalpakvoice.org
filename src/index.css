@@ -10,7 +10,7 @@
    16px → 18px: барлық мәтін ~12% үлкейеді.
 ═══════════════════════════════════════════════════════════ */
 html {
-  font-size: 20px !important;
+  font-size: 17px !important;
   scroll-behavior: smooth;
   overflow-x: hidden;
   height: 100%;
