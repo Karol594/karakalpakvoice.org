@@ -800,6 +800,9 @@ Nukus, 14 grudnia 1990. No 82/XII`,
 
           <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:"24px" }}>
             <DeclBookCover lang={lang} coverImg={COVER} c={c} isMobile={isMobile} />
+            <a href={PDF[lang]} download style={{ display:"inline-flex", alignItems:"center", gap:"8px", padding:"10px 24px", borderRadius:"10px", background:c.goldBg, border:`1px solid ${c.goldBrd}`, color:c.gold, fontFamily:CIN, fontSize:"13px", fontWeight:700, textDecoration:"none" }}>
+  ⬇ {lang==="KK"?"PDF Жүклеў":lang==="RU"?"Скачать PDF":lang==="EN"?"Download PDF":"Pobierz PDF"}
+</a>
             <p style={{ textAlign:"center", color: c.sub, fontSize:"12px", letterSpacing:"0.04em", fontFamily:CIN }}>
               {" "}
               <a href="https://www.karakalpakvoice.org" target="_blank" rel="noopener noreferrer"

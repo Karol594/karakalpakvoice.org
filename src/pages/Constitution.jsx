@@ -262,7 +262,7 @@ EN: "/documents/constitution/2026/——en/constitution_2026_en.pdf",
 PL: "/documents/constitution/2026/——pl/constitution_2026_pl.pdf",
   },
   ARCHIVE: {
-    1934: "/documents/constitution/2020/── ru/Karaкalpaкstan__Konst_1934.pdf",
+    1934: "/documents/constitution/2020/── ru/Кaraкalpaкstan__Konst_1934.pdf",
     1937: "/documents/constitution/2020/── ru/Karakalpaksan_Konst_1937.pdf",
     1978: "/documents/constitution/2020/── ru/Karakalpakstan__Konst_1978.pdf",
   }
@@ -440,6 +440,9 @@ function PdfBook({ year, path, title, lang, isDanger, theme }) {
         <div className="text-xs font-black tracking-widest uppercase" style={{ color: theme === "dark" ? "#fff" : "#1e293b" }}>
           {lang === "KK" ? "Ашыў" : "Open PDF"}
         </div>
+        <a href={path} download onClick={(e) => e.stopPropagation()} style={{ display:"inline-block", marginTop:"6px", padding:"5px 14px", borderRadius:"8px", background:"rgba(180,130,0,0.15)", border:"1px solid rgba(180,130,0,0.4)", color:"#c9930a", fontSize:"11px", fontWeight:700, textDecoration:"none" }}>
+  ⬇ {lang === "KK" ? "Жүклеў" : lang === "RU" ? "Скачать" : lang === "EN" ? "Download" : "Pobierz"}
+</a>
       </div>
     </div>
   );
