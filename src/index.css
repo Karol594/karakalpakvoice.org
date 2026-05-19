@@ -27,14 +27,17 @@ pre {
 }
 
 /* ── Header — өз өлшемін сақтайды, экранға сыяды ── */
-header,
-header nav,
-header a,
-header button,
-header span,
-header li {
-  font-size: 14px !important;
-  line-height: 1.5 !important;
+header nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* Элементтердің төмен түсіп кетпеуін қадағалайды */
+}
+
+/* Мобильді құрылғылар үшін навигация мәтінін сәл кішірейту */
+@media (max-width: 640px) {
+  header a, header button {
+    font-size: 12px !important; /* Экран кішкентай болса, шрифт автоматты түрде кішірейеді */
+  }
 }
 
 @media (max-width: 768px) {
