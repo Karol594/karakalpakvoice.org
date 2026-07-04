@@ -2,52 +2,53 @@
 # KARAKALPAK-VOICE NETLIFY КОНФИГУРАЦИЯСЫ
 # 🏆 A+ SSL + Фото + Видео (YouTube & Odysee) + Netlify Identity
 # ═══════════════════════════════════════════════════════════
-
 [build]
   command = "npm install && npm run build"
   publish = "dist"
-
   [build.environment]
     NODE_VERSION = "18"
     NPM_FLAGS = "--legacy-peer-deps"
-
 [[headers]]
   for = "/*"
   [headers.values]
     # 🏆 A+ ушын: HSTS максимал мәнис пенен (2 жыл)
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-
     # 🔒 Қәўипсизлик заголовкалары
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
-
     # 🏆 A+ ушын: Cross-Origin заголовкалары
     Cross-Origin-Opener-Policy = "same-origin-allow-popups"
     Cross-Origin-Resource-Policy = "cross-origin"
-
     # ✅ ТҮЗЕТИЛГЕН CSP: Odysee доменлери қосылды (https://odysee.com ҳәм https://*.odysee.com)
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com https://identity.netlify.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://www.google-analytics.com https://api.emailjs.com https://challenges.cloudflare.com https://identity.netlify.com https://*.googleapis.com https://www.youtube.com https://www.youtube-nocookie.com https://odysee.com https://*.odysee.com https://script.google.com https://ipapi.co; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://odysee.com https://*.odysee.com https://challenges.cloudflare.com https://identity.netlify.com; media-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://odysee.com https://*.odysee.com blob:; base-uri 'self'; form-action 'self' https://identity.netlify.com; upgrade-insecure-requests"
-
 # ⚡ КЭШИРОВАНИЕ
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
 [[headers]]
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
+# 🔗 ЕСКИРГЕН (ФЛАТ) PDF ЖОЛЛАРЫН НЕСТЕЛГЕН ЖОЛҒА БАҒДАРЛАУ (GSC canonical мәселеси ушын)
+[[redirects]]
+  from = "/documents/declaration_pl.pdf"
+  to = "/documents/declaration/1990/—pl/declaration_pl.pdf"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/documents/declaration_ru.pdf"
+  to = "/documents/declaration/1990/—ru/declaration_ru.pdf"
+  status = 301
+  force = true
 # 🔄 REDIRECTS (React Router)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
 [[redirects]]
   from = "/404"
   to = "/index.html"
