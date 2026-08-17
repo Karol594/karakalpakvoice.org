@@ -110,7 +110,7 @@ export default function Sovereignty() {
           icon: Scale,
           title: "1. Трехстороннее соглашение: Официальное признание суверенитета государства.",
           content: <>
-            На исторической встрече 1990 года в присутствии Президента Узбекской ССР И.А. Каримова, Председателя Верховного Совета Каракалпакстана Даулетбая Шамшетова и Премьер-министра СССР В.С. Павлова была официально признана Декларация о суверенитете Каракалпакстана. Этот акт свидетельствует о том, что Каракалпакстан впервые официально получил суверенный статус на международном уровне.
+            На исторической встрече в мае 1991 года в присутствии Президента Узбекской ССР И.А. Каримова, Председателя Верховного Совета Каракалпакстана Даулетбая Шамшетова и Премьер-министра СССР В.С. Павлова была официально признана Декларация о суверенитете Каракалпакстана. Этот акт свидетельствует о том, что Каракалпакстан впервые официально получил суверенный статус на международном уровне.
             <br/><br/>
             Официальное признание декларации Премьер-министром СССР В.С. Павловым свидетельствует о признании Москвой Каракалпакстана в качестве правового субъекта, а также о признании 15 республиками СССР. В то время в федеральных государствах никакие политико-экономические решения не принимались без такого официального признания.
           </>,
@@ -392,7 +392,7 @@ export default function Sovereignty() {
           {
             icon: Scale,
             title: "1. Үш тәреплеме келисим - мәмлекет суверенитетиниң ресмий тән алыныўы",
-            content: "1990-жылы Өзбекстан ССР Президенти И.А.Каримов, Қарақалпақстан Жоқарғы Советиниң Баслығы Даулетбай Шамшетов ҳәм СССР Бас министри В.С.Павлов қатнасыўында болып өткен тарийхый ушырасыўда Қарақалпақстанның суверенитети ҳаққындағы Декларация ресмий түрде тән алынды. Бул ҳүжжет Қарақалпақстан биринши мәрте халықаралық көлемде ресмий түрде суверен статусқа ийе болғанлығынан дәрек береди. Декларацияның СССР Бас министри В.С.Павлов тәрепинен ресмий түрде тән алыныўы Москва тәрепинен Қарақалпақстанның ҳуқық субьекти сыпатында, сондай-ақ, СССРдың 15 республикасы тәрепинен тән алынғанлығынан дерек береди. Ол ўақытта федерациялық мәмлекетлерде ҳеш қандай сиясий-экономикалық қарарлар усындай ресмий тән алыўларсыз қабыл етилмеген",
+            content: "1991-жылы май айында Өзбекстан ССР Президенти И.А.Каримов, Қарақалпақстан Жоқарғы Советиниң Баслығы Даўлетбай Шамшетов ҳәм СССР Бас министри В.С.Павлов қатнасыўында болып өткен тарийхый ушырасыўда Қарақалпақстанның суверенитети ҳаққындағы Декларация ресмий түрде тән алынды. Бул ҳүжжет Қарақалпақстан биринши мәрте халықаралық көлемде ресмий түрде суверен статусқа ийе болғанлығынан дәрек береди. Декларацияның СССР Бас министри В.С.Павлов тәрепинен ресмий түрде тән алыныўы Москва тәрепинен Қарақалпақстанның ҳуқық субьекти сыпатында, сондай-ақ, СССРдың 15 республикасы тәрепинен тән алынғанлығынан дерек береди. Ол ўақытта федерациялық мәмлекетлерде ҳеш қандай сиясий-экономикалық қарарлар усындай ресмий тән алыўларсыз қабыл етилмеген",
             images: [
               { src: "3xstor02.jpg", label: "Оригинал сүўрет" },
               { src: "3xstor01.jpg", label: "Жаңартылған сүўрет (AI)" }
@@ -666,7 +666,7 @@ export default function Sovereignty() {
             icon: Scale,
             title: "1. Trilateral Agreement: Official recognition of the sovereignty of the State.",
             content: <>
-              At a historic meeting in 1990, in the presence of President of the Uzbek SSR I.A. Karimov, Chairman of the Supreme Council of Karakalpakstan Dauletbay Shamshetov and Prime Minister of the USSR V.S. Pavlov, the Declaration of Sovereignty of Karakalpakstan was officially recognized. This act indicates that for the first time Karakalpakstan officially received a sovereign status at the international level.
+              At a historic meeting in May 1991, in the presence of President of the Uzbek SSR I.A. Karimov, Chairman of the Supreme Council of Karakalpakstan Dauletbay Shamshetov and Prime Minister of the USSR V.S. Pavlov, the Declaration of Sovereignty of Karakalpakstan was officially recognized. This act indicates that for the first time Karakalpakstan officially received a sovereign status at the international level.
               <br/><br/>
               The official recognition of the declaration by the Prime Minister of the USSR, V.S. Pavlov, indicates Moscow's recognition of Karakalpakstan as a legal entity, as well as recognition by 15 republics of the USSR. At that time, no political and economic decisions were made in federal states without such official recognition.
             </>,
@@ -963,7 +963,7 @@ export default function Sovereignty() {
           {
             icon: Scale,
             title: "1. Umowa trójstronna: oficjalne uznanie suwerenności państwa.",
-            content: "Na historycznym spotkaniu w 1990 roku w obecności prezydenta SSR Uzbekistanu I. A. Karimova, Przewodniczącego Rady Najwyższej Karakalpakstanu Dauletbaja Szamszetova i premiera ZSRR W. S. Pawłowa oficjalnie uznano deklarację o suwerenności Karakalpakstanu. Akt ten świadczy o tym, że Karakalpakstan po raz pierwszy oficjalnie uzyskał suwerenny status na poziomie międzynarodowym.",
+            content: "Na historycznym spotkaniu w maju 1991 roku w obecności prezydenta SSR Uzbekistanu I. A. Karimova, Przewodniczącego Rady Najwyższej Karakalpakstanu Dauletbaja Szamszetova i premiera ZSRR W. S. Pawłowa oficjalnie uznano deklarację o suwerenności Karakalpakstanu. Akt ten świadczy o tym, że Karakalpakstan po raz pierwszy oficjalnie uzyskał suwerenny status na poziomie międzynarodowym.",
             images: [
               { src: "3xstor02.jpg", label: "Oryginał" },
               { src: "3xstor01.jpg", label: "Zdjęcie AI" }
