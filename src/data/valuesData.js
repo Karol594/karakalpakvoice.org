@@ -768,7 +768,7 @@ Jeśli naród nie zapomina o swoich korzeniach, żyje wiecznie. Ta platforma to 
 1. **Быть голосом народа:** Мы защищаем интересы простого народа. Мы раскрываем невысказанные и скрытые вопросы открыто, с доказательствами, без цензуры. Голос народа - наша величайшая сила.
 2. **Восстановление и сохранение истории:** Наша богатая история, Декларация о суверенитете, Конституция, выдающиеся личности, культурное наследие - все это хранится в цифровом формате и благополучно передается будущим поколениям, что является для нас священным мандатом.
 3. **Быть мостом:** Связать Каракалпакстан с европейским и мировым сообществом - наша стратегическая цель. Мы налаживаем связи с международными организациями, журналистами, экологами и правоохранительными органами.
-4. **Распространение нецензурных новостей:** Мы публикуем только проверенные факты. Мы будем бороться с ложной информацией, манипуляциями и пропагандой.
+4. **Распространение новостей без цензуры:** Мы публикуем только проверенные факты. Мы будем бороться с ложной информацией, манипуляциями и пропагандой.
 5. **Сохранение языка, культуры и наследия:** Каракалпакский язык - душа нашего народа. Мы вносим свой вклад в его сохранение, развитие и повышение статуса.
 
 🌍 ПОЧЕМУ НА 4 ЯЗЫКАХ?
@@ -862,7 +862,7 @@ Dzisiaj jest dzień, w którym w historii Karakalpakstanu otwarto nową stronę.
 1. **Być głosem ludu:** Chronimy interesy zwykłych ludzi. Ujawniamy niewypowiedziane i ukryte pytania otwarcie, z dowodami, bez cenzury. Głos ludu jest naszą największą siłą.
 2. **Przywracanie i zapisywanie historii:** Nasza bogata historia, Deklaracja suwerenności, Konstytucja, wybitne osobistości, dziedzictwo kulturowe są przechowywane cyfrowo i bezpiecznie przekazywane przyszłym pokoleniom, co jest dla nas świętym mandatem.
 3. **Być mostem:** Połączenie Karakalpakstanu ze społecznością Europejską i światową jest naszym strategicznym celem. Nawiązujemy kontakty z organizacjami międzynarodowymi, dziennikarzami, ekologami i organami ścigania.
-4. **Rozpowszechnianie niecenzuralnych wiadomości:** Publikujemy tylko sprawdzone fakty. Będziemy walczyć z fałszywymi informacjami, manipulacjami i propagandą.
+4. **Rozpowszechnianie wiadomości bez cenzury:** Publikujemy tylko sprawdzone fakty. Będziemy walczyć z fałszywymi informacjami, manipulacjami i propagandą.
 5. **Zachowanie języka, kultury i Dziedzictwa:** Język Karakalpak jest duszą naszego narodu. Przyczyniamy się do jego zachowania, rozwoju i podniesienia statusu.
 
 🌍 DLACZEGO W 4 JĘZYKACH?

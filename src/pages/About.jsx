@@ -107,7 +107,7 @@ const About = () => {
         { title: "Быть голосом народа", desc: "Мы защищаем интересы простого народа. Мы раскрываем невысказанные и скрытые вопросы открыто, с доказательствами, без цензуры. Голос народа - наша величайшая сила." },
         { title: "Восстановление и сохранение истории", desc: "Наша богатая история, Декларация о суверенитете, Конституция, выдающиеся личности, культурное наследие - все это хранится в цифровом формате и благополучно передается будущим поколениям, что является для нас священным мандатом." },
         { title: "Быть мостом", desc: "Связать Каракалпакстан с европейским и мировым сообществом - наша стратегическая цель. Мы налаживаем связи с международными организациями, журналистами, экологами и правоохранительными органами." },
-        { title: "Распространение нецензурных новостей", desc: "Мы публикуем только проверенные факты. Мы будем бороться с ложной информацией, манипуляциями и пропагандой." },
+        { title: "Распространение новостей без цензуры", desc: "Мы публикуем только проверенные факты. Мы будем бороться с ложной информацией, манипуляциями и пропагандой." },
         { title: "Сохранение языка, культуры и наследия", desc: "Каракалпакский язык - душа нашего народа. Мы вносим свой вклад в его сохранение, развитие и повышение статуса." },
         { title: "Архив на 20-30 лет", desc: "Мы храним материалы в цифровом формате, работаем как энциклопедия с поиском, защищаем информацию на 100% от внешних атак, спама и хакеров." }
       ],
@@ -205,7 +205,7 @@ const About = () => {
         { title: "Być głosem ludu", desc: "Chronimy interesy zwykłych ludzi. Ujawniamy niewypowiedziane i ukryte pytania otwarcie, z dowodami, bez cenzury. Głos ludu jest naszą największą siłą." },
         { title: "Przywracanie i zapisywanie historii", desc: "Nasza bogata historia, Deklaracja suwerenności, Konstytucja, wybitne osobistości, dziedzictwo kulturowe są przechowywane cyfrowo i bezpiecznie przekazywane przyszłym pokoleniom, co jest dla nas świętym mandatem." },
         { title: "Być mostem", desc: "Połączenie Karakalpakstanu ze społecznością Europejską i światową jest naszym strategicznym celem. Nawiązujemy kontakty z organizacjami międzynarodowymi, dziennikarzami, ekologami i organami ścigania." },
-        { title: "Rozpowszechnianie niecenzuralnych wiadomości", desc: "Publikujemy tylko sprawdzone fakty. Będziemy walczyć z fałszywymi informacjami, manipulacjami i propagandą." },
+        { title: "Rozpowszechnianie wiadomości bez cenzury", desc: "Publikujemy tylko sprawdzone fakty. Będziemy walczyć z fałszywymi informacjami, manipulacjami i propagandą." },
         { title: "Zachowanie języka, kultury i Dziedzictwa", desc: "Język Karakalpak jest duszą naszego narodu. Przyczyniamy się do jego zachowania, rozwoju i podniesienia statusu." },
         { title: "Archiwum na 20-30 lat", desc: "Przechowujemy materiały w formacie cyfrowym, działamy jak encyklopedia z wyszukiwarką, chronimy informacje w 100% przed atakami zewnętrznymi, spamem i hakerami." }
       ],
